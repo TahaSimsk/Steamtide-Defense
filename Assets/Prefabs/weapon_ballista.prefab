@@ -89,3 +89,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6f68cc1217bc94784205ee008ed0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrow: {fileID: 4241246209655019689}
+  arrowParent: {fileID: 8055510710128067207}
+  aimRange: 20
+  projectileSpeed: 50
+  projectileDmg: 0
+  shootingSpeed: 0
+--- !u!1 &4241246209655019689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6356031556166059495, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
+  m_PrefabInstance: {fileID: 2094516931581829808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8055510710128067207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8276442123569471543, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
+  m_PrefabInstance: {fileID: 2094516931581829808}
+  m_PrefabAsset: {fileID: 0}

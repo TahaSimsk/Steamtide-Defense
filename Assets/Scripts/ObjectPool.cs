@@ -72,4 +72,19 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
+
+    public GameObject GetWeaponBallistaArrow()
+    {
+        if (weaponBallistaArrow == null) { return null; }
+
+        for (int i = 0; i < weaponBallistaArrow.Count; i++)
+        {
+            if (!weaponBallistaArrow[i].activeInHierarchy)
+            {
+                return weaponBallistaArrow[i];
+            }
+
+        }
+        return null;
+    }
 }
