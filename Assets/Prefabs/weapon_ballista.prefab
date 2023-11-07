@@ -95,6 +95,8 @@ MonoBehaviour:
   projectileSpeed: 50
   projectileDmg: 0
   shootingSpeed: 0
+  shootingDelay: 1
+  canShoot: 0
 --- !u!1 &4241246209655019689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6356031556166059495, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}

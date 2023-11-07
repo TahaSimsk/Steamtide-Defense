@@ -7276,6 +7276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_ufoGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8283298340365895696, guid: b8646176193de46479c431401db2893c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -13,17 +13,22 @@ public class Tower : MonoBehaviour
     [SerializeField] float projectileSpeed;
     [SerializeField] float projectileDmg;
     [SerializeField] float shootingSpeed;
+    [SerializeField] float shootingDelay;
 
-
+    Rigidbody rb;
 
     ObjectPool objectPool;
     GameObject pooledArrow;
     Transform target;
-    bool hasArrow;
+
+    public bool canShoot;
+
+    GameObject[] enemies;
 
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
+        GetArrow();
     }
 
     void Update()
@@ -34,7 +39,8 @@ public class Tower : MonoBehaviour
 
     void LookAtTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         for (int i = 0; i < enemies.Length; i++)
         {
@@ -46,34 +52,35 @@ public class Tower : MonoBehaviour
 
             if (distance < aimRange)
             {
+                canShoot = true;
+
                 target = enemies[i].transform;
                 transform.LookAt(enemies[i].transform);
-
+                //shoot target
+                rb.AddForce(Vector3.forward * 100 * Time.deltaTime, ForceMode.Impulse);
             }
 
         }
-        //transform.LookAt(enemies[i]);
-        Shoot();
-        
+
     }
 
-    void Shoot()
+    void GetArrow()
     {
-        if (target == null)
-        {
-            return;
-        }
-        float distance = Vector3.Distance(target.transform.position, transform.position);
-        if (distance < aimRange && !hasArrow)
-        {
-            pooledArrow = objectPool.GetWeaponBallistaArrow();
-            hasArrow = true;
-            pooledArrow.SetActive(true);
-            pooledArrow.transform.parent = arrowParent.transform;
-            pooledArrow.transform.SetPositionAndRotation(arrow.transform.position, arrow.transform.rotation);
 
-            arrow.SetActive(false);
-        }
-        pooledArrow.transform.position = Vector3.MoveTowards(pooledArrow.transform.position, target.transform.position, projectileSpeed * Time.deltaTime);
+        target = null;
+        canShoot = false;
+        pooledArrow = null;
+        
+        pooledArrow = objectPool.GetWeaponBallistaArrow();
+        rb = pooledArrow.GetComponent<Rigidbody>();
+        pooledArrow.SetActive(true);
+        pooledArrow.transform.position = transform.position + Vector3.up * 2;
+
+
+
     }
+
 }
+
+
+
