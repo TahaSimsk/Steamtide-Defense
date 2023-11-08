@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
+    public bool hit;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
     }
 
-   
+
+    private void OnEnable()
+    {
+        hit = false;
+
+    }
+
+    //public void Shoot()
+    //{
+    //    rb.velocity = Vector3.zero;
+    //    rb.AddRelativeForce(Vector3.forward * 100, ForceMode.Impulse);
+    //}
 
 
 
@@ -21,9 +31,9 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Hit");
-            rb.velocity = Vector3.zero;
-            gameObject.SetActive(false);
+            hit = true;
+
+            
 
         }
     }

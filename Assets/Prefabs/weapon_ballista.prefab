@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_ballista
       objectReference: {fileID: 0}
+    - target: {fileID: 6614115614883074897, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92,11 +96,13 @@ MonoBehaviour:
   arrow: {fileID: 4241246209655019689}
   arrowParent: {fileID: 8055510710128067207}
   aimRange: 20
-  projectileSpeed: 50
+  projectileSpeed: 2
   projectileDmg: 0
   shootingSpeed: 0
   shootingDelay: 1
+  projectileLife: 0.5
   canShoot: 0
+  currentArrow: {fileID: 0}
 --- !u!1 &4241246209655019689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6356031556166059495, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}

@@ -4,9 +4,9 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Anan : ScriptableObject
 {
-    [SerializeField] GameObject arrow;
+    [SerializeField] GameObject weapon;
 
 
     [SerializeField] float aimRange;
@@ -17,11 +17,11 @@ public class Tower : MonoBehaviour
 
 
     ObjectPool objectPool;
-    GameObject pooledArrow;
+    GameObject pooledWeapon;
 
 
-    bool canShoot, hasArrow;
-    
+    bool canShoot, hasWeapon;
+
     float timer, timer2;
 
     GameObject[] enemies;
@@ -58,11 +58,11 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        if (canShoot && pooledArrow != null)
+        if (canShoot && pooledWeapon != null)
         {
             timer2 += Time.deltaTime;
 
-            pooledArrow.transform.localPosition += Vector3.forward * projectileSpeed * Time.deltaTime;
+            pooledWeapon.transform.localPosition += Vector3.forward * projectileSpeed * Time.deltaTime;
 
             if (timer2 >= projectileLife)
             {
@@ -70,7 +70,7 @@ public class Tower : MonoBehaviour
                 DeactivateProjectile();
                 return;
             }
-            else if (pooledArrow.GetComponent<Projectile>().hit)
+            else if (pooledWeapon.GetComponent<Projectile>().hit)
             {
                 DeactivateProjectile();
                 return;
@@ -81,11 +81,11 @@ public class Tower : MonoBehaviour
 
     void DeactivateProjectile()
     {
-        pooledArrow.SetActive(false);
-        hasArrow = false;
+        pooledWeapon.SetActive(false);
+        hasWeapon = false;
         timer = shootingDelay;
         timer2 = 0;
-        pooledArrow = null;
+        pooledWeapon = null;
         canShoot = false;
     }
 
@@ -93,15 +93,15 @@ public class Tower : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (!hasArrow && timer <= 0)
+        if (!hasWeapon && timer <= 0)
         {
-            pooledArrow = objectPool.GetWeaponBallistaArrow();
-            pooledArrow.SetActive(true);
+            pooledWeapon = objectPool.GetWeaponBallistaArrow();
+            pooledWeapon.SetActive(true);
 
-            pooledArrow.transform.parent = arrow.transform.parent;
-            pooledArrow.transform.SetPositionAndRotation(arrow.transform.position, arrow.transform.rotation);
+            pooledWeapon.transform.parent = weapon.transform.parent;
+            pooledWeapon.transform.SetPositionAndRotation(weapon.transform.position, weapon.transform.rotation);
 
-            hasArrow = true;
+            hasWeapon = true;
         }
     }
 }
