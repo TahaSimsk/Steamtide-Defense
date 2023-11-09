@@ -19,9 +19,11 @@ public class Tower : MonoBehaviour
     ObjectPool objectPool;
     GameObject pooledArrow;
 
+    Rigidbody rb;
+
 
     bool canShoot, hasArrow;
-    
+
     float timer, timer2;
 
     GameObject[] enemies;
@@ -62,7 +64,15 @@ public class Tower : MonoBehaviour
         {
             timer2 += Time.deltaTime;
 
-            pooledArrow.transform.localPosition += Vector3.forward * projectileSpeed * Time.deltaTime;
+
+
+            rb.AddRelativeForce(Vector3.forward * projectileSpeed * 10);
+            //pooledArrow.transform.parent = transform.parent;
+            
+
+
+
+            //pooledArrow.transform.localPosition += Vector3.forward * projectileSpeed * Time.deltaTime;
 
             if (timer2 >= projectileLife)
             {
@@ -85,6 +95,8 @@ public class Tower : MonoBehaviour
         hasArrow = false;
         timer = shootingDelay;
         timer2 = 0;
+        rb.velocity = Vector3.zero;
+        rb = null;
         pooledArrow = null;
         canShoot = false;
     }
@@ -97,6 +109,7 @@ public class Tower : MonoBehaviour
         {
             pooledArrow = objectPool.GetWeaponBallistaArrow();
             pooledArrow.SetActive(true);
+            rb = pooledArrow.GetComponent<Rigidbody>();
 
             pooledArrow.transform.parent = arrow.transform.parent;
             pooledArrow.transform.SetPositionAndRotation(arrow.transform.position, arrow.transform.rotation);
