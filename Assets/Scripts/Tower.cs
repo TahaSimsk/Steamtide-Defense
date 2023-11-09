@@ -6,23 +6,31 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] GameObject arrow;
+    [Header("Weapon Type")]
+    [SerializeField] bool ballista;
+    [SerializeField] bool blaster;
+    [SerializeField] bool cannon;
 
-
+    [Header("Weapon Attributes")]
     [SerializeField] float aimRange;
     [SerializeField] float projectileSpeed;
     [SerializeField] float projectileDmg;
     [SerializeField] float projectileLife;
     [SerializeField] float shootingDelay;
 
+    [Header("Projectile Positions")]
+    [SerializeField] GameObject ballistaProjectile;
+    [SerializeField] GameObject blasterProjectile;
+    [SerializeField] GameObject cannonProjectile;
+
 
     ObjectPool objectPool;
-    GameObject pooledArrow;
+    GameObject pooledProjectile;
 
     Rigidbody rb;
 
 
-    bool canShoot, hasArrow;
+    bool canShoot, hasProjectile, spedUp;
 
     float timer, timer2;
 
@@ -36,7 +44,12 @@ public class Tower : MonoBehaviour
     void Update()
     {
         LookAtTarget();
-        GetArrow();
+        if (ballista)
+            GetProjectile(objectPool.GetWeaponBallistaArrow(), ballistaProjectile);
+        if (blaster)
+            GetProjectile(objectPool.GetWeaponBlasterLaser(), blasterProjectile);
+        if (cannon)
+            GetProjectile(objectPool.GetWeaponCannonBall(), cannonProjectile);
         Shoot();
     }
 
@@ -60,15 +73,25 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        if (canShoot && pooledArrow != null)
+        if (canShoot && pooledProjectile != null)
         {
             timer2 += Time.deltaTime;
 
+            if (!spedUp)
+            {
+                if (ballista)
+                {
+                    ballistaProjectile.SetActive(false);
+                }
+                pooledProjectile.SetActive(true);
+                rb.AddRelativeForce(Vector3.forward * projectileSpeed);
+                transform.parent = objectPool.gameObject.transform;
+                spedUp = true;
+            }
 
-
-            rb.AddRelativeForce(Vector3.forward * projectileSpeed * 10);
+            //rb.AddRelativeForce(Vector3.forward * projectileSpeed * 10);
             //pooledArrow.transform.parent = transform.parent;
-            
+
 
 
 
@@ -80,7 +103,7 @@ public class Tower : MonoBehaviour
                 DeactivateProjectile();
                 return;
             }
-            else if (pooledArrow.GetComponent<Projectile>().hit)
+            else if (pooledProjectile.GetComponent<Projectile>().hit)
             {
                 DeactivateProjectile();
                 return;
@@ -91,30 +114,36 @@ public class Tower : MonoBehaviour
 
     void DeactivateProjectile()
     {
-        pooledArrow.SetActive(false);
-        hasArrow = false;
+        pooledProjectile.SetActive(false);
+        if (ballista)
+        {
+            ballistaProjectile.SetActive(true);
+        }
+        hasProjectile = false;
+        spedUp = false;
         timer = shootingDelay;
         timer2 = 0;
         rb.velocity = Vector3.zero;
         rb = null;
-        pooledArrow = null;
+        pooledProjectile = null;
         canShoot = false;
     }
 
-    void GetArrow()
+    void GetProjectile(GameObject projectileFromPool, GameObject gameObjectToSetProjectilePosition)
     {
         timer -= Time.deltaTime;
 
-        if (!hasArrow && timer <= 0)
+        if (!hasProjectile && timer <= 0)
         {
-            pooledArrow = objectPool.GetWeaponBallistaArrow();
-            pooledArrow.SetActive(true);
-            rb = pooledArrow.GetComponent<Rigidbody>();
+            pooledProjectile = projectileFromPool;
+            rb = pooledProjectile.GetComponent<Rigidbody>();
+            pooledProjectile.GetComponent<Projectile>().projetileDmg = this.projectileDmg;
 
-            pooledArrow.transform.parent = arrow.transform.parent;
-            pooledArrow.transform.SetPositionAndRotation(arrow.transform.position, arrow.transform.rotation);
 
-            hasArrow = true;
+            pooledProjectile.transform.parent = gameObjectToSetProjectilePosition.transform.parent;
+            pooledProjectile.transform.SetPositionAndRotation(gameObjectToSetProjectilePosition.transform.position, gameObjectToSetProjectilePosition.transform.rotation);
+
+            hasProjectile = true;
         }
     }
 }

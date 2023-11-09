@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
+    WeaponType weaponType;
+    bool ballista;
+    bool blaster;
+    bool cannon;
 
     [SerializeField] Vector3 offset;
 
-    GameObject hoveredBallista;
+    GameObject hoveredWeapon;
 
 
     bool isPlaced;
@@ -18,58 +22,82 @@ public class TowerPlacement : MonoBehaviour
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
+        weaponType = FindObjectOfType<WeaponType>();
     }
 
     private void OnMouseDown()
     {
-        PlaceWeaponBallista();
+        if (weaponType.ballista)
+        {
+            PlaceWeapon(objectPool.GetWeaponBallista());
+        }
+        else if (weaponType.blaster)
+        {
+            PlaceWeapon(objectPool.GetWeaponBlaster());
+        }
+        else if (weaponType.cannon)
+        {
+            PlaceWeapon(objectPool.GetWeaponCannon());
+        }
     }
+
 
 
     private void OnMouseEnter()
     {
-        ShowWeaponBallistaWhenHovered();
+        if (weaponType.ballista)
+        {
+            ShowWeaponHovered(objectPool.GetWeaponBallistaHover());
+        }
+        else if (weaponType.blaster)
+        {
+            ShowWeaponHovered(objectPool.GetWeaponBlasterHover());
+        }
+        else if (weaponType.cannon)
+        {
+            ShowWeaponHovered(objectPool.GetWeaponCannonHover());
+        }
     }
 
 
     private void OnMouseExit()
     {
-        DestroyWeaponBallistaWhenExited();
+        DestroyWeaponWhenExited();
     }
 
 
 
-    void PlaceWeaponBallista()
+    void PlaceWeapon(GameObject weaponFromPool)
     {
         if (isPlaced) { return; }
 
-        GameObject weaponBallista = objectPool.GetWeaponBallista();
-        weaponBallista.SetActive(true);
-        weaponBallista.transform.position = transform.position + offset;
+        GameObject weapon = weaponFromPool;
+        weapon.SetActive(true);
+        weapon.transform.position = transform.position + offset;
 
-        hoveredBallista.SetActive(false);
+        hoveredWeapon.SetActive(false);
 
         isPlaced = true;
     }
 
-    void ShowWeaponBallistaWhenHovered()
+    void ShowWeaponHovered(GameObject weaponFromPool)
     {
         if (isPlaced || hoverShowed) { return; }
 
-        hoveredBallista = objectPool.GetWeaponBallistaHover();
-        hoveredBallista.SetActive(true);
-        hoveredBallista.transform.position = transform.position + offset;
+        hoveredWeapon = weaponFromPool;
+        hoveredWeapon.SetActive(true);
+        hoveredWeapon.transform.position = transform.position + offset;
 
-        
+
 
 
         hoverShowed = true;
     }
 
-    void DestroyWeaponBallistaWhenExited()
+    void DestroyWeaponWhenExited()
     {
-        
-        hoveredBallista.SetActive(false);
+        if(hoveredWeapon==null) { return; }
+        hoveredWeapon.SetActive(false);
 
         hoverShowed = false;
     }

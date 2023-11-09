@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    [Header("Ballista Section")]
     [SerializeField] GameObject weaponBallistaPrefab;
     [SerializeField] int weaponBallistaPoolSize;
 
@@ -20,14 +21,60 @@ public class ObjectPool : MonoBehaviour
     List<GameObject> weaponBallistaHover = new List<GameObject>();
 
 
+    [Header("Blaster Section")]
+    [SerializeField] GameObject weaponBlasterPrefab;
+    [SerializeField] int weaponBlasterPoolSize;
+
+    [SerializeField] GameObject weaponBlasterLaserPrefab;
+    [SerializeField] int weaponBlasterLaserPoolSize;
+
+    [SerializeField] GameObject weaponBlasterHoverPrefab;
+    [SerializeField] int weaponBlasterHoverPoolSize;
+
+
+
+    List<GameObject> weaponBlaster = new List<GameObject>();
+    List<GameObject> weaponBlasterLaser = new List<GameObject>();
+    List<GameObject> weaponBlasterHover = new List<GameObject>();
+
+
+
+    [Header("Cannon Section")]
+    [SerializeField] GameObject weaponCannonPrefab;
+    [SerializeField] int weaponCannonPoolSize;
+
+    [SerializeField] GameObject weaponCannonBallPrefab;
+    [SerializeField] int weaponCannonBallPoolSize;
+
+    [SerializeField] GameObject weaponCannonHoverPrefab;
+    [SerializeField] int weaponCannonHoverPoolSize;
+
+
+
+    List<GameObject> weaponCannon = new List<GameObject>();
+    List<GameObject> weaponCannonBall = new List<GameObject>();
+    List<GameObject> weaponCannonHover = new List<GameObject>();
 
 
     private void Awake()
     {
+        #region Ballista Region
         PopulatePool(weaponBallista, weaponBallistaPoolSize, weaponBallistaPrefab);
-        PopulatePool(weaponBallistaHover, weaponBallistaHoverPoolSize, weaponBallistaHoverPrefab);
         PopulatePool(weaponBallistaArrow, weaponBallistaArrowPoolSize, weaponBallistaArrowPrefab);
+        PopulatePool(weaponBallistaHover, weaponBallistaHoverPoolSize, weaponBallistaHoverPrefab);
+        #endregion
 
+        #region Blaster Region
+        PopulatePool(weaponBlaster, weaponBlasterPoolSize, weaponBlasterPrefab);
+        PopulatePool(weaponBlasterLaser, weaponBlasterLaserPoolSize, weaponBlasterLaserPrefab);
+        PopulatePool(weaponBlasterHover, weaponBlasterHoverPoolSize, weaponBlasterHoverPrefab);
+        #endregion
+
+        #region Cannon Region
+        PopulatePool(weaponCannon, weaponCannonPoolSize, weaponCannonPrefab);
+        PopulatePool(weaponCannonBall, weaponCannonBallPoolSize, weaponCannonBallPrefab);
+        PopulatePool(weaponCannonHover, weaponCannonHoverPoolSize, weaponCannonHoverPrefab);
+        #endregion
     }
 
 
@@ -42,49 +89,75 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-
-    public GameObject GetWeaponBallista()
+    
+    GameObject ReturnWeapon(List<GameObject> weaponToSet)
     {
-        if (weaponBallista == null) { return null; }
+        if (weaponToSet == null) { return null; }
 
-        for (int i = 0; i < weaponBallista.Count; i++)
+        for (int i = 0; i < weaponToSet.Count; i++)
         {
-            if (!weaponBallista[i].activeInHierarchy)
+            if (!weaponToSet[i].activeInHierarchy)
             {
-                return weaponBallista[i];
+                return weaponToSet[i];
             }
 
         }
         return null;
     }
 
-    public GameObject GetWeaponBallistaHover()
+
+    #region Ballista Region
+    public GameObject GetWeaponBallista()
     {
-        if (weaponBallistaHover == null) { return null; }
-
-        for (int i = 0; i < weaponBallistaHover.Count; i++)
-        {
-            if (!weaponBallistaHover[i].activeInHierarchy)
-            {
-                return weaponBallistaHover[i];
-            }
-
-        }
-        return null;
+        return ReturnWeapon(weaponBallista);
     }
 
     public GameObject GetWeaponBallistaArrow()
     {
-        if (weaponBallistaArrow == null) { return null; }
-
-        for (int i = 0; i < weaponBallistaArrow.Count; i++)
-        {
-            if (!weaponBallistaArrow[i].activeInHierarchy)
-            {
-                return weaponBallistaArrow[i];
-            }
-
-        }
-        return null;
+        return ReturnWeapon(weaponBallistaArrow);
     }
+    public GameObject GetWeaponBallistaHover()
+    {
+        return ReturnWeapon(weaponBallistaHover);
+    }
+    #endregion
+
+
+
+    #region Blaster Region
+    public GameObject GetWeaponBlaster()
+    {
+        return ReturnWeapon(weaponBlaster);
+    }
+
+    public GameObject GetWeaponBlasterLaser()
+    {
+        return ReturnWeapon(weaponBlasterLaser);
+    }
+    public GameObject GetWeaponBlasterHover()
+    {
+        return ReturnWeapon(weaponBlasterHover);
+    }
+    #endregion
+
+
+
+    #region Cannon Region
+
+    public GameObject GetWeaponCannon()
+    {
+        return ReturnWeapon(weaponCannon);
+    }
+
+    public GameObject GetWeaponCannonBall()
+    {
+        return ReturnWeapon(weaponCannonBall);
+    }
+    public GameObject GetWeaponCannonHover()
+    {
+        return ReturnWeapon(weaponCannonHover);
+    }
+
+
+    #endregion
 }

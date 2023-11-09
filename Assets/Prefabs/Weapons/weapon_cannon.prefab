@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2340438977780067246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4748030645533033451}
+  m_Layer: 0
+  m_Name: Ball
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4748030645533033451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340438977780067246}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.13, z: 0.2}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6759779728970482572}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6504665315875578983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +97,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4748030645533033451}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 26659198064922986}
   m_SourcePrefab: {fileID: 100100000, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+--- !u!1 &6234212743987878198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+  m_PrefabInstance: {fileID: 6504665315875578983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &26659198064922986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212743987878198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6f68cc1217bc94784205ee008ed0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballista: 0
+  blaster: 0
+  cannon: 1
+  aimRange: 40
+  projectileSpeed: 5000
+  projectileDmg: 20
+  projectileLife: 1
+  shootingDelay: 2
+  ballistaProjectile: {fileID: 0}
+  blasterProjectile: {fileID: 0}
+  cannonProjectile: {fileID: 2340438977780067246}
+--- !u!4 &6759779728970482572 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+  m_PrefabInstance: {fileID: 6504665315875578983}
+  m_PrefabAsset: {fileID: 0}
