@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+
+    [Header("Weapon Section")]
+
     [Header("Ballista Section")]
     [SerializeField] GameObject weaponBallistaPrefab;
     [SerializeField] int weaponBallistaPoolSize;
@@ -50,19 +53,43 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int weaponCannonHoverPoolSize;
 
 
+    [Header("Enemy Section")]
+    [SerializeField] GameObject enemy1Prefab;
+    [SerializeField] int enemy1PoolSize;
+
+    [SerializeField] GameObject enemy2Prefab;
+    [SerializeField] int enemy2PoolSize;
+
+    [SerializeField] GameObject enemy3Prefab;
+    [SerializeField] int enemy3PoolSize;
+
+    [SerializeField] GameObject enemy4Prefab;
+    [SerializeField] int enemy4PoolSize;
+
+
 
     List<GameObject> weaponCannon = new List<GameObject>();
     List<GameObject> weaponCannonBall = new List<GameObject>();
     List<GameObject> weaponCannonHover = new List<GameObject>();
 
+    List<GameObject> enemy1 = new List<GameObject>();
+    List<GameObject> enemy2 = new List<GameObject>();
+    List<GameObject> enemy3 = new List<GameObject>();
+    List<GameObject> enemy4 = new List<GameObject>();
+
 
     private void Awake()
     {
+        #region Weapon Region
+
+
+
         #region Ballista Region
         PopulatePool(weaponBallista, weaponBallistaPoolSize, weaponBallistaPrefab);
         PopulatePool(weaponBallistaArrow, weaponBallistaArrowPoolSize, weaponBallistaArrowPrefab);
         PopulatePool(weaponBallistaHover, weaponBallistaHoverPoolSize, weaponBallistaHoverPrefab);
         #endregion
+
 
         #region Blaster Region
         PopulatePool(weaponBlaster, weaponBlasterPoolSize, weaponBlasterPrefab);
@@ -70,10 +97,25 @@ public class ObjectPool : MonoBehaviour
         PopulatePool(weaponBlasterHover, weaponBlasterHoverPoolSize, weaponBlasterHoverPrefab);
         #endregion
 
+
         #region Cannon Region
         PopulatePool(weaponCannon, weaponCannonPoolSize, weaponCannonPrefab);
         PopulatePool(weaponCannonBall, weaponCannonBallPoolSize, weaponCannonBallPrefab);
         PopulatePool(weaponCannonHover, weaponCannonHoverPoolSize, weaponCannonHoverPrefab);
+        #endregion
+
+
+        #endregion
+
+
+
+        #region Enemy Region
+
+        PopulatePool(enemy1, enemy1PoolSize, enemy1Prefab);
+        PopulatePool(enemy2, enemy2PoolSize, enemy2Prefab);
+        PopulatePool(enemy3, enemy3PoolSize, enemy3Prefab);
+        PopulatePool(enemy4, enemy4PoolSize, enemy4Prefab);
+
         #endregion
     }
 
@@ -84,12 +126,12 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < objectPoolSize; i++)
         {
             GameObject weapon = Instantiate(objectPrefab, gameObject.transform);
+            weapon.SetActive(false);
             objectList.Add(weapon);
-            objectList[i].SetActive(false);
         }
     }
 
-    
+
     GameObject ReturnWeapon(List<GameObject> weaponToSet)
     {
         if (weaponToSet == null) { return null; }
@@ -105,6 +147,8 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
+
+    #region Weapon Region
 
     #region Ballista Region
     public GameObject GetWeaponBallista()
@@ -156,6 +200,32 @@ public class ObjectPool : MonoBehaviour
     public GameObject GetWeaponCannonHover()
     {
         return ReturnWeapon(weaponCannonHover);
+    }
+
+
+    #endregion
+
+    #endregion
+
+
+
+    #region Enemy Region
+
+
+    public GameObject GetEnemy(int enemyWave)
+    {
+        switch (enemyWave)
+        {
+            case 1:
+                return ReturnWeapon(enemy1);
+            case 2:
+                return ReturnWeapon(enemy2);
+            case 3:
+                return ReturnWeapon(enemy3);
+            case 4:
+                return ReturnWeapon(enemy4);
+        }
+        return null;
     }
 
 

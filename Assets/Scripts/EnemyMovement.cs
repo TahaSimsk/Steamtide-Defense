@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] Transform pathParent;
 
     [SerializeField] float moveSpeed;
     [SerializeField] Vector3 offsetY;
@@ -12,9 +11,17 @@ public class EnemyMovement : MonoBehaviour
     List<GameObject> path = new List<GameObject>();
 
 
-    private void Start()
+    Transform pathParent;
+
+    private void Awake()
     {
         GetPathFromParent();
+        SnapEnemyToStart();
+    }
+
+    private void OnEnable()
+    {
+        
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath());
     }
@@ -22,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
 
     void GetPathFromParent()
     {
+        pathParent = GameObject.FindWithTag("Path").transform;
         foreach (Transform child in pathParent)
         {
             path.Add(child.gameObject);
@@ -31,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
+        Debug.Log("snapped");
     }
 
 
@@ -45,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-
+        //reaching at the end of the path
         gameObject.SetActive(false);
     }
 }

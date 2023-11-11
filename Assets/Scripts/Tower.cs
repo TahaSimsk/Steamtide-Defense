@@ -29,6 +29,7 @@ public class Tower : MonoBehaviour
 
     Rigidbody rb;
 
+  
 
     bool canShoot, hasProjectile, spedUp;
 
@@ -65,6 +66,7 @@ public class Tower : MonoBehaviour
 
             if (distance < aimRange)
             {
+
                 transform.LookAt(enemies[i].transform);
                 canShoot = true;
             }

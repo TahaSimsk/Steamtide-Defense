@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] float maxHealth;
+    [SerializeField] float baseMaxHealth;
+    [HideInInspector] public float maxHealth;
+    public int enemyId;
 
     float currentHealth;
-    void Start()
+
+
+    private void OnEnable()
     {
         currentHealth = maxHealth;
+    }
+
+    private void OnDisable()
+    {
+        maxHealth = baseMaxHealth;
     }
 
 
@@ -25,5 +34,10 @@ public class EnemyHealth : MonoBehaviour
     public void ReduceHealth(float damage)
     {
         currentHealth -= damage;
+    }
+
+    public void SetMaxHP(float amount)
+    {
+        maxHealth *= amount;
     }
 }
