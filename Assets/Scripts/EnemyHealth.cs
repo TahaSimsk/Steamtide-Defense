@@ -10,15 +10,19 @@ public class EnemyHealth : MonoBehaviour
 
     float currentHealth;
 
+    public bool isDead;
+
 
     private void OnEnable()
     {
         currentHealth = maxHealth;
+        isDead = false;
     }
 
     private void OnDisable()
     {
         maxHealth = baseMaxHealth;
+        isDead = true;
     }
 
 

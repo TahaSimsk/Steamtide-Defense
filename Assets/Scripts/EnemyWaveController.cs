@@ -41,7 +41,7 @@ public class EnemyWaveController : MonoBehaviour
                     int enemyCount = wave.enemyCount[i];
                     int enemyId = wave.enemies[i].GetComponent<EnemyHealth>().enemyId;
 
-                    if (setEnemyHealthManually)
+                    if (setEnemyHealthManually && (wave.enemyHealth != null || wave.enemyHealth[i] != Mathf.Epsilon))
                     {
                         enemyHealth = wave.enemyHealth[i];
                     }

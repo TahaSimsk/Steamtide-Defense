@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -77,6 +78,14 @@ public class ObjectPool : MonoBehaviour
     List<GameObject> enemy3 = new List<GameObject>();
     List<GameObject> enemy4 = new List<GameObject>();
 
+
+    //public List<GameObject> Enemies()
+    //{
+    //    List<GameObject> enemies = new List<GameObject>();
+
+    //    enemies = enemy1.Concat(enemy2).Concat(enemy3).Concat(enemy4).ToList();
+    //    return enemies;
+    //}
 
     private void Awake()
     {

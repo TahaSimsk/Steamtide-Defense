@@ -12,133 +12,66 @@ public class Tower : MonoBehaviour
     [SerializeField] bool cannon;
 
     [Header("Weapon Attributes")]
-    [SerializeField] float aimRange;
     [SerializeField] float projectileSpeed;
     [SerializeField] float projectileDmg;
     [SerializeField] float projectileLife;
     [SerializeField] float shootingDelay;
 
     [Header("Projectile Positions")]
-    [SerializeField] GameObject ballistaProjectile;
-    [SerializeField] GameObject blasterProjectile;
-    [SerializeField] GameObject cannonProjectile;
+    [SerializeField] GameObject ballistaProjectilePos;
+    [SerializeField] GameObject blasterProjectilePos;
+    [SerializeField] GameObject cannonProjectilePos;
 
 
     ObjectPool objectPool;
     GameObject pooledProjectile;
+    List<GameObject> enemies = new List<GameObject>();
+    Rigidbody pooledProjectileRb;
 
-    Rigidbody rb;
 
-  
+    bool hasProjectile, isProjectileFired;
 
-    bool canShoot, hasProjectile, spedUp;
+    float timerForShootingDelay, timerForProjectileLife;
 
-    float timer, timer2;
 
-    GameObject[] enemies;
 
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
+
     }
 
     void Update()
     {
-        LookAtTarget();
+        LookAtEnemy();
+        SearchListToRemoveEnemy();
+
         if (ballista)
-            GetProjectile(objectPool.GetWeaponBallistaArrow(), ballistaProjectile);
+            GetProjectile(objectPool.GetWeaponBallistaArrow(), ballistaProjectilePos);
         if (blaster)
-            GetProjectile(objectPool.GetWeaponBlasterLaser(), blasterProjectile);
+            GetProjectile(objectPool.GetWeaponBlasterLaser(), blasterProjectilePos);
         if (cannon)
-            GetProjectile(objectPool.GetWeaponCannonBall(), cannonProjectile);
+            GetProjectile(objectPool.GetWeaponCannonBall(), cannonProjectilePos);
+
         Shoot();
-    }
-
-    void LookAtTarget()
-    {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (enemies[i] == null || !enemies[i].activeInHierarchy) { return; }
-
-            float distance = Vector3.Distance(enemies[i].transform.position, transform.position);
-
-            if (distance < aimRange)
-            {
-
-                transform.LookAt(enemies[i].transform);
-                canShoot = true;
-            }
-        }
-    }
-
-    void Shoot()
-    {
-        if (canShoot && pooledProjectile != null)
-        {
-            timer2 += Time.deltaTime;
-
-            if (!spedUp)
-            {
-                if (ballista)
-                {
-                    ballistaProjectile.SetActive(false);
-                }
-                pooledProjectile.SetActive(true);
-                rb.AddRelativeForce(Vector3.forward * projectileSpeed);
-                transform.parent = objectPool.gameObject.transform;
-                spedUp = true;
-            }
-
-            //rb.AddRelativeForce(Vector3.forward * projectileSpeed * 10);
-            //pooledArrow.transform.parent = transform.parent;
-
-
-
-
-            //pooledArrow.transform.localPosition += Vector3.forward * projectileSpeed * Time.deltaTime;
-
-            if (timer2 >= projectileLife)
-            {
-                timer2 = 0;
-                DeactivateProjectile();
-                return;
-            }
-            else if (pooledProjectile.GetComponent<Projectile>().hit)
-            {
-                DeactivateProjectile();
-                return;
-            }
-        }
+        DeactivateProjectile();
     }
 
 
-    void DeactivateProjectile()
-    {
-        pooledProjectile.SetActive(false);
-        if (ballista)
-        {
-            ballistaProjectile.SetActive(true);
-        }
-        hasProjectile = false;
-        spedUp = false;
-        timer = shootingDelay;
-        timer2 = 0;
-        rb.velocity = Vector3.zero;
-        rb = null;
-        pooledProjectile = null;
-        canShoot = false;
-    }
+
 
     void GetProjectile(GameObject projectileFromPool, GameObject gameObjectToSetProjectilePosition)
     {
-        timer -= Time.deltaTime;
+        timerForShootingDelay -= Time.deltaTime;
 
-        if (!hasProjectile && timer <= 0)
+        if (!hasProjectile && timerForShootingDelay <= 0)
         {
+            if (ballista)
+            {
+                ballistaProjectilePos.SetActive(true);
+            }
             pooledProjectile = projectileFromPool;
-            rb = pooledProjectile.GetComponent<Rigidbody>();
+            pooledProjectileRb = pooledProjectile.GetComponent<Rigidbody>();
             pooledProjectile.GetComponent<Projectile>().projetileDmg = this.projectileDmg;
 
 
@@ -147,6 +80,111 @@ public class Tower : MonoBehaviour
 
             hasProjectile = true;
         }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemies.Add(other.gameObject);
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemies.Remove(other.gameObject);
+        }
+    }
+
+
+    void LookAtEnemy()
+    {
+        if (enemies.Count == 0)
+        {
+            return;
+        }
+
+        transform.LookAt(enemies[0].transform.position);
+    }
+
+
+
+    void SearchListToRemoveEnemy()
+    {
+        if (enemies.Count == 0)
+        {
+            return;
+        }
+        foreach (var enemy in enemies.ToList())
+        {
+            if (enemy.GetComponent<EnemyHealth>().isDead || enemy.GetComponent<EnemyMovement>().reachedEnd)
+            {
+                enemies.Remove(enemy);
+            }
+        }
+    }
+
+
+
+    void Shoot()
+    {
+
+        if (enemies.Count > 0 && pooledProjectile != null)
+        {
+            if (!isProjectileFired)
+            {
+                if (ballista)
+                {
+                    ballistaProjectilePos.SetActive(false);
+                }
+                pooledProjectile.SetActive(true);
+                pooledProjectileRb.AddRelativeForce(Vector3.forward * projectileSpeed);
+
+                isProjectileFired = true;
+                pooledProjectile.transform.parent = objectPool.gameObject.transform;
+            }
+        }
+    }
+
+
+    void DeactivateProjectile()
+    {
+        if (isProjectileFired)
+        {
+            HandleProjectileFired();
+
+            if (timerForProjectileLife >= projectileLife)
+            {
+                HandleProjectileHit();
+                return;
+            }
+            else if (pooledProjectile.GetComponent<Projectile>().hit)
+            {
+                HandleProjectileHit();
+                return;
+            }
+        }
+    }
+
+    void HandleProjectileFired()
+    {
+        hasProjectile = false;
+        timerForShootingDelay = shootingDelay;
+        timerForProjectileLife = 0;
+        timerForProjectileLife += Time.deltaTime;
+    }
+
+
+    void HandleProjectileHit()
+    {
+        pooledProjectile.SetActive(false);
+        isProjectileFired = false;
+        pooledProjectileRb.velocity = Vector3.zero;
+        pooledProjectileRb = null;
+        pooledProjectile = null;
     }
 }
 

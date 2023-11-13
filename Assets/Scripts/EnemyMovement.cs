@@ -13,6 +13,8 @@ public class EnemyMovement : MonoBehaviour
 
     Transform pathParent;
 
+    public bool reachedEnd;
+
     private void Awake()
     {
         GetPathFromParent();
@@ -24,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
         
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath());
+        reachedEnd = false;
     }
 
 
@@ -55,6 +58,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         //reaching at the end of the path
+        reachedEnd = true;
         gameObject.SetActive(false);
     }
 }

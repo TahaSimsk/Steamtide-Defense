@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenEnemySpawns: 1
-  timeBetweenEnemyWaves: 5
+  timeBetweenEnemyWaves: 10
   waves:
   - {fileID: 11400000, guid: c419849716024f048aea86188a3c5330, type: 2}
   - {fileID: 11400000, guid: 26dd691cf81a59a4180f885e42a7c3de, type: 2}
@@ -2484,7 +2484,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b01917b8657ef9042ab98e2234688b3a, type: 2}
   - {fileID: 11400000, guid: 0510068bb66755f469b9deb9570dd75f, type: 2}
   - {fileID: 11400000, guid: c1ac9411b8aaa2d4daae73a43fb3fe05, type: 2}
-  setEnemyHealthManually: 1
+  setEnemyHealthManually: 0
   enemyHealthDifficulty: 0
   enemyHealthDifficultyMultiplier: 1.1
 --- !u!4 &479045816
@@ -8350,6 +8350,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02393cf1a67513e4ea0f756186d0c09e, type: 3}
+--- !u!1 &1458683205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458683207}
+  - component: {fileID: 1458683206}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1458683206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458683205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd987a1de35628444b714eb32eb0f187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1458683207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458683205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1469356594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1393132494982874074, guid: 02393cf1a67513e4ea0f756186d0c09e, type: 3}
@@ -11573,3 +11617,4 @@ SceneRoots:
   - {fileID: 617188465}
   - {fileID: 1043456200}
   - {fileID: 479045816}
+  - {fileID: 1458683207}
