@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -108,6 +112,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4782135970233064705}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -98620816941264828}
   m_SourcePrefab: {fileID: 100100000, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
 --- !u!1 &6234212743987878198 stripped
 GameObject:
@@ -129,14 +136,14 @@ MonoBehaviour:
   ballista: 0
   blaster: 0
   cannon: 1
-  aimRange: 40
-  projectileSpeed: 5000
+  projectileSpeed: 80
   projectileDmg: 20
   projectileLife: 1
   shootingDelay: 2
-  ballistaProjectile: {fileID: 0}
-  blasterProjectile: {fileID: 0}
-  cannonProjectile: {fileID: 2340438977780067246}
+  ballistaProjectilePos: {fileID: 0}
+  blasterProjectilePos: {fileID: 0}
+  cannonProjectilePos: {fileID: 2340438977780067246}
+  enemies: []
 --- !u!135 &4782135970233064705
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -158,6 +165,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0.07874044, z: 0}
+--- !u!54 &-98620816941264828
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212743987878198}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 183
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &6759779728970482572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}

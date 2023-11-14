@@ -263,6 +263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_blaster
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -276,6 +280,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8834093222135476708}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7967135401565113608}
   m_SourcePrefab: {fileID: 100100000, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
 --- !u!1 &4650027991635979948 stripped
 GameObject:
@@ -297,14 +304,14 @@ MonoBehaviour:
   ballista: 0
   blaster: 1
   cannon: 0
-  aimRange: 20
-  projectileSpeed: 5000
+  projectileSpeed: 80
   projectileDmg: 5
   projectileLife: 0.3
   shootingDelay: 0.2
-  ballistaProjectile: {fileID: 0}
-  blasterProjectile: {fileID: 8628735257123172451}
-  cannonProjectile: {fileID: 0}
+  ballistaProjectilePos: {fileID: 0}
+  blasterProjectilePos: {fileID: 8628735257123172451}
+  cannonProjectilePos: {fileID: 0}
+  enemies: []
 --- !u!135 &8834093222135476708
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -326,6 +333,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0.10499999, z: 0.024999999}
+--- !u!54 &-7967135401565113608
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650027991635979948}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 183
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &5459461705273029654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}

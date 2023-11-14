@@ -14,6 +14,7 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField][Range(1, 3)] float enemyHealthDifficultyMultiplier;
 
     ObjectPool objectPool;
+    List<GameObject> enemiesInWave = new List<GameObject>();
 
     int currentWave;
 
@@ -49,15 +50,9 @@ public class EnemyWaveController : MonoBehaviour
                     for (int x = 0; x < enemyCount; x++)
                     {
                         GameObject pooledEnemy = objectPool.GetEnemy(enemyId);
+                        enemiesInWave.Add(pooledEnemy);
 
-                        if (setEnemyHealthManually && enemyHealth != Mathf.Epsilon)
-                        {
-                            pooledEnemy.GetComponent<EnemyHealth>().maxHealth = enemyHealth;
-                        }
-                        else if (enemyHealthDifficulty)
-                        {
-                            pooledEnemy.GetComponent<EnemyHealth>().SetMaxHP(difficulty);
-                        }
+                        SetHealthDifficulty(pooledEnemy);
 
                         pooledEnemy.SetActive(true);
 
@@ -66,16 +61,46 @@ public class EnemyWaveController : MonoBehaviour
                     }
 
                 }
+                //end of the wave
 
-                //next wave
+                //wait for enemies to die before starting countdown to go to the next wave
+                foreach (var enemy in enemiesInWave)
+                {
+                    yield return new WaitUntil(() => enemy.activeInHierarchy == false);
+                }
+                enemiesInWave.Clear();
+
+
+                //next wave countdown
                 yield return new WaitForSeconds(timeBetweenEnemyWaves);
 
-                if (enemyHealthDifficulty)
-                {
-                    difficulty *= enemyHealthDifficultyMultiplier;
-                }
+                IncreaseDifficultyForNextWave();
             }
+            //end of total waves
             break;
         }
     }
+
+    private void SetHealthDifficulty(GameObject pooledEnemy)
+    {
+        if (setEnemyHealthManually && enemyHealth != Mathf.Epsilon)
+        {
+            pooledEnemy.GetComponent<EnemyHealth>().maxHealth = enemyHealth;
+        }
+        else if (enemyHealthDifficulty)
+        {
+            pooledEnemy.GetComponent<EnemyHealth>().SetMaxHP(difficulty);
+        }
+    }
+
+    private void IncreaseDifficultyForNextWave()
+    {
+        //if automatic enemy health difficulty is toggled in hierarchy, increase the health of the enemies in the next wave by given amount
+        if (enemyHealthDifficulty)
+        {
+            difficulty *= enemyHealthDifficultyMultiplier;
+        }
+    }
+
+
 }

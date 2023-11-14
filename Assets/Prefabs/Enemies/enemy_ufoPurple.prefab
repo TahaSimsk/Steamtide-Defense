@@ -65,6 +65,10 @@ PrefabInstance:
       value: enemy_ufoPurple
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa8ed80e65980e545864cba4ec6a282e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa8ed80e65980e545864cba4ec6a282e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -81,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa8ed80e65980e545864cba4ec6a282e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3689899516714673848}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa8ed80e65980e545864cba4ec6a282e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4332535907787329609}
   m_SourcePrefab: {fileID: 100100000, guid: fa8ed80e65980e545864cba4ec6a282e, type: 3}
 --- !u!1 &7717460796901817828 stripped
 GameObject:
@@ -123,6 +130,7 @@ MonoBehaviour:
   baseMaxHealth: 150
   maxHealth: 150
   enemyId: 2
+  isDead: 0
 --- !u!114 &3689899516714673848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,3 +145,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   offsetY: {x: 0, y: 1.5, z: 0}
+  reachedEnd: 0
+--- !u!54 &-4332535907787329609
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7717460796901817828}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

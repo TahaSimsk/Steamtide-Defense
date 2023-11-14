@@ -25,8 +25,9 @@ public class Tower : MonoBehaviour
 
     ObjectPool objectPool;
     GameObject pooledProjectile;
-    List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
     Rigidbody pooledProjectileRb;
+
 
 
     bool hasProjectile, isProjectileFired;
@@ -43,9 +44,6 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        LookAtEnemy();
-        SearchListToRemoveEnemy();
-
         if (ballista)
             GetProjectile(objectPool.GetWeaponBallistaArrow(), ballistaProjectilePos);
         if (blaster)
@@ -53,7 +51,10 @@ public class Tower : MonoBehaviour
         if (cannon)
             GetProjectile(objectPool.GetWeaponCannonBall(), cannonProjectilePos);
 
+
+        LookAtEnemy();
         Shoot();
+        SearchListToRemoveEnemy();
         DeactivateProjectile();
     }
 
@@ -71,8 +72,11 @@ public class Tower : MonoBehaviour
                 ballistaProjectilePos.SetActive(true);
             }
             pooledProjectile = projectileFromPool;
+
             pooledProjectileRb = pooledProjectile.GetComponent<Rigidbody>();
-            pooledProjectile.GetComponent<Projectile>().projetileDmg = this.projectileDmg;
+            pooledProjectile.GetComponent<Projectile>().currentTower = this.transform;
+            //projectile.projetileDmg = this.projectileDmg;
+            //projectile.currentTower = this.transform;
 
 
             pooledProjectile.transform.parent = gameObjectToSetProjectilePosition.transform.parent;
@@ -108,6 +112,7 @@ public class Tower : MonoBehaviour
         }
 
         transform.LookAt(enemies[0].transform.position);
+        
     }
 
 
@@ -136,14 +141,14 @@ public class Tower : MonoBehaviour
         {
             if (!isProjectileFired)
             {
+                isProjectileFired = true;
                 if (ballista)
                 {
                     ballistaProjectilePos.SetActive(false);
                 }
                 pooledProjectile.SetActive(true);
-                pooledProjectileRb.AddRelativeForce(Vector3.forward * projectileSpeed);
+                pooledProjectile.GetComponent<Projectile>().GetInfo(enemies[0].transform, projectileSpeed, projectileDmg, true);
 
-                isProjectileFired = true;
                 pooledProjectile.transform.parent = objectPool.gameObject.transform;
             }
         }
@@ -154,8 +159,9 @@ public class Tower : MonoBehaviour
     {
         if (isProjectileFired)
         {
-            HandleProjectileFired();
 
+
+            timerForProjectileLife += Time.deltaTime;
             if (timerForProjectileLife >= projectileLife)
             {
                 HandleProjectileHit();
@@ -169,22 +175,21 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void HandleProjectileFired()
-    {
-        hasProjectile = false;
-        timerForShootingDelay = shootingDelay;
-        timerForProjectileLife = 0;
-        timerForProjectileLife += Time.deltaTime;
-    }
+
 
 
     void HandleProjectileHit()
     {
-        pooledProjectile.SetActive(false);
-        isProjectileFired = false;
+        hasProjectile = false;
+        timerForShootingDelay = shootingDelay;
+        timerForProjectileLife = 0;
+
         pooledProjectileRb.velocity = Vector3.zero;
+        pooledProjectile.SetActive(false);
         pooledProjectileRb = null;
         pooledProjectile = null;
+
+        isProjectileFired = false;
     }
 }
 

@@ -156,6 +156,21 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
+    GameObject ReturnProjectile(List<GameObject> weaponToSet)
+    {
+        if (weaponToSet == null) { return null; }
+
+        for (int i = 0; i < weaponToSet.Count; i++)
+        {
+            if (!weaponToSet[i].activeInHierarchy && weaponToSet[i].GetComponent<Projectile>().currentTower == null)
+            {
+                return weaponToSet[i];
+            }
+
+        }
+        return null;
+    }
+
 
     #region Weapon Region
 
@@ -167,7 +182,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetWeaponBallistaArrow()
     {
-        return ReturnWeapon(weaponBallistaArrow);
+        return ReturnProjectile(weaponBallistaArrow);
     }
     public GameObject GetWeaponBallistaHover()
     {
@@ -185,7 +200,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetWeaponBlasterLaser()
     {
-        return ReturnWeapon(weaponBlasterLaser);
+        return ReturnProjectile(weaponBlasterLaser);
     }
     public GameObject GetWeaponBlasterHover()
     {
@@ -204,7 +219,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetWeaponCannonBall()
     {
-        return ReturnWeapon(weaponCannonBall);
+        return ReturnProjectile(weaponCannonBall);
     }
     public GameObject GetWeaponCannonHover()
     {

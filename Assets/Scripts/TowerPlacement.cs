@@ -5,9 +5,6 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     WeaponType weaponType;
-    bool ballista;
-    bool blaster;
-    bool cannon;
 
     [SerializeField] Vector3 offset;
 
