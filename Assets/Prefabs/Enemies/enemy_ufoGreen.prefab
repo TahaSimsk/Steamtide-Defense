@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de6abadc0ca58d4c8241cbf5b715bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyDrop: 10
   baseMaxHealth: 100
   maxHealth: 100
   enemyId: 1

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] float moneyDrop;
     [SerializeField] float baseMaxHealth;
     [HideInInspector] public float maxHealth;
     public int enemyId;
@@ -11,6 +12,15 @@ public class EnemyHealth : MonoBehaviour
     float currentHealth;
 
     public bool isDead;
+
+    MoneySystem scoreSystem;
+    UIManager uiManager;
+
+    private void Start()
+    {
+        uiManager=FindObjectOfType<UIManager>();
+        scoreSystem = FindObjectOfType<MoneySystem>();
+    }
 
 
     private void OnEnable()
@@ -28,10 +38,18 @@ public class EnemyHealth : MonoBehaviour
 
     void Update()
     {
+        HandleDeath();
+    }
+
+    private void HandleDeath()
+    {
         if (currentHealth <= 0)
         {
             currentHealth = maxHealth;
             gameObject.SetActive(false);
+            scoreSystem.AddMoney(moneyDrop);
+            scoreSystem.UpdateMoneyDisplay();
+            uiManager.UpdateRemainingEnemiesText(false);
         }
     }
 

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyWaveController : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI waveText;
+
     [SerializeField] float timeBetweenEnemySpawns;
     [SerializeField] float timeBetweenEnemyWaves;
 
@@ -14,9 +17,11 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField][Range(1, 3)] float enemyHealthDifficultyMultiplier;
 
     ObjectPool objectPool;
+    UIManager uiManager;
     List<GameObject> enemiesInWave = new List<GameObject>();
 
     int currentWave;
+    public int numOfTotalEnemies;
 
     float difficulty = 1f;
     float enemyHealth;
@@ -25,6 +30,7 @@ public class EnemyWaveController : MonoBehaviour
     void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
+        uiManager = FindObjectOfType<UIManager>();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -33,10 +39,17 @@ public class EnemyWaveController : MonoBehaviour
     {
         while (true)
         {
+            //start the wave
             foreach (var wave in waves)
             {
                 currentWave++;
 
+                GetTotalEnemiesInCurrentWave(wave.enemyCount);
+                uiManager.UpdateRemainingEnemiesText(true);
+                uiManager.UpdateWaveText(currentWave);
+
+
+                //loop through enemy types in the wave
                 for (int i = 0; i < wave.enemyCount.Count; i++)
                 {
                     int enemyCount = wave.enemyCount[i];
@@ -47,6 +60,7 @@ public class EnemyWaveController : MonoBehaviour
                         enemyHealth = wave.enemyHealth[i];
                     }
 
+                    //spawn enemies by their count which is set in the "Wave SO"
                     for (int x = 0; x < enemyCount; x++)
                     {
                         GameObject pooledEnemy = objectPool.GetEnemy(enemyId);
@@ -56,7 +70,7 @@ public class EnemyWaveController : MonoBehaviour
 
                         pooledEnemy.SetActive(true);
 
-
+                        
                         yield return new WaitForSeconds(timeBetweenEnemySpawns);
                     }
 
@@ -72,6 +86,7 @@ public class EnemyWaveController : MonoBehaviour
 
 
                 //next wave countdown
+                uiManager.GetNextWaveTimer(true, timeBetweenEnemyWaves);
                 yield return new WaitForSeconds(timeBetweenEnemyWaves);
 
                 IncreaseDifficultyForNextWave();
@@ -101,6 +116,17 @@ public class EnemyWaveController : MonoBehaviour
             difficulty *= enemyHealthDifficultyMultiplier;
         }
     }
+
+
+
+    void GetTotalEnemiesInCurrentWave(List<int> enemyCount)
+    {
+        foreach (var item in enemyCount)
+        {
+            numOfTotalEnemies += item;
+        }
+    }
+
 
 
 }

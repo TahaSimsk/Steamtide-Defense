@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [SerializeField] SphereCollider targetScanner;
+
     [Header("Weapon Type")]
     [SerializeField] bool ballista;
     [SerializeField] bool blaster;
@@ -16,6 +18,9 @@ public class Tower : MonoBehaviour
     [SerializeField] float projectileDmg;
     [SerializeField] float projectileLife;
     [SerializeField] float shootingDelay;
+    [SerializeField] float weaponRotationSpeed;
+    [SerializeField] float weaponRange;
+    [SerializeField] float moneyCost;
 
     [Header("Projectile Positions")]
     [SerializeField] GameObject ballistaProjectilePos;
@@ -23,7 +28,10 @@ public class Tower : MonoBehaviour
     [SerializeField] GameObject cannonProjectilePos;
 
 
+
     ObjectPool objectPool;
+    
+
     GameObject pooledProjectile;
     public List<GameObject> enemies = new List<GameObject>();
     Rigidbody pooledProjectileRb;
@@ -39,7 +47,7 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
-
+        targetScanner.radius = weaponRange;
     }
 
     void Update()
@@ -54,7 +62,7 @@ public class Tower : MonoBehaviour
 
         LookAtEnemy();
         Shoot();
-        SearchListToRemoveEnemy();
+        //SearchListToRemoveEnemy();
         DeactivateProjectile();
     }
 
@@ -87,51 +95,17 @@ public class Tower : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            enemies.Add(other.gameObject);
-        }
-
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            enemies.Remove(other.gameObject);
-        }
-    }
-
-
     void LookAtEnemy()
     {
         if (enemies.Count == 0)
         {
             return;
         }
-
-        transform.LookAt(enemies[0].transform.position);
-        
+        Vector3 dir = enemies[0].transform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * weaponRotationSpeed).eulerAngles;
+        transform.rotation = Quaternion.Euler(rotation);
     }
-
-
-
-    void SearchListToRemoveEnemy()
-    {
-        if (enemies.Count == 0)
-        {
-            return;
-        }
-        foreach (var enemy in enemies.ToList())
-        {
-            if (enemy.GetComponent<EnemyHealth>().isDead || enemy.GetComponent<EnemyMovement>().reachedEnd)
-            {
-                enemies.Remove(enemy);
-            }
-        }
-    }
-
 
 
     void Shoot()
@@ -191,6 +165,27 @@ public class Tower : MonoBehaviour
 
         isProjectileFired = false;
     }
+
+    public void AddEnemy(GameObject enemy)
+    {
+        enemies.Add(enemy);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        enemies.Remove(enemy);
+    }
+
+    public void SetWeaponUpgradeAttributes(float projectileSpeed, float projectileDmg, float projectileLife, float shootingDelay, float weaponRange)
+    {
+        this.projectileSpeed = projectileSpeed;
+        this.projectileDmg = projectileDmg;
+        this.projectileLife = projectileLife;
+        this.shootingDelay = shootingDelay;
+        this.weaponRange = weaponRange;
+    }
+    
+
 }
 
 

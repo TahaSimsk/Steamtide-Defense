@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
 
     List<GameObject> path = new List<GameObject>();
 
+    UIManager uiManager;
 
     Transform pathParent;
 
@@ -19,6 +20,10 @@ public class EnemyMovement : MonoBehaviour
     {
         GetPathFromParent();
         SnapEnemyToStart();
+    }
+    void Start()
+    {
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void OnEnable()
@@ -42,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
-        Debug.Log("snapped");
+        
     }
 
 
@@ -58,6 +63,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         //reaching at the end of the path
+        uiManager.UpdateRemainingEnemiesText(false);
         reachedEnd = true;
         gameObject.SetActive(false);
     }

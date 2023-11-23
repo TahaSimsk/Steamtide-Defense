@@ -16,6 +16,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int weaponBallistaArrowPoolSize;
 
     [SerializeField] GameObject weaponBallistaHoverPrefab;
+    [SerializeField] GameObject NPweaponBallistaHoverPrefab;
     [SerializeField] int weaponBallistaHoverPoolSize;
 
 
@@ -23,6 +24,7 @@ public class ObjectPool : MonoBehaviour
     List<GameObject> weaponBallista = new List<GameObject>();
     List<GameObject> weaponBallistaArrow = new List<GameObject>();
     List<GameObject> weaponBallistaHover = new List<GameObject>();
+    List<GameObject> NPweaponBallistaHover = new List<GameObject>();
 
 
     [Header("Blaster Section")]
@@ -33,6 +35,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int weaponBlasterLaserPoolSize;
 
     [SerializeField] GameObject weaponBlasterHoverPrefab;
+    [SerializeField] GameObject NPweaponBlasterHoverPrefab;
     [SerializeField] int weaponBlasterHoverPoolSize;
 
 
@@ -40,6 +43,7 @@ public class ObjectPool : MonoBehaviour
     List<GameObject> weaponBlaster = new List<GameObject>();
     List<GameObject> weaponBlasterLaser = new List<GameObject>();
     List<GameObject> weaponBlasterHover = new List<GameObject>();
+    List<GameObject> NPweaponBlasterHover = new List<GameObject>();
 
 
 
@@ -51,7 +55,15 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int weaponCannonBallPoolSize;
 
     [SerializeField] GameObject weaponCannonHoverPrefab;
+    [SerializeField] GameObject NPweaponCannonHoverPrefab;
     [SerializeField] int weaponCannonHoverPoolSize;
+
+
+
+    List<GameObject> weaponCannon = new List<GameObject>();
+    List<GameObject> weaponCannonBall = new List<GameObject>();
+    List<GameObject> weaponCannonHover = new List<GameObject>();
+    List<GameObject> NPweaponCannonHover = new List<GameObject>();
 
 
     [Header("Enemy Section")]
@@ -68,10 +80,6 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int enemy4PoolSize;
 
 
-
-    List<GameObject> weaponCannon = new List<GameObject>();
-    List<GameObject> weaponCannonBall = new List<GameObject>();
-    List<GameObject> weaponCannonHover = new List<GameObject>();
 
     List<GameObject> enemy1 = new List<GameObject>();
     List<GameObject> enemy2 = new List<GameObject>();
@@ -97,6 +105,7 @@ public class ObjectPool : MonoBehaviour
         PopulatePool(weaponBallista, weaponBallistaPoolSize, weaponBallistaPrefab);
         PopulatePool(weaponBallistaArrow, weaponBallistaArrowPoolSize, weaponBallistaArrowPrefab);
         PopulatePool(weaponBallistaHover, weaponBallistaHoverPoolSize, weaponBallistaHoverPrefab);
+        PopulatePool(NPweaponBallistaHover, weaponBallistaHoverPoolSize, NPweaponBallistaHoverPrefab);
         #endregion
 
 
@@ -104,6 +113,7 @@ public class ObjectPool : MonoBehaviour
         PopulatePool(weaponBlaster, weaponBlasterPoolSize, weaponBlasterPrefab);
         PopulatePool(weaponBlasterLaser, weaponBlasterLaserPoolSize, weaponBlasterLaserPrefab);
         PopulatePool(weaponBlasterHover, weaponBlasterHoverPoolSize, weaponBlasterHoverPrefab);
+        PopulatePool(NPweaponBlasterHover, weaponBlasterHoverPoolSize, NPweaponBlasterHoverPrefab);
         #endregion
 
 
@@ -111,6 +121,7 @@ public class ObjectPool : MonoBehaviour
         PopulatePool(weaponCannon, weaponCannonPoolSize, weaponCannonPrefab);
         PopulatePool(weaponCannonBall, weaponCannonBallPoolSize, weaponCannonBallPrefab);
         PopulatePool(weaponCannonHover, weaponCannonHoverPoolSize, weaponCannonHoverPrefab);
+        PopulatePool(NPweaponCannonHover, weaponCannonHoverPoolSize, NPweaponCannonHoverPrefab);
         #endregion
 
 
@@ -184,9 +195,16 @@ public class ObjectPool : MonoBehaviour
     {
         return ReturnProjectile(weaponBallistaArrow);
     }
-    public GameObject GetWeaponBallistaHover()
+    public GameObject GetWeaponBallistaHover(bool isPlaceable)
     {
-        return ReturnWeapon(weaponBallistaHover);
+        if (isPlaceable)
+        {
+            return ReturnWeapon(weaponBallistaHover);
+        }
+        else
+        {
+            return ReturnWeapon(NPweaponBallistaHover);
+        }
     }
     #endregion
 
@@ -202,9 +220,17 @@ public class ObjectPool : MonoBehaviour
     {
         return ReturnProjectile(weaponBlasterLaser);
     }
-    public GameObject GetWeaponBlasterHover()
+    public GameObject GetWeaponBlasterHover(bool isPlaceable)
     {
-        return ReturnWeapon(weaponBlasterHover);
+
+        if (isPlaceable)
+        {
+            return ReturnWeapon(weaponBlasterHover); 
+        }
+        else
+        {
+            return ReturnWeapon(NPweaponBlasterHover);
+        }
     }
     #endregion
 
@@ -221,9 +247,16 @@ public class ObjectPool : MonoBehaviour
     {
         return ReturnProjectile(weaponCannonBall);
     }
-    public GameObject GetWeaponCannonHover()
+    public GameObject GetWeaponCannonHover(bool isPlaceable)
     {
-        return ReturnWeapon(weaponCannonHover);
+        if (isPlaceable)
+        {
+            return ReturnWeapon(weaponCannonHover); 
+        }
+        else
+        {
+            return ReturnWeapon(NPweaponCannonHover);
+        }
     }
 
 

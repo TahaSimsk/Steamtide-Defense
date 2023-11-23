@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
-    WeaponType weaponType;
+    UIFlags weaponType;
 
     [SerializeField] Vector3 offset;
 
@@ -15,26 +15,34 @@ public class TowerPlacement : MonoBehaviour
     bool hoverShowed;
 
     ObjectPool objectPool;
+    MoneySystem moneySystem;
 
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
-        weaponType = FindObjectOfType<WeaponType>();
+        weaponType = FindObjectOfType<UIFlags>();
+        moneySystem = FindObjectOfType<MoneySystem>();
     }
 
     private void OnMouseDown()
     {
-        if (weaponType.ballista)
+        if (weaponType.ballista && moneySystem.IsPlaceable(moneySystem.ballistaCost))
         {
             PlaceWeapon(objectPool.GetWeaponBallista());
+            moneySystem.DecreaseMoney(moneySystem.ballistaCost);
+            moneySystem.UpdateMoneyDisplay();
         }
-        else if (weaponType.blaster)
+        else if (weaponType.blaster && moneySystem.IsPlaceable(moneySystem.blasterCost))
         {
             PlaceWeapon(objectPool.GetWeaponBlaster());
+            moneySystem.DecreaseMoney(moneySystem.blasterCost);
+            moneySystem.UpdateMoneyDisplay();
         }
-        else if (weaponType.cannon)
+        else if (weaponType.cannon && moneySystem.IsPlaceable(moneySystem.cannonCost))
         {
             PlaceWeapon(objectPool.GetWeaponCannon());
+            moneySystem.DecreaseMoney(moneySystem.cannonCost);
+            moneySystem.UpdateMoneyDisplay();
         }
     }
 
@@ -44,15 +52,15 @@ public class TowerPlacement : MonoBehaviour
     {
         if (weaponType.ballista)
         {
-            ShowWeaponHovered(objectPool.GetWeaponBallistaHover());
+            ShowWeaponHovered(objectPool.GetWeaponBallistaHover(moneySystem.IsPlaceable(moneySystem.ballistaCost)));
         }
         else if (weaponType.blaster)
         {
-            ShowWeaponHovered(objectPool.GetWeaponBlasterHover());
+            ShowWeaponHovered(objectPool.GetWeaponBlasterHover(moneySystem.IsPlaceable(moneySystem.blasterCost)));
         }
         else if (weaponType.cannon)
         {
-            ShowWeaponHovered(objectPool.GetWeaponCannonHover());
+            ShowWeaponHovered(objectPool.GetWeaponCannonHover(moneySystem.IsPlaceable(moneySystem.cannonCost)));
         }
     }
 
@@ -93,7 +101,7 @@ public class TowerPlacement : MonoBehaviour
 
     void DestroyWeaponWhenExited()
     {
-        if(hoveredWeapon==null) { return; }
+        if (hoveredWeapon == null) { return; }
         hoveredWeapon.SetActive(false);
 
         hoverShowed = false;
