@@ -18,9 +18,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI remainingEnemiesText;
     [SerializeField] TextMeshProUGUI nextWaveCountdownText;
 
+    [Header("Upgrade Related Text UI")]
+    [SerializeField] Button upgradeModeButton;
+    [SerializeField] Button cancelUpgradeButton;
+
+    //-------------------- FLAGS --------------------
+    [HideInInspector] public bool ballista;
+    [HideInInspector] public bool blaster;
+    [HideInInspector] public bool cannon;
+    [HideInInspector] public bool upgradeMode;
+
     EnemyWaveController waveController;
 
-
+    //------------------ COUNTDOWN ------------------
     bool startCountdownForNextWave;
     float timerForNextWave;
 
@@ -103,4 +113,54 @@ public class UIManager : MonoBehaviour
         timerForNextWave = timer;
     }
 
+
+
+
+
+    public void Ballista(bool yes)
+    {
+        this.ballista = yes;
+    }
+    public void Blaster(bool yes)
+    {
+        this.blaster = yes;
+    }
+    public void Cannon(bool yes)
+    {
+        this.cannon = yes;
+    }
+
+
+    public void UpgradeMode(bool on)
+    {
+        if (on)
+        {
+            upgradeModeButton.gameObject.SetActive(false);
+            cancelUpgradeButton.gameObject.SetActive(true);
+            upgradeMode = true;
+        }
+        else
+        {
+            upgradeModeButton.gameObject.SetActive(true);
+            cancelUpgradeButton.gameObject.SetActive(false);
+            upgradeMode = false;
+        }
+    }
+
+
+    public List<bool> ReturnFlags()
+    {
+        List<bool> flags = new List<bool>();
+        flags.Add(this.ballista);
+        flags.Add(this.blaster);
+        flags.Add(this.cannon);
+        return flags;
+    }
+
+    public void SetFlags(bool ballista, bool blaster, bool cannon)
+    {
+        this.ballista = ballista;
+        this.blaster = blaster;
+        this.cannon = cannon;
+    }
 }

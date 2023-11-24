@@ -6,13 +6,13 @@ using UnityEngine.EventSystems;
 
 public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    UIFlags flags;
+    UIManager flags;
 
     List<bool> bools = new List<bool>();
 
     private void Start()
     {
-        flags = FindObjectOfType<UIFlags>();
+        flags = FindObjectOfType<UIManager>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -232,6 +232,7 @@ MonoBehaviour:
   upgradedProjectileLife: 0.5
   upgradedShootingDelay: 0.5
   upgradedTowerRange: 1.7
+  upgradeCost: 50
   cursorTexture: {fileID: 2800000, guid: 73436a1b2ed21414dba766bd67cf8600, type: 3}
   hotSpot: {x: 50, y: 0}
 --- !u!65 &3955336746305341415

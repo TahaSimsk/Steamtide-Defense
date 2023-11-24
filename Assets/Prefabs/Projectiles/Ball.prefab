@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8037466969375140845}
   - component: {fileID: -519447169302394304}
   - component: {fileID: 7074000826635598158}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
+  projetileDmg: 0
+  currentTower: {fileID: 0}

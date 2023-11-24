@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] Slider healthBar;
     [SerializeField] float moneyDrop;
     [SerializeField] float baseMaxHealth;
     [HideInInspector] public float maxHealth;
@@ -13,19 +15,20 @@ public class EnemyHealth : MonoBehaviour
 
     public bool isDead;
 
-    MoneySystem scoreSystem;
+    MoneySystem moneySystem;
     UIManager uiManager;
 
     private void Start()
     {
-        uiManager=FindObjectOfType<UIManager>();
-        scoreSystem = FindObjectOfType<MoneySystem>();
+        uiManager = FindObjectOfType<UIManager>();
+        moneySystem = FindObjectOfType<MoneySystem>();
     }
 
 
     private void OnEnable()
     {
         currentHealth = maxHealth;
+        UpdateHPBar();
         isDead = false;
     }
 
@@ -47,8 +50,8 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
             gameObject.SetActive(false);
-            scoreSystem.AddMoney(moneyDrop);
-            scoreSystem.UpdateMoneyDisplay();
+            moneySystem.AddMoney(moneyDrop);
+            moneySystem.UpdateMoneyDisplay();
             uiManager.UpdateRemainingEnemiesText(false);
         }
     }
@@ -56,10 +59,17 @@ public class EnemyHealth : MonoBehaviour
     public void ReduceHealth(float damage)
     {
         currentHealth -= damage;
+        UpdateHPBar();
     }
 
     public void SetMaxHP(float amount)
     {
         maxHealth *= amount;
+    }
+
+
+    void UpdateHPBar()
+    {
+        healthBar.value = currentHealth / maxHealth;
     }
 }

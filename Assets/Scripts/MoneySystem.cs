@@ -23,7 +23,7 @@ public class MoneySystem : MonoBehaviour
 
     public bool IsPlaceable(float towerCost)
     {
-        if (money>=towerCost)
+        if (money >= towerCost)
         {
             return true;
         }

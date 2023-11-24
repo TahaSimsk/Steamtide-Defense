@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adde2144d3d26a742a77733dc44d513b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: 0
+  projetileDmg: 0
+  currentTower: {fileID: 0}
 --- !u!65 &4328933335393120081
 BoxCollider:
   m_ObjectHideFlags: 0

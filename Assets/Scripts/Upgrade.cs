@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Upgrade : MonoBehaviour
@@ -10,28 +11,33 @@ public class Upgrade : MonoBehaviour
     [SerializeField] float upgradedProjectileLife;
     [SerializeField] float upgradedShootingDelay;
     [SerializeField] float upgradedTowerRange;
+    [SerializeField] float upgradeCost;
 
     [SerializeField] Texture2D cursorTexture;
     [SerializeField] Vector2 hotSpot;
-
+    //[SerializeField] TMP_Text upgradeCostText;
 
     Tower tower;
-    UIFlags flags;
+    UIManager flags;
     MeshRenderer meshRenderer;
-
+    MoneySystem moneySystem;
+    TooltipManager tooltipManager;
 
     private void Start()
     {
-        flags = FindObjectOfType<UIFlags>();
+        tooltipManager=FindObjectOfType<TooltipManager>();
+        moneySystem = FindObjectOfType<MoneySystem>();
+        flags = FindObjectOfType<UIManager>();
         meshRenderer = GetComponent<MeshRenderer>();
         tower = GetComponent<Tower>();
     }
 
     private void OnMouseDown()
     {
-        if (flags.upgradeMode)
+        if (flags.upgradeMode && moneySystem.IsPlaceable(upgradeCost))
         {
             UpgradeWeapon();
+            moneySystem.DecreaseMoney(upgradeCost);
         }
     }
     private void OnMouseEnter()
@@ -39,6 +45,7 @@ public class Upgrade : MonoBehaviour
         if (flags.upgradeMode)
         {
             SetCursor(cursorTexture);
+            tooltipManager.ShowTip("Upgrade Cost: " + upgradeCost + "$", Input.mousePosition);
         }
     }
     private void OnMouseExit()
@@ -46,6 +53,8 @@ public class Upgrade : MonoBehaviour
         if (flags.upgradeMode)
         {
             SetCursor(null);
+            tooltipManager.DisableTip();
+            
         }
     }
 
@@ -56,7 +65,7 @@ public class Upgrade : MonoBehaviour
             material.color = Color.red;
         }
 
-        
+
         tower.SetWeaponUpgradeAttributes(upgradedProjectileSpeed, upgradedProjectileDmg, upgradedProjectileLife, upgradedShootingDelay, upgradedTowerRange);
 
     }

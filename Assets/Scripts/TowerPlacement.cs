@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
-    UIFlags weaponType;
+    UIManager weaponType;
 
     [SerializeField] Vector3 offset;
 
@@ -20,7 +20,7 @@ public class TowerPlacement : MonoBehaviour
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
-        weaponType = FindObjectOfType<UIFlags>();
+        weaponType = FindObjectOfType<UIManager>();
         moneySystem = FindObjectOfType<MoneySystem>();
     }
 

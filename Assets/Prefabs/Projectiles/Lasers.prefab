@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7524802098698928372}
   - component: {fileID: -703291111826111309}
   - component: {fileID: -329759438359057430}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lasers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
+  projetileDmg: 0
+  currentTower: {fileID: 0}
 --- !u!1 &7051311785923278693
 GameObject:
   m_ObjectHideFlags: 0
