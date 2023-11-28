@@ -71,9 +71,9 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            hit = true;
-
             other.GetComponent<EnemyHealth>().ReduceHealth(projetileDmg);
+            hit = true;
+            
 
         }
     }

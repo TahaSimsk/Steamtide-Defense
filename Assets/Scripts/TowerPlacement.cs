@@ -26,42 +26,21 @@ public class TowerPlacement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (weaponType.ballista && moneySystem.IsPlaceable(moneySystem.ballistaCost))
-        {
-            PlaceWeapon(objectPool.GetWeaponBallista());
-            moneySystem.DecreaseMoney(moneySystem.ballistaCost);
-            moneySystem.UpdateMoneyDisplay();
-        }
-        else if (weaponType.blaster && moneySystem.IsPlaceable(moneySystem.blasterCost))
-        {
-            PlaceWeapon(objectPool.GetWeaponBlaster());
-            moneySystem.DecreaseMoney(moneySystem.blasterCost);
-            moneySystem.UpdateMoneyDisplay();
-        }
-        else if (weaponType.cannon && moneySystem.IsPlaceable(moneySystem.cannonCost))
-        {
-            PlaceWeapon(objectPool.GetWeaponCannon());
-            moneySystem.DecreaseMoney(moneySystem.cannonCost);
-            moneySystem.UpdateMoneyDisplay();
-        }
+       
+        PlaceWeapon(weaponType.ballista, moneySystem.ballistaCost, objectPool.ballistaName);
+        PlaceWeapon(weaponType.blaster, moneySystem.blasterCost, objectPool.blasterName);
+        PlaceWeapon(weaponType.cannon, moneySystem.cannonCost, objectPool.cannonName);
+
     }
 
 
 
     private void OnMouseEnter()
     {
-        if (weaponType.ballista)
-        {
-            ShowWeaponHovered(objectPool.GetWeaponBallistaHover(moneySystem.IsPlaceable(moneySystem.ballistaCost)));
-        }
-        else if (weaponType.blaster)
-        {
-            ShowWeaponHovered(objectPool.GetWeaponBlasterHover(moneySystem.IsPlaceable(moneySystem.blasterCost)));
-        }
-        else if (weaponType.cannon)
-        {
-            ShowWeaponHovered(objectPool.GetWeaponCannonHover(moneySystem.IsPlaceable(moneySystem.cannonCost)));
-        }
+        
+        ShowWeaponHovered(weaponType.ballista, moneySystem.ballistaCost, objectPool.ballistaHoverName, objectPool.ballistaHoverNPName);
+        ShowWeaponHovered(weaponType.blaster, moneySystem.blasterCost, objectPool.blasterHoverName, objectPool.blasterHoverNPName);
+        ShowWeaponHovered(weaponType.cannon, moneySystem.cannonCost, objectPool.cannonHoverName, objectPool.cannonHoverNPName);
     }
 
 
@@ -71,32 +50,45 @@ public class TowerPlacement : MonoBehaviour
     }
 
 
-
-    void PlaceWeapon(GameObject weaponFromPool)
+    void PlaceWeapon(bool weaponType, float weaponCost, string nameOfWeaponFromPool)
     {
-        if (isPlaced) { return; }
+        if (weaponType && moneySystem.IsPlaceable(weaponCost))
+        {
+            if (isPlaced) { return; }
 
-        GameObject weapon = weaponFromPool;
-        weapon.SetActive(true);
-        weapon.transform.position = transform.position + offset;
+            GameObject weapon = objectPool.GetObjectFromPool(nameOfWeaponFromPool, false);
+            weapon.SetActive(true);
+            weapon.transform.position = transform.position + offset;
 
-        hoveredWeapon.SetActive(false);
+            hoveredWeapon.SetActive(false);
 
-        isPlaced = true;
+            isPlaced = true;
+            moneySystem.DecreaseMoney(weaponCost);
+            moneySystem.UpdateMoneyDisplay();
+        }
+
     }
 
-    void ShowWeaponHovered(GameObject weaponFromPool)
+    void ShowWeaponHovered(bool weaponType, float weaponCost, string nameOfPlaceableHover, string nameOfNPHover)
     {
-        if (isPlaced || hoverShowed) { return; }
+        if (weaponType && moneySystem.IsPlaceable(weaponCost))
+        {
+            if (isPlaced || hoverShowed) { return; }
 
-        hoveredWeapon = weaponFromPool;
-        hoveredWeapon.SetActive(true);
-        hoveredWeapon.transform.position = transform.position + offset;
+            hoveredWeapon = objectPool.GetObjectFromPool(nameOfPlaceableHover, false);
+            hoveredWeapon.SetActive(true);
+            hoveredWeapon.transform.position = transform.position + offset;
+            hoverShowed = true;
+        }
+        else if (weaponType && !moneySystem.IsPlaceable(weaponCost))
+        {
+            if (isPlaced || hoverShowed) { return; }
 
-
-
-
-        hoverShowed = true;
+            hoveredWeapon = objectPool.GetObjectFromPool(nameOfNPHover, false);
+            hoveredWeapon.SetActive(true);
+            hoveredWeapon.transform.position = transform.position + offset;
+            hoverShowed = true;
+        }
     }
 
     void DestroyWeaponWhenExited()

@@ -3076,7 +3076,7 @@ GameObject:
   - component: {fileID: 534587209}
   - component: {fileID: 534587208}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3099,8 +3099,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -208.336, y: -20.991882}
-  m_SizeDelta: {x: -1831.386, y: -1024.669}
+  m_AnchoredPosition: {x: -207.43213, y: -14.400024}
+  m_SizeDelta: {x: -1817.729, y: -1016.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534587208
 MonoBehaviour:
@@ -7476,7 +7476,7 @@ GameObject:
   - component: {fileID: 1100740390}
   - component: {fileID: 1100740389}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TooltipCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7543,7 +7543,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 19964
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!224 &1100740392
 RectTransform:
@@ -12254,8 +12254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000020503998, y: -0.000042915}
-  m_SizeDelta: {x: 79.75, y: 54.127}
+  m_AnchoredPosition: {x: -0.661, y: 0}
+  m_SizeDelta: {x: 96.256, y: 54.127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931503845
 MonoBehaviour:
@@ -12277,7 +12277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Upgrade Cost: 50$'
+  m_text: Can't Upgrade Further
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12304,11 +12304,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.55
-  m_fontSizeBase: 36
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 10
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -12340,7 +12340,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.7029724, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -12755,35 +12755,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999441f6c9b037b4e96ab82ed1065306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponBallistaPrefab: {fileID: 1283615902204747745, guid: eb0f19f160961c5439b59cd21b055162, type: 3}
-  weaponBallistaPoolSize: 50
-  weaponBallistaArrowPrefab: {fileID: 7683383464138540475, guid: db0d79ec4d49a644cbc7b42f7f68b194, type: 3}
-  weaponBallistaArrowPoolSize: 50
-  weaponBallistaHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
-  NPweaponBallistaHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
-  weaponBallistaHoverPoolSize: 3
-  weaponBlasterPrefab: {fileID: 4650027991635979948, guid: fa3c1e0ba25c6bf4a987be3fe0a92367, type: 3}
-  weaponBlasterPoolSize: 50
-  weaponBlasterLaserPrefab: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
-  weaponBlasterLaserPoolSize: 50
-  weaponBlasterHoverPrefab: {fileID: 7863380015321442733, guid: 07cb06e626d88974caba9c67790f217f, type: 3}
-  NPweaponBlasterHoverPrefab: {fileID: 7863380015321442733, guid: 5cf988fc6c779674b86a076f88bbbee4, type: 3}
-  weaponBlasterHoverPoolSize: 3
-  weaponCannonPrefab: {fileID: 6234212743987878198, guid: b8e5a5697d7eb4946b62f6fb6c71db40, type: 3}
-  weaponCannonPoolSize: 50
-  weaponCannonBallPrefab: {fileID: 2215042161897283401, guid: 1f65f0c3afc2eb040b65d957fe1b0bb2, type: 3}
-  weaponCannonBallPoolSize: 50
-  weaponCannonHoverPrefab: {fileID: 8445677846998774162, guid: 733bf47a0c901104c9a6f7c969aafb8c, type: 3}
-  NPweaponCannonHoverPrefab: {fileID: 8445677846998774162, guid: c66e2d6925fa54248a48abe99edf7d8d, type: 3}
-  weaponCannonHoverPoolSize: 3
-  enemy1Prefab: {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
-  enemy1PoolSize: 50
-  enemy2Prefab: {fileID: 7717460796901817828, guid: 751adb5b5f5a5f24bb8842574d1c51e9, type: 3}
-  enemy2PoolSize: 50
-  enemy3Prefab: {fileID: 2185672882422005610, guid: 60e7a6f4403cba2438cee7e1f0517f1d, type: 3}
-  enemy3PoolSize: 50
-  enemy4Prefab: {fileID: 1674472312285643229, guid: d55c20d273cb1e142af49298dc574e2a, type: 3}
-  enemy4PoolSize: 50
+  objectsToPool:
+  - {fileID: 11400000, guid: d1f3dfa63b718734c8ddc8cbfb54f4e3, type: 2}
+  - {fileID: 11400000, guid: 16d27ac7788678a47878cd11925409c6, type: 2}
+  - {fileID: 11400000, guid: 1149f4e59528108449f7b76ca434c500, type: 2}
+  - {fileID: 11400000, guid: 5552b98422c5ec149af9b00b3eb7a16d, type: 2}
+  - {fileID: 11400000, guid: a6e6611c856d1c8468d1fe7978e020b3, type: 2}
+  - {fileID: 11400000, guid: 522a194d43b251442be23cfd5f8e35cb, type: 2}
+  - {fileID: 11400000, guid: 0c1b7c61aff3f0743aa40be5104a4406, type: 2}
+  - {fileID: 11400000, guid: 89ef4aa4c9b54dc40a04fa1e332ce8f0, type: 2}
+  - {fileID: 11400000, guid: b93c6283b34f22e4d9bce032ed324111, type: 2}
+  - {fileID: 11400000, guid: dbde15d805a23024ea24d3537daf0598, type: 2}
+  - {fileID: 11400000, guid: c27ec2d38607d7041897a56333a68cd6, type: 2}
+  - {fileID: 11400000, guid: 0877bf0b1cdf8224d9d177df27d513d1, type: 2}
+  - {fileID: 11400000, guid: 307a47e47c2061d4aac910376d8d3481, type: 2}
+  - {fileID: 11400000, guid: d2ec561d184cbc04fa52bb1ab7306bb0, type: 2}
+  - {fileID: 11400000, guid: ef8b3d4f731507d4b9b82add8d5d0c20, type: 2}
+  - {fileID: 11400000, guid: 04a19b922ddb4af4390cef73391b697c, type: 2}
+  ballistaName: BallistaPrefab
+  ballistaProjectileName: BallistaArrow
+  ballistaHoverName: BallistaHover
+  ballistaHoverNPName: BallistaHoverNP
+  blasterName: BlasterPrefab
+  blasterProjectileName: BlasterLasers
+  blasterHoverName: BlasterHover
+  blasterHoverNPName: BlasterHoverNP
+  cannonName: CannonPrefab
+  cannonProjectileName: CannonBall
+  cannonHoverName: CannonHover
+  cannonHoverNPName: CannonHoverNP
 --- !u!4 &2032580140
 Transform:
   m_ObjectHideFlags: 0

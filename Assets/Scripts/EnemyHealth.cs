@@ -60,6 +60,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
         UpdateHPBar();
+        
     }
 
     public void SetMaxHP(float amount)

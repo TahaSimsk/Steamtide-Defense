@@ -23,9 +23,11 @@ public class Upgrade : MonoBehaviour
     MoneySystem moneySystem;
     TooltipManager tooltipManager;
 
+    bool upgraded;
+
     private void Start()
     {
-        tooltipManager=FindObjectOfType<TooltipManager>();
+        tooltipManager = FindObjectOfType<TooltipManager>();
         moneySystem = FindObjectOfType<MoneySystem>();
         flags = FindObjectOfType<UIManager>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -34,27 +36,37 @@ public class Upgrade : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (flags.upgradeMode && moneySystem.IsPlaceable(upgradeCost))
+        if (flags.upgradeMode && moneySystem.IsPlaceable(upgradeCost) && !upgraded)
         {
             UpgradeWeapon();
             moneySystem.DecreaseMoney(upgradeCost);
+            moneySystem.UpdateMoneyDisplay();
         }
     }
-    private void OnMouseEnter()
+
+    void OnMouseOver()
     {
         if (flags.upgradeMode)
         {
             SetCursor(cursorTexture);
-            tooltipManager.ShowTip("Upgrade Cost: " + upgradeCost + "$", Input.mousePosition);
+            
+            if (upgraded)
+            {
+                tooltipManager.ShowTip("Can't upgrade further!", Input.mousePosition, false);
+            }
+            else
+            {
+                tooltipManager.ShowTip("Upgrade Cost: " + upgradeCost + "$", Input.mousePosition, moneySystem.IsPlaceable(upgradeCost));
+            }
         }
     }
+
     private void OnMouseExit()
     {
         if (flags.upgradeMode)
         {
             SetCursor(null);
             tooltipManager.DisableTip();
-            
         }
     }
 
@@ -64,10 +76,8 @@ public class Upgrade : MonoBehaviour
         {
             material.color = Color.red;
         }
-
-
         tower.SetWeaponUpgradeAttributes(upgradedProjectileSpeed, upgradedProjectileDmg, upgradedProjectileLife, upgradedShootingDelay, upgradedTowerRange);
-
+        upgraded = true;
     }
 
     void SetCursor(Texture2D texture)

@@ -30,7 +30,7 @@ public class Tower : MonoBehaviour
 
 
     ObjectPool objectPool;
-    
+
 
     GameObject pooledProjectile;
     public List<GameObject> enemies = new List<GameObject>();
@@ -53,16 +53,15 @@ public class Tower : MonoBehaviour
     void Update()
     {
         if (ballista)
-            GetProjectile(objectPool.GetWeaponBallistaArrow(), ballistaProjectilePos);
+            GetProjectile(objectPool.GetObjectFromPool(objectPool.ballistaProjectileName, true), ballistaProjectilePos);
         if (blaster)
-            GetProjectile(objectPool.GetWeaponBlasterLaser(), blasterProjectilePos);
+            GetProjectile(objectPool.GetObjectFromPool(objectPool.blasterProjectileName, true), blasterProjectilePos);
         if (cannon)
-            GetProjectile(objectPool.GetWeaponCannonBall(), cannonProjectilePos);
+            GetProjectile(objectPool.GetObjectFromPool(objectPool.cannonProjectileName, true), cannonProjectilePos);
 
 
         LookAtEnemy();
         Shoot();
-        //SearchListToRemoveEnemy();
         DeactivateProjectile();
     }
 
@@ -83,9 +82,6 @@ public class Tower : MonoBehaviour
 
             pooledProjectileRb = pooledProjectile.GetComponent<Rigidbody>();
             pooledProjectile.GetComponent<Projectile>().currentTower = this.transform;
-            //projectile.projetileDmg = this.projectileDmg;
-            //projectile.currentTower = this.transform;
-
 
             pooledProjectile.transform.parent = gameObjectToSetProjectilePosition.transform.parent;
             pooledProjectile.transform.SetPositionAndRotation(gameObjectToSetProjectilePosition.transform.position, gameObjectToSetProjectilePosition.transform.rotation);
@@ -184,7 +180,7 @@ public class Tower : MonoBehaviour
         this.shootingDelay = shootingDelay;
         this.weaponRange = weaponRange;
     }
-    
+
 
 }
 

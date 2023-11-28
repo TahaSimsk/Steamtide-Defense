@@ -402,9 +402,9 @@ MonoBehaviour:
   ballista: 0
   blaster: 1
   cannon: 0
-  projectileSpeed: 80
+  projectileSpeed: 60
   projectileDmg: 5
-  projectileLife: 0.3
+  projectileLife: 1
   shootingDelay: 0.2
   weaponRotationSpeed: 10
   weaponRange: 1

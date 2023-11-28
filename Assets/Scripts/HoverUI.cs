@@ -18,7 +18,6 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         bools = flags.ReturnFlags();
-        Debug.Log("entered");
         flags.SetFlags(false, false, false);
 
     }
