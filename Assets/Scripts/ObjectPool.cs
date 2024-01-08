@@ -36,7 +36,12 @@ public class ObjectPool : MonoBehaviour
 
     List<ObjectToPool> enemies = new List<ObjectToPool>();
 
-    private void Awake()
+    void Awake()
+    {
+        PopulatePoolAndGetEnemyTypes();
+    }
+
+    void PopulatePoolAndGetEnemyTypes()
     {
         foreach (var objects in objectsToPool)
         {
@@ -49,7 +54,6 @@ public class ObjectPool : MonoBehaviour
             }
         }
     }
-
 
     void PopulatePool(List<GameObject> objectList, int objectPoolSize, GameObject objectPrefab)
     {
@@ -70,13 +74,15 @@ public class ObjectPool : MonoBehaviour
             {
                 for (int i = 0; i < objects.objList.Count; i++)
                 {
-                    if (isProjectile && !objects.objList[i].activeInHierarchy && objects.objList[i].GetComponent<Projectile>().currentTower == null)
+                    if (isProjectile)
                     {
-                        return objects.objList[i];
+                        if (!objects.objList[i].activeInHierarchy && objects.objList[i].GetComponent<Projectile>().currentTower == null)
+                            return objects.objList[i];
                     }
-                    else if (!objects.objList[i].activeInHierarchy)
+                    else
                     {
-                        return objects.objList[i];
+                        if (!objects.objList[i].activeInHierarchy)
+                            return objects.objList[i];
                     }
                 }
             }

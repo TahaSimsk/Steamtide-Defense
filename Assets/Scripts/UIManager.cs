@@ -22,13 +22,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button upgradeModeButton;
     [SerializeField] Button cancelUpgradeButton;
 
-    //-------------------- FLAGS --------------------
+    [SerializeField] GameObject bombPrefab;
+
+    #region Flags
+
+    //--------------- WEAPON TYPE FLAGS ---------------
     [HideInInspector] public bool ballista;
     [HideInInspector] public bool blaster;
     [HideInInspector] public bool cannon;
     [HideInInspector] public bool upgradeMode;
 
+    #endregion
+
+
     EnemyWaveController waveController;
+    SkillManager skillManager;
 
     //------------------ COUNTDOWN ------------------
     bool startCountdownForNextWave;
@@ -37,6 +45,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         waveController = FindObjectOfType<EnemyWaveController>();
+        skillManager = FindObjectOfType<SkillManager>();
     }
 
     void Start()
@@ -162,5 +171,21 @@ public class UIManager : MonoBehaviour
         this.ballista = ballista;
         this.blaster = blaster;
         this.cannon = cannon;
+    }
+
+    public void CreateBomb()
+    {
+        Instantiate(bombPrefab, Input.mousePosition, Quaternion.identity);
+    }
+
+    public void ClearFlags()
+    {
+        ballista = false;
+        blaster = false;
+        cannon = false;
+        skillManager.DestroyBomb();
+        //upgradeMode = false;
+        //upgradeModeButton.gameObject.SetActive(true);
+        //cancelUpgradeButton.gameObject.SetActive(false);
     }
 }

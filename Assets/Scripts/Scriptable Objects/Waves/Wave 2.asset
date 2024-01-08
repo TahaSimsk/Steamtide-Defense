@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
-  enemyCount: 0f000000
+  enemyCount: 3c000000
   enemyHealth:
   - 550

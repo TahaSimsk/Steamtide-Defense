@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: EnemyRed
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 2185672882422005610, guid: 60e7a6f4403cba2438cee7e1f0517f1d, type: 3}
-  objPrefabPoolSize: 3
-  objList: []
+  objPrefabPoolSize: 50
+  objList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
