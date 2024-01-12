@@ -15,13 +15,12 @@ public class Upgrade : MonoBehaviour
 
     [SerializeField] Texture2D cursorTexture;
     [SerializeField] Vector2 hotSpot;
-    //[SerializeField] TMP_Text upgradeCostText;
 
     Tower tower;
-    UIManager flags;
     MeshRenderer meshRenderer;
     MoneySystem moneySystem;
     TooltipManager tooltipManager;
+    FlagManager flagManager;
 
     bool upgraded;
 
@@ -29,14 +28,14 @@ public class Upgrade : MonoBehaviour
     {
         tooltipManager = FindObjectOfType<TooltipManager>();
         moneySystem = FindObjectOfType<MoneySystem>();
-        flags = FindObjectOfType<UIManager>();
+        flagManager = FindObjectOfType<FlagManager>();
         meshRenderer = GetComponent<MeshRenderer>();
         tower = GetComponent<Tower>();
     }
 
     private void OnMouseDown()
     {
-        if (flags.upgradeMode && moneySystem.IsPlaceable(upgradeCost) && !upgraded)
+        if (flagManager.upgradeMode && moneySystem.IsPlaceable(upgradeCost) && !upgraded)
         {
             UpgradeWeapon();
             moneySystem.DecreaseMoney(upgradeCost);
@@ -46,7 +45,7 @@ public class Upgrade : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (flags.upgradeMode)
+        if (flagManager.upgradeMode)
         {
             SetCursor(cursorTexture);
             
@@ -63,7 +62,7 @@ public class Upgrade : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (flags.upgradeMode)
+        if (flagManager.upgradeMode)
         {
             SetCursor(null);
             tooltipManager.DisableTip();

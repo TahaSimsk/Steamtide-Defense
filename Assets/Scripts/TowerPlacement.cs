@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
-    UIManager weaponType;
-
     [SerializeField] Vector3 offset;
 
     GameObject hoveredWeapon;
@@ -16,20 +14,20 @@ public class TowerPlacement : MonoBehaviour
 
     ObjectPool objectPool;
     MoneySystem moneySystem;
+    FlagManager flagManager;
 
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
-        weaponType = FindObjectOfType<UIManager>();
         moneySystem = FindObjectOfType<MoneySystem>();
+        flagManager = FindObjectOfType<FlagManager>();
     }
 
     private void OnMouseDown()
     {
-       
-        PlaceWeapon(weaponType.ballista, moneySystem.ballistaCost, objectPool.ballistaName);
-        PlaceWeapon(weaponType.blaster, moneySystem.blasterCost, objectPool.blasterName);
-        PlaceWeapon(weaponType.cannon, moneySystem.cannonCost, objectPool.cannonName);
+        PlaceWeapon(flagManager.ballistaMode, moneySystem.ballistaCost, objectPool.ballistaName);
+        PlaceWeapon(flagManager.blasterMode, moneySystem.blasterCost, objectPool.blasterName);
+        PlaceWeapon(flagManager.cannonMode, moneySystem.cannonCost, objectPool.cannonName);
 
     }
 
@@ -37,10 +35,9 @@ public class TowerPlacement : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        
-        ShowWeaponHovered(weaponType.ballista, moneySystem.ballistaCost, objectPool.ballistaHoverName, objectPool.ballistaHoverNPName);
-        ShowWeaponHovered(weaponType.blaster, moneySystem.blasterCost, objectPool.blasterHoverName, objectPool.blasterHoverNPName);
-        ShowWeaponHovered(weaponType.cannon, moneySystem.cannonCost, objectPool.cannonHoverName, objectPool.cannonHoverNPName);
+        ShowWeaponHovered(flagManager.ballistaMode, moneySystem.ballistaCost, objectPool.ballistaHoverName, objectPool.ballistaHoverNPName);
+        ShowWeaponHovered(flagManager.blasterMode, moneySystem.blasterCost, objectPool.blasterHoverName, objectPool.blasterHoverNPName);
+        ShowWeaponHovered(flagManager.cannonMode, moneySystem.cannonCost, objectPool.cannonHoverName, objectPool.cannonHoverNPName);
     }
 
 
@@ -52,7 +49,7 @@ public class TowerPlacement : MonoBehaviour
 
     void PlaceWeapon(bool weaponType, float weaponCost, string nameOfWeaponFromPool)
     {
-        if (weaponType && moneySystem.IsPlaceable(weaponCost))
+        if (weaponType && moneySystem.IsPlaceable(weaponCost) && !flagManager.hoverMode)
         {
             if (isPlaced) { return; }
 
@@ -71,7 +68,7 @@ public class TowerPlacement : MonoBehaviour
 
     void ShowWeaponHovered(bool weaponType, float weaponCost, string nameOfPlaceableHover, string nameOfNPHover)
     {
-        if (weaponType && moneySystem.IsPlaceable(weaponCost))
+        if (weaponType && moneySystem.IsPlaceable(weaponCost) && !flagManager.hoverMode)
         {
             if (isPlaced || hoverShowed) { return; }
 

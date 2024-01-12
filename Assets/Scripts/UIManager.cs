@@ -18,25 +18,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI remainingEnemiesText;
     [SerializeField] TextMeshProUGUI nextWaveCountdownText;
 
-    [Header("Upgrade Related Text UI")]
-    [SerializeField] Button upgradeModeButton;
-    [SerializeField] Button cancelUpgradeButton;
-
-    [SerializeField] GameObject bombPrefab;
-
-    #region Flags
-
-    //--------------- WEAPON TYPE FLAGS ---------------
-    [HideInInspector] public bool ballista;
-    [HideInInspector] public bool blaster;
-    [HideInInspector] public bool cannon;
-    [HideInInspector] public bool upgradeMode;
-
-    #endregion
+    [Header("Buttons")]
+    [SerializeField] Button ballistaButton;
+    [SerializeField] Button blasterButton;
+    [SerializeField] Button cannonButton;
+    [SerializeField] Button bomb2Button;
+    [SerializeField] Button upgradeButton;
+    [SerializeField] Button xButton;
 
 
     EnemyWaveController waveController;
-    SkillManager skillManager;
+    FlagManager flagManager;
 
     //------------------ COUNTDOWN ------------------
     bool startCountdownForNextWave;
@@ -45,7 +37,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         waveController = FindObjectOfType<EnemyWaveController>();
-        skillManager = FindObjectOfType<SkillManager>();
+        flagManager = FindObjectOfType<FlagManager>();
     }
 
     void Start()
@@ -63,7 +55,42 @@ public class UIManager : MonoBehaviour
         UpdatePlaceableButtonsColor(moneySystem.cannonCost, cannonCostText);
 
         StartNextWaveCountdown();
+
+        Anan();
     }
+
+
+
+    void Anan()
+    {
+        Anan2(ballistaButton, flagManager.ballistaMode);
+        Anan2(blasterButton, flagManager.blasterMode);
+        Anan2(cannonButton, flagManager.cannonMode);
+        Anan2(bomb2Button, flagManager.bombMode);
+        Anan2(upgradeButton, flagManager.upgradeMode);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            xButton.gameObject.SetActive(false);
+            flagManager.ClearMode();
+        }
+    }
+
+    void Anan2(Button button, bool mode)
+    {
+        if (mode)
+        {
+            button.gameObject.SetActive(false);
+            xButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            button.gameObject.SetActive(true);
+        }
+    }
+
+
+
 
     void UpdatePlaceableButtonsColor(float weaponCost, TextMeshProUGUI text)
     {
@@ -122,70 +149,4 @@ public class UIManager : MonoBehaviour
         timerForNextWave = timer;
     }
 
-
-
-
-
-    public void Ballista(bool yes)
-    {
-        this.ballista = yes;
-    }
-    public void Blaster(bool yes)
-    {
-        this.blaster = yes;
-    }
-    public void Cannon(bool yes)
-    {
-        this.cannon = yes;
-    }
-
-
-    public void UpgradeMode(bool on)
-    {
-        if (on)
-        {
-            upgradeModeButton.gameObject.SetActive(false);
-            cancelUpgradeButton.gameObject.SetActive(true);
-            upgradeMode = true;
-        }
-        else
-        {
-            upgradeModeButton.gameObject.SetActive(true);
-            cancelUpgradeButton.gameObject.SetActive(false);
-            upgradeMode = false;
-        }
-    }
-
-
-    public List<bool> ReturnFlags()
-    {
-        List<bool> flags = new List<bool>();
-        flags.Add(this.ballista);
-        flags.Add(this.blaster);
-        flags.Add(this.cannon);
-        return flags;
-    }
-
-    public void SetFlags(bool ballista, bool blaster, bool cannon)
-    {
-        this.ballista = ballista;
-        this.blaster = blaster;
-        this.cannon = cannon;
-    }
-
-    public void CreateBomb()
-    {
-        Instantiate(bombPrefab, Input.mousePosition, Quaternion.identity);
-    }
-
-    public void ClearFlags()
-    {
-        ballista = false;
-        blaster = false;
-        cannon = false;
-        skillManager.DestroyBomb();
-        //upgradeMode = false;
-        //upgradeModeButton.gameObject.SetActive(true);
-        //cancelUpgradeButton.gameObject.SetActive(false);
-    }
 }

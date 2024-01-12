@@ -4,24 +4,76 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    [SerializeField] GameObject bombHoverPrefab;
     [SerializeField] GameObject bombPrefab;
 
-    [HideInInspector] public GameObject instantiatedBomb;
+    [SerializeField] float bombDamage;
 
-    public void CreateBomb()
+    GameObject instantiatedBombHover;
+
+    FlagManager flagManager;
+
+    private void Awake()
     {
-        instantiatedBomb = Instantiate(bombPrefab, Input.mousePosition, Quaternion.identity);
+        flagManager = FindObjectOfType<FlagManager>();
     }
 
-    public void DestroyBomb()
+
+    private void Update()
     {
-        if (instantiatedBomb == null) { return; }
-        Destroy(instantiatedBomb);
+        CreateBombHover();
+
+        SetBombHoverPos();
+
+        DropBomb();
     }
 
-    public void ActivateBomb(bool value)
+    void CreateBombHover()
     {
-        if (instantiatedBomb == null) { return; }
-        instantiatedBomb.SetActive(value);
+
+        if (flagManager.bombMode && instantiatedBombHover == null)
+        {
+            instantiatedBombHover = Instantiate(bombHoverPrefab, Input.mousePosition, Quaternion.identity);
+
+        }
+        else if (!flagManager.bombMode && instantiatedBombHover != null)
+        {
+            DestroyBombHover();
+        }
+    }
+
+    void SetBombHoverPos()
+    {
+        if (instantiatedBombHover == null || flagManager.hoverMode) { return; }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            instantiatedBombHover.transform.position = hit.transform.position + Vector3.up * 2;
+            
+        }
+    }
+
+    void DropBomb()
+    {
+        if (instantiatedBombHover == null || flagManager.hoverMode) { return; }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bombPrefab, instantiatedBombHover.transform.position, Quaternion.identity);
+        }
+    }
+
+    public void DestroyBombHover()
+    {
+        if (instantiatedBombHover == null) { return; }
+        Destroy(instantiatedBombHover);
+    }
+
+    public void ActivateBombHover(bool value)
+    {
+        if (instantiatedBombHover == null) { return; }
+        instantiatedBombHover.SetActive(value);
     }
 }
