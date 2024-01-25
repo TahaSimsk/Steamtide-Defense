@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8990805425330557274}
   - component: {fileID: 4407395297539152331}
   - component: {fileID: 2599839281738209428}
-  - component: {fileID: 18626850518809097}
-  - component: {fileID: -2117979734748888574}
-  - component: {fileID: -38701815808209863}
+  - component: {fileID: -5134213615043199111}
+  - component: {fileID: 3946210411343894564}
+  - component: {fileID: 545198252331902142}
   m_Layer: 8
-  m_Name: BombHoverPrefab
+  m_Name: SlowHoverPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,20 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &18626850518809097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8798989912474060224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220ea857b9238ba4d95c0889a8775f89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hightlightedObjectTag: Enemy
---- !u!135 &-2117979734748888574
+--- !u!135 &-5134213615043199111
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +107,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-38701815808209863
+--- !u!114 &3946210411343894564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798989912474060224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220ea857b9238ba4d95c0889a8775f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hightlightedObjectTag: Path2
+--- !u!54 &545198252331902142
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4433651095537692314, guid: 1dc99004c28e57c4babbbd70a210dd61, type: 3}
       propertyPath: m_Name
-      value: tile_end Variant
+      value: tile_end_180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

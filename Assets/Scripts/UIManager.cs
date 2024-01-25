@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI blasterCostText;
     [SerializeField] TextMeshProUGUI cannonCostText;
 
+    [Header("Skill Cost Text UI")]
+    [SerializeField] TextMeshProUGUI bombCostText;
+    [SerializeField] TextMeshProUGUI slowCostText;
+
     [Header("Wave Related Text UI")]
     [SerializeField] TextMeshProUGUI waveText;
     [SerializeField] TextMeshProUGUI remainingEnemiesText;
@@ -22,10 +27,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button ballistaButton;
     [SerializeField] Button blasterButton;
     [SerializeField] Button cannonButton;
-    [SerializeField] Button bomb2Button;
+    [SerializeField] Button bombButton;
+    [SerializeField] Button slowButton;
     [SerializeField] Button upgradeButton;
-    [SerializeField] Button xButton;
-
+    [SerializeField] Button cancelButton;
+    [SerializeField] Button demolishButton;
 
     EnemyWaveController waveController;
     FlagManager flagManager;
@@ -34,62 +40,62 @@ public class UIManager : MonoBehaviour
     bool startCountdownForNextWave;
     float timerForNextWave;
 
+
+    public delegate void OnESCPressed();
+    public static event OnESCPressed onESCPressed;
+
+
     private void Awake()
     {
         waveController = FindObjectOfType<EnemyWaveController>();
+
         flagManager = FindObjectOfType<FlagManager>();
     }
 
+
     void Start()
     {
+        SetButtonCostTextOnStart();
 
-        ballistaCostText.text = "Ballista: $" + moneySystem.ballistaCost.ToString();
-        blasterCostText.text = "Blaster: $" + moneySystem.blasterCost;
-        cannonCostText.text = "Cannon: $" + moneySystem.cannonCost;
     }
+
 
     void Update()
     {
-        UpdatePlaceableButtonsColor(moneySystem.ballistaCost, ballistaCostText);
-        UpdatePlaceableButtonsColor(moneySystem.blasterCost, blasterCostText);
-        UpdatePlaceableButtonsColor(moneySystem.cannonCost, cannonCostText);
+        ChangeButtonsColorBasedOnPlaceability();
+
+        HandleButtonSelection();
 
         StartNextWaveCountdown();
-
-        Anan();
     }
 
 
-
-    void Anan()
+    void SetButtonCostTextOnStart()
     {
-        Anan2(ballistaButton, flagManager.ballistaMode);
-        Anan2(blasterButton, flagManager.blasterMode);
-        Anan2(cannonButton, flagManager.cannonMode);
-        Anan2(bomb2Button, flagManager.bombMode);
-        Anan2(upgradeButton, flagManager.upgradeMode);
+        ballistaCostText.text = "Ballista: $" + moneySystem.ballistaCost;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            xButton.gameObject.SetActive(false);
-            flagManager.ClearMode();
-        }
+        blasterCostText.text = "Blaster: $" + moneySystem.blasterCost;
+
+        cannonCostText.text = "Cannon: $" + moneySystem.cannonCost;
+
+        bombCostText.text = "Bomb: $" + moneySystem.bombCost;
+
+        slowCostText.text = "Slow: $" + moneySystem.slowCost;
     }
 
-    void Anan2(Button button, bool mode)
+
+    void ChangeButtonsColorBasedOnPlaceability()
     {
-        if (mode)
-        {
-            button.gameObject.SetActive(false);
-            xButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            button.gameObject.SetActive(true);
-        }
+        UpdatePlaceableButtonsColor(moneySystem.ballistaCost, ballistaCostText);
+
+        UpdatePlaceableButtonsColor(moneySystem.blasterCost, blasterCostText);
+
+        UpdatePlaceableButtonsColor(moneySystem.cannonCost, cannonCostText);
+
+        UpdatePlaceableButtonsColor(moneySystem.bombCost, bombCostText);
+
+        UpdatePlaceableButtonsColor(moneySystem.slowCost, slowCostText);
     }
-
-
 
 
     void UpdatePlaceableButtonsColor(float weaponCost, TextMeshProUGUI text)
@@ -104,21 +110,47 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateWaveText(int currentWave)
-    {
-        waveText.text = "Wave: " + currentWave;
-    }
 
-    public void UpdateRemainingEnemiesText(bool onlyUpdateText)
+    void HandleButtonSelection()
     {
-        if (!onlyUpdateText)
+        ButtonSelectionLogic(ballistaButton, flagManager.ballistaMode);
+
+        ButtonSelectionLogic(blasterButton, flagManager.blasterMode);
+
+        ButtonSelectionLogic(cannonButton, flagManager.cannonMode);
+
+        ButtonSelectionLogic(bombButton, flagManager.bombMode);
+
+        ButtonSelectionLogic(upgradeButton, flagManager.upgradeMode);
+
+        ButtonSelectionLogic(slowButton, flagManager.slowMode);
+
+        ButtonSelectionLogic(demolishButton, flagManager.demolishMode);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            waveController.numOfTotalEnemies--;
+            cancelButton.gameObject.SetActive(false);
+            onESCPressed?.Invoke();
+            flagManager.ClearMode();
         }
-
-        remainingEnemiesText.text = "Enemies: " + waveController.numOfTotalEnemies;
-
     }
+
+
+    void ButtonSelectionLogic(Button button, bool mode)
+    {
+        if (mode)
+        {
+            //button.gameObject.SetActive(false);
+            button.interactable = false;
+            cancelButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            //button.gameObject.SetActive(true);
+            button.interactable = true;
+        }
+    }
+
 
     void StartNextWaveCountdown()
     {
@@ -143,6 +175,24 @@ public class UIManager : MonoBehaviour
 
     }
 
+
+
+
+    public void UpdateWaveText(int currentWave)
+    {
+        waveText.text = "Wave: " + currentWave;
+    }
+
+    public void UpdateRemainingEnemiesText(bool onlyUpdateText)
+    {
+        if (!onlyUpdateText)
+        {
+            waveController.numOfTotalEnemies--;
+        }
+
+        remainingEnemiesText.text = "Enemies: " + waveController.numOfTotalEnemies;
+
+    }
     public void GetNextWaveTimer(bool shouldCount, float timer)
     {
         startCountdownForNextWave = shouldCount;

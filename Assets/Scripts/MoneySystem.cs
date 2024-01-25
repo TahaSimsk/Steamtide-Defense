@@ -10,6 +10,9 @@ public class MoneySystem : MonoBehaviour
     public float blasterCost;
     public float cannonCost;
 
+    [Header("Costs for Skills")]
+    public float bombCost;
+    public float slowCost;
 
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] float startingBalance;

@@ -1,3 +1,4 @@
+using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-    [SerializeField] float moveSpeed;
+    public float defaultMoveSpeed;
+    [HideInInspector]
+    public float currentMoveSpeed;
+
     [SerializeField] Vector3 offsetY;
 
     List<GameObject> path = new List<GameObject>();
@@ -24,14 +28,16 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
+
     }
 
     private void OnEnable()
     {
-        
+
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath());
         reachedEnd = false;
+        currentMoveSpeed = defaultMoveSpeed;
     }
 
 
@@ -47,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
-        
+
     }
 
 
@@ -57,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
         {
             while (transform.position != path[i].transform.position + offsetY)
             {
-                transform.position = Vector3.MoveTowards(transform.position, path[i].transform.position + offsetY, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, path[i].transform.position + offsetY, currentMoveSpeed * Time.deltaTime);
 
                 yield return new WaitForEndOfFrame();
             }
@@ -66,5 +72,15 @@ public class EnemyMovement : MonoBehaviour
         uiManager.UpdateRemainingEnemiesText(false);
         reachedEnd = true;
         gameObject.SetActive(false);
+    }
+
+    public void ChangeMoveSpeed(float value)
+    {
+        currentMoveSpeed = defaultMoveSpeed - currentMoveSpeed * value / 100;
+    }
+
+    public void ResetMoveSpeed()
+    {
+        currentMoveSpeed = defaultMoveSpeed;
     }
 }

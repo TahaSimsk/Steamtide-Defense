@@ -24,7 +24,7 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        flagManager.hoverMode = false;
+        //flagManager.hoverMode = false;
     }
 
    

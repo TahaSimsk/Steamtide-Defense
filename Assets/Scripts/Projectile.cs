@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
     [HideInInspector]
     public bool hit;
     [HideInInspector]
     public float projetileDmg;
-    Rigidbody rb;
 
     public Transform currentTower;
 
@@ -23,14 +23,6 @@ public class Projectile : MonoBehaviour
 
     }
 
-    //private void Update()
-    //{
-    //    if (rb.velocity.magnitude>0)
-    //    {
-
-    //    }
-    //}
-
     private void OnDisable()
     {
         target = null;
@@ -42,27 +34,33 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        if (target != null)
+        {
+            targetPos = target.position;
+        }
+
         if (canShoot)
         {
-            if (!target.gameObject.activeInHierarchy)
-            {
-                hit = true;
-            }
-            transform.position = Vector3.MoveTowards(transform.position, target.position, projectileSpeed * Time.deltaTime);
-            transform.LookAt(target.position);
+
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            transform.LookAt(targetPos);
 
         }
-        
-        
     }
 
     public void GetInfo(Transform target, float projectileSpeed, float projectileDmg, bool canShoot)
     {
         this.target = target;
+        target.GetComponent<EnemyHealth>().GetProjectile(this);
         this.projectileSpeed = projectileSpeed;
         this.projetileDmg = projectileDmg;
         this.canShoot = canShoot;
+    }
 
+    public void ResetTarget()
+    {
+        target = null;
+        
     }
 
 
@@ -73,7 +71,8 @@ public class Projectile : MonoBehaviour
         {
             other.GetComponent<EnemyHealth>().ReduceHealth(projetileDmg);
             hit = true;
-            
+            if (target != null)
+                target.GetComponent<EnemyHealth>().RemoveProjectile(this);
 
         }
     }

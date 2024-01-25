@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8251118102012507284, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
       propertyPath: m_Name
-      value: tile_straight_90 Variant
+      value: tile_straight_90
       objectReference: {fileID: 0}
     - target: {fileID: 8775840696980500014, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
       propertyPath: m_LocalPosition.x

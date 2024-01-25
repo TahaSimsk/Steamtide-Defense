@@ -113,7 +113,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62113f011c5ec643acc782eab77863d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponBallista: {fileID: 1283615902204747745, guid: eb0f19f160961c5439b59cd21b055162, type: 3}
-  weaponBallistaHover: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
-  greenIndicator: {fileID: 4017391176572387071, guid: 1e667e45e864ad8439f0f148f06db200, type: 3}
   offset: {x: 0, y: 2, z: 0}

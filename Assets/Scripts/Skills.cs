@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Skills : MonoBehaviour
 {
 
+    public float bombDamage;
+
     private void Start()
     {
         StartCoroutine(DestroyWhenNoCollision());
@@ -14,13 +16,18 @@ public class Skills : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyHealth>().ReduceHealth(15f);
+            other.GetComponent<EnemyHealth>().ReduceHealth(bombDamage);
 
             //play sfx
             //play anim
 
             Destroy(gameObject);
         }
+    }
+
+    public void PassBombDamage(float value)
+    {
+        bombDamage = value;
     }
 
     IEnumerator DestroyWhenNoCollision()

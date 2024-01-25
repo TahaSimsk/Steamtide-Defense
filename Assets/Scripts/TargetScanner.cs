@@ -24,6 +24,7 @@ public class TargetScanner : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             tower.AddEnemy(other.gameObject);
+            
             enemies.Add(other.gameObject);
         }
     }

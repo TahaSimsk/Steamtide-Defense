@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] GameObject highlightPrefab;
     [SerializeField] Slider healthBar;
     [SerializeField] float moneyDrop;
     [SerializeField] float baseMaxHealth;
@@ -17,6 +18,10 @@ public class EnemyHealth : MonoBehaviour
 
     MoneySystem moneySystem;
     UIManager uiManager;
+
+    List<Projectile> projectiles = new List<Projectile>();
+
+    Tower tower;
 
     private void Start()
     {
@@ -35,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
     private void OnDisable()
     {
         maxHealth = baseMaxHealth;
+
         isDead = true;
     }
 
@@ -49,18 +55,55 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = maxHealth;
-            gameObject.SetActive(false);
             moneySystem.AddMoney(moneyDrop);
             moneySystem.UpdateMoneyDisplay();
             uiManager.UpdateRemainingEnemiesText(false);
+            if (tower != null)
+            {
+                tower.RemoveEnemy(gameObject);
+
+                tower = null;
+            }
+
+            if (projectiles.Count > 0)
+            {
+                foreach (var projectile in projectiles)
+                {
+                    projectile.ResetTarget();
+                }
+                projectiles.Clear();
+            }
+            highlightPrefab.SetActive(false);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void GetProjectile(Projectile projectile)
+    {
+        if (!projectiles.Contains(projectile))
+        {
+            projectiles.Add(projectile);
+        }
+    }
+
+    public void RemoveProjectile(Projectile projectile)
+    {
+        if (projectiles.Contains(projectile))
+        {
+            projectiles.Remove(projectile);
+        }
+    }
+
+    public void GetTower(Tower tower)
+    {
+        this.tower = tower;
     }
 
     public void ReduceHealth(float damage)
     {
         currentHealth -= damage;
         UpdateHPBar();
-        
+
     }
 
     public void SetMaxHP(float amount)

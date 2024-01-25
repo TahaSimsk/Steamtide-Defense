@@ -109,8 +109,10 @@ public class Tower : MonoBehaviour
 
         if (enemies.Count > 0 && pooledProjectile != null)
         {
+            
             if (!isProjectileFired)
             {
+                timerForShootingDelay = shootingDelay;
                 isProjectileFired = true;
                 if (ballista)
                 {
@@ -118,6 +120,8 @@ public class Tower : MonoBehaviour
                 }
                 pooledProjectile.SetActive(true);
                 pooledProjectile.GetComponent<Projectile>().GetInfo(enemies[0].transform, projectileSpeed, projectileDmg, true);
+
+                enemies[0].GetComponent<EnemyHealth>().GetTower(this);
 
                 pooledProjectile.transform.parent = objectPool.gameObject.transform;
             }
@@ -151,7 +155,7 @@ public class Tower : MonoBehaviour
     void HandleProjectileHit()
     {
         hasProjectile = false;
-        timerForShootingDelay = shootingDelay;
+        //timerForShootingDelay = shootingDelay;
         timerForProjectileLife = 0;
 
         pooledProjectileRb.velocity = Vector3.zero;

@@ -9,8 +9,11 @@ public class FlagManager : MonoBehaviour
     [HideInInspector] public bool blasterMode;
     [HideInInspector] public bool cannonMode;
     [HideInInspector] public bool bombMode;
+    [HideInInspector] public bool slowMode;
     [HideInInspector] public bool upgradeMode;
     [HideInInspector] public bool hoverMode;
+    [HideInInspector] public bool demolishMode;
+
 
     public void SetBallistaMode(bool value)
     {
@@ -32,9 +35,19 @@ public class FlagManager : MonoBehaviour
         bombMode = value;
     }
 
+    public void SetSlowMode(bool value)
+    {
+        slowMode = value;
+    }
+
     public void SetUpgradeMode(bool value)
     {
         upgradeMode = value;
+    }
+
+    public void SetDemolishMode(bool value)
+    {
+        demolishMode = value;
     }
 
     public void ClearMode()
@@ -43,6 +56,8 @@ public class FlagManager : MonoBehaviour
         blasterMode = false;
         cannonMode = false;
         bombMode = false;
+        slowMode = false;
         upgradeMode = false;
+        demolishMode=false;
     }
 }

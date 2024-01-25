@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3321797546828123298, guid: 2e7cfaea8d4cf824db8289f042f32b86, type: 3}
       propertyPath: m_Name
-      value: tile_corner Variant
+      value: tile_corner_90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
