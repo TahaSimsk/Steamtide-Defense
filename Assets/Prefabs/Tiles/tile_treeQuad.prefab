@@ -346,7 +346,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3463057570607150931, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
       propertyPath: m_Name
-      value: tile_tree (1) Variant
+      value: tile_treeQuad
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056973962049712374, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
+      propertyPath: quadTree
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056973962049712374, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
+      propertyPath: moneyCost
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056973962049712374, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
+      propertyPath: doubleTree
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056973962049712374, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
+      propertyPath: objectType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4792760951467597198, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
       propertyPath: m_LocalPosition.x

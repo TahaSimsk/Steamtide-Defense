@@ -13,20 +13,20 @@ public class Upgrade : MonoBehaviour
     [SerializeField] float upgradedTowerRange;
     [SerializeField] float upgradeCost;
 
-    [SerializeField] Texture2D cursorTexture;
-    [SerializeField] Vector2 hotSpot;
 
     Tower tower;
     MeshRenderer meshRenderer;
     MoneySystem moneySystem;
     TooltipManager tooltipManager;
     FlagManager flagManager;
+    CursorManager cursorManager;
 
     bool upgraded;
 
     private void Start()
     {
         tooltipManager = FindObjectOfType<TooltipManager>();
+        cursorManager = FindObjectOfType<CursorManager>();
         moneySystem = FindObjectOfType<MoneySystem>();
         flagManager = FindObjectOfType<FlagManager>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -47,7 +47,7 @@ public class Upgrade : MonoBehaviour
     {
         if (flagManager.upgradeMode)
         {
-            SetCursor(cursorTexture);
+            cursorManager.SetCursor(cursorManager.upgradeCursorTexture);
             
             if (upgraded)
             {
@@ -64,7 +64,7 @@ public class Upgrade : MonoBehaviour
     {
         if (flagManager.upgradeMode)
         {
-            SetCursor(null);
+            cursorManager.SetCursor(null);
             tooltipManager.DisableTip();
         }
     }
@@ -75,12 +75,8 @@ public class Upgrade : MonoBehaviour
         {
             material.color = Color.red;
         }
+
         tower.SetWeaponUpgradeAttributes(upgradedProjectileSpeed, upgradedProjectileDmg, upgradedProjectileLife, upgradedShootingDelay, upgradedTowerRange);
         upgraded = true;
-    }
-
-    void SetCursor(Texture2D texture)
-    {
-        Cursor.SetCursor(texture, hotSpot, CursorMode.Auto);
     }
 }

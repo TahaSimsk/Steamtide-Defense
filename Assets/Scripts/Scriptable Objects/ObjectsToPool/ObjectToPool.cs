@@ -12,6 +12,6 @@ public class ObjectToPool : ScriptableObject
 
 
     
-    [HideInInspector]   
+     
     public List<GameObject> objList = new List<GameObject>();
 }

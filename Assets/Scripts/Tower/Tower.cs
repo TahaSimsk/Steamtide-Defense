@@ -8,10 +8,13 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] SphereCollider targetScanner;
 
-    [Header("Weapon Type")]
-    [SerializeField] bool ballista;
-    [SerializeField] bool blaster;
-    [SerializeField] bool cannon;
+    //[Header("Weapon Type")]
+    //[SerializeField] bool ballista;
+    //[SerializeField] bool blaster;
+    //[SerializeField] bool cannon;
+
+    enum WeaponType { ballista, blaster, cannon }
+    [SerializeField] WeaponType weaponType;
 
     [Header("Weapon Attributes")]
     [SerializeField] float projectileSpeed;
@@ -52,12 +55,26 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (ballista)
-            GetProjectile(objectPool.GetObjectFromPool(objectPool.ballistaProjectileName, true), ballistaProjectilePos);
-        if (blaster)
-            GetProjectile(objectPool.GetObjectFromPool(objectPool.blasterProjectileName, true), blasterProjectilePos);
-        if (cannon)
-            GetProjectile(objectPool.GetObjectFromPool(objectPool.cannonProjectileName, true), cannonProjectilePos);
+
+        switch (weaponType)
+        {
+            case WeaponType.ballista:
+                GetProjectile(objectPool.GetObjectFromPool(objectPool.ballistaProjectileName, true), ballistaProjectilePos);
+                break;
+            case WeaponType.blaster:
+                GetProjectile(objectPool.GetObjectFromPool(objectPool.blasterProjectileName, true), blasterProjectilePos);
+                break;
+            case WeaponType.cannon:
+                GetProjectile(objectPool.GetObjectFromPool(objectPool.cannonProjectileName, true), cannonProjectilePos);
+                break;
+        }
+
+        //if (ballista)
+        //    GetProjectile(objectPool.GetObjectFromPool(objectPool.ballistaProjectileName, true), ballistaProjectilePos);
+        //if (blaster)
+        //    GetProjectile(objectPool.GetObjectFromPool(objectPool.blasterProjectileName, true), blasterProjectilePos);
+        //if (cannon)
+        //    GetProjectile(objectPool.GetObjectFromPool(objectPool.cannonProjectileName, true), cannonProjectilePos);
 
 
         LookAtEnemy();
@@ -74,7 +91,7 @@ public class Tower : MonoBehaviour
 
         if (!hasProjectile && timerForShootingDelay <= 0)
         {
-            if (ballista)
+            if (weaponType == WeaponType.ballista)
             {
                 ballistaProjectilePos.SetActive(true);
             }
@@ -109,12 +126,12 @@ public class Tower : MonoBehaviour
 
         if (enemies.Count > 0 && pooledProjectile != null)
         {
-            
+
             if (!isProjectileFired)
             {
                 timerForShootingDelay = shootingDelay;
                 isProjectileFired = true;
-                if (ballista)
+                if (weaponType == WeaponType.ballista)
                 {
                     ballistaProjectilePos.SetActive(false);
                 }

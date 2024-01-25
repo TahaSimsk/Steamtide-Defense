@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UIManager;
 
 public class Highlighter : MonoBehaviour
 {
@@ -10,11 +11,12 @@ public class Highlighter : MonoBehaviour
 
     private void OnEnable()
     {
-        UIManager.onESCPressed += ClearSelected;
+       DelegateManager.onESCPressed += ClearSelected;
+       
     }
     private void OnDisable()
     {
-        UIManager.onESCPressed -= ClearSelected;
+        DelegateManager.onESCPressed -= ClearSelected;
     }
 
     //void Update()

@@ -402,6 +402,7 @@ MonoBehaviour:
   ballista: 0
   blaster: 1
   cannon: 0
+  weaponType: 1
   projectileSpeed: 60
   projectileDmg: 5
   projectileLife: 1
@@ -431,8 +432,6 @@ MonoBehaviour:
   upgradedShootingDelay: 0.2
   upgradedTowerRange: 1.2
   upgradeCost: 75
-  cursorTexture: {fileID: 2800000, guid: 73436a1b2ed21414dba766bd67cf8600, type: 3}
-  hotSpot: {x: 50, y: 0}
 --- !u!65 &3055590246510619695
 BoxCollider:
   m_ObjectHideFlags: 0

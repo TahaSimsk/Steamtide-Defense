@@ -216,9 +216,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8481792728857842759, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: oneTree
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481792728857842759, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: moneyCost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481792728857842759, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: doubleTree
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481792728857842759, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: objectType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9076835026581017570, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
       propertyPath: m_Name
-      value: tile_tree (1) Variant
+      value: tile_treeDouble
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

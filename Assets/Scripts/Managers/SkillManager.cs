@@ -61,11 +61,17 @@ public class SkillManager : MonoBehaviour
 
     void SetBombHoverPos(GameObject instantiatedSkillHover)
     {
-        if (instantiatedSkillHover == null || flagManager.hoverMode) { return; }
+        if (instantiatedSkillHover == null) return;
+
+        if (flagManager.hoverMode)
+        {
+            instantiatedSkillHover.SetActive(false);
+            return;
+        }
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit,Mathf.Infinity, ~ignoreEnemyLayer))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~ignoreEnemyLayer))
         {
             instantiatedSkillHover.SetActive(true);
             instantiatedSkillHover.transform.position = hit.transform.position + Vector3.up * 2;

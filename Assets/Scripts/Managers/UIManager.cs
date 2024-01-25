@@ -41,10 +41,6 @@ public class UIManager : MonoBehaviour
     float timerForNextWave;
 
 
-    public delegate void OnESCPressed();
-    public static event OnESCPressed onESCPressed;
-
-
     private void Awake()
     {
         waveController = FindObjectOfType<EnemyWaveController>();
@@ -130,7 +126,8 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             cancelButton.gameObject.SetActive(false);
-            onESCPressed?.Invoke();
+            DelegateManager.onESCPressed?.Invoke();
+           
             flagManager.ClearMode();
         }
     }

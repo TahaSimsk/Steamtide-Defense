@@ -17,6 +17,7 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     }
 
 
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         flagManager.hoverMode = true;
@@ -32,5 +33,7 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     {
         flagManager.hoverMode = false;
     }
+
+    
 
 }

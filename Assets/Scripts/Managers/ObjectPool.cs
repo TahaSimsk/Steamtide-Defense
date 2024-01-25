@@ -36,6 +36,7 @@ public class ObjectPool : MonoBehaviour
 
     List<ObjectToPool> enemies = new List<ObjectToPool>();
 
+    
     void Awake()
     {
         PopulatePoolAndGetEnemyTypes();

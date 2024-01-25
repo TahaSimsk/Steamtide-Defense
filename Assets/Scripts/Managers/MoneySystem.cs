@@ -14,6 +14,12 @@ public class MoneySystem : MonoBehaviour
     public float bombCost;
     public float slowCost;
 
+    [Header("Costs for Demolish")]
+    public float oneTreeDemolishCost;
+    public float doubleTreeDemolishCost;
+    public float quadTreeDemolishCost;
+
+
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] float startingBalance;
     float money;
