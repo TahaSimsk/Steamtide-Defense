@@ -21,7 +21,10 @@ public class EnemyHealth : MonoBehaviour
 
     List<Projectile> projectiles = new List<Projectile>();
 
-    Tower tower;
+    Tower2 tower;
+
+    public delegate void OnEnemyDeath(GameObject enemy);
+    public static event OnEnemyDeath onEnemyDeath;
 
     private void Start()
     {
@@ -58,13 +61,13 @@ public class EnemyHealth : MonoBehaviour
             moneySystem.AddMoney(moneyDrop);
             moneySystem.UpdateMoneyDisplay();
             uiManager.UpdateRemainingEnemiesText(false);
-            if (tower != null)
-            {
-                tower.RemoveEnemy(gameObject);
+            //if (tower != null)
+            //{
+            //    tower.RemoveEnemy(gameObject);
 
-                tower = null;
-            }
-
+            //    tower = null;
+            //}
+            onEnemyDeath?.Invoke(this.gameObject);
             if (projectiles.Count > 0)
             {
                 foreach (var projectile in projectiles)
@@ -94,7 +97,8 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void GetTower(Tower tower)
+    //deðiþtirildi
+    public void GetTower(Tower2 tower)
     {
         this.tower = tower;
     }

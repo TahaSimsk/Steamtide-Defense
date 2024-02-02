@@ -37,7 +37,6 @@ public class Tower : MonoBehaviour
 
     GameObject pooledProjectile;
     public List<GameObject> enemies = new List<GameObject>();
-    Rigidbody pooledProjectileRb;
 
 
 
@@ -55,7 +54,7 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-
+        //TO DO: Sürekli hangi türde olduðunu check etmesine gerek yok startta bir kere yap currentSelected variable'ý ile ona ata ve update'de sadece onu al. Veya inheritance kullanarak base method oluþtur ve her yeni type için script oluþturup o methodu override et.
         switch (weaponType)
         {
             case WeaponType.ballista:
@@ -97,7 +96,6 @@ public class Tower : MonoBehaviour
             }
             pooledProjectile = projectileFromPool;
 
-            pooledProjectileRb = pooledProjectile.GetComponent<Rigidbody>();
             pooledProjectile.GetComponent<Projectile>().currentTower = this.transform;
 
             pooledProjectile.transform.parent = gameObjectToSetProjectilePosition.transform.parent;
@@ -138,7 +136,9 @@ public class Tower : MonoBehaviour
                 pooledProjectile.SetActive(true);
                 pooledProjectile.GetComponent<Projectile>().GetInfo(enemies[0].transform, projectileSpeed, projectileDmg, true);
 
-                enemies[0].GetComponent<EnemyHealth>().GetTower(this);
+
+                //deðiþtirildi
+                //enemies[0].GetComponent<EnemyHealth>().GetTower(this);
 
                 pooledProjectile.transform.parent = objectPool.gameObject.transform;
             }
@@ -175,9 +175,7 @@ public class Tower : MonoBehaviour
         //timerForShootingDelay = shootingDelay;
         timerForProjectileLife = 0;
 
-        pooledProjectileRb.velocity = Vector3.zero;
         pooledProjectile.SetActive(false);
-        pooledProjectileRb = null;
         pooledProjectile = null;
 
         isProjectileFired = false;

@@ -19,9 +19,10 @@ public class DemolishManager : MonoBehaviour
         cursorManager = FindObjectOfType<CursorManager>();
         moneySystem = FindObjectOfType<MoneySystem>();
         tooltipManager = FindObjectOfType<TooltipManager>();
+
     }
-    
-    
+
+
 
     void Update()
     {
@@ -31,7 +32,7 @@ public class DemolishManager : MonoBehaviour
 
     void DemolishObjects()
     {
-        if (flagManager.demolishMode)
+        if (flagManager.currentMode == FlagManager.CurrentMode.demolish)
         {
 
             //get the ray

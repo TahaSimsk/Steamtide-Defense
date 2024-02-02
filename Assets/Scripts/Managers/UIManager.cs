@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,9 +37,20 @@ public class UIManager : MonoBehaviour
     EnemyWaveController waveController;
     FlagManager flagManager;
 
+    Button lastPressedButton;
+
     //------------------ COUNTDOWN ------------------
     bool startCountdownForNextWave;
     float timerForNextWave;
+
+    private void OnEnable()
+    {
+        FlagManager.onStateChanged += HandleButtonSelection;
+    }
+    private void OnDisable()
+    {
+        FlagManager.onStateChanged -= HandleButtonSelection;
+    }
 
 
     private void Awake()
@@ -60,7 +72,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeButtonsColorBasedOnPlaceability();
 
-        HandleButtonSelection();
+        HandleESCPressed();
 
         StartNextWaveCountdown();
     }
@@ -109,43 +121,61 @@ public class UIManager : MonoBehaviour
 
     void HandleButtonSelection()
     {
-        ButtonSelectionLogic(ballistaButton, flagManager.ballistaMode);
+        switch (flagManager.currentMode)
+        {
+            case FlagManager.CurrentMode.def:
 
-        ButtonSelectionLogic(blasterButton, flagManager.blasterMode);
+                if (lastPressedButton != null)
+                    lastPressedButton.interactable = true;
 
-        ButtonSelectionLogic(cannonButton, flagManager.cannonMode);
+                break;
+            case FlagManager.CurrentMode.ballista:
+                ButtonSelectionLogic(ballistaButton);
+                break;
+            case FlagManager.CurrentMode.blaster:
+                ButtonSelectionLogic(blasterButton);
+                break;
+            case FlagManager.CurrentMode.cannon:
+                ButtonSelectionLogic(cannonButton);
+                break;
+            case FlagManager.CurrentMode.bomb:
+                ButtonSelectionLogic(bombButton);
+                break;
+            case FlagManager.CurrentMode.slow:
+                ButtonSelectionLogic(slowButton);
+                break;
+            case FlagManager.CurrentMode.upgrade:
+                ButtonSelectionLogic(upgradeButton);
+                break;
+            case FlagManager.CurrentMode.demolish:
+                ButtonSelectionLogic(demolishButton);
+                break;
 
-        ButtonSelectionLogic(bombButton, flagManager.bombMode);
+        }
+    }
 
-        ButtonSelectionLogic(upgradeButton, flagManager.upgradeMode);
-
-        ButtonSelectionLogic(slowButton, flagManager.slowMode);
-
-        ButtonSelectionLogic(demolishButton, flagManager.demolishMode);
-
+    void HandleESCPressed()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            cancelButton.gameObject.SetActive(false);
+            flagManager.ChangeCurrentMode((int)FlagManager.CurrentMode.def);
             DelegateManager.onESCPressed?.Invoke();
-           
-            flagManager.ClearMode();
+            cancelButton.gameObject.SetActive(false);
         }
     }
 
 
-    void ButtonSelectionLogic(Button button, bool mode)
+    void ButtonSelectionLogic(Button button)
     {
-        if (mode)
+        if (lastPressedButton != button && lastPressedButton != null)
         {
-            //button.gameObject.SetActive(false);
-            button.interactable = false;
-            cancelButton.gameObject.SetActive(true);
+            lastPressedButton.interactable = true;
         }
-        else
-        {
-            //button.gameObject.SetActive(true);
-            button.interactable = true;
-        }
+        lastPressedButton = button;
+        //button.gameObject.SetActive(false);
+        button.interactable = false;
+        cancelButton.gameObject.SetActive(true);
+
     }
 
 

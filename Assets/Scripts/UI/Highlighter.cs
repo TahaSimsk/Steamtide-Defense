@@ -7,12 +7,12 @@ public class Highlighter : MonoBehaviour
 {
     [SerializeField] string hightlightedObjectTag;
 
-    List<Transform> hightlightedObjects = new List<Transform>();
+    public List<Transform> hightlightedObjects = new List<Transform>();
 
     private void OnEnable()
     {
-       DelegateManager.onESCPressed += ClearSelected;
-       
+        DelegateManager.onESCPressed += ClearSelected;
+
     }
     private void OnDisable()
     {
@@ -41,7 +41,7 @@ public class Highlighter : MonoBehaviour
             {
                 if (child.name == "Highlight" && !child.gameObject.activeSelf)
                 {
-                   hightlightedObjects.Add(child);
+                    hightlightedObjects.Add(child);
                     child.gameObject.SetActive(true);
                 }
             }
@@ -63,7 +63,7 @@ public class Highlighter : MonoBehaviour
         }
     }
 
-    void ClearSelected()
+    public void ClearSelected()
     {
         foreach (var item in hightlightedObjects)
         {

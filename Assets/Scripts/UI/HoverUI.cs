@@ -28,12 +28,12 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         //flagManager.hoverMode = false;
     }
 
-   
+
     public void OnPointerExit(PointerEventData eventData)
     {
         flagManager.hoverMode = false;
     }
 
-    
+
 
 }

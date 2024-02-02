@@ -20,9 +20,20 @@ public class SkillManager : MonoBehaviour
     GameObject instantiatedBombHover;
     GameObject instantiatedSlowHover;
 
+    GameObject currentInstantiatedSkill;
+
     FlagManager flagManager;
 
     MoneySystem moneySystem;
+
+    private void OnEnable()
+    {
+        FlagManager.onStateChanged += CreateBombHover;
+    }
+    private void OnDisable()
+    {
+        FlagManager.onStateChanged -= CreateBombHover;
+    }
 
     private void Awake()
     {
@@ -35,8 +46,8 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        CreateBombHover(flagManager.bombMode, ref instantiatedBombHover, bombHoverPrefab);
-        CreateBombHover(flagManager.slowMode, ref instantiatedSlowHover, slowHoverPrefab);
+        //    CreateBombHover(flagManager.bombMode, ref instantiatedBombHover, bombHoverPrefab);
+        //    CreateBombHover(flagManager.slowMode, ref instantiatedSlowHover, slowHoverPrefab);
 
         SetBombHoverPos(instantiatedBombHover);
         SetBombHoverPos(instantiatedSlowHover);
@@ -45,17 +56,30 @@ public class SkillManager : MonoBehaviour
         DropSlow();
     }
 
-    void CreateBombHover(bool mode, ref GameObject instantiatedSkillHover, GameObject skillHoverPrefab)
+    void CreateBombHover()
     {
+        switch (flagManager.currentMode)
+        {
+            case FlagManager.CurrentMode.bomb:
+                CreateBombHoverLogic(ref instantiatedBombHover, bombHoverPrefab);
+                break;
+            case FlagManager.CurrentMode.slow:
+                CreateBombHoverLogic(ref instantiatedSlowHover, slowHoverPrefab);
+                break;
+            default:
+                DestroyBombHover();
+                break;
+        }
+    }
 
-        if (mode && instantiatedSkillHover == null)
+
+    void CreateBombHoverLogic(ref GameObject instantiatedSkillHover, GameObject skillHoverPrefab)
+    {
+        DestroyBombHover();
+        if (instantiatedSkillHover == null)
         {
             instantiatedSkillHover = Instantiate(skillHoverPrefab, Input.mousePosition, Quaternion.identity);
-
-        }
-        else if (!mode && instantiatedSkillHover != null)
-        {
-            DestroyBombHover(instantiatedSkillHover);
+            currentInstantiatedSkill = instantiatedSkillHover;
         }
     }
 
@@ -66,6 +90,7 @@ public class SkillManager : MonoBehaviour
         if (flagManager.hoverMode)
         {
             instantiatedSkillHover.SetActive(false);
+            currentInstantiatedSkill.GetComponent<Highlighter>().ClearSelected();
             return;
         }
 
@@ -103,7 +128,7 @@ public class SkillManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-
+            // buraya path2 layer ekle ve sadece oradakini al
             Collider[] hitColliders = Physics.OverlapSphere(instantiatedSlowHover.transform.position, slowDropRadius);
             foreach (var collider in hitColliders)
             {
@@ -126,10 +151,15 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void DestroyBombHover(GameObject instantiatedSkillHover)
+    public void DestroyBombHover()
     {
-        if (instantiatedSkillHover == null) { return; }
-        Destroy(instantiatedSkillHover);
+        if (currentInstantiatedSkill != null)
+        {
+            currentInstantiatedSkill.GetComponent<Highlighter>().ClearSelected();
+            Destroy(currentInstantiatedSkill);
+        }
+
+
     }
 
     public void ActivateBombHover(bool value)

@@ -3338,7 +3338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -207.4317, y: -14.400024}
+  m_AnchoredPosition: {x: -207.43152, y: -14.400085}
   m_SizeDelta: {x: -1817.729, y: -1016.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534587208
@@ -3910,14 +3910,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff0929f76073c943938bc0fa3719d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballistaMode: 0
-  blasterMode: 0
-  cannonMode: 0
-  bombMode: 0
-  slowMode: 0
-  upgradeMode: 0
+  currentMode: 0
   hoverMode: 0
-  demolishMode: 0
 --- !u!4 &612229565
 Transform:
   m_ObjectHideFlags: 0
@@ -4092,10 +4086,10 @@ RectTransform:
   - {fileID: 1095952881}
   - {fileID: 1652669280}
   - {fileID: 994385132}
-  - {fileID: 1314671910}
-  - {fileID: 1484797677}
   - {fileID: 1697128835}
   - {fileID: 1176160969}
+  - {fileID: 1314671910}
+  - {fileID: 1484797677}
   - {fileID: 966825374}
   - {fileID: 705079489}
   - {fileID: 1098057040}
@@ -6610,8 +6604,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7144,50 +7138,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ClearFlags
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Cannon
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetCannonMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -7709,50 +7667,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ClearFlags
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Ballista
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetBallistaMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -9017,24 +8939,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetSlowMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -9825,24 +9735,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetUpgradeMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -10877,24 +10775,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetDemolishMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -11825,50 +11711,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ClearFlags
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Blaster
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetBlasterMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -12267,24 +12117,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 612229564}
         m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: ClearMode
-        m_Mode: 1
+        m_MethodName: ChangeCurrentMode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 612229564}
-        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
-        m_MethodName: SetBombMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1

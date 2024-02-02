@@ -35,7 +35,7 @@ public class Upgrade : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (flagManager.upgradeMode && moneySystem.IsPlaceable(upgradeCost) && !upgraded)
+        if (flagManager.currentMode == FlagManager.CurrentMode.upgrade && moneySystem.IsPlaceable(upgradeCost) && !upgraded)
         {
             UpgradeWeapon();
             moneySystem.DecreaseMoney(upgradeCost);
@@ -43,31 +43,31 @@ public class Upgrade : MonoBehaviour
         }
     }
 
-    void OnMouseOver()
-    {
-        if (flagManager.upgradeMode)
-        {
-            cursorManager.SetCursor(cursorManager.upgradeCursorTexture);
-            
-            if (upgraded)
-            {
-                tooltipManager.ShowTip("Can't upgrade further!", Input.mousePosition, false);
-            }
-            else
-            {
-                tooltipManager.ShowTip("Upgrade Cost: " + upgradeCost + "$", Input.mousePosition, moneySystem.IsPlaceable(upgradeCost));
-            }
-        }
-    }
+    //void OnMouseOver()
+    //{
+    //    if (flagManager.currentMode == FlagManager.CurrentMode.upgrade)
+    //    {
+    //        cursorManager.SetCursor(cursorManager.upgradeCursorTexture);
 
-    private void OnMouseExit()
-    {
-        if (flagManager.upgradeMode)
-        {
-            cursorManager.SetCursor(null);
-            tooltipManager.DisableTip();
-        }
-    }
+    //        if (upgraded)
+    //        {
+    //            tooltipManager.ShowTip("Can't upgrade further!", Input.mousePosition, false);
+    //        }
+    //        else
+    //        {
+    //            tooltipManager.ShowTip("Upgrade Cost: " + upgradeCost + "$", Input.mousePosition, moneySystem.IsPlaceable(upgradeCost));
+    //        }
+    //    }
+    //}
+
+    //private void OnMouseExit()
+    //{
+    //    if (flagManager.currentMode == FlagManager.CurrentMode.upgrade)
+    //    {
+    //        cursorManager.SetCursor(null);
+    //        tooltipManager.DisableTip();
+    //    }
+    //}
 
     void UpgradeWeapon()
     {

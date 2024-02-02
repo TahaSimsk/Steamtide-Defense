@@ -25,57 +25,84 @@ public class TowerPlacementManager : MonoBehaviour
     GameObject instantiatedHoverNPTower;
     GameObject instantiatedTower;
 
-    bool init;
+    
     float currentTowerMoneyCost;
 
 
-    ObjectPool objectPool;
     MoneySystem moneySystem;
     FlagManager flagManager;
 
+    private void OnEnable()
+    {
+        FlagManager.onStateChanged += InitializeTowers;
+    }
+    private void OnDisable()
+    {
+        FlagManager.onStateChanged -= InitializeTowers;
+    }
+
     private void Start()
     {
-        objectPool = FindObjectOfType<ObjectPool>();
+       
         moneySystem = FindObjectOfType<MoneySystem>();
         flagManager = FindObjectOfType<FlagManager>();
     }
 
     private void Update()
     {
-        InitializeTowers();
+        //InitializeTowers();
 
         PositionHoverTower();
     }
 
     void InitializeTowers()
     {
-        InitTower(flagManager.ballistaMode, ballistaHoverPrefab, ballistaNPHoverPrefab, ballistaPrefab, moneySystem.ballistaCost);
-        InitTower(flagManager.blasterMode, blasterHoverPrefab, blasterNPHoverPrefab, blasterPrefab, moneySystem.blasterCost);
-        InitTower(flagManager.cannonMode, cannonHoverPrefab, cannonNPHoverPrefab, cannonPrefab, moneySystem.cannonCost);
+        switch (flagManager.currentMode)
+        {
+            case FlagManager.CurrentMode.ballista:
+                InitTower(ballistaHoverPrefab, ballistaNPHoverPrefab, ballistaPrefab, moneySystem.ballistaCost);
+                
+                break;
+            case FlagManager.CurrentMode.blaster:
+                InitTower(blasterHoverPrefab, blasterNPHoverPrefab, blasterPrefab, moneySystem.blasterCost);
+                break;
+            case FlagManager.CurrentMode.cannon:
+                InitTower(cannonHoverPrefab, cannonNPHoverPrefab, cannonPrefab, moneySystem.cannonCost);
+                break;
+            default:
+                DestroyTowers();
+                break;
+        }
     }
 
 
-    void InitTower(bool mode, GameObject hoverTower, GameObject hoverNPTower, GameObject tower, float towerCost)
+    void InitTower(GameObject hoverTower, GameObject hoverNPTower, GameObject tower, float towerCost)
     {
-        if (mode && !init)
-        {
-            instantiatedHoverTower = Instantiate(hoverTower, Input.mousePosition, Quaternion.identity);
 
-            instantiatedHoverNPTower = Instantiate(hoverNPTower, Input.mousePosition, Quaternion.identity);
-            instantiatedHoverNPTower.SetActive(false);
+        DestroyTowers();
+        instantiatedHoverTower = Instantiate(hoverTower, Input.mousePosition, Quaternion.identity);
 
-            instantiatedTower = Instantiate(tower, Input.mousePosition, Quaternion.identity);
-            instantiatedTower.SetActive(false);
+        instantiatedHoverNPTower = Instantiate(hoverNPTower, Input.mousePosition, Quaternion.identity);
+        instantiatedHoverNPTower.SetActive(false);
 
-            currentTowerMoneyCost = towerCost;
-            init = true;
-        }
+        instantiatedTower = Instantiate(tower, Input.mousePosition, Quaternion.identity);
+        instantiatedTower.SetActive(false);
+
+        currentTowerMoneyCost = towerCost;
+        
+
     }
 
     void PositionHoverTower()
     {
-        if (instantiatedHoverTower == null || flagManager.hoverMode) return;
+        if (instantiatedHoverTower == null) return;
 
+        if (flagManager.hoverMode)
+        {
+            instantiatedHoverTower.SetActive(false);
+            instantiatedHoverNPTower.SetActive(false);
+            return;
+        }
 
 
 
@@ -94,6 +121,7 @@ public class TowerPlacementManager : MonoBehaviour
                 instantiatedHoverTower.transform.position = hit.transform.position + offset;
 
                 PlaceTower(hit.transform.position, ref tileInfo.placeable);
+                
             }
             else
             {
@@ -102,6 +130,11 @@ public class TowerPlacementManager : MonoBehaviour
 
                 instantiatedHoverNPTower.transform.position = hit.transform.position + offset;
             }
+        }
+        else
+        {
+            instantiatedHoverTower.SetActive(false);
+            instantiatedHoverNPTower.SetActive(false);
         }
     }
 
@@ -112,15 +145,26 @@ public class TowerPlacementManager : MonoBehaviour
             instantiatedTower.transform.position = pos + offset;
             instantiatedTower.SetActive(true);
             info = false;
+            moneySystem.DecreaseMoney(currentTowerMoneyCost);
+            moneySystem.UpdateMoneyDisplay();
 
             instantiatedTower = Instantiate(instantiatedTower, Input.mousePosition, Quaternion.identity);
+            
             instantiatedTower.SetActive(false);
-            Debug.Log("created");
 
         }
     }
 
+    void DestroyTowers()
+    {
+        Destroy(instantiatedTower);
+        instantiatedTower = null;
+        Destroy(instantiatedHoverTower);
+        instantiatedHoverTower = null;
+        Destroy(instantiatedHoverNPTower);
+        instantiatedHoverNPTower = null;
 
+    }
 
 
 

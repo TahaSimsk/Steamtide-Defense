@@ -1,98 +1,98 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class TowerPlacement : MonoBehaviour
-{
-    [SerializeField] Vector3 offset;
+//public class TowerPlacement : MonoBehaviour
+//{
+//    [SerializeField] Vector3 offset;
 
-    GameObject hoveredWeapon;
-
-
-    bool isPlaced;
-    bool hoverShowed;
-
-    ObjectPool objectPool;
-    MoneySystem moneySystem;
-    FlagManager flagManager;
-
-    private void Start()
-    {
-        objectPool = FindObjectOfType<ObjectPool>();
-        moneySystem = FindObjectOfType<MoneySystem>();
-        flagManager = FindObjectOfType<FlagManager>();
-    }
-
-    private void OnMouseDown()
-    {
-        PlaceWeapon(flagManager.ballistaMode, moneySystem.ballistaCost, objectPool.ballistaName);
-        PlaceWeapon(flagManager.blasterMode, moneySystem.blasterCost, objectPool.blasterName);
-        PlaceWeapon(flagManager.cannonMode, moneySystem.cannonCost, objectPool.cannonName);
-
-    }
+//    GameObject hoveredWeapon;
 
 
+//    bool isPlaced;
+//    bool hoverShowed;
 
-    private void OnMouseEnter()
-    {
-        ShowWeaponHovered(flagManager.ballistaMode, moneySystem.ballistaCost, objectPool.ballistaHoverName, objectPool.ballistaHoverNPName);
-        ShowWeaponHovered(flagManager.blasterMode, moneySystem.blasterCost, objectPool.blasterHoverName, objectPool.blasterHoverNPName);
-        ShowWeaponHovered(flagManager.cannonMode, moneySystem.cannonCost, objectPool.cannonHoverName, objectPool.cannonHoverNPName);
-    }
+//    ObjectPool objectPool;
+//    MoneySystem moneySystem;
+//    FlagManager flagManager;
+
+//    private void Start()
+//    {
+//        objectPool = FindObjectOfType<ObjectPool>();
+//        moneySystem = FindObjectOfType<MoneySystem>();
+//        flagManager = FindObjectOfType<FlagManager>();
+//    }
+
+//    private void OnMouseDown()
+//    {
+//        PlaceWeapon(flagManager.ballistaMode, moneySystem.ballistaCost, objectPool.ballistaName);
+//        PlaceWeapon(flagManager.blasterMode, moneySystem.blasterCost, objectPool.blasterName);
+//        PlaceWeapon(flagManager.cannonMode, moneySystem.cannonCost, objectPool.cannonName);
+
+//    }
 
 
-    private void OnMouseExit()
-    {
-        DestroyWeaponWhenExited();
-    }
+
+//    private void OnMouseEnter()
+//    {
+//        ShowWeaponHovered(flagManager.ballistaMode, moneySystem.ballistaCost, objectPool.ballistaHoverName, objectPool.ballistaHoverNPName);
+//        ShowWeaponHovered(flagManager.blasterMode, moneySystem.blasterCost, objectPool.blasterHoverName, objectPool.blasterHoverNPName);
+//        ShowWeaponHovered(flagManager.cannonMode, moneySystem.cannonCost, objectPool.cannonHoverName, objectPool.cannonHoverNPName);
+//    }
 
 
-    void PlaceWeapon(bool weaponType, float weaponCost, string nameOfWeaponFromPool)
-    {
-        if (weaponType && moneySystem.IsPlaceable(weaponCost) && !flagManager.hoverMode)
-        {
-            if (isPlaced) { return; }
+//    private void OnMouseExit()
+//    {
+//        DestroyWeaponWhenExited();
+//    }
 
-            GameObject weapon = objectPool.GetObjectFromPool(nameOfWeaponFromPool, false);
-            weapon.SetActive(true);
-            weapon.transform.position = transform.position + offset;
 
-            hoveredWeapon.SetActive(false);
+//    void PlaceWeapon(bool weaponType, float weaponCost, string nameOfWeaponFromPool)
+//    {
+//        if (weaponType && moneySystem.IsPlaceable(weaponCost) && !flagManager.hoverMode)
+//        {
+//            if (isPlaced) { return; }
 
-            isPlaced = true;
-            moneySystem.DecreaseMoney(weaponCost);
-            moneySystem.UpdateMoneyDisplay();
-        }
+//            GameObject weapon = objectPool.GetObjectFromPool(nameOfWeaponFromPool, false);
+//            weapon.SetActive(true);
+//            weapon.transform.position = transform.position + offset;
 
-    }
+//            hoveredWeapon.SetActive(false);
 
-    void ShowWeaponHovered(bool weaponType, float weaponCost, string nameOfPlaceableHover, string nameOfNPHover)
-    {
-        if (weaponType && moneySystem.IsPlaceable(weaponCost) && !flagManager.hoverMode)
-        {
-            if (isPlaced || hoverShowed) { return; }
+//            isPlaced = true;
+//            moneySystem.DecreaseMoney(weaponCost);
+//            moneySystem.UpdateMoneyDisplay();
+//        }
 
-            hoveredWeapon = objectPool.GetObjectFromPool(nameOfPlaceableHover, false);
-            hoveredWeapon.SetActive(true);
-            hoveredWeapon.transform.position = transform.position + offset;
-            hoverShowed = true;
-        }
-        else if (weaponType && !moneySystem.IsPlaceable(weaponCost))
-        {
-            if (isPlaced || hoverShowed) { return; }
+//    }
 
-            hoveredWeapon = objectPool.GetObjectFromPool(nameOfNPHover, false);
-            hoveredWeapon.SetActive(true);
-            hoveredWeapon.transform.position = transform.position + offset;
-            hoverShowed = true;
-        }
-    }
+//    void ShowWeaponHovered(bool weaponType, float weaponCost, string nameOfPlaceableHover, string nameOfNPHover)
+//    {
+//        if (weaponType && moneySystem.IsPlaceable(weaponCost) && !flagManager.hoverMode)
+//        {
+//            if (isPlaced || hoverShowed) { return; }
 
-    void DestroyWeaponWhenExited()
-    {
-        if (hoveredWeapon == null) { return; }
-        hoveredWeapon.SetActive(false);
+//            hoveredWeapon = objectPool.GetObjectFromPool(nameOfPlaceableHover, false);
+//            hoveredWeapon.SetActive(true);
+//            hoveredWeapon.transform.position = transform.position + offset;
+//            hoverShowed = true;
+//        }
+//        else if (weaponType && !moneySystem.IsPlaceable(weaponCost))
+//        {
+//            if (isPlaced || hoverShowed) { return; }
 
-        hoverShowed = false;
-    }
-}
+//            hoveredWeapon = objectPool.GetObjectFromPool(nameOfNPHover, false);
+//            hoveredWeapon.SetActive(true);
+//            hoveredWeapon.transform.position = transform.position + offset;
+//            hoverShowed = true;
+//        }
+//    }
+
+//    void DestroyWeaponWhenExited()
+//    {
+//        if (hoveredWeapon == null) { return; }
+//        hoveredWeapon.SetActive(false);
+
+//        hoverShowed = false;
+//    }
+//}
