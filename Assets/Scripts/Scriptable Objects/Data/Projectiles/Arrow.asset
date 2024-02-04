@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f07088284fd7040aaf15371323cc9f, type: 3}
   m_Name: Arrow
   m_EditorClassIdentifier: 
-  nameOfProjectile: Arrow
-  projectile: {fileID: 7683383464138540475, guid: db0d79ec4d49a644cbc7b42f7f68b194, type: 3}
+  objectName: Arrow
+  objectPrefabPoolSize: 50
+  objectPrefab: {fileID: 7683383464138540475, guid: db0d79ec4d49a644cbc7b42f7f68b194, type: 3}
+  objList: []
   projectileSpeed: 60
   projectileDamage: 1
   projectileLife: 1

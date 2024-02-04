@@ -14,7 +14,7 @@ public class Upgrade : MonoBehaviour
     [SerializeField] float upgradeCost;
 
 
-    Tower tower;
+    //Tower tower;
     MeshRenderer meshRenderer;
     MoneySystem moneySystem;
     TooltipManager tooltipManager;
@@ -30,7 +30,7 @@ public class Upgrade : MonoBehaviour
         moneySystem = FindObjectOfType<MoneySystem>();
         flagManager = FindObjectOfType<FlagManager>();
         meshRenderer = GetComponent<MeshRenderer>();
-        tower = GetComponent<Tower>();
+        //tower = GetComponent<Tower>();
     }
 
     private void OnMouseDown()
@@ -76,7 +76,7 @@ public class Upgrade : MonoBehaviour
             material.color = Color.red;
         }
 
-        tower.SetWeaponUpgradeAttributes(upgradedProjectileSpeed, upgradedProjectileDmg, upgradedProjectileLife, upgradedShootingDelay, upgradedTowerRange);
-        upgraded = true;
+        //tower.SetWeaponUpgradeAttributes(upgradedProjectileSpeed, upgradedProjectileDmg, upgradedProjectileLife, upgradedShootingDelay, upgradedTowerRange);
+        //upgraded = true;
     }
 }

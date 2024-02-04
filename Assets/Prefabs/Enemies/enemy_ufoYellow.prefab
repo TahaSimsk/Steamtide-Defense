@@ -647,6 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de6abadc0ca58d4c8241cbf5b715bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 29d4de00503a6fd42ad28c64f4ada7f0, type: 2}
   highlightPrefab: {fileID: 4876211849066101889}
   healthBar: {fileID: 499023306604887518}
   moneyDrop: 25

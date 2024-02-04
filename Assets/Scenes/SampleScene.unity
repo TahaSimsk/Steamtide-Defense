@@ -3338,7 +3338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -207.43152, y: -14.400085}
+  m_AnchoredPosition: {x: -207.43164, y: -14.4001465}
   m_SizeDelta: {x: -1817.729, y: -1016.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534587208
@@ -3418,7 +3418,6 @@ Transform:
   - {fileID: 1208038384}
   - {fileID: 189281989}
   - {fileID: 1700980832}
-  - {fileID: 1434373811}
   - {fileID: 140963647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6626,6 +6625,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1700980833}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ClearMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &966825376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7146,6 +7157,42 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ChangeAnan
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 53c48c73510d24c4ea1a5e5d3dbe2717, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Data, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: GetButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 994385133}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ShareDataAndButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -7675,6 +7722,42 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ChangeAnan
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d815ebb2cd5282e41b71e4ec06cd1746, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Data, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: GetButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1095952882}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ShareDataAndButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -10457,50 +10540,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1393132494982874074, guid: 02393cf1a67513e4ea0f756186d0c09e, type: 3}
   m_PrefabInstance: {fileID: 717304399}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1434373810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1434373811}
-  - component: {fileID: 1434373812}
-  m_Layer: 0
-  m_Name: DelegateManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1434373811
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434373810}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 535927071}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1434373812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434373810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e03557787752e458843c72e4744a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1448683592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11723,6 +11762,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: GetButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1652669281}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ChangeAnan
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ff94bdc9daabb1f449d615718a1036e5, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Data, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ShareDataAndButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1652669282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12127,6 +12202,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ChangeAnan
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: f05d280a09425f34483de1470a661a6e, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Data, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: GetButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1697128836}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 612229564}
+        m_TargetAssemblyTypeName: FlagManager, Assembly-CSharp
+        m_MethodName: ShareDataAndButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1697128837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12221,6 +12332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47fa497eb72a6d49a608990943a7e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datas: []
   moneySystem: {fileID: 115707929}
   ballistaCostText: {fileID: 1390609669}
   blasterCostText: {fileID: 180610192}
@@ -14071,35 +14183,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999441f6c9b037b4e96ab82ed1065306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToPool:
-  - {fileID: 11400000, guid: d1f3dfa63b718734c8ddc8cbfb54f4e3, type: 2}
-  - {fileID: 11400000, guid: 16d27ac7788678a47878cd11925409c6, type: 2}
-  - {fileID: 11400000, guid: 1149f4e59528108449f7b76ca434c500, type: 2}
-  - {fileID: 11400000, guid: 5552b98422c5ec149af9b00b3eb7a16d, type: 2}
-  - {fileID: 11400000, guid: a6e6611c856d1c8468d1fe7978e020b3, type: 2}
-  - {fileID: 11400000, guid: 522a194d43b251442be23cfd5f8e35cb, type: 2}
-  - {fileID: 11400000, guid: 0c1b7c61aff3f0743aa40be5104a4406, type: 2}
-  - {fileID: 11400000, guid: 89ef4aa4c9b54dc40a04fa1e332ce8f0, type: 2}
-  - {fileID: 11400000, guid: b93c6283b34f22e4d9bce032ed324111, type: 2}
-  - {fileID: 11400000, guid: dbde15d805a23024ea24d3537daf0598, type: 2}
-  - {fileID: 11400000, guid: c27ec2d38607d7041897a56333a68cd6, type: 2}
-  - {fileID: 11400000, guid: 0877bf0b1cdf8224d9d177df27d513d1, type: 2}
-  - {fileID: 11400000, guid: 307a47e47c2061d4aac910376d8d3481, type: 2}
-  - {fileID: 11400000, guid: d2ec561d184cbc04fa52bb1ab7306bb0, type: 2}
-  - {fileID: 11400000, guid: ef8b3d4f731507d4b9b82add8d5d0c20, type: 2}
-  - {fileID: 11400000, guid: 04a19b922ddb4af4390cef73391b697c, type: 2}
-  ballistaName: BallistaPrefab
-  ballistaProjectileName: BallistaArrow
-  ballistaHoverName: BallistaHover
-  ballistaHoverNPName: BallistaHoverNP
-  blasterName: BlasterPrefab
-  blasterProjectileName: BlasterLasers
-  blasterHoverName: BlasterHover
-  blasterHoverNPName: BlasterHoverNP
-  cannonName: CannonPrefab
-  cannonProjectileName: CannonBall
-  cannonHoverName: CannonHover
-  cannonHoverNPName: CannonHoverNP
+  datas:
+  - {fileID: 11400000, guid: f05d280a09425f34483de1470a661a6e, type: 2}
+  - {fileID: 11400000, guid: 1a597ac6d730fb745a0818c4c6d63849, type: 2}
+  - {fileID: 11400000, guid: dce26f4145f259e4c8a5f5077901ee07, type: 2}
+  - {fileID: 11400000, guid: 29d4de00503a6fd42ad28c64f4ada7f0, type: 2}
+  - {fileID: 11400000, guid: 2f08f4a6691a369448d7f19041d81d11, type: 2}
+  - {fileID: 11400000, guid: 39e02614a59a59145a506f634ea26431, type: 2}
+  - {fileID: 11400000, guid: b00d7d6af4ce88b43852915774639470, type: 2}
 --- !u!4 &2032580140
 Transform:
   m_ObjectHideFlags: 0

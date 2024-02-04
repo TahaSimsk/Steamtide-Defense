@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerPlacementManager : MonoBehaviour
 {
@@ -25,25 +26,31 @@ public class TowerPlacementManager : MonoBehaviour
     GameObject instantiatedHoverNPTower;
     GameObject instantiatedTower;
 
-    
+
     float currentTowerMoneyCost;
 
 
     MoneySystem moneySystem;
     FlagManager flagManager;
 
+    Data currentTowerData;
+
     private void OnEnable()
     {
         FlagManager.onStateChanged += InitializeTowers;
+        EventManager.onButtonPressed += Anan;
+        EventManager.onESCPressed += DestroyTowers;
     }
     private void OnDisable()
     {
         FlagManager.onStateChanged -= InitializeTowers;
+        EventManager.onButtonPressed -= Anan;
+        EventManager.onESCPressed -= DestroyTowers;
     }
 
     private void Start()
     {
-       
+
         moneySystem = FindObjectOfType<MoneySystem>();
         flagManager = FindObjectOfType<FlagManager>();
     }
@@ -57,22 +64,38 @@ public class TowerPlacementManager : MonoBehaviour
 
     void InitializeTowers()
     {
-        switch (flagManager.currentMode)
+        //switch (flagManager.currentMode)
+        //{
+        //    case FlagManager.CurrentMode.ballista:
+        //        InitTower(ballistaHoverPrefab, ballistaNPHoverPrefab, ballistaPrefab, moneySystem.ballistaCost);
+
+        //        break;
+        //    case FlagManager.CurrentMode.blaster:
+        //        InitTower(blasterHoverPrefab, blasterNPHoverPrefab, blasterPrefab, moneySystem.blasterCost);
+        //        break;
+        //    case FlagManager.CurrentMode.cannon:
+        //        InitTower(cannonHoverPrefab, cannonNPHoverPrefab, cannonPrefab, moneySystem.cannonCost);
+        //        break;
+        //    default:
+        //        DestroyTowers();
+        //        break;
+        //}
+    }
+
+    void Anan(Data data, Button button)
+    {
+        try
         {
-            case FlagManager.CurrentMode.ballista:
-                InitTower(ballistaHoverPrefab, ballistaNPHoverPrefab, ballistaPrefab, moneySystem.ballistaCost);
-                
-                break;
-            case FlagManager.CurrentMode.blaster:
-                InitTower(blasterHoverPrefab, blasterNPHoverPrefab, blasterPrefab, moneySystem.blasterCost);
-                break;
-            case FlagManager.CurrentMode.cannon:
-                InitTower(cannonHoverPrefab, cannonNPHoverPrefab, cannonPrefab, moneySystem.cannonCost);
-                break;
-            default:
-                DestroyTowers();
-                break;
+            DataTower dataTower = (DataTower)data;
+            InitTower(dataTower.towerHoverPrefab, dataTower.towerNPHoverPrefab, data.objectPrefab, data.cost);
+            currentTowerData = data;
         }
+        catch (System.Exception)
+        {
+            DestroyTowers();
+            return;
+        }
+
     }
 
 
@@ -89,7 +112,7 @@ public class TowerPlacementManager : MonoBehaviour
         instantiatedTower.SetActive(false);
 
         currentTowerMoneyCost = towerCost;
-        
+
 
     }
 
@@ -121,7 +144,7 @@ public class TowerPlacementManager : MonoBehaviour
                 instantiatedHoverTower.transform.position = hit.transform.position + offset;
 
                 PlaceTower(hit.transform.position, ref tileInfo.placeable);
-                
+
             }
             else
             {
@@ -145,11 +168,12 @@ public class TowerPlacementManager : MonoBehaviour
             instantiatedTower.transform.position = pos + offset;
             instantiatedTower.SetActive(true);
             info = false;
-            moneySystem.DecreaseMoney(currentTowerMoneyCost);
+            //moneySystem.DecreaseMoney(currentTowerMoneyCost);
+            EventManager.OnTowerPlaced(currentTowerData);
             moneySystem.UpdateMoneyDisplay();
 
             instantiatedTower = Instantiate(instantiatedTower, Input.mousePosition, Quaternion.identity);
-            
+
             instantiatedTower.SetActive(false);
 
         }

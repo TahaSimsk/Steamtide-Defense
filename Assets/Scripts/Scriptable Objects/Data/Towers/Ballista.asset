@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e925489f91a5d5444abc52dc20f993a3, type: 3}
   m_Name: Ballista
   m_EditorClassIdentifier: 
-  nameOfTower: Ballista
-  towerPrefab: {fileID: 1283615902204747745, guid: eb0f19f160961c5439b59cd21b055162, type: 3}
+  objectName: Ballista
+  objectText: {fileID: 0}
+  objectPrefab: {fileID: 1283615902204747745, guid: eb0f19f160961c5439b59cd21b055162, type: 3}
+  objectPrefabPoolSize: 0
+  cost: 50
+  objList: []
   towerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
   towerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
   shootingDelay: 0.1
-  weaponRotationSpeed: 2
+  weaponRotationSpeed: 5
   weaponRange: 100

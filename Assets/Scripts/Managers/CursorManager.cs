@@ -9,19 +9,19 @@ public class CursorManager : MonoBehaviour
     public Vector2 hotSpot;
 
 
-    private void OnEnable()
-    {
-        //DelegateManager.onMouseOverDemolish += SetCursor(upgradeCursorTexture);
-        DelegateManager.onMouseOverDemolish += () => SetCursor(demolishCursorTexture);
-        DelegateManager.onMouseOverUpgrade += () => SetCursor(upgradeCursorTexture);
+    //private void OnEnable()
+    //{
+    //    //DelegateManager.onMouseOverDemolish += SetCursor(upgradeCursorTexture);
+    //    DelegateManager.onMouseOverDemolish += () => SetCursor(demolishCursorTexture);
+    //    DelegateManager.onMouseOverUpgrade += () => SetCursor(upgradeCursorTexture);
 
-    }
+    //}
 
-    private void OnDisable()
-    {
-        DelegateManager.onMouseOverDemolish -= () => SetCursor(demolishCursorTexture);
-        DelegateManager.onMouseOverUpgrade -= () => SetCursor(upgradeCursorTexture);
-    }
+    //private void OnDisable()
+    //{
+    //    DelegateManager.onMouseOverDemolish -= () => SetCursor(demolishCursorTexture);
+    //    DelegateManager.onMouseOverUpgrade -= () => SetCursor(upgradeCursorTexture);
+    //}
 
 
     public void SetCursor(Texture2D texture)

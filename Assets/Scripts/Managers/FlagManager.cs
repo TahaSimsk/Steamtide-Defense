@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class FlagManager : MonoBehaviour
         hover
     };
     public CurrentMode currentMode;
-
+    [HideInInspector] public bool hoverMode;
 
     public delegate void OnStateChanged();
     public static event OnStateChanged onStateChanged;
@@ -31,62 +32,28 @@ public class FlagManager : MonoBehaviour
         onStateChanged?.Invoke();
 
     }
+    Button button;
+    public void GetButton(Button button)
+    {
+        this.button = button;
+    }
+    Data data;
+    public void ChangeAnan(Data data)
+    {
+
+        this.data = data;
+    }
+
+    public void ShareDataAndButton()
+    {
+        //onButtonPressed?.Invoke(data, button);
+        EventManager.OnButtonPressed(data, button);
+    }
 
 
 
-    //[HideInInspector] public bool ballistaMode;
-    //[HideInInspector] public bool blasterMode;
-    //[HideInInspector] public bool cannonMode;
-    //[HideInInspector] public bool bombMode;
-    //[HideInInspector] public bool slowMode;
-    //[HideInInspector] public bool upgradeMode;
-    //[HideInInspector] public bool demolishMode;
-    [HideInInspector] public bool hoverMode;
 
 
-    //public void SetBallistaMode(bool value)
-    //{
-    //    ballistaMode = value;
-    //}
 
-    //public void SetBlasterMode(bool value)
-    //{
-    //    blasterMode = value;
-    //}
 
-    //public void SetCannonMode(bool value)
-    //{
-    //    cannonMode = value;
-    //}
-
-    //public void SetBombMode(bool value)
-    //{
-    //    bombMode = value;
-    //}
-
-    //public void SetSlowMode(bool value)
-    //{
-    //    slowMode = value;
-    //}
-
-    //public void SetUpgradeMode(bool value)
-    //{
-    //    upgradeMode = value;
-    //}
-
-    //public void SetDemolishMode(bool value)
-    //{
-    //    demolishMode = value;
-    //}
-
-    //public void ClearMode()
-    //{
-    //    ballistaMode = false;
-    //    blasterMode = false;
-    //    cannonMode = false;
-    //    bombMode = false;
-    //    slowMode = false;
-    //    upgradeMode = false;
-    //    demolishMode = false;
-    //}
 }

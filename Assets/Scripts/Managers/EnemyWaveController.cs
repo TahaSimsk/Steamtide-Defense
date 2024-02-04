@@ -53,7 +53,8 @@ public class EnemyWaveController : MonoBehaviour
                 for (int i = 0; i < wave.enemyCount.Count; i++)
                 {
                     int enemyCount = wave.enemyCount[i];
-                    int enemyId = wave.enemies[i].GetComponent<EnemyHealth>().enemyId;
+                    int hashCode = wave.enemies[i].GetComponent<EnemyHealth>().enemyData.hashCode;
+                    Data enemyData= wave.enemies[i].GetComponent<EnemyHealth>().enemyData;
 
                     if (setEnemyHealthManually && (wave.enemyHealth != null || wave.enemyHealth[i] != Mathf.Epsilon))
                     {
@@ -63,14 +64,25 @@ public class EnemyWaveController : MonoBehaviour
                     //spawn enemies by their count which is set in the "Wave SO"
                     for (int x = 0; x < enemyCount; x++)
                     {
-                        GameObject pooledEnemy = objectPool.GetEnemy(enemyId);
+                        //GameObject pooledEnemy = objectPool.GetObjectFromPool(hashCode);
+                        GameObject pooledEnemy = null;
+
+                        foreach (var obj in enemyData.objList)
+                        {
+                            if (!obj.activeInHierarchy)
+                            {
+                                pooledEnemy = obj;
+                                goto Found;
+                            }
+                        }
+                        Found:
                         enemiesInWave.Add(pooledEnemy);
 
                         SetHealthDifficulty(pooledEnemy);
 
                         pooledEnemy.SetActive(true);
 
-                        
+
                         yield return new WaitForSeconds(timeBetweenEnemySpawns);
                     }
 

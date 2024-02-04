@@ -53,7 +53,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0.07874044, z: 0}
 --- !u!54 &3158919450323997908
 Rigidbody:
@@ -175,47 +175,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -5339045298412100997}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8192085132127332468}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3955336746305341415}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1948672750936240284}
+      addedObject: {fileID: -7578246052917316301}
   m_SourcePrefab: {fileID: 100100000, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
 --- !u!1 &1283615902204747745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
   m_PrefabInstance: {fileID: 2094516931581829808}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-5339045298412100997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283615902204747745}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6f68cc1217bc94784205ee008ed0d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetScanner: {fileID: 8536870259223280536}
-  weaponType: 0
-  projectileSpeed: 60
-  projectileDmg: 10
-  projectileLife: 0.5
-  shootingDelay: 1
-  weaponRotationSpeed: 10
-  weaponRange: 1.5
-  moneyCost: 0
-  ballistaProjectilePos: {fileID: 4241246209655019689}
-  blasterProjectilePos: {fileID: 0}
-  cannonProjectilePos: {fileID: 0}
-  enemies: []
 --- !u!114 &8192085132127332468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +227,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.22992359, y: 0.15748088, z: 0.22992359}
   m_Center: {x: 0, y: 0.07874044, z: 0}
---- !u!114 &1948672750936240284
+--- !u!114 &-7578246052917316301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,10 +236,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1283615902204747745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ec2cabb462a3045bcdad3c9b9edda0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8156dca9c8508ef41b737137d23cff82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScanner: {fileID: 0}
+  targetScanner: {fileID: 8536870259223280536}
   projectilePos: {fileID: 4248851160461892211}
   towerData: {fileID: 11400000, guid: d815ebb2cd5282e41b71e4ec06cd1746, type: 2}
   projectileData: {fileID: 11400000, guid: 2f08f4a6691a369448d7f19041d81d11, type: 2}
@@ -278,11 +250,6 @@ MonoBehaviour:
 --- !u!4 &1917268385155286363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
-  m_PrefabInstance: {fileID: 2094516931581829808}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4241246209655019689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -6356031556166059495, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
   m_PrefabInstance: {fileID: 2094516931581829808}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4248851160461892211 stripped

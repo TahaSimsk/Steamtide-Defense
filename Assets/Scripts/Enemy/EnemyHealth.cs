@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public Data enemyData;
     [SerializeField] GameObject highlightPrefab;
     [SerializeField] Slider healthBar;
     [SerializeField] float moneyDrop;
@@ -19,12 +20,7 @@ public class EnemyHealth : MonoBehaviour
     MoneySystem moneySystem;
     UIManager uiManager;
 
-    List<Projectile> projectiles = new List<Projectile>();
 
-    Tower2 tower;
-
-    public delegate void OnEnemyDeath(GameObject enemy);
-    public static event OnEnemyDeath onEnemyDeath;
 
     private void Start()
     {
@@ -58,50 +54,16 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = maxHealth;
-            moneySystem.AddMoney(moneyDrop);
-            moneySystem.UpdateMoneyDisplay();
+           
             uiManager.UpdateRemainingEnemiesText(false);
-            //if (tower != null)
-            //{
-            //    tower.RemoveEnemy(gameObject);
+            EventManager.OnEnemyDeath(gameObject, enemyData);
 
-            //    tower = null;
-            //}
-            onEnemyDeath?.Invoke(this.gameObject);
-            if (projectiles.Count > 0)
-            {
-                foreach (var projectile in projectiles)
-                {
-                    projectile.ResetTarget();
-                }
-                projectiles.Clear();
-            }
             highlightPrefab.SetActive(false);
             gameObject.SetActive(false);
         }
     }
 
-    public void GetProjectile(Projectile projectile)
-    {
-        if (!projectiles.Contains(projectile))
-        {
-            projectiles.Add(projectile);
-        }
-    }
 
-    public void RemoveProjectile(Projectile projectile)
-    {
-        if (projectiles.Contains(projectile))
-        {
-            projectiles.Remove(projectile);
-        }
-    }
-
-    //deðiþtirildi
-    public void GetTower(Tower2 tower)
-    {
-        this.tower = tower;
-    }
 
     public void ReduceHealth(float damage)
     {

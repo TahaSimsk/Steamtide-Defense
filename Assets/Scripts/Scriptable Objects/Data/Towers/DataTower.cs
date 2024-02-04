@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataTower", menuName = "DataTower")]
-public class DataTower : ScriptableObject
+public class DataTower : Data
 {
-    public string nameOfTower;
-
+    
     [Header("Weapon Prefabs")]
-    public GameObject towerPrefab;
     public GameObject towerHoverPrefab;
     public GameObject towerNPHoverPrefab;
 

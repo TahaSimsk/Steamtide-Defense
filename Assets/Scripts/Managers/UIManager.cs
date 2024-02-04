@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] List<Data> datas = new List<Data>();
+
     [SerializeField] MoneySystem moneySystem;
 
     [Header("Tower Cost Text UI")]
@@ -46,10 +48,14 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         FlagManager.onStateChanged += HandleButtonSelection;
+        EventManager.onButtonPressed += HandleButtonSelection2;
+        EventManager.onEnemyDeath += UpdateRemainingEnemiesText;
     }
+
     private void OnDisable()
     {
         FlagManager.onStateChanged -= HandleButtonSelection;
+        EventManager.onButtonPressed -= HandleButtonSelection2;
     }
 
 
@@ -80,7 +86,7 @@ public class UIManager : MonoBehaviour
 
     void SetButtonCostTextOnStart()
     {
-        ballistaCostText.text = "Ballista: $" + moneySystem.ballistaCost;
+        //ballistaCostText.text = "Ballista: $" + moneySystem.ballistaCost;
 
         blasterCostText.text = "Blaster: $" + moneySystem.blasterCost;
 
@@ -94,7 +100,7 @@ public class UIManager : MonoBehaviour
 
     void ChangeButtonsColorBasedOnPlaceability()
     {
-        UpdatePlaceableButtonsColor(moneySystem.ballistaCost, ballistaCostText);
+        //UpdatePlaceableButtonsColor(moneySystem.ballistaCost, ballistaCostText);
 
         UpdatePlaceableButtonsColor(moneySystem.blasterCost, blasterCostText);
 
@@ -103,6 +109,39 @@ public class UIManager : MonoBehaviour
         UpdatePlaceableButtonsColor(moneySystem.bombCost, bombCostText);
 
         UpdatePlaceableButtonsColor(moneySystem.slowCost, slowCostText);
+    }
+
+    Data currentData;
+    Button currentButton;
+    void HandleButtonSelection2(Data data, Button button)
+    {
+        currentData = data;
+        currentButton = button;
+        ButtonSelectionLogic(button);
+
+        //UpdatePlaceableButtonsColor(data.cost, button.GetComponentInChildren<TextMeshProUGUI>());
+        //button.GetComponentInChildren<TextMeshProUGUI>().text = data.objectName + ": $" + data.cost;
+    }
+
+    void ButtonSelectionLogic(Button button)
+    {
+        if (lastPressedButton != button && lastPressedButton != null)
+        {
+            lastPressedButton.interactable = true;
+        }
+        lastPressedButton = button;
+        //button.gameObject.SetActive(false);
+        button.interactable = false;
+        cancelButton.gameObject.SetActive(true);
+
+    }
+
+    void Baban()
+    {
+        foreach (var data in datas)
+        {
+            //UpdatePlaceableButtonsColor(data.cost,)
+        }
     }
 
 
@@ -121,62 +160,57 @@ public class UIManager : MonoBehaviour
 
     void HandleButtonSelection()
     {
-        switch (flagManager.currentMode)
-        {
-            case FlagManager.CurrentMode.def:
+        //switch (flagManager.currentMode)
+        //{
+        //    case FlagManager.CurrentMode.def:
 
-                if (lastPressedButton != null)
-                    lastPressedButton.interactable = true;
+        //        if (lastPressedButton != null)
+        //            lastPressedButton.interactable = true;
 
-                break;
-            case FlagManager.CurrentMode.ballista:
-                ButtonSelectionLogic(ballistaButton);
-                break;
-            case FlagManager.CurrentMode.blaster:
-                ButtonSelectionLogic(blasterButton);
-                break;
-            case FlagManager.CurrentMode.cannon:
-                ButtonSelectionLogic(cannonButton);
-                break;
-            case FlagManager.CurrentMode.bomb:
-                ButtonSelectionLogic(bombButton);
-                break;
-            case FlagManager.CurrentMode.slow:
-                ButtonSelectionLogic(slowButton);
-                break;
-            case FlagManager.CurrentMode.upgrade:
-                ButtonSelectionLogic(upgradeButton);
-                break;
-            case FlagManager.CurrentMode.demolish:
-                ButtonSelectionLogic(demolishButton);
-                break;
+        //        break;
+        //    //case FlagManager.CurrentMode.ballista:
+        //    //    ButtonSelectionLogic(ballistaButton);
+        //    //    break;
+        //    case FlagManager.CurrentMode.blaster:
+        //        ButtonSelectionLogic(blasterButton);
+        //        break;
+        //    case FlagManager.CurrentMode.cannon:
+        //        ButtonSelectionLogic(cannonButton);
+        //        break;
+        //    case FlagManager.CurrentMode.bomb:
+        //        ButtonSelectionLogic(bombButton);
+        //        break;
+        //    case FlagManager.CurrentMode.slow:
+        //        ButtonSelectionLogic(slowButton);
+        //        break;
+        //    case FlagManager.CurrentMode.upgrade:
+        //        ButtonSelectionLogic(upgradeButton);
+        //        break;
+        //    case FlagManager.CurrentMode.demolish:
+        //        ButtonSelectionLogic(demolishButton);
+        //        break;
 
-        }
+        //}
     }
 
     void HandleESCPressed()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            flagManager.ChangeCurrentMode((int)FlagManager.CurrentMode.def);
-            DelegateManager.onESCPressed?.Invoke();
-            cancelButton.gameObject.SetActive(false);
+            ClearMode();
         }
     }
 
-
-    void ButtonSelectionLogic(Button button)
+    public void ClearMode()
     {
-        if (lastPressedButton != button && lastPressedButton != null)
-        {
+        flagManager.ChangeCurrentMode((int)FlagManager.CurrentMode.def);
+        if (lastPressedButton != null)
             lastPressedButton.interactable = true;
-        }
-        lastPressedButton = button;
-        //button.gameObject.SetActive(false);
-        button.interactable = false;
-        cancelButton.gameObject.SetActive(true);
-
+        EventManager.OnESCPressed();
+        cancelButton.gameObject.SetActive(false);
     }
+
+
 
 
     void StartNextWaveCountdown()
@@ -220,6 +254,15 @@ public class UIManager : MonoBehaviour
         remainingEnemiesText.text = "Enemies: " + waveController.numOfTotalEnemies;
 
     }
+
+
+    //this method is for when an enemy dies, ignore gameobject and data
+    public void UpdateRemainingEnemiesText(GameObject gameObject, Data data)
+    {
+        waveController.numOfTotalEnemies--;
+        remainingEnemiesText.text = "Enemies: " + waveController.numOfTotalEnemies;
+    }
+
     public void GetNextWaveTimer(bool shouldCount, float timer)
     {
         startCountdownForNextWave = shouldCount;

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4931711249904289473}
   - component: {fileID: 5620249147938786699}
   - component: {fileID: 6885002985847571778}
-  - component: {fileID: 4934694594308734102}
   - component: {fileID: 4328933335393120081}
   - component: {fileID: 4570475973298020611}
   - component: {fileID: 1969320586740918322}
@@ -88,21 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4934694594308734102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7683383464138540475}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adde2144d3d26a742a77733dc44d513b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 0
-  projetileDmg: 0
-  currentTower: {fileID: 0}
 --- !u!65 &4328933335393120081
 BoxCollider:
   m_ObjectHideFlags: 0

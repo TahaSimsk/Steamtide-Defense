@@ -11,12 +11,12 @@ public class Highlighter : MonoBehaviour
 
     private void OnEnable()
     {
-        DelegateManager.onESCPressed += ClearSelected;
+        EventManager.onESCPressed += ClearSelected;
 
     }
     private void OnDisable()
     {
-        DelegateManager.onESCPressed -= ClearSelected;
+        EventManager.onESCPressed -= ClearSelected;
     }
 
     //void Update()

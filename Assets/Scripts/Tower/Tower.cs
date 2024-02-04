@@ -1,186 +1,113 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Tower : MonoBehaviour
 {
     [SerializeField] SphereCollider targetScanner;
+    [SerializeField] Transform projectilePos;
+    [SerializeField] DataTower towerData;
+    [SerializeField] DataProjectile projectileData;
 
-    //[Header("Weapon Type")]
-    //[SerializeField] bool ballista;
-    //[SerializeField] bool blaster;
-    //[SerializeField] bool cannon;
-
-    enum WeaponType { ballista, blaster, cannon }
-    [SerializeField] WeaponType weaponType;
-
-    [Header("Weapon Attributes")]
-    [SerializeField] float projectileSpeed;
-    [SerializeField] float projectileDmg;
-    [SerializeField] float projectileLife;
-    [SerializeField] float shootingDelay;
-    [SerializeField] float weaponRotationSpeed;
-    [SerializeField] float weaponRange;
-    [SerializeField] float moneyCost;
-
-    [Header("Projectile Positions")]
-    [SerializeField] GameObject ballistaProjectilePos;
-    [SerializeField] GameObject blasterProjectilePos;
-    [SerializeField] GameObject cannonProjectilePos;
-
-
+    [SerializeField] LayerMask enemyLayer;
 
     ObjectPool objectPool;
 
 
-    GameObject pooledProjectile;
     public List<GameObject> enemies = new List<GameObject>();
 
 
 
-    bool hasProjectile, isProjectileFired;
+    float timer;
+    private void OnEnable()
+    {
+        EventManager.onEnemyDeath += RemoveEnemy;
+    }
 
-    float timerForShootingDelay, timerForProjectileLife;
-
-
+    private void OnDisable()
+    {
+        EventManager.onEnemyDeath -= RemoveEnemy;
+    }
 
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
-        targetScanner.radius = weaponRange;
+        //targetScanner.radius = weaponRange;
     }
 
-    void Update()
+    private void Update()
     {
-        //TO DO: Sürekli hangi türde olduðunu check etmesine gerek yok startta bir kere yap currentSelected variable'ý ile ona ata ve update'de sadece onu al. Veya inheritance kullanarak base method oluþtur ve her yeni type için script oluþturup o methodu override et.
-        switch (weaponType)
-        {
-            case WeaponType.ballista:
-                GetProjectile(objectPool.GetObjectFromPool(objectPool.ballistaProjectileName, true), ballistaProjectilePos);
-                break;
-            case WeaponType.blaster:
-                GetProjectile(objectPool.GetObjectFromPool(objectPool.blasterProjectileName, true), blasterProjectilePos);
-                break;
-            case WeaponType.cannon:
-                GetProjectile(objectPool.GetObjectFromPool(objectPool.cannonProjectileName, true), cannonProjectilePos);
-                break;
-        }
+        LookAtTarget();
 
-        //if (ballista)
-        //    GetProjectile(objectPool.GetObjectFromPool(objectPool.ballistaProjectileName, true), ballistaProjectilePos);
-        //if (blaster)
-        //    GetProjectile(objectPool.GetObjectFromPool(objectPool.blasterProjectileName, true), blasterProjectilePos);
-        //if (cannon)
-        //    GetProjectile(objectPool.GetObjectFromPool(objectPool.cannonProjectileName, true), cannonProjectilePos);
-
-
-        LookAtEnemy();
         Shoot();
-        DeactivateProjectile();
-    }
-
-
-
-
-    void GetProjectile(GameObject projectileFromPool, GameObject gameObjectToSetProjectilePosition)
-    {
-        timerForShootingDelay -= Time.deltaTime;
-
-        if (!hasProjectile && timerForShootingDelay <= 0)
-        {
-            if (weaponType == WeaponType.ballista)
-            {
-                ballistaProjectilePos.SetActive(true);
-            }
-            pooledProjectile = projectileFromPool;
-
-            pooledProjectile.GetComponent<Projectile>().currentTower = this.transform;
-
-            pooledProjectile.transform.parent = gameObjectToSetProjectilePosition.transform.parent;
-            pooledProjectile.transform.SetPositionAndRotation(gameObjectToSetProjectilePosition.transform.position, gameObjectToSetProjectilePosition.transform.rotation);
-
-            hasProjectile = true;
-        }
-    }
-
-
-    void LookAtEnemy()
-    {
-        if (enemies.Count == 0)
-        {
-            return;
-        }
-        Vector3 dir = enemies[0].transform.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * weaponRotationSpeed).eulerAngles;
-        transform.rotation = Quaternion.Euler(rotation);
     }
 
 
     void Shoot()
     {
-
-        if (enemies.Count > 0 && pooledProjectile != null)
+        timer -= Time.deltaTime;
+        if (enemies.Count > 0 && timer <= 0)
         {
-
-            if (!isProjectileFired)
-            {
-                timerForShootingDelay = shootingDelay;
-                isProjectileFired = true;
-                if (weaponType == WeaponType.ballista)
-                {
-                    ballistaProjectilePos.SetActive(false);
-                }
-                pooledProjectile.SetActive(true);
-                pooledProjectile.GetComponent<Projectile>().GetInfo(enemies[0].transform, projectileSpeed, projectileDmg, true);
-
-
-                //deðiþtirildi
-                //enemies[0].GetComponent<EnemyHealth>().GetTower(this);
-
-                pooledProjectile.transform.parent = objectPool.gameObject.transform;
-            }
+            GetProjectileFromPoolAndActivate();
+            timer = towerData.shootingDelay;
         }
     }
 
 
-    void DeactivateProjectile()
+    /*
+     * when projectile pooled and activated, shooting starts. The script in the projectile handles movement and collision. In this script all we need to do is activate it and pass the target.
+     */
+    void GetProjectileFromPoolAndActivate()
     {
-        if (isProjectileFired)
+
+        //GameObject pooledProjectile = objectPool.GetObjectFromPool(projectileData.hashCode);
+
+        GameObject pooledProjectile= null;
+        foreach (var obj in projectileData.objList)
         {
-
-
-            timerForProjectileLife += Time.deltaTime;
-            if (timerForProjectileLife >= projectileLife)
+            if (!obj.activeInHierarchy)
             {
-                HandleProjectileHit();
-                return;
-            }
-            else if (pooledProjectile.GetComponent<Projectile>().hit)
-            {
-                HandleProjectileHit();
-                return;
+                pooledProjectile = obj;
+                goto Found;
             }
         }
+        Found:
+        pooledProjectile.GetComponent<Projectile2>().target = enemies[0].transform;
+
+        pooledProjectile.transform.position = projectilePos.position;
+        pooledProjectile.SetActive(true);
     }
 
 
 
-
-    void HandleProjectileHit()
+    void LookAtTarget()
     {
-        hasProjectile = false;
-        //timerForShootingDelay = shootingDelay;
-        timerForProjectileLife = 0;
+        if (enemies.Count == 0) return;
 
-        pooledProjectile.SetActive(false);
-        pooledProjectile = null;
+        Vector3 dir = enemies[0].transform.position - transform.position;
 
-        isProjectileFired = false;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+
+        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * towerData.weaponRotationSpeed).eulerAngles;
+
+        transform.rotation = Quaternion.Euler(rotation);
+
     }
 
+
+    
+    //this method is used to remove enemy when an enemy dies based off an event
+    public void RemoveEnemy(GameObject enemy, Data data)
+    {
+        enemies.Remove(enemy);
+    }
+
+
+    //these methods are used to add and remove enemies when they entered or left target scanner's range
     public void AddEnemy(GameObject enemy)
     {
         enemies.Add(enemy);
@@ -190,16 +117,6 @@ public class Tower : MonoBehaviour
     {
         enemies.Remove(enemy);
     }
-
-    public void SetWeaponUpgradeAttributes(float projectileSpeed, float projectileDmg, float projectileLife, float shootingDelay, float weaponRange)
-    {
-        this.projectileSpeed = projectileSpeed;
-        this.projectileDmg = projectileDmg;
-        this.projectileLife = projectileLife;
-        this.shootingDelay = shootingDelay;
-        this.weaponRange = weaponRange;
-    }
-
 
 }
 

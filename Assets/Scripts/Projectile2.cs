@@ -11,18 +11,21 @@ public class Projectile2 : MonoBehaviour
     public Transform target;
     bool initiated = false;
 
+    bool hitEnemy;
+
     private void OnEnable()
     {
         if (!initiated) return;
-        
-        EnemyHealth.onEnemyDeath += CompareEnemy;
+
+        EventManager.onEnemyDeath += CompareEnemy;
         StartCoroutine(MoveToTargetAndHandleCollision());
     }
 
     private void OnDisable()
     {
-        EnemyHealth.onEnemyDeath -= CompareEnemy;
+        EventManager.onEnemyDeath -= CompareEnemy;
         initiated = true;
+        hitEnemy = false;
     }
 
     IEnumerator MoveToTargetAndHandleCollision()
@@ -39,7 +42,7 @@ public class Projectile2 : MonoBehaviour
              */
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, projectileData.projectileSpeed * Time.deltaTime);
 
-            
+
             /*
              * projectile sets its rotation to face target
              */
@@ -64,18 +67,36 @@ public class Projectile2 : MonoBehaviour
                 //projectile hit the target
                 break;
             }
+
+            /*
+             * if projectile hits an enemy, stop moving the projectile and terminate while loop
+             */
+            if (hitEnemy)
+            {
+                break;
+            }
         }
 
         /*
          * this line execudes after the while loop so it means we hit the target and while loop is terminated
-         * we are checking if target is not null because it may already be deactivated by another projectile.
-         * then we are reducing its health
          */
-        if (target != null)
-            target.GetComponent<EnemyHealth>().ReduceHealth(projectileData.projectileDamage);
 
 
         transform.gameObject.SetActive(false);
+    }
+
+    /*
+     * if projectile hits an enemy, damage it and set hitEnemy to true to stop movement of projectile, terminate while loop and therefore deactivate projectile.
+     */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.ReduceHealth(projectileData.projectileDamage);
+            hitEnemy = true;
+        }
     }
 
     /*
@@ -83,7 +104,8 @@ public class Projectile2 : MonoBehaviour
      * this is done with EnemyHealth script that is attached to enemies and invokes OnEnemyDeath delegate when it dies.
      * if the dead enemy is our current target we are setting the target to null because we dont want this projectile to follow it to strange places
      */
-    void CompareEnemy(GameObject enemy)
+    //data is used in money system when adding money, ignore data
+    void CompareEnemy(GameObject enemy, Data data)
     {
         Debug.Log("Compared enemy");
         if (target == null) return;

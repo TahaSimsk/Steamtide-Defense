@@ -12,16 +12,7 @@ public class TooltipManager : MonoBehaviour
 
     RectTransform tooltip;
 
-    private void OnEnable()
-    {
-        DelegateManager.onMouseOverDemolish += EnableTooltip;
-    }
-
-    private void OnDisable()
-    {
-        DelegateManager.onMouseOverDemolish -= EnableTooltip;
-    }
-
+  
     private void Start()
     {
         tooltip = upgradeCostText.transform.parent.GetComponent<RectTransform>();
@@ -89,9 +80,5 @@ public class TooltipManager : MonoBehaviour
         tooltip.gameObject.SetActive(false);
     }
 
-    void EnableTooltip()
-    {
-        Debug.Log("tooltip enabled");
-    }
 
 }

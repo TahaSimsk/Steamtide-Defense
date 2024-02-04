@@ -205,47 +205,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 26659198064922986}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8556859285276173145}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4721977160308555344}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3908484963707990187}
   m_SourcePrefab: {fileID: 100100000, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
 --- !u!1 &6234212743987878198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
   m_PrefabInstance: {fileID: 6504665315875578983}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &26659198064922986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234212743987878198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6f68cc1217bc94784205ee008ed0d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetScanner: {fileID: 1668337637962621840}
-  ballista: 0
-  blaster: 0
-  cannon: 1
-  weaponType: 2
-  projectileSpeed: 80
-  projectileDmg: 20
-  projectileLife: 1
-  shootingDelay: 2
-  weaponRotationSpeed: 10
-  weaponRange: 2
-  moneyCost: 0
-  ballistaProjectilePos: {fileID: 0}
-  blasterProjectilePos: {fileID: 0}
-  cannonProjectilePos: {fileID: 2340438977780067246}
-  enemies: []
 --- !u!114 &8556859285276173145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,8 +257,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.22992359, y: 0.15748088, z: 0.22992359}
   m_Center: {x: 0, y: 0.07874044, z: 0}
+--- !u!114 &3908484963707990187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212743987878198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd218b9835099b43a2a024b369f3c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScanner: {fileID: 1668337637962621840}
+  projectilePos: {fileID: 8175781012832113133}
+  towerData: {fileID: 11400000, guid: 53c48c73510d24c4ea1a5e5d3dbe2717, type: 2}
+  projectileData: {fileID: 11400000, guid: 39e02614a59a59145a506f634ea26431, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  enemies: []
 --- !u!4 &6759779728970482572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
+  m_PrefabInstance: {fileID: 6504665315875578983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8175781012832113133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6110536800543132278, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
   m_PrefabInstance: {fileID: 6504665315875578983}
   m_PrefabAsset: {fileID: 0}
