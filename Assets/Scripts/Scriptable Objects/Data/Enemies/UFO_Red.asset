@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: UFO_Red
   m_EditorClassIdentifier: 
   objectName: UfoRed
+  hashCode: -80479549
   objectPrefab: {fileID: 2185672882422005610, guid: 60e7a6f4403cba2438cee7e1f0517f1d, type: 3}
   objectPrefabPoolSize: 50
-  cost: 150
+  objectCost_MoneyDrop: 40
   objList:
   - {fileID: 0}
   - {fileID: 0}

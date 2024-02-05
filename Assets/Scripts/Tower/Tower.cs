@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] SphereCollider targetScanner;
     [SerializeField] Transform projectilePos;
-    [SerializeField] DataTower towerData;
+    public DataTower towerData;
     [SerializeField] DataProjectile projectileData;
 
     [SerializeField] LayerMask enemyLayer;
@@ -76,7 +76,7 @@ public class Tower : MonoBehaviour
             }
         }
         Found:
-        pooledProjectile.GetComponent<Projectile2>().target = enemies[0].transform;
+        pooledProjectile.GetComponent<Projectile>().target = enemies[0].transform;
 
         pooledProjectile.transform.position = projectilePos.position;
         pooledProjectile.SetActive(true);
@@ -101,9 +101,9 @@ public class Tower : MonoBehaviour
 
     
     //this method is used to remove enemy when an enemy dies based off an event
-    public void RemoveEnemy(GameObject enemy, Data data)
+    public void RemoveEnemy(EnemyHealth enemyHealth)
     {
-        enemies.Remove(enemy);
+        enemies.Remove(enemyHealth.gameObject);
     }
 
 

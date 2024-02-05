@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: 
   objectName: Cannon
-  objectText: {fileID: 0}
+  hashCode: -34465733
   objectPrefab: {fileID: 6234212743987878198, guid: b8e5a5697d7eb4946b62f6fb6c71db40, type: 3}
   objectPrefabPoolSize: 0
-  cost: 100
+  objectCost_MoneyDrop: 150
   objList: []
   towerHoverPrefab: {fileID: 8445677846998774162, guid: 733bf47a0c901104c9a6f7c969aafb8c, type: 3}
   towerNPHoverPrefab: {fileID: 8445677846998774162, guid: c66e2d6925fa54248a48abe99edf7d8d, type: 3}

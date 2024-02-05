@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Ballista
   m_EditorClassIdentifier: 
   objectName: Ballista
-  objectText: {fileID: 0}
+  hashCode: -437199144
   objectPrefab: {fileID: 1283615902204747745, guid: eb0f19f160961c5439b59cd21b055162, type: 3}
   objectPrefabPoolSize: 0
-  cost: 50
+  objectCost_MoneyDrop: 50
   objList: []
   towerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
   towerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}

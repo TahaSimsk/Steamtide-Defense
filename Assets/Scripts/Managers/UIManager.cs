@@ -47,15 +47,14 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        FlagManager.onStateChanged += HandleButtonSelection;
         EventManager.onButtonPressed += HandleButtonSelection2;
         EventManager.onEnemyDeath += UpdateRemainingEnemiesText;
     }
 
     private void OnDisable()
     {
-        FlagManager.onStateChanged -= HandleButtonSelection;
         EventManager.onButtonPressed -= HandleButtonSelection2;
+        EventManager.onEnemyDeath -= UpdateRemainingEnemiesText;
     }
 
 
@@ -67,16 +66,11 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void Start()
-    {
-        SetButtonCostTextOnStart();
-
-    }
 
 
     void Update()
     {
-        ChangeButtonsColorBasedOnPlaceability();
+
 
         HandleESCPressed();
 
@@ -84,39 +78,12 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void SetButtonCostTextOnStart()
-    {
-        //ballistaCostText.text = "Ballista: $" + moneySystem.ballistaCost;
-
-        blasterCostText.text = "Blaster: $" + moneySystem.blasterCost;
-
-        cannonCostText.text = "Cannon: $" + moneySystem.cannonCost;
-
-        bombCostText.text = "Bomb: $" + moneySystem.bombCost;
-
-        slowCostText.text = "Slow: $" + moneySystem.slowCost;
-    }
-
-
-    void ChangeButtonsColorBasedOnPlaceability()
-    {
-        //UpdatePlaceableButtonsColor(moneySystem.ballistaCost, ballistaCostText);
-
-        UpdatePlaceableButtonsColor(moneySystem.blasterCost, blasterCostText);
-
-        UpdatePlaceableButtonsColor(moneySystem.cannonCost, cannonCostText);
-
-        UpdatePlaceableButtonsColor(moneySystem.bombCost, bombCostText);
-
-        UpdatePlaceableButtonsColor(moneySystem.slowCost, slowCostText);
-    }
-
     Data currentData;
     Button currentButton;
-    void HandleButtonSelection2(Data data, Button button)
+    void HandleButtonSelection2(Button button)
     {
-        currentData = data;
-        currentButton = button;
+        //currentData = data;
+        //currentButton = button;
         ButtonSelectionLogic(button);
 
         //UpdatePlaceableButtonsColor(data.cost, button.GetComponentInChildren<TextMeshProUGUI>());
@@ -136,62 +103,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void Baban()
-    {
-        foreach (var data in datas)
-        {
-            //UpdatePlaceableButtonsColor(data.cost,)
-        }
-    }
 
-
-    void UpdatePlaceableButtonsColor(float weaponCost, TextMeshProUGUI text)
-    {
-        if (moneySystem.IsPlaceable(weaponCost))
-        {
-            text.transform.parent.GetComponent<Button>().image.color = Color.green;
-        }
-        else
-        {
-            text.transform.parent.GetComponent<Button>().image.color = Color.red;
-        }
-    }
-
-
-    void HandleButtonSelection()
-    {
-        //switch (flagManager.currentMode)
-        //{
-        //    case FlagManager.CurrentMode.def:
-
-        //        if (lastPressedButton != null)
-        //            lastPressedButton.interactable = true;
-
-        //        break;
-        //    //case FlagManager.CurrentMode.ballista:
-        //    //    ButtonSelectionLogic(ballistaButton);
-        //    //    break;
-        //    case FlagManager.CurrentMode.blaster:
-        //        ButtonSelectionLogic(blasterButton);
-        //        break;
-        //    case FlagManager.CurrentMode.cannon:
-        //        ButtonSelectionLogic(cannonButton);
-        //        break;
-        //    case FlagManager.CurrentMode.bomb:
-        //        ButtonSelectionLogic(bombButton);
-        //        break;
-        //    case FlagManager.CurrentMode.slow:
-        //        ButtonSelectionLogic(slowButton);
-        //        break;
-        //    case FlagManager.CurrentMode.upgrade:
-        //        ButtonSelectionLogic(upgradeButton);
-        //        break;
-        //    case FlagManager.CurrentMode.demolish:
-        //        ButtonSelectionLogic(demolishButton);
-        //        break;
-
-        //}
-    }
 
     void HandleESCPressed()
     {
@@ -257,7 +169,7 @@ public class UIManager : MonoBehaviour
 
 
     //this method is for when an enemy dies, ignore gameobject and data
-    public void UpdateRemainingEnemiesText(GameObject gameObject, Data data)
+    public void UpdateRemainingEnemiesText(GameObject enemy)
     {
         waveController.numOfTotalEnemies--;
         remainingEnemiesText.text = "Enemies: " + waveController.numOfTotalEnemies;

@@ -4474,6 +4474,7 @@ GameObject:
   - component: {fileID: 705079489}
   - component: {fileID: 705079488}
   - component: {fileID: 705079487}
+  - component: {fileID: 705079490}
   m_Layer: 5
   m_Name: MoneyText
   m_TagString: Untagged
@@ -4597,6 +4598,19 @@ RectTransform:
   m_AnchoredPosition: {x: 724.74615, y: 423.07568}
   m_SizeDelta: {x: 443.902, y: 99.849}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &705079490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705079486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62af37c5ddff40c439c172175a5072c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,6 +7092,7 @@ GameObject:
   - component: {fileID: 994385134}
   - component: {fileID: 994385133}
   - component: {fileID: 994385136}
+  - component: {fileID: 994385137}
   m_Layer: 5
   m_Name: Cannon
   m_TagString: Untagged
@@ -7247,6 +7262,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &994385137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994385131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9820f4d46d734093e11cdc0024889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 53c48c73510d24c4ea1a5e5d3dbe2717, type: 2}
 --- !u!4 &1000249424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1393132494982874074, guid: 02393cf1a67513e4ea0f756186d0c09e, type: 3}
@@ -7643,6 +7671,7 @@ GameObject:
   - component: {fileID: 1095952883}
   - component: {fileID: 1095952882}
   - component: {fileID: 1095952885}
+  - component: {fileID: 1095952886}
   m_Layer: 5
   m_Name: Ballista
   m_TagString: Untagged
@@ -7812,6 +7841,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1095952886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095952880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9820f4d46d734093e11cdc0024889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: d815ebb2cd5282e41b71e4ec06cd1746, type: 2}
 --- !u!1001 &1097685272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8937,13 +8979,14 @@ GameObject:
   - component: {fileID: 1176160972}
   - component: {fileID: 1176160971}
   - component: {fileID: 1176160970}
+  - component: {fileID: 1176160974}
   m_Layer: 5
   m_Name: Slow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1176160969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9070,6 +9113,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176160968}
   m_CullTransparentMesh: 1
+--- !u!114 &1176160974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176160968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9820f4d46d734093e11cdc0024889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!4 &1191495559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1393132494982874074, guid: 02393cf1a67513e4ea0f756186d0c09e, type: 3}
@@ -11679,6 +11735,7 @@ GameObject:
   - component: {fileID: 1652669282}
   - component: {fileID: 1652669281}
   - component: {fileID: 1652669284}
+  - component: {fileID: 1652669285}
   m_Layer: 5
   m_Name: Blaster
   m_TagString: Untagged
@@ -11848,6 +11905,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1652669285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652669279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9820f4d46d734093e11cdc0024889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: ff94bdc9daabb1f449d615718a1036e5, type: 2}
 --- !u!4 &1653722869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1393132494982874074, guid: 02393cf1a67513e4ea0f756186d0c09e, type: 3}
@@ -12119,13 +12189,14 @@ GameObject:
   - component: {fileID: 1697128837}
   - component: {fileID: 1697128836}
   - component: {fileID: 1697128839}
+  - component: {fileID: 1697128840}
   m_Layer: 5
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1697128835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12288,6 +12359,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1697128840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697128834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9820f4d46d734093e11cdc0024889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!1 &1700980831
 GameObject:
   m_ObjectHideFlags: 0

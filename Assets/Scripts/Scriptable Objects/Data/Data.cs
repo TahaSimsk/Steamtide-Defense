@@ -13,16 +13,15 @@ public class Data : ScriptableObject
 
     public int hashCode;
 
-
-
-
     [Header("Object Prefab")]
     public GameObject objectPrefab;
+
     [Header("ObjectPooling")]
     public int objectPrefabPoolSize;
 
-    [Header("Economy")]
-    public float cost;
+    [Header("Cost/Money Drop of Object")]
+    public float objectCost_MoneyDrop;
+
 
     [HideInInspector]
     public List<GameObject> objList = new List<GameObject>();

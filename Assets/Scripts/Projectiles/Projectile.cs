@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Projectile2 : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
-    [SerializeField] DataProjectile projectileData;
+    [SerializeField] protected DataProjectile projectileData;
 
 
     public Transform target;
     bool initiated = false;
 
-    bool hitEnemy;
+   protected bool hitEnemy;
 
     private void OnEnable()
     {
@@ -89,7 +89,7 @@ public class Projectile2 : MonoBehaviour
      * if projectile hits an enemy, damage it and set hitEnemy to true to stop movement of projectile, terminate while loop and therefore deactivate projectile.
      */
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
@@ -104,8 +104,7 @@ public class Projectile2 : MonoBehaviour
      * this is done with EnemyHealth script that is attached to enemies and invokes OnEnemyDeath delegate when it dies.
      * if the dead enemy is our current target we are setting the target to null because we dont want this projectile to follow it to strange places
      */
-    //data is used in money system when adding money, ignore data
-    void CompareEnemy(GameObject enemy, Data data)
+    void CompareEnemy(GameObject enemy)
     {
         Debug.Log("Compared enemy");
         if (target == null) return;

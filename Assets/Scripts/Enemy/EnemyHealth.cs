@@ -5,43 +5,27 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public Data enemyData;
+    public DataEnemies enemyData;
     [SerializeField] GameObject highlightPrefab;
     [SerializeField] Slider healthBar;
-    [SerializeField] float moneyDrop;
-    [SerializeField] float baseMaxHealth;
-    [HideInInspector] public float maxHealth;
-    public int enemyId;
+
+
 
     float currentHealth;
 
-    public bool isDead;
+    [HideInInspector] public float maxHealth;
 
-    MoneySystem moneySystem;
-    UIManager uiManager;
-
-
-
-    private void Start()
+    private void Awake()
     {
-        uiManager = FindObjectOfType<UIManager>();
-        moneySystem = FindObjectOfType<MoneySystem>();
+        maxHealth = enemyData.baseMaxHealth;
     }
-
 
     private void OnEnable()
     {
         currentHealth = maxHealth;
         UpdateHPBar();
-        isDead = false;
     }
 
-    private void OnDisable()
-    {
-        maxHealth = baseMaxHealth;
-
-        isDead = true;
-    }
 
 
     void Update()
@@ -53,10 +37,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            currentHealth = maxHealth;
-           
-            uiManager.UpdateRemainingEnemiesText(false);
-            EventManager.OnEnemyDeath(gameObject, enemyData);
+            EventManager.OnEnemyDeath(this.gameObject);
 
             highlightPrefab.SetActive(false);
             gameObject.SetActive(false);

@@ -16,7 +16,7 @@ MonoBehaviour:
   hashCode: -2086145677
   objectPrefab: {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
   objectPrefabPoolSize: 50
-  cost: 50
+  objectCost_MoneyDrop: 20
   objList:
   - {fileID: 0}
   - {fileID: 0}

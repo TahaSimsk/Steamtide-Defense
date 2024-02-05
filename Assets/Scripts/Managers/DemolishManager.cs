@@ -22,6 +22,15 @@ public class DemolishManager : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+       
+    }
+    private void OnDisable()
+    {
+        
+    }
+
 
 
     void Update()
@@ -68,7 +77,7 @@ public class DemolishManager : MonoBehaviour
                         moneySystem.UpdateMoneyDisplay();
 
 
-                        //instantiate normal tile
+                        //instantiate normal tile. can instantiate different tiles. just need to specify them in the demolishInfo script and get the tile from there.
                         Instantiate(tile, hit.transform.position, Quaternion.identity);
 
 
@@ -83,7 +92,7 @@ public class DemolishManager : MonoBehaviour
                     tooltipManager.ShowTip("Need " + moneyCost + " To Demolish", Input.mousePosition, false);
                 }
 
-
+                
             }
             else
             {

@@ -10,5 +10,7 @@ public class DataEnemies : Data
     public float defaultMoveSpeed;
     public float baseMaxHealth;
 
-    
+    //[HideInInspector]
+    //new private float cost1=5;
+
 }

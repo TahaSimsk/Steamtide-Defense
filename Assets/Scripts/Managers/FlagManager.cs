@@ -47,7 +47,7 @@ public class FlagManager : MonoBehaviour
     public void ShareDataAndButton()
     {
         //onButtonPressed?.Invoke(data, button);
-        EventManager.OnButtonPressed(data, button);
+        EventManager.OnButtonPressed(button);
     }
 
 

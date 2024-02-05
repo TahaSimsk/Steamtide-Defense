@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MoneySystem : MonoBehaviour
+[CreateAssetMenu(fileName = "MoneyManager", menuName = "MoneyManager")]
+public class MoneyManager : ScriptableObject
 {
     [Header("Costs to Place Towers")]
     public float ballistaCost;
@@ -21,12 +22,13 @@ public class MoneySystem : MonoBehaviour
     public float quadTreeDemolishCost;
 
 
-    [SerializeField] TextMeshProUGUI moneyText;
-    [SerializeField] float startingBalance;
-    float money;
+    public float startingBalance;
+
+    [HideInInspector] public float money;
 
     private void OnEnable()
     {
+        money = startingBalance;
         EventManager.onEnemyDeath += AddMoney;
         EventManager.onTowerPlaced += DecreaseMoney;
     }
@@ -36,14 +38,6 @@ public class MoneySystem : MonoBehaviour
         EventManager.onTowerPlaced -= DecreaseMoney;
     }
 
-    private void Start()
-    {
-        money = startingBalance;
-        UpdateMoneyDisplay();
-
-        EventManager.OnMoneyIncreased(money);
-        EventManager.OnMoneyDecreased(money);
-    }
 
     public bool IsPlaceable(float towerCost)
     {
@@ -66,10 +60,9 @@ public class MoneySystem : MonoBehaviour
     //this is used for enemy death, gets the data from the died enemy and gets the cost, ignore gameobject
     public void AddMoney(GameObject enemy)
     {
-        //money += enemy.GetComponent<EnemyHealth>().enemyData.objectCost_MoneyDrop;
-        //EventManager.OnMoneyChanged();
-        //EventManager.OnMoneyIncreased(money);
-        //UpdateMoneyDisplay();
+        money += enemy.GetComponent<EnemyHealth>().enemyData.objectCost_MoneyDrop;
+        EventManager.OnMoneyChanged();
+        EventManager.OnMoneyIncreased(money);
     }
 
     public void DecreaseMoney(float amount)
@@ -77,23 +70,17 @@ public class MoneySystem : MonoBehaviour
         money -= amount;
         EventManager.OnMoneyChanged();
         EventManager.OnMoneyDecreased(money);
-        UpdateMoneyDisplay();
     }
 
     //this is used for tower placement, gets the data from last placed tower and gets the cost
-    public void DecreaseMoney(GameObject gameObject)
+    void DecreaseMoney(GameObject gameObject)
     {
         money -= gameObject.GetComponent<Tower>().towerData.objectCost_MoneyDrop;
         EventManager.OnMoneyChanged();
         EventManager.OnMoneyDecreased(this.money);
-        Debug.Log("Money Decreased");
-        UpdateMoneyDisplay();
     }
 
-    public void UpdateMoneyDisplay()
-    {
-        //moneyText.text = "$" + Mathf.FloorToInt(money);
-    }
+
 
 
 }

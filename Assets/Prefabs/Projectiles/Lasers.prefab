@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1080207095111635107}
   - component: {fileID: 7524802098698928372}
   - component: {fileID: -703291111826111309}
-  - component: {fileID: -3380204254242534801}
+  - component: {fileID: 6837136392956573048}
   m_Layer: 2
   m_Name: Lasers
   m_TagString: Untagged
@@ -167,7 +167,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3380204254242534801
+--- !u!114 &6837136392956573048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5103337153299529184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 421343ecfa303ef4da7d621234a5c9fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ac052319202bd84e83c01f39c52012e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: b00d7d6af4ce88b43852915774639470, type: 2}

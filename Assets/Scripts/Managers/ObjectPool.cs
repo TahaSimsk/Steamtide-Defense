@@ -8,9 +8,6 @@ public class ObjectPool : MonoBehaviour
 {
     public List<Data> datas;
 
-    List<Data> enemies = new List<Data>();
-
-
     void Awake()
     {
         PopulatePoolAndAllocateToData();

@@ -37,14 +37,12 @@ public class TowerPlacementManager : MonoBehaviour
 
     private void OnEnable()
     {
-        FlagManager.onStateChanged += InitializeTowers;
-        EventManager.onButtonPressed += Anan;
+        EventManager.onButtonPressed += CreateTower;
         EventManager.onESCPressed += DestroyTowers;
     }
     private void OnDisable()
     {
-        FlagManager.onStateChanged -= InitializeTowers;
-        EventManager.onButtonPressed -= Anan;
+        EventManager.onButtonPressed -= CreateTower;
         EventManager.onESCPressed -= DestroyTowers;
     }
 
@@ -57,38 +55,18 @@ public class TowerPlacementManager : MonoBehaviour
 
     private void Update()
     {
-        //InitializeTowers();
 
         PositionHoverTower();
     }
 
-    void InitializeTowers()
-    {
-        //switch (flagManager.currentMode)
-        //{
-        //    case FlagManager.CurrentMode.ballista:
-        //        InitTower(ballistaHoverPrefab, ballistaNPHoverPrefab, ballistaPrefab, moneySystem.ballistaCost);
 
-        //        break;
-        //    case FlagManager.CurrentMode.blaster:
-        //        InitTower(blasterHoverPrefab, blasterNPHoverPrefab, blasterPrefab, moneySystem.blasterCost);
-        //        break;
-        //    case FlagManager.CurrentMode.cannon:
-        //        InitTower(cannonHoverPrefab, cannonNPHoverPrefab, cannonPrefab, moneySystem.cannonCost);
-        //        break;
-        //    default:
-        //        DestroyTowers();
-        //        break;
-        //}
-    }
-
-    void Anan(Data data, Button button)
+    void CreateTower(Button button)
     {
         try
         {
-            DataTower dataTower = (DataTower)data;
-            InitTower(dataTower.towerHoverPrefab, dataTower.towerNPHoverPrefab, data.objectPrefab, data.cost);
-            currentTowerData = data;
+            DataTower dataTower = (DataTower)button.GetComponent<ButtonColorChanger>().data;
+            InitTower(dataTower.towerHoverPrefab, dataTower.towerNPHoverPrefab, dataTower.objectPrefab, dataTower.objectCost_MoneyDrop);
+            currentTowerData = dataTower;
         }
         catch (System.Exception)
         {
@@ -169,7 +147,7 @@ public class TowerPlacementManager : MonoBehaviour
             instantiatedTower.SetActive(true);
             info = false;
             //moneySystem.DecreaseMoney(currentTowerMoneyCost);
-            EventManager.OnTowerPlaced(currentTowerData);
+            EventManager.OnTowerPlaced(instantiatedTower);
             moneySystem.UpdateMoneyDisplay();
 
             instantiatedTower = Instantiate(instantiatedTower, Input.mousePosition, Quaternion.identity);

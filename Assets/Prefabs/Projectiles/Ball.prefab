@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1810832063217314007}
   - component: {fileID: 8037466969375140845}
   - component: {fileID: -519447169302394304}
-  - component: {fileID: 2184325683007500938}
+  - component: {fileID: -3186316017722219726}
   m_Layer: 2
   m_Name: Ball
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2184325683007500938
+--- !u!114 &-3186316017722219726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +143,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2215042161897283401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 421343ecfa303ef4da7d621234a5c9fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4de753bcaf01bf24fbe55a57b2228bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: 39e02614a59a59145a506f634ea26431, type: 2}
   target: {fileID: 0}
+  bombRadius: 50
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
