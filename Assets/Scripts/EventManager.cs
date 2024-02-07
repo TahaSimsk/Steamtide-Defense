@@ -27,12 +27,21 @@ public static class EventManager
     public static void OnMoneyDecreased(float money) => onMoneyDecreased?.Invoke(money);
 
 
-    public static event Action <GameObject> onEnemyDeath;
+    public static event Action<GameObject> onEnemyDeath;
     public static void OnEnemyDeath(GameObject enemy) => onEnemyDeath?.Invoke(enemy);
 
 
     public static event Action<GameObject> onTowerPlaced;
     public static void OnTowerPlaced(GameObject tower) => onTowerPlaced?.Invoke(tower);
+
+    public static event Action<GameObject> onDemolished;
+    public static void OnDemolished(GameObject demolish) => onDemolished?.Invoke(demolish);
+
+    public static event Action<int> onWaveStart;
+    public static void OnWaveStart(int enemies) => onWaveStart?.Invoke(enemies);
+
+    public static event Action<float> onWaveEnd;
+    public static void OnWaveEnd(float timer) => onWaveEnd?.Invoke(timer);
 
     //public static void Subscribe<T>(Action<T> handler)
     //{

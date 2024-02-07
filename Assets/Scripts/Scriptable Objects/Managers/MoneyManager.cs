@@ -30,12 +30,10 @@ public class MoneyManager : ScriptableObject
     {
         money = startingBalance;
         EventManager.onEnemyDeath += AddMoney;
-        EventManager.onTowerPlaced += DecreaseMoney;
     }
     private void OnDisable()
     {
         EventManager.onEnemyDeath -= AddMoney;
-        EventManager.onTowerPlaced -= DecreaseMoney;
     }
 
 
@@ -51,13 +49,7 @@ public class MoneyManager : ScriptableObject
         }
     }
 
-    public void AddMoney(float amount)
-    {
-        //money += amount;
-        //EventManager.OnMoneyChanged();
-    }
-
-    //this is used for enemy death, gets the data from the died enemy and gets the cost, ignore gameobject
+    
     public void AddMoney(GameObject enemy)
     {
         money += enemy.GetComponent<EnemyHealth>().enemyData.objectCost_MoneyDrop;
@@ -65,17 +57,11 @@ public class MoneyManager : ScriptableObject
         EventManager.OnMoneyIncreased(money);
     }
 
-    public void DecreaseMoney(float amount)
+    
+    
+   public void DecreaseMoney(float amount)
     {
         money -= amount;
-        EventManager.OnMoneyChanged();
-        EventManager.OnMoneyDecreased(money);
-    }
-
-    //this is used for tower placement, gets the data from last placed tower and gets the cost
-    void DecreaseMoney(GameObject gameObject)
-    {
-        money -= gameObject.GetComponent<Tower>().towerData.objectCost_MoneyDrop;
         EventManager.OnMoneyChanged();
         EventManager.OnMoneyDecreased(this.money);
     }

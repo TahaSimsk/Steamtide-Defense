@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DataTower", menuName = "DataTower")]
+[CreateAssetMenu(fileName = "DataTower", menuName = "Data/DataTower")]
 public class DataTower : Data
 {
-    
+
+
+
     [Header("Weapon Prefabs")]
     public GameObject towerHoverPrefab;
     public GameObject towerNPHoverPrefab;
@@ -15,4 +17,11 @@ public class DataTower : Data
     public float weaponRotationSpeed;
     public float weaponRange;
 
+    [Header("Upgrade Attributes")]
+    public float upgradedShootingDelay;
+    public float upgradedWeaponRotationSpeed;
+    public float upgradedWeaponRange;
+    public float upgradeCost;
+
+   
 }

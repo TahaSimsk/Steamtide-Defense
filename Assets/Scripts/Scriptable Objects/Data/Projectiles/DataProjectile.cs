@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DataProjectile", menuName = "DataProjectile")]
+[CreateAssetMenu(fileName = "DataProjectile", menuName = "Data/DataProjectile")]
 public class DataProjectile : Data
 {
 

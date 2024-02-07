@@ -45,9 +45,7 @@ public class EnemyWaveController : MonoBehaviour
                 currentWave++;
 
                 GetTotalEnemiesInCurrentWave(wave.enemyCount);
-                uiManager.UpdateRemainingEnemiesText(true);
-                uiManager.UpdateWaveText(currentWave);
-
+                EventManager.OnWaveStart(numOfTotalEnemies);
 
                 //loop through enemy types in the wave
                 for (int i = 0; i < wave.enemyCount.Count; i++)
@@ -96,6 +94,7 @@ public class EnemyWaveController : MonoBehaviour
                 }
                 enemiesInWave.Clear();
 
+                EventManager.OnWaveEnd(timeBetweenEnemyWaves);
 
                 //next wave countdown
                 uiManager.GetNextWaveTimer(true, timeBetweenEnemyWaves);

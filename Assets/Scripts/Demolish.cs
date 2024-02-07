@@ -1,44 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class Demolish : MonoBehaviour
-{
-    [SerializeField] MoneyManager moneyManager;
-    [SerializeField] GameObject newTile;
-    [SerializeField] Texture2D demolishCursor;
-    [SerializeField] float timeToDestroy;
+//public class Demolish : MonoBehaviour
+//{
+//    [SerializeField] MoneyManager moneyManager;
+//    [SerializeField] GameObject newTile;
+//    [SerializeField] Texture2D demolishCursor;
+//    [SerializeField] float timeToDestroy;
 
-    float moneyCost;
+//    float moneyCost;
 
-    private void OnMouseOver()
-    {
+//    private void OnMouseOver()
+//    {
         
-    }
+//    }
 
-    private void OnMouseExit()
-    {
+//    private void OnMouseExit()
+//    {
         
-    }
+//    }
 
-    void SetCursor()
-    {
+//    void SetCursor()
+//    {
 
-    }
+//    }
 
-    void DemolishObject()
-    {
+//    void DemolishObject()
+//    {
        
-        if (Input.GetMouseButtonDown(0)&&moneyManager.IsPlaceable(moneyCost))
-        {
-            Destroy(gameObject, timeToDestroy);
-        }
-    }
+//        if (Input.GetMouseButtonDown(0)&&moneyManager.IsPlaceable(moneyCost))
+//        {
+//            Destroy(gameObject, timeToDestroy);
+//        }
+//    }
 
-    void SpawnNewTile()
-    {
+//    void SpawnNewTile()
+//    {
 
-    }
+//    }
 
    
-}
+//}

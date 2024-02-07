@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: objectType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8481792728857842759, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: dataDemolish
+      value: 
+      objectReference: {fileID: 11400000, guid: 3db9c7d07e0bc3c4d9b70e2e4c7f5d8a, type: 2}
     - target: {fileID: 9076835026581017570, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
       propertyPath: m_Name
       value: tile_treeDouble

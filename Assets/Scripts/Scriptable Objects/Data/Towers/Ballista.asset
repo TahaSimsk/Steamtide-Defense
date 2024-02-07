@@ -22,4 +22,8 @@ MonoBehaviour:
   towerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
   shootingDelay: 0.1
   weaponRotationSpeed: 5
-  weaponRange: 100
+  weaponRange: 2
+  upgradedShootingDelay: 0
+  upgradedWeaponRotationSpeed: 0
+  upgradedWeaponRange: 0
+  upgradeCost: 0

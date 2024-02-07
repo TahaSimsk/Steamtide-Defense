@@ -26,7 +26,7 @@ public class Data : ScriptableObject
     [HideInInspector]
     public List<GameObject> objList = new List<GameObject>();
 
-
+    
 
     private void OnValidate()
     {

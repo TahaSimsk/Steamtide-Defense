@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] SphereCollider targetScanner;
+    [SerializeField] GameObject targetScanner;
     [SerializeField] Transform projectilePos;
     public DataTower towerData;
     [SerializeField] DataProjectile projectileData;
@@ -20,7 +20,7 @@ public class Tower : MonoBehaviour
 
     public List<GameObject> enemies = new List<GameObject>();
 
-
+    MeshRenderer targetScannerMesh;
 
     float timer;
     private void OnEnable()
@@ -36,8 +36,11 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         objectPool = FindObjectOfType<ObjectPool>();
-        //targetScanner.radius = weaponRange;
+        targetScanner.transform.localScale = new Vector3(towerData.weaponRange, 0.1f, towerData.weaponRange);
+        targetScannerMesh = targetScanner.GetComponent<MeshRenderer>();
+
     }
+
 
     private void Update()
     {
@@ -66,7 +69,7 @@ public class Tower : MonoBehaviour
 
         //GameObject pooledProjectile = objectPool.GetObjectFromPool(projectileData.hashCode);
 
-        GameObject pooledProjectile= null;
+        GameObject pooledProjectile = null;
         foreach (var obj in projectileData.objList)
         {
             if (!obj.activeInHierarchy)
@@ -75,7 +78,7 @@ public class Tower : MonoBehaviour
                 goto Found;
             }
         }
-        Found:
+    Found:
         pooledProjectile.GetComponent<Projectile>().target = enemies[0].transform;
 
         pooledProjectile.transform.position = projectilePos.position;
@@ -98,8 +101,17 @@ public class Tower : MonoBehaviour
 
     }
 
+    private void OnMouseEnter()
+    {
+        targetScannerMesh.enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        targetScannerMesh.enabled = false;
+    }
 
-    
+
+
     //this method is used to remove enemy when an enemy dies based off an event
     public void RemoveEnemy(EnemyHealth enemyHealth)
     {

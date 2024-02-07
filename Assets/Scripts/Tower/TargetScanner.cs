@@ -10,13 +10,14 @@ public class TargetScanner : MonoBehaviour
     private void Awake()
     {
         tower = GetComponentInParent<Tower>();
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            
+
             tower.AddEnemy(other.gameObject);
         }
     }
@@ -24,10 +25,10 @@ public class TargetScanner : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            
+
             tower.RemoveEnemy(other.gameObject);
 
         }
     }
-
+        
 }

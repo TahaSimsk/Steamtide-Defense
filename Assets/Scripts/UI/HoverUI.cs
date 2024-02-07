@@ -8,19 +8,19 @@ using UnityEngine.EventSystems;
 public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
-    FlagManager flagManager;
+    GameStateManager gameStateManager;
 
 
     private void Start()
     {
-        flagManager = FindObjectOfType<FlagManager>();
+        gameStateManager = FindObjectOfType<GameStateManager>();
     }
 
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        flagManager.hoverMode = true;
+        gameStateManager.isHoveringUI = true;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -31,7 +31,7 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        flagManager.hoverMode = false;
+        gameStateManager.isHoveringUI = false;
     }
 
 

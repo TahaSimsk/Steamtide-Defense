@@ -205,8 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22390b669feb5644a7772050f1257ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 0
-  moneyCost: 50
+  dataDemolish: {fileID: 11400000, guid: e4a2513cd9d1e2a47aac189cb79a3bed, type: 2}
 --- !u!114 &-9198891013241488179
 MonoBehaviour:
   m_ObjectHideFlags: 0
