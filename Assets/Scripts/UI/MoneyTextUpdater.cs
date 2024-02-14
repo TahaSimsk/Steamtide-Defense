@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MoneyTextUpdater : MonoBehaviour
 {
+    [SerializeField] GameEvent0ParamSO onMoneyChanged;
     [SerializeField] MoneyManager moneyManager;
     TextMeshProUGUI moneyText;
 
@@ -20,11 +21,11 @@ public class MoneyTextUpdater : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onMoneyChanged += UpdateMoneyText;
+        onMoneyChanged.onEventRaised += UpdateMoneyText;
     }
     private void OnDisable()
     {
-        EventManager.onMoneyChanged -= UpdateMoneyText;
+        onMoneyChanged.onEventRaised -= UpdateMoneyText;
     }
 
     void UpdateMoneyText()

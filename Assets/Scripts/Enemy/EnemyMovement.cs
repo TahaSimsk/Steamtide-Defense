@@ -4,45 +4,36 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    public float defaultMoveSpeed;
-    [HideInInspector]
-    public float currentMoveSpeed;
+    [SerializeField] GameEvent1ParamSO onEnemyReachEndOfPath;
 
     [SerializeField] Vector3 offsetY;
 
+    float currentMoveSpeed, defaultMoveSpeed;
+
     List<GameObject> path = new List<GameObject>();
 
-    UIManager uiManager;
 
-    Transform pathParent;
-
-    public bool reachedEnd;
 
     private void Awake()
     {
         GetPathFromParent();
-        SnapEnemyToStart();
-    }
-    void Start()
-    {
-        uiManager = FindObjectOfType<UIManager>();
+        GameData enemyData = GetComponent<EnemyHealth>().enemyData;
+        defaultMoveSpeed = ((IEnemy)enemyData).DefaultMoveSpeed;
 
     }
+
 
     private void OnEnable()
     {
-
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath());
-        reachedEnd = false;
         currentMoveSpeed = defaultMoveSpeed;
     }
 
 
     void GetPathFromParent()
     {
-        pathParent = GameObject.FindWithTag("Path").transform;
+        Transform pathParent = GameObject.FindWithTag("Path").transform;
         foreach (Transform child in pathParent)
         {
             path.Add(child.gameObject);
@@ -52,7 +43,6 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
-
     }
 
 
@@ -68,12 +58,11 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         //reaching at the end of the path
-        uiManager.UpdateRemainingEnemiesText(false);
-        reachedEnd = true;
+        onEnemyReachEndOfPath.RaiseEvent(gameObject);
         gameObject.SetActive(false);
     }
 
-    public void ChangeMoveSpeed(float value)
+    public void DecreaseMoveSpeedByPercentage(float value)
     {
         currentMoveSpeed = defaultMoveSpeed - currentMoveSpeed * value / 100;
     }

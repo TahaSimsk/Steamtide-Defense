@@ -7,30 +7,41 @@ using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
-public class Data : ScriptableObject
+public abstract class Data : ScriptableObject
 {
+   
+    [Header("General Data Attributes")]
     public string objectName;
 
     public int hashCode;
 
-    [Header("Object Prefab")]
     public GameObject objectPrefab;
 
-    [Header("ObjectPooling")]
     public int objectPrefabPoolSize;
 
-    [Header("Cost/Money Drop of Object")]
     public float objectCost_MoneyDrop;
-
 
     [HideInInspector]
     public List<GameObject> objList = new List<GameObject>();
 
-    
+
 
     private void OnValidate()
     {
         hashCode = objectName.GetHashCode();
+    }
+
+    public GameObject GetObject()
+    {
+        foreach (var obj in objList)
+        {
+            if (!obj.activeInHierarchy)
+            {
+                return obj;
+
+            }
+        }
+        return null;
     }
 
 }

@@ -638,8 +638,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 0.74259394, z: 0.99999994}
-  m_Center: {x: 0, y: 0.37129697, z: 0}
+  m_Size: {x: 0.99999994, y: 1.400099, z: 0.99999994}
+  m_Center: {x: 0, y: 0.7000495, z: 0}
 --- !u!114 &-1657351866273898095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,14 +652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de6abadc0ca58d4c8241cbf5b715bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 1a597ac6d730fb745a0818c4c6d63849, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
+  enemyData: {fileID: 11400000, guid: bad273895000ba04c95a01931967b7d1, type: 2}
   highlightPrefab: {fileID: 2413693588462173097}
   healthBar: {fileID: 8556261857502220296}
-  moneyDrop: 15
-  baseMaxHealth: 150
   maxHealth: 150
-  enemyId: 2
-  isDead: 0
 --- !u!114 &3689899516714673848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,10 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21113a2478126408f14a786b20cc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMoveSpeed: 10
-  currentMoveSpeed: 0
+  onEnemyReachEndOfPath: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
   offsetY: {x: 0, y: 1.5, z: 0}
-  reachedEnd: 0
 --- !u!54 &-4332535907787329609
 Rigidbody:
   m_ObjectHideFlags: 0

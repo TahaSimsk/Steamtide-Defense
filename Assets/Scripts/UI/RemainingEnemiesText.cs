@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class RemainingEnemiesText : MonoBehaviour
 {
+    [SerializeField] GameEvent1ParamSO onEnemyDeath;
+    [SerializeField] GameEvent1ParamSO onWaveStart;
+    [SerializeField] GameEvent1ParamSO onEnemyReachedEndOfPath;
+
     TextMeshProUGUI myText;
 
     int numOfTotalEnemies;
@@ -15,26 +19,33 @@ public class RemainingEnemiesText : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.onEnemyDeath += UpdateRemainingEnemiesText;
-        EventManager.onWaveStart += GetTotalEnemies;
-
+        onEnemyDeath.onEventRaised += DecreaseEnemiesByOneAndUpdateText;
+        onWaveStart.onEventRaised += GetTotalEnemiesAndUpdateText;
+        onEnemyReachedEndOfPath.onEventRaised += DecreaseEnemiesByOneAndUpdateText;
     }
 
     private void OnDisable()
     {
-        EventManager.onEnemyDeath -= UpdateRemainingEnemiesText;
-        EventManager.onWaveStart += GetTotalEnemies;
+        onEnemyDeath.onEventRaised -= DecreaseEnemiesByOneAndUpdateText;
+        onWaveStart.onEventRaised -= GetTotalEnemiesAndUpdateText;
+        onEnemyReachedEndOfPath.onEventRaised -= DecreaseEnemiesByOneAndUpdateText;
     }
 
-    void UpdateRemainingEnemiesText(GameObject gameObject)
+    void DecreaseEnemiesByOneAndUpdateText(object gameObject)
     {
-        numOfTotalEnemies--;
-        myText.text = "Enemies: " + numOfTotalEnemies;
+        if (gameObject is GameObject)
+        {
+            numOfTotalEnemies--;
+            myText.text = "Enemies: " + numOfTotalEnemies;
+        }
     }
 
-    void GetTotalEnemies(int enemies)
+    void GetTotalEnemiesAndUpdateText(object amount)
     {
-        numOfTotalEnemies = enemies;
-        myText.text = "Enemies: " + numOfTotalEnemies;
+        if (amount is int)
+        {
+            numOfTotalEnemies = (int)amount;
+            myText.text = "Enemies: " + numOfTotalEnemies;
+        }
     }
 }

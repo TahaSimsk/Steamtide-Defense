@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WaveCounterText : MonoBehaviour
 {
+    [SerializeField] GameEvent1ParamSO onWaveStart;
     TextMeshProUGUI myText;
     int currentWave;
 
@@ -15,14 +16,14 @@ public class WaveCounterText : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onWaveStart += UpdateWave;
+        onWaveStart.onEventRaised += UpdateWave;
     }
     private void OnDisable()
     {
-        EventManager.onWaveStart -= UpdateWave;
+        onWaveStart.onEventRaised -= UpdateWave;
     }
 
-    void UpdateWave(int num)
+    void UpdateWave(object num)
     {
         currentWave++;
         myText.text = "Wave: " + currentWave;

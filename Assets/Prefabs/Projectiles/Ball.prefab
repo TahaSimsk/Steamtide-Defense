@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de753bcaf01bf24fbe55a57b2228bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 39e02614a59a59145a506f634ea26431, type: 2}
+  projectileData: {fileID: 11400000, guid: 9a75892112153a64fbad2239382ede8f, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
   target: {fileID: 0}
   bombRadius: 50
   enemyLayer:

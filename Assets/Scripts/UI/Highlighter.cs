@@ -5,18 +5,19 @@ using static UIManager;
 
 public class Highlighter : MonoBehaviour
 {
+    [SerializeField] GameEvent0ParamSO onESCPressed;
     [SerializeField] string hightlightedObjectTag;
 
     public List<Transform> hightlightedObjects = new List<Transform>();
 
     private void OnEnable()
     {
-        EventManager.onESCPressed += ClearSelected;
+        onESCPressed.onEventRaised += ClearSelected;
 
     }
     private void OnDisable()
     {
-        EventManager.onESCPressed -= ClearSelected;
+        onESCPressed.onEventRaised -= ClearSelected;
     }
 
     //void Update()

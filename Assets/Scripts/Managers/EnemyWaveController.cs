@@ -5,22 +5,25 @@ using UnityEngine;
 
 public class EnemyWaveController : MonoBehaviour
 {
+    [Header("Events")]
+    [SerializeField] GameEvent1ParamSO onWaveStart;
+    [SerializeField] GameEvent1ParamSO onWaveEnd;
+
+    [Header("Required Components")]
     [SerializeField] TextMeshProUGUI waveText;
 
+    [Header("Attributes")]
     [SerializeField] float timeBetweenEnemySpawns;
     [SerializeField] float timeBetweenEnemyWaves;
-
-    [SerializeField] List<Waves> waves = new List<Waves>();
-
     [SerializeField] bool setEnemyHealthManually;
     [SerializeField] bool enemyHealthDifficulty;
     [SerializeField][Range(1, 3)] float enemyHealthDifficultyMultiplier;
 
-    ObjectPool objectPool;
-    UIManager uiManager;
+    [Header("Waves")]
+    [SerializeField] List<Waves> waves = new List<Waves>();
+
     List<GameObject> enemiesInWave = new List<GameObject>();
 
-    int currentWave;
     public int numOfTotalEnemies;
 
     float difficulty = 1f;
@@ -29,8 +32,6 @@ public class EnemyWaveController : MonoBehaviour
 
     void Start()
     {
-        objectPool = FindObjectOfType<ObjectPool>();
-        uiManager = FindObjectOfType<UIManager>();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -42,17 +43,15 @@ public class EnemyWaveController : MonoBehaviour
             //start the wave
             foreach (var wave in waves)
             {
-                currentWave++;
 
                 GetTotalEnemiesInCurrentWave(wave.enemyCount);
-                EventManager.OnWaveStart(numOfTotalEnemies);
-
+                onWaveStart.RaiseEvent(numOfTotalEnemies);
+                numOfTotalEnemies = 0;
                 //loop through enemy types in the wave
                 for (int i = 0; i < wave.enemyCount.Count; i++)
                 {
                     int enemyCount = wave.enemyCount[i];
-                    int hashCode = wave.enemies[i].GetComponent<EnemyHealth>().enemyData.hashCode;
-                    Data enemyData= wave.enemies[i].GetComponent<EnemyHealth>().enemyData;
+                    IPoolable enemyData = (IPoolable)(wave.enemies[i].GetComponent<EnemyHealth>().enemyData);
 
                     if (setEnemyHealthManually && (wave.enemyHealth != null || wave.enemyHealth[i] != Mathf.Epsilon))
                     {
@@ -65,15 +64,8 @@ public class EnemyWaveController : MonoBehaviour
                         //GameObject pooledEnemy = objectPool.GetObjectFromPool(hashCode);
                         GameObject pooledEnemy = null;
 
-                        foreach (var obj in enemyData.objList)
-                        {
-                            if (!obj.activeInHierarchy)
-                            {
-                                pooledEnemy = obj;
-                                goto Found;
-                            }
-                        }
-                        Found:
+                        pooledEnemy = enemyData.GetObject();
+
                         enemiesInWave.Add(pooledEnemy);
 
                         SetHealthDifficulty(pooledEnemy);
@@ -94,10 +86,9 @@ public class EnemyWaveController : MonoBehaviour
                 }
                 enemiesInWave.Clear();
 
-                EventManager.OnWaveEnd(timeBetweenEnemyWaves);
+                onWaveEnd.RaiseEvent(timeBetweenEnemyWaves);
 
-                //next wave countdown
-                uiManager.GetNextWaveTimer(true, timeBetweenEnemyWaves);
+
                 yield return new WaitForSeconds(timeBetweenEnemyWaves);
 
                 IncreaseDifficultyForNextWave();

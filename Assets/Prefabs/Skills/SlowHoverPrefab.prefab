@@ -119,7 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220ea857b9238ba4d95c0889a8775f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onESCPressed: {fileID: 11400000, guid: 48703f90863942444bbf14ffaa0a3e8a, type: 2}
   hightlightedObjectTag: Path2
+  hightlightedObjects: []
 --- !u!54 &545198252331902142
 Rigidbody:
   m_ObjectHideFlags: 0

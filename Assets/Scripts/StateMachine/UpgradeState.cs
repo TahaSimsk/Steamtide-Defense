@@ -5,7 +5,6 @@ using UnityEngine;
 public class UpgradeState : BaseState
 {
     GameStateManager gameStateManager;
-    MoneySystem moneySystem;
     TooltipManager tooltipManager;
     CursorManager cursorManager;
     public override void EnterState(GameStateManager gameStateManager)

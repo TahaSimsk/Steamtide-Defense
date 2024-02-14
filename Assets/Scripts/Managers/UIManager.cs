@@ -8,33 +8,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Wave Related Text UI")]
-    [SerializeField] TextMeshProUGUI waveText;
-    [SerializeField] TextMeshProUGUI remainingEnemiesText;
-    [SerializeField] TextMeshProUGUI nextWaveCountdownText;
-
-
-    EnemyWaveController waveController;
-
-
-    //------------------ COUNTDOWN ------------------
-    bool startCountdownForNextWave;
-    float timerForNextWave;
-
-  
-
-    private void Awake()
-    {
-        waveController = FindObjectOfType<EnemyWaveController>();
-
-    }
-
-
+    [Header("Events")]
+    [SerializeField] GameEvent0ParamSO onESCPressed;
+   
     void Update()
     {
         HandleESCPressed();
-
-        StartNextWaveCountdown();
     }
 
 
@@ -42,64 +21,8 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ClearMode();
+            onESCPressed.RaiseEvent();
         }
-    }
-
-    public void ClearMode()
-    {
-        EventManager.OnESCPressed();
-    }
-
-
-
-    void StartNextWaveCountdown()
-    {
-        if (startCountdownForNextWave)
-        {
-            nextWaveCountdownText.enabled = true;
-            if (timerForNextWave > 1)
-            {
-                timerForNextWave -= Time.deltaTime;
-                nextWaveCountdownText.text = "Next Wave Starts In: " + Mathf.FloorToInt(timerForNextWave);
-            }
-            else
-            {
-                startCountdownForNextWave = false;
-            }
-        }
-        else
-        {
-            nextWaveCountdownText.enabled = false;
-        }
-
-
-    }
-
-
-
-
-    public void UpdateWaveText(int currentWave)
-    {
-        waveText.text = "Wave: " + currentWave;
-    }
-
-    public void UpdateRemainingEnemiesText(bool onlyUpdateText)
-    {
-        if (!onlyUpdateText)
-        {
-            waveController.numOfTotalEnemies--;
-        }
-
-        remainingEnemiesText.text = "Enemies: " + waveController.numOfTotalEnemies;
-
-    }
-
-
-    public void GetNextWaveTimer(bool shouldCount, float timer)
-    {
-        startCountdownForNextWave = shouldCount;
-        timerForNextWave = timer;
     }
 
 }

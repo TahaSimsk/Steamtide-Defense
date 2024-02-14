@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac052319202bd84e83c01f39c52012e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: b00d7d6af4ce88b43852915774639470, type: 2}
+  projectileData: {fileID: 11400000, guid: 64cb938b7b2bf554581527c23953b4f9, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
   target: {fileID: 0}
 --- !u!1 &7051311785923278693
 GameObject:

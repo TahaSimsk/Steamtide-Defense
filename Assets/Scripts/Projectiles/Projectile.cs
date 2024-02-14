@@ -5,85 +5,43 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] protected DataProjectile projectileData;
-
-
+    protected IProjectile projectileData;
+    public GameEvent1ParamSO onEnemyDeath;
     public Transform target;
     bool initiated = false;
 
-   protected bool hitEnemy;
+    protected Vector3 targetPos;
 
     private void OnEnable()
     {
         if (!initiated) return;
-
-        EventManager.onEnemyDeath += CompareEnemy;
-        StartCoroutine(MoveToTargetAndHandleCollision());
+        onEnemyDeath.onEventRaised += CompareEnemy;
     }
 
     private void OnDisable()
     {
-        EventManager.onEnemyDeath -= CompareEnemy;
+        onEnemyDeath.onEventRaised -= CompareEnemy;
         initiated = true;
-        hitEnemy = false;
     }
 
-    IEnumerator MoveToTargetAndHandleCollision()
+    protected virtual void Update()
     {
-        /*
-         * when this projectile gets activated it stores the position of the target's once
-         */
-        Vector3 targetPosition = target.position;
-
-        while (true)
-        {
-            /*
-             * then projectile moves to target's position not its transform
-             */
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, projectileData.projectileSpeed * Time.deltaTime);
-
-
-            /*
-             * projectile sets its rotation to face target
-             */
-            transform.LookAt(targetPosition);
-
-            /*
-             * checks to see if target is not null, because while traveling to the target, it may get deactivated by another projectile. 
-             * If it happens we dont want projectile to travel to its current position, we want projectile to travel to it's last known position.
-             */
-            if (target != null)
-            {
-                targetPosition = target.position;
-            }
-
-            yield return null;
-
-            /*
-             * Distance calculation to check whether projectile touches target, if it does while loop gets terminated
-             */
-            if ((transform.position - targetPosition).sqrMagnitude < 1f)
-            {
-                //projectile hit the target
-                break;
-            }
-
-            /*
-             * if projectile hits an enemy, stop moving the projectile and terminate while loop
-             */
-            if (hitEnemy)
-            {
-                break;
-            }
-        }
-
-        /*
-         * this line execudes after the while loop so it means we hit the target and while loop is terminated
-         */
-
-
-        transform.gameObject.SetActive(false);
+        MoveToTarget();
     }
+
+    protected virtual void MoveToTarget()
+    {
+        if (target != null)
+        {
+            targetPos = target.position;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileData.ProjectileSpeed * Time.deltaTime);
+        if ((gameObject.transform.position - targetPos).sqrMagnitude < 0.1f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
 
     /*
      * if projectile hits an enemy, damage it and set hitEnemy to true to stop movement of projectile, terminate while loop and therefore deactivate projectile.
@@ -91,11 +49,10 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
+        if (other.CompareTag("Enemy"))
         {
-            enemyHealth.ReduceHealth(projectileData.projectileDamage);
-            hitEnemy = true;
+            other.GetComponent<EnemyHealth>().ReduceHealth(projectileData.ProjectileDamage);
+            gameObject.SetActive(false);
         }
     }
 
@@ -104,16 +61,24 @@ public class Projectile : MonoBehaviour
      * this is done with EnemyHealth script that is attached to enemies and invokes OnEnemyDeath delegate when it dies.
      * if the dead enemy is our current target we are setting the target to null because we dont want this projectile to follow it to strange places
      */
-    void CompareEnemy(GameObject enemy)
+    void CompareEnemy(object enemy)
     {
-        Debug.Log("Compared enemy");
-        if (target == null) return;
-
-        if (enemy == target.gameObject)
+        if (enemy is GameObject)
         {
-            target = null;
-            Debug.Log("Target is the same, removed");
+            if (target == null) return;
+
+            if ((GameObject)enemy == target.gameObject)
+            {
+                target = null;
+            }
         }
+
     }
+
+    public void SetProjectile(IProjectile projectile)
+    {
+        projectileData = projectile;
+    }
+
 }
 

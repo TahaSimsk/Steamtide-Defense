@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64551c32a7875314e9a87eded9277c45, type: 3}
+  m_Name: CursorManager
+  m_EditorClassIdentifier: 
+  upgradeCursorTexture: {fileID: 2800000, guid: 73436a1b2ed21414dba766bd67cf8600, type: 3}
+  demolishCursorTexture: {fileID: 2800000, guid: bd07cfd77024d42459c1bb5bb8e21282, type: 3}
+  hotSpot: {x: 50, y: 0}

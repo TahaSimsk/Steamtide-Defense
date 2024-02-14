@@ -18,11 +18,13 @@ MonoBehaviour:
   objectPrefabPoolSize: 0
   objectCost_MoneyDrop: 50
   objList: []
+  equippedProjectile: {fileID: 11400000, guid: 312c198e99e8f874e96814e0de9abdb9, type: 2}
   towerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
   towerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
-  shootingDelay: 0.1
-  weaponRotationSpeed: 5
+  shootingDelay: 0.5
+  weaponRotationSpeed: 10
   weaponRange: 2
+  baseMaxHealth: 100
   upgradedShootingDelay: 0
   upgradedWeaponRotationSpeed: 0
   upgradedWeaponRange: 0

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CancelButton : MonoBehaviour
 {
+    [SerializeField] GameEvent1ParamSO onButtonPressed;
+    [SerializeField] GameEvent0ParamSO onESCPressed;
     Button button;
 
     private void Awake()
@@ -17,31 +19,35 @@ public class CancelButton : MonoBehaviour
     private void OnEnable()
     {
         button.onClick.AddListener(InvokeCancelEvent);
-        EventManager.onButtonPressed += ShowButton;
-        EventManager.onESCPressed += DisableButton;
+        onButtonPressed.onEventRaised += ShowButton;
+        onESCPressed.onEventRaised += DisableButton;
     }
     private void OnDisable()
     {
         button.onClick.RemoveListener(InvokeCancelEvent);
-        EventManager.onButtonPressed -= ShowButton;
-        EventManager.onESCPressed -= DisableButton;
+        onButtonPressed.onEventRaised -= ShowButton;
+        onESCPressed.onEventRaised -= DisableButton;
     }
-    void ShowButton(Button button)
+    void ShowButton(object button)
     {
-        if (this.button.interactable == false)
+        if (button is Button)
         {
-            this.button.interactable = true;
-           this.button.image.enabled = true;
 
-            foreach (Transform child in transform)
-                child.gameObject.SetActive(true);
+            if (this.button.interactable == false)
+            {
+                this.button.interactable = true;
+                this.button.image.enabled = true;
 
+                foreach (Transform child in transform)
+                    child.gameObject.SetActive(true);
+
+            }
         }
     }
 
     void InvokeCancelEvent()
     {
-        EventManager.OnESCPressed();
+        onESCPressed.RaiseEvent();
     }
 
     void DisableButton()

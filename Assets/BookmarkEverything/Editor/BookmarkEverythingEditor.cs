@@ -622,7 +622,9 @@ namespace BookmarkEverything
         {
             if (iconName != null || iconName != "")
             {
+#pragma warning disable IDE0017 // Nesne başlatmayı kolaylaştır
                 GUIContent c = new GUIContent(EditorGUIUtility.IconContent(iconName));
+#pragma warning restore IDE0017 // Nesne başlatmayı kolaylaştır
                 c.text = name;
                 c.tooltip = tooltip;
                 return c;
@@ -1061,7 +1063,9 @@ namespace BookmarkEverything
            
         }
 
+#pragma warning disable CS0114 // Üye devralınmış üyeyi gizler; geçersiz kılma anahtar sözcüğü eksik
         private void SaveChanges()
+#pragma warning restore CS0114 // Üye devralınmış üyeyi gizler; geçersiz kılma anahtar sözcüğü eksik
         {
             _currentSettings.EntryData.Clear();
             _currentSettings.EntryData.AddRange(EntryData.Clone(_tempLocations.ToArray()));

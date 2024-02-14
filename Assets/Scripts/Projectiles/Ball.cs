@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Ball : Projectile
 {
-    [SerializeField] float bombRadius;
-    [SerializeField] LayerMask enemyLayer;
+    
     protected override void OnTriggerEnter(Collider other)
     {
-        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
+        if (other.CompareTag("Enemy"))
         {
-            Collider[] enemies = Physics.OverlapSphere(transform.position, bombRadius, enemyLayer);
+            Collider[] enemies = Physics.OverlapSphere(transform.position, ((DataBall)projectileData).bombRadius, ((DataBall)projectileData).enemyLayer);
             foreach (var enemy in enemies)
             {
-                enemy.GetComponent<EnemyHealth>().ReduceHealth(projectileData.projectileDamage);
-                hitEnemy = true;
+                enemy.GetComponent<EnemyHealth>().ReduceHealth(projectileData.ProjectileDamage);
+                gameObject.SetActive(false);
             }
         }
     }

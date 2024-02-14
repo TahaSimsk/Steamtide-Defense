@@ -61,7 +61,7 @@ public class DemolishState : BaseState
                     //decrease and update money
                     moneyManager.DecreaseMoney(moneyCost);
 
-                    EventManager.OnDemolished(hit.transform.gameObject);
+                    gameStateManager.onDemolished.RaiseEvent(hit.transform.gameObject);
 
                     //instantiate normal tile. can instantiate different tiles. just need to specify them in the demolishInfo script and get the tile from there.
                     Object.Instantiate(gameStateManager.tile, hit.transform.position, Quaternion.identity);

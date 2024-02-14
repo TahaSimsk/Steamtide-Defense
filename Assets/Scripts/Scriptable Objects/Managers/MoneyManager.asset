@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356a3808e1f14e44cbf4761b94703a7c, type: 3}
   m_Name: MoneyManager
   m_EditorClassIdentifier: 
+  onTowerPlaced: {fileID: 11400000, guid: da3c09bfd5cc47447ac080db864640ac, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
+  onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   ballistaCost: 50
   blasterCost: 100
   cannonCost: 150
@@ -20,5 +23,5 @@ MonoBehaviour:
   oneTreeDemolishCost: 50
   doubleTreeDemolishCost: 100
   quadTreeDemolishCost: 150
-  startingBalance: 300
-  money: 300
+  startingBalance: 100000
+  money: 98560

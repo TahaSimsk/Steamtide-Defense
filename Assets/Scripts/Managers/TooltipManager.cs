@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class TooltipManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI upgradeCostText;
+    [SerializeField] TextMeshProUGUI tooltipText;
 
     RectTransform tooltip;
 
   
     private void Start()
     {
-        tooltip = upgradeCostText.transform.parent.GetComponent<RectTransform>();
+        tooltip = tooltipText.transform.parent.GetComponent<RectTransform>();
     }
 
     public void ShowTip(string text, Vector3 pos, bool isPlaceable)
     {
-
-
         tooltip.gameObject.SetActive(true);
 
         Vector2 position = pos;
@@ -29,7 +27,7 @@ public class TooltipManager : MonoBehaviour
         float finalPivotY = 0f;
 
 
-        if (pivotX < 0.5) //If mouse on left of screen move tooltip to right of cursor and vice vera
+        if (pivotX < 0.5) //If mouse on left of screen move tooltip to right of cursor and vice versa
         {
             finalPivotX = -0.1f;
         }
@@ -56,7 +54,7 @@ public class TooltipManager : MonoBehaviour
         tooltip.pivot = new Vector2(finalPivotX, finalPivotY);
         tooltip.position = position;
 
-        upgradeCostText.text = text;
+        tooltipText.text = text;
 
         if (isPlaceable)
         {

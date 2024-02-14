@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NextWaveTimerText : MonoBehaviour
 {
+    [SerializeField] GameEvent1ParamSO onWaveEnd;
     TextMeshProUGUI myText;
     float countdown;
     private void Awake()
@@ -15,34 +16,38 @@ public class NextWaveTimerText : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onWaveEnd += StartTimer;
+        onWaveEnd.onEventRaised += StartTimer;
     }
     private void OnDisable()
     {
-        EventManager.onWaveEnd -= StartTimer;
+        onWaveEnd.onEventRaised -= StartTimer;
     }
 
-    void StartTimer(float timer)
+    void StartTimer(object timer)
     {
-        countdown = timer;
+        if (timer is float)
+        {
+            countdown = (float)timer;
+
+            StartCoroutine(Timer());
+        }
+    }
+
+    IEnumerator Timer()
+    {
         while (true)
         {
-            if (countdown > 1)
-            {
-                countdown -= Time.deltaTime;
-                myText.text = "Next Wave Starts In: " + Mathf.FloorToInt(countdown);
-            }
-            else
+            countdown -= Time.deltaTime;
+
+            myText.text = "Next Wave Starts In: " + Mathf.FloorToInt(countdown);
+
+            if (countdown <= 1)
             {
                 break;
             }
+
+            yield return null;
         }
-
-
         myText.text = "";
-
-
-
-
     }
 }

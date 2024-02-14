@@ -104,16 +104,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad83980b8e388b447a705c286a057288, type: 3}
---- !u!1 &1006765753443749620 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2016678852054251299, guid: ad83980b8e388b447a705c286a057288, type: 3}
-  m_PrefabInstance: {fileID: 1586514624909900247}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2320456315444083062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
   m_PrefabInstance: {fileID: 1586514624909900247}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5043316298705448635 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3172473853566658708, guid: ad83980b8e388b447a705c286a057288, type: 3}
+  m_PrefabInstance: {fileID: 1586514624909900247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f879433a043c634abe2e16ece468a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6504665315875578983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -241,14 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd218b9835099b43a2a024b369f3c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScanner: {fileID: 1006765753443749620}
+  towerInfo: {fileID: 0}
+  targetScanner: {fileID: 5043316298705448635}
   projectilePos: {fileID: 8175781012832113133}
-  towerData: {fileID: 11400000, guid: 53c48c73510d24c4ea1a5e5d3dbe2717, type: 2}
-  projectileData: {fileID: 11400000, guid: 39e02614a59a59145a506f634ea26431, type: 2}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  enemies: []
 --- !u!4 &6759779728970482572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae38e1ecba8e0b2469d00d470600e36e, type: 3}

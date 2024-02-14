@@ -6,18 +6,23 @@ using UnityEngine.UI;
 
 public class ButtonColorChanger : MonoBehaviour
 {
-    public Data data;
+    [SerializeField] GameEvent0ParamSO onMoneyChanged;
+    //public DataTower data;
     [SerializeField] MoneyManager moneyManager;
+
+    [SerializeField] GameData towerData;
 
     TextMeshProUGUI buttonText;
     Button button;
 
+    [HideInInspector]
+    public ITower towerGameData;
+
     private void Awake()
     {
+        towerGameData = (ITower)towerData;
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
         button = GetComponentInChildren<Button>();
-
-        
     }
 
     private void Start()
@@ -29,25 +34,37 @@ public class ButtonColorChanger : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onMoneyChanged += UpdatePlaceableButtonsColor;
+        onMoneyChanged.onEventRaised += UpdatePlaceableButtonsColor;
     }
     private void OnDisable()
     {
-        EventManager.onMoneyChanged -= UpdatePlaceableButtonsColor;
+        onMoneyChanged.onEventRaised -= UpdatePlaceableButtonsColor;
     }
 
     void SetButtonCostText()
     {
-        buttonText.text = data.objectName + " $" + data.objectCost_MoneyDrop;
+        //buttonText.text = dataTower.objectName + " $" + dataTower.objectCost_MoneyDrop;
+        buttonText.text = towerData.objectName + " $" + towerGameData.TowerPlacementCost;
     }
 
 
     void UpdatePlaceableButtonsColor()
     {
-        if (data == null) return;
+        //if (data == null) return;
 
-        
-        if (moneyManager.IsPlaceable(data.objectCost_MoneyDrop))
+
+        //if (moneyManager.IsPlaceable(data.objectCost_MoneyDrop))
+        //{
+        //    button.image.color = Color.green;
+        //}
+        //else
+        //{
+        //    button.image.color = Color.red;
+        //}
+        if (towerGameData == null) return;
+
+
+        if (moneyManager.IsPlaceable(towerGameData.TowerPlacementCost))
         {
             button.image.color = Color.green;
         }

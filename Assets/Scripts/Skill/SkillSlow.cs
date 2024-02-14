@@ -27,7 +27,6 @@ public class SkillSlow : MonoBehaviour
         }
         Destroy(gameObject);
 
-
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,7 +35,7 @@ public class SkillSlow : MonoBehaviour
         {
             EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
             enemyMovements.Add(enemyMovement);
-            enemyMovement.ChangeMoveSpeed(slowPercent);
+            enemyMovement.DecreaseMoveSpeedByPercentage(slowPercent);
 
 
         }

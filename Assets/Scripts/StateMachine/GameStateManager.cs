@@ -5,20 +5,27 @@ using UnityEngine.UI;
 
 public class GameStateManager : MonoBehaviour
 {
+    [Header("Events")]
+    public GameEvent2ParamSO onTowerPlaced;
+    public GameEvent1ParamSO onDemolished;
+    [SerializeField] GameEvent0ParamSO onESCPressed;
+
     [HideInInspector] public bool isHoveringUI;
     [HideInInspector] public Button pressedButton;
+
+    [Header("Required Components")]
     public MoneyManager moneyManager;
-    public MoneySystem moneySystem;
+    public CursorManager cursorManager;
+    public TooltipManager tooltipManager;
 
     [Header("Build State Variables")]
     public LayerMask placeableLayer;
+    public LayerMask ignoreLayers;
     public Vector3 offsetForTowerPlacement;
 
     [Header("Demolish State Variables")]
     public GameObject tile;
     public LayerMask demolishLayer;
-    public CursorManager cursorManager;
-    public TooltipManager tooltipManager;
 
     [Header("Upgrade State Variables")]
     public LayerMask upgradeLayer;
@@ -33,11 +40,11 @@ public class GameStateManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onESCPressed += () => SwitchState(emptyState);
+        onESCPressed.onEventRaised += () => SwitchState(emptyState);
     }
     private void OnDisable()
     {
-        EventManager.onESCPressed -= () => SwitchState(emptyState);
+        onESCPressed.onEventRaised -= () => SwitchState(emptyState);
 
     }
 
@@ -87,17 +94,6 @@ public class GameStateManager : MonoBehaviour
     {
         pressedButton = button;
         SwitchState(skillState);
-    }
-
-    void ButtonSelection(Button button)
-    {
-        //if (pressedButton != null)
-        //{
-        //    pressedButton.interactable = true;
-        //}
-
-        //pressedButton = button;
-        //pressedButton.interactable = false;
     }
 
     #endregion

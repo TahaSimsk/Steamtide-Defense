@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ButtonSelectionLogic : MonoBehaviour
 {
+    [SerializeField] GameEvent1ParamSO onButtonPressed;
+    [SerializeField] GameEvent0ParamSO onESCPressed;
     Button button;
     private void Awake()
     {
@@ -14,30 +16,33 @@ public class ButtonSelectionLogic : MonoBehaviour
     private void OnEnable()
     {
         button.onClick.AddListener(InvokeButtonClickEvent);
-        EventManager.onButtonPressed += CheckWhichButtonPressed;
-        EventManager.onESCPressed += ClearButtonSelection;
+        onButtonPressed.onEventRaised += CheckWhichButtonPressed;
+        onESCPressed.onEventRaised += ClearButtonSelection;
     }
     private void OnDisable()
     {
         button.onClick.RemoveListener(InvokeButtonClickEvent);
-        EventManager.onButtonPressed -= CheckWhichButtonPressed;
-        EventManager.onESCPressed -= ClearButtonSelection;
+        onButtonPressed.onEventRaised -= CheckWhichButtonPressed;
+        onESCPressed.onEventRaised -= ClearButtonSelection;
     }
 
     void InvokeButtonClickEvent()
     {
-        EventManager.OnButtonPressed(button);
+        onButtonPressed.RaiseEvent(button);
     }
 
-    void CheckWhichButtonPressed(Button button)
+    void CheckWhichButtonPressed(object button)
     {
-        if (button == this.button)
+        if (button is Button)
         {
-            this.button.interactable = false;
-        }
-        else if (button != this.button && this.button.interactable == false)
-        {
-            this.button.interactable = true;
+            if ((Button)button == this.button)
+            {
+                this.button.interactable = false;
+            }
+            else if ((Button)button != this.button && this.button.interactable == false)
+            {
+                this.button.interactable = true;
+            } 
         }
     }
 

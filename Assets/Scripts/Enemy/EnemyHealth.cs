@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public DataEnemies enemyData;
+    [Header("Events")]
+    [SerializeField] GameEvent1ParamSO onEnemyDeath;
+
+    public GameData enemyData;
     [SerializeField] GameObject highlightPrefab;
     [SerializeField] Slider healthBar;
 
@@ -17,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
-        maxHealth = enemyData.baseMaxHealth;
+        maxHealth =((IEnemy)enemyData).BaseMaxHealth;
     }
 
     private void OnEnable()
@@ -28,16 +31,12 @@ public class EnemyHealth : MonoBehaviour
 
 
 
-    void Update()
-    {
-        HandleDeath();
-    }
 
-    private void HandleDeath()
+    private void CheckIfDiedAndHandleDeath()
     {
         if (currentHealth <= 0)
         {
-            EventManager.OnEnemyDeath(this.gameObject);
+            onEnemyDeath.RaiseEvent(gameObject);
 
             highlightPrefab.SetActive(false);
             gameObject.SetActive(false);
@@ -50,7 +49,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
         UpdateHPBar();
-
+        CheckIfDiedAndHandleDeath();
     }
 
     public void SetMaxHP(float amount)
