@@ -732,6 +732,10 @@ PrefabInstance:
       value: tile_corner
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f2e439852d097124da0c049c0f2af0d6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f2e439852d097124da0c049c0f2af0d6, type: 3}
       propertyPath: m_TagString
       value: Path2
       objectReference: {fileID: 0}

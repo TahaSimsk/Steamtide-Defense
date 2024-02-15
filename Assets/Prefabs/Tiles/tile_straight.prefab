@@ -520,6 +520,10 @@ PrefabInstance:
       value: tile_straight
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 18935fe7fc006e24184a80423aaab2be, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18935fe7fc006e24184a80423aaab2be, type: 3}
       propertyPath: m_TagString
       value: Path2
       objectReference: {fileID: 0}

@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     protected Vector3 targetPos;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (!initiated) return;
         onEnemyDeath.onEventRaised += CompareEnemy;

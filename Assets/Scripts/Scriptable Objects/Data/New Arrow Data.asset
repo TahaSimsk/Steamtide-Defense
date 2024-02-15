@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 0}
   <ProjectileSpeed>k__BackingField: 80
   <ProjectileDamage>k__BackingField: 10
+  projectileLife: 1
   <ProjectileDamageUpgradeValues>k__BackingField:
   - 10
   - 15
@@ -85,24 +86,29 @@ MonoBehaviour:
   - 0
   - 0
   pierce1DamageUpgrades:
-  - 20
-  - 30
+  - 50
+  - 0
   pierce2DamageUpgrades:
-  - 20
-  - 30
+  - 0
+  - 0
   pierce3DamageUpgrades:
-  - 20
-  - 30
+  - 0
+  - 50
   pierce4DamageUpgrades:
-  - 20
-  - 30
+  - 0
+  - 0
   pierceUpgradeCosts:
   - 50
   - 100
   - 150
   - 200
   pierceLimitUpgrades: 01000000010000000200000002000000
-  projectileLife: 1
-  poisonPool: {fileID: 0}
+  poisonPool: {fileID: 8798989912474060224, guid: f41f36b1a1e3d204eb39732b612bc16a, type: 3}
   chanceToDropPool: 25
-  poisonPoolDuration: 2
+  poisonPoolDuration: 10
+  poisonDurationOnEnemies: 10
+  poisonDamage: 10
+  canPoison: 1
+  poolLayer:
+    serializedVersion: 2
+    m_Bits: 6144

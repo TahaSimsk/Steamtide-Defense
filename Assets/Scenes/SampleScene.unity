@@ -935,10 +935,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: tile_straight_90 (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7870933639361162305, guid: 03c7e0f9ed063704a9bd754b2e816f9c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2923,10 +2919,6 @@ PrefabInstance:
     - target: {fileID: 7870933639361162305, guid: 03c7e0f9ed063704a9bd754b2e816f9c, type: 3}
       propertyPath: m_Name
       value: tile_straight_90 (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7870933639361162305, guid: 03c7e0f9ed063704a9bd754b2e816f9c, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15715,10 +15707,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: tile_straight (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8251118102012507284, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 8775840696980500014, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -16082,10 +16070,6 @@ PrefabInstance:
     - target: {fileID: 8251118102012507284, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
       propertyPath: m_Name
       value: tile_straight (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8251118102012507284, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8775840696980500014, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17033,10 +17017,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: tile_straight (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8251118102012507284, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 8775840696980500014, guid: cc21b75cbfdce4349b6b9b6caeb4c0a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -17312,10 +17292,6 @@ PrefabInstance:
     - target: {fileID: 3321797546828123298, guid: 2e7cfaea8d4cf824db8289f042f32b86, type: 3}
       propertyPath: m_Name
       value: tile_corner (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321797546828123298, guid: 2e7cfaea8d4cf824db8289f042f32b86, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
