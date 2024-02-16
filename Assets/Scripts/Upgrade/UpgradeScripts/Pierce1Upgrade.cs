@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Pierce1Upgrade : UpgradeBaseClass
@@ -7,6 +8,10 @@ public class Pierce1Upgrade : UpgradeBaseClass
     public int upgradeOrder;
 
     ArrowData arrow;
+
+    [SerializeField] ProjectileHitBehaviours hitBehaviour;
+
+    public Shooting shooting;
 
     private void Awake()
     {
@@ -41,5 +46,21 @@ public class Pierce1Upgrade : UpgradeBaseClass
                 arrow.pierceDamage = arrow.pierce4DamageUpgrades;
                 break;
         }
+
+        var hit = Instantiate(hitBehaviour);
+
+
+        int index = shooting.hitBehaviours.FindIndex(a => a.NameOfType == hitBehaviour.NameOfType);
+        if (index == -1)
+        {
+            shooting.hitBehaviours.Add(hit);
+        }
+        else
+        {
+            shooting.hitBehaviours[index] = hit;
+        }
+
+
+
     }
 }

@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
 
     protected Vector3 targetPos;
 
+    public List<ProjectileHitBehaviours> hitBehaviours;
+
     protected virtual void OnEnable()
     {
         if (!initiated) return;
@@ -54,6 +56,8 @@ public class Projectile : MonoBehaviour
             other.GetComponent<EnemyHealth>().ReduceHealth(projectileData.ProjectileDamage);
             gameObject.SetActive(false);
         }
+
+        
     }
 
     /*

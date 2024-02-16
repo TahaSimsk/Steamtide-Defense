@@ -13,11 +13,9 @@ public class PoisonField : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(gameObject+" instantiated");
         poolDuration -= Time.deltaTime;
         if (poolDuration <= 0)
         {
-            Debug.Log(gameObject+" destroyed");
             Destroy(gameObject);
         }
     }

@@ -10,6 +10,8 @@ public class Arrow : Projectile
     ArrowData dataArrow;
     float damage;
     bool init;
+
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -23,6 +25,10 @@ public class Arrow : Projectile
         else
         {
             init = true;
+        }
+        foreach (var behaviour in hitBehaviours)
+        {
+            behaviour.WhenEnabled();
         }
     }
 
@@ -48,26 +54,40 @@ public class Arrow : Projectile
         if (!other.CompareTag("Enemy")) return;
 
         other.GetComponent<EnemyHealth>().ReduceHealth(damage);
+        if (hitBehaviours.Count == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
 
+        //PoisonBehaviour();
+
+
+        foreach (var behaviour in hitBehaviours)
+        {
+            behaviour.Collide(transform, other, ref damage, dataArrow.ProjectileDamage);
+        }
+
+
+        //PierceBehaviour();
+
+    }
+
+    private void PoisonBehaviour()
+    {
         if (dataArrow.canPoison)
         {
-            Debug.Log("can poison");
             if (Random.Range(0, 100) <= dataArrow.chanceToDropPool)
             {
-                Debug.Log("should drop pool");
                 RaycastHit hit;
                 if (Physics.SphereCast(transform.position, 1f, Vector3.down, out hit, 5f, dataArrow.poolLayer))
                 {
-                    
-                    Debug.Log("hit something");
                     PoisonField pool = hit.transform.GetComponent<PoisonField>();
 
                     if (hit.transform.CompareTag("Path2") && pool == null)
                     {
-                        Debug.Log("hit ground");
                         GameObject poolObject = Instantiate(dataArrow.poisonPool, hit.transform.position + Vector3.up * 2, Quaternion.identity);
                         poolObject.GetComponent<PoisonField>().SetDurationsAndDamage(dataArrow.poisonPoolDuration, dataArrow.poisonDurationOnEnemies, dataArrow.poisonDamage);
-                        Debug.Log("instantiated: " + poolObject != null);
                     }
                     else if (pool != null)
                     {
@@ -76,11 +96,10 @@ public class Arrow : Projectile
                 }
             }
         }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+    }
 
+    private void PierceBehaviour()
+    {
         if (dataArrow.canPierce)
         {
             pierceCount++;
@@ -91,6 +110,9 @@ public class Arrow : Projectile
             }
             damage = dataArrow.ProjectileDamage - (dataArrow.ProjectileDamage * dataArrow.pierceDamage[pierceCount - 1] * 0.01f);
         }
-
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

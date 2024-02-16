@@ -46,6 +46,7 @@ public class ArrowData : GameData, IPoolable, IProjectile
     public float poisonDurationOnEnemies;
     public float poisonDamage;
     public bool canPoison;
+    public bool dropPoolOnFirstEnemy;
     public LayerMask poolLayer;
 
 

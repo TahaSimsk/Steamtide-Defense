@@ -16,6 +16,7 @@ public class TowerInfo : MonoBehaviour
     public ITower InstITower { get; set; }
     public IProjectile InstIProjectile { get; set; }
 
+    public ProjectileHitBehaviours hitBehaviour { get; set; }
 
     private void Awake()
     {

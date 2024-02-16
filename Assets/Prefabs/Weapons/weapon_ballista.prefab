@@ -148,6 +148,7 @@ MonoBehaviour:
   towerInfo: {fileID: 8945799999080642401}
   targetScanner: {fileID: 7118663914603835318}
   projectilePos: {fileID: 4248851160461892211}
+  hitBehaviours: []
 --- !u!114 &1574009631975748177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,6 +701,8 @@ MonoBehaviour:
   towerInfo: {fileID: 8945799999080642401}
   upgradeName: Pierce II
   upgradeOrder: 2
+  hitBehaviour: {fileID: 11400000, guid: dff3f5c37d26ec44dad4561bb7a3943d, type: 2}
+  shooting: {fileID: -7578246052917316301}
 --- !u!114 &5579794671721274861 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3067122513264928282, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
@@ -754,6 +757,8 @@ MonoBehaviour:
   towerInfo: {fileID: 8945799999080642401}
   upgradeName: Pierce IV
   upgradeOrder: 4
+  hitBehaviour: {fileID: 0}
+  shooting: {fileID: 0}
 --- !u!114 &7092794509295350994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 401199813593517861, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
@@ -808,6 +813,8 @@ MonoBehaviour:
   towerInfo: {fileID: 8945799999080642401}
   upgradeName: Pierce I
   upgradeOrder: 1
+  hitBehaviour: {fileID: 11400000, guid: 6f62d5fd6f668634c99974617252599e, type: 2}
+  shooting: {fileID: -7578246052917316301}
 --- !u!1 &9064354859406532755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1888411925269781348, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
@@ -830,3 +837,5 @@ MonoBehaviour:
   towerInfo: {fileID: 8945799999080642401}
   upgradeName: Pierce III
   upgradeOrder: 3
+  hitBehaviour: {fileID: 11400000, guid: a46f681b8b6bbf547bb8c5269c958a9d, type: 2}
+  shooting: {fileID: -7578246052917316301}

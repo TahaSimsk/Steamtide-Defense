@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,6 +10,8 @@ public class Shooting : MonoBehaviour
     [SerializeField] Transform projectilePos;
 
     GameObject pooledProjectile;
+
+    public List<ProjectileHitBehaviours> hitBehaviours;
 
     float timer;
 
@@ -52,6 +55,11 @@ public class Shooting : MonoBehaviour
         if (pooledProjectile == null) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(iProjectile);
+
+        if (hitBehaviours.Count > 0)
+        {
+            projectile.hitBehaviours = hitBehaviours;
+        }
         projectile.target = targetScanner.targetsInRange[0].transform;
 
         pooledProjectile.transform.position = projectilePos.position;
