@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 7398145421313394670}
   - component: {fileID: 8990706353023216947}
   - component: {fileID: 7167470059539539676}
+  - component: {fileID: 8284540249106898813}
   m_Layer: 0
   m_Name: Pierce I
   m_TagString: Untagged
@@ -170,8 +171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -247.1, y: 31.799988}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -247.1, y: 43.75599}
+  m_SizeDelta: {x: 160, y: 53.912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7398145421313394670
 CanvasRenderer:
@@ -255,6 +256,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8284540249106898813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100349589712387526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 5870619502599034844}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Pierce I
+  upgradeOrder: 1
+  buttonToUnlock: {fileID: 1872399706373299191}
 --- !u!1 &1139953744158225952
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,8 +286,9 @@ GameObject:
   - component: {fileID: 760086980578291571}
   - component: {fileID: 6267262031047572557}
   - component: {fileID: 514555317415461525}
+  - component: {fileID: 7270151022420655013}
   m_Layer: 0
-  m_Name: Button (9)
+  m_Name: Poison Pool I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,6 +396,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7270151022420655013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139953744158225952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127a8ed4a1deb9440a21551768f86309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 6825103667421723941}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Poison Pool I
+  upgradeOrder: 1
+  buttonToUnlock: {fileID: 454655383059272832}
 --- !u!1 &1567860616251068048
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +551,7 @@ MonoBehaviour:
   upgradeButtonText: {fileID: 8324123025100758673}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
   towerInfo: {fileID: 0}
-  upgradeName: 
+  upgradeName: Range
   targetScanner: {fileID: 0}
 --- !u!1 &1888411925269781348
 GameObject:
@@ -527,6 +565,7 @@ GameObject:
   - component: {fileID: 4171152774641783898}
   - component: {fileID: 476375565811409141}
   - component: {fileID: 8647272308869693991}
+  - component: {fileID: 1328168389666776474}
   m_Layer: 0
   m_Name: Pierce III
   m_TagString: Untagged
@@ -551,8 +590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 104.899994, y: 31.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 104.899994, y: 43.756}
+  m_SizeDelta: {x: 160, y: 53.912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4171152774641783898
 CanvasRenderer:
@@ -631,11 +670,29 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 476375565811409141}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1328168389666776474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888411925269781348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 128257621110947201}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Pierce III
+  upgradeOrder: 3
+  buttonToUnlock: {fileID: 7116532764388829927}
 --- !u!1 &3353863720016186820
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +839,7 @@ GameObject:
   - component: {fileID: 2408239366492405505}
   - component: {fileID: 6736457039838638286}
   - component: {fileID: 4236550074247727319}
+  - component: {fileID: 5211674240836446788}
   m_Layer: 0
   m_Name: Damage
   m_TagString: Untagged
@@ -891,6 +949,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5211674240836446788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562027510137810443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba1c1a7ec831004ab1dc2d814571478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 3067122513264928282}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Damage
 --- !u!1 &3882969878323311984
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,8 +977,9 @@ GameObject:
   - component: {fileID: 6086055275714071724}
   - component: {fileID: 6376205981249941721}
   - component: {fileID: 454655383059272832}
+  - component: {fileID: 3882436730212586767}
   m_Layer: 0
-  m_Name: Button (8)
+  m_Name: Poison Pool II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,11 +1082,29 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6376205981249941721}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3882436730212586767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882969878323311984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127a8ed4a1deb9440a21551768f86309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 2253966903020014503}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Poison Pool II
+  upgradeOrder: 2
+  buttonToUnlock: {fileID: 8978278264069652005}
 --- !u!1 &4421314332018541681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1251,7 @@ GameObject:
   - component: {fileID: 5028373437607929696}
   - component: {fileID: 5980150307142686781}
   - component: {fileID: 7116532764388829927}
+  - component: {fileID: 8793754964456120318}
   m_Layer: 0
   m_Name: Pierce IV
   m_TagString: Untagged
@@ -1182,8 +1276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285.3, y: 31.799988}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 285.3, y: 43.75599}
+  m_SizeDelta: {x: 160, y: 53.912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5028373437607929696
 CanvasRenderer:
@@ -1262,11 +1356,29 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5980150307142686781}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8793754964456120318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485541984615491609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 401199813593517861}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Pierce IV
+  upgradeOrder: 4
+  buttonToUnlock: {fileID: 0}
 --- !u!1 &4488024940496231493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1650,7 @@ MonoBehaviour:
   upgradeButtonText: {fileID: 7569130554355062720}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
   towerInfo: {fileID: 0}
-  upgradeName: 
+  upgradeName: Fire Rate
 --- !u!1 &4952799670261586950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1922,7 @@ MonoBehaviour:
   upgradeButtonText: {fileID: 7786137979153038191}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
   towerInfo: {fileID: 0}
-  upgradeName: 
+  upgradeName: Health
   towerHealth: {fileID: 0}
 --- !u!1 &5660321217446325237
 GameObject:
@@ -1824,8 +1936,9 @@ GameObject:
   - component: {fileID: 6383374807070256917}
   - component: {fileID: 4804087346637174279}
   - component: {fileID: 3534051597009506919}
+  - component: {fileID: 3517147601599260768}
   m_Layer: 0
-  m_Name: Button (11)
+  m_Name: Poison Pool IV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1928,11 +2041,29 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4804087346637174279}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3517147601599260768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5660321217446325237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127a8ed4a1deb9440a21551768f86309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 8283101147081918476}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Poison Pool IV
+  upgradeOrder: 4
+  buttonToUnlock: {fileID: 0}
 --- !u!1 &5723048341256884207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,6 +2478,7 @@ GameObject:
   - component: {fileID: 4130223096541219036}
   - component: {fileID: 4435425707610490557}
   - component: {fileID: 1872399706373299191}
+  - component: {fileID: 5172059236895261903}
   m_Layer: 0
   m_Name: Pierce II
   m_TagString: Untagged
@@ -2371,8 +2503,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.1, y: 31.799973}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -69.1, y: 43.755974}
+  m_SizeDelta: {x: 160, y: 53.912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4130223096541219036
 CanvasRenderer:
@@ -2451,11 +2583,29 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4435425707610490557}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5172059236895261903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476681542520329517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 9124425791129700675}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Pierce II
+  upgradeOrder: 2
+  buttonToUnlock: {fileID: 8647272308869693991}
 --- !u!1 &6527816351228922265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,7 +3190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3121,13 +3271,14 @@ GameObject:
   - component: {fileID: 93688236352427808}
   - component: {fileID: 8445767684201732771}
   - component: {fileID: 4208360460672782545}
+  - component: {fileID: 2353719964108263524}
   m_Layer: 0
   m_Name: TowerUpgradeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &282743804271554332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3223,6 +3374,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2353719964108263524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613527892628795461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!1 &9116700260226211913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,8 +3399,9 @@ GameObject:
   - component: {fileID: 2294669557476098548}
   - component: {fileID: 3558716788389213274}
   - component: {fileID: 8978278264069652005}
+  - component: {fileID: 1547134092392257819}
   m_Layer: 0
-  m_Name: Button (10)
+  m_Name: Poison Pool III
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3339,8 +3504,26 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3558716788389213274}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1547134092392257819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116700260226211913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127a8ed4a1deb9440a21551768f86309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 8544037062205987910}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 0}
+  upgradeName: Poison Pool III
+  upgradeOrder: 3
+  buttonToUnlock: {fileID: 3534051597009506919}

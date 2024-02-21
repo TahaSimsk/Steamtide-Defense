@@ -8658,6 +8658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &966825379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9071,7 +9072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &994385132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9198,6 +9199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &994385137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9212,7 +9214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerData: {fileID: 0}
+  towerGameData: {fileID: 11400000, guid: 3ce7b793b2109994884926b7e3082c4d, type: 2}
 --- !u!114 &994385138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9892,6 +9894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &1095952886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9906,7 +9909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerData: {fileID: 11400000, guid: 42bbb4f300352d348bffd3af462562bc, type: 2}
+  towerGameData: {fileID: 11400000, guid: 42bbb4f300352d348bffd3af462562bc, type: 2}
 --- !u!114 &1095952887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11102,6 +11105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &1176160971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11210,7 +11214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerData: {fileID: 0}
+  towerGameData: {fileID: 0}
 --- !u!114 &1176160975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12261,6 +12265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &1314671912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13280,6 +13285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &1484797679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14461,6 +14467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &1652669285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14475,7 +14482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerData: {fileID: 0}
+  towerGameData: {fileID: 0}
 --- !u!114 &1652669286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14927,6 +14934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!114 &1697128840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14941,7 +14949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerData: {fileID: 0}
+  towerGameData: {fileID: 0}
 --- !u!114 &1697128841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17159,11 +17167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToPool:
-  - {fileID: 11400000, guid: 1437732e114811643b87d71bf1ab7aa4, type: 2}
   - {fileID: 11400000, guid: 0ea48082cc4cb91448111ace720260ac, type: 2}
   - {fileID: 11400000, guid: bad273895000ba04c95a01931967b7d1, type: 2}
   - {fileID: 11400000, guid: b3e5c0c181dadc84daf0daebe15fbc6a, type: 2}
   - {fileID: 11400000, guid: 885e28fffdaea1c40b325d9a29a68016, type: 2}
+  - {fileID: 11400000, guid: 1437732e114811643b87d71bf1ab7aa4, type: 2}
+  - {fileID: 11400000, guid: 04720e49951860d499ee72384c2ed71d, type: 2}
 --- !u!4 &2032580140
 Transform:
   m_ObjectHideFlags: 0

@@ -147,9 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb217527af461fd419100c32fa32818b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 312c198e99e8f874e96814e0de9abdb9, type: 2}
   onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
-  pathLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   target: {fileID: 0}
+  moveBehaviour: {fileID: 11400000, guid: b82aecc07b131e0439af7b69b2eb61ca, type: 2}
+  hitBehaviours: []

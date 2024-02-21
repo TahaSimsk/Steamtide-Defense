@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f68e82da00f7f4caff55af6b67c741, type: 3}
+  m_Name: New Cannon Data
+  m_EditorClassIdentifier: 
+  objectName: Cannon
+  hashCode: -34465733
+  TowerPrefab: {fileID: 6234212743987878198, guid: b8e5a5697d7eb4946b62f6fb6c71db40, type: 3}
+  TowerHoverPrefab: {fileID: 8445677846998774162, guid: 733bf47a0c901104c9a6f7c969aafb8c, type: 3}
+  TowerNPHoverPrefab: {fileID: 8445677846998774162, guid: c66e2d6925fa54248a48abe99edf7d8d, type: 3}
+  ShootingDelay: 1
+  TowerRange: 3
+  BaseMaxHealth: 100
+  TowerRotationSpeed: 10
+  TowerPlacementCost: 80
+  ShootingDelayUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  ShootingDelayUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  RangeUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  RangeUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  MaxHealthUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  MaxHealthUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  canMortar: 1
+  mortarUpgradeCost: 0
+  MortarRadius: 20
+  MortarCooldown: 5
+  MortarTargetIndicator: {fileID: 3930998012174477889, guid: e02016a5644944f44b3fee831ea72aaa, type: 3}
+  numOfMissilesToLaunch: 4
+  timeBetweenMissiles: 0.5
+  missilePrefab: {fileID: 3986828406210601968, guid: c6f0c3ab5fc9d884e991e9db46a716dc, type: 3}
+  initialTravelTimeOfMissile: 1.5
+  missileMoveSpeed: 50
+  timeToWaitBeforeAppearing: 0
+  offsetToAppear: 100
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  bombRadius: 10
+  damage: 100

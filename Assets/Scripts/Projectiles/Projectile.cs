@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    protected IProjectile projectileData;
+    protected ProjectileData projectileData;
     public GameEvent1ParamSO onEnemyDeath;
     public Transform target;
-    bool initiated = false;
+    protected bool initiated = false;
 
     protected Vector3 targetPos;
 
-    public List<ProjectileHitBehaviours> hitBehaviours;
+
+
+    protected float damage;
+    protected float projectileSpeed;
+
 
     protected virtual void OnEnable()
     {
         if (!initiated) return;
         onEnemyDeath.onEventRaised += CompareEnemy;
+        damage = projectileData.ProjectileDamage;
+        projectileSpeed = projectileData.ProjectileSpeed;
     }
 
     private void OnDisable()
@@ -33,11 +40,12 @@ public class Projectile : MonoBehaviour
 
     protected virtual void MoveToTarget()
     {
+
         if (target != null)
         {
             targetPos = target.position;
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileData.ProjectileSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
         if ((gameObject.transform.position - targetPos).sqrMagnitude < 0.1f)
         {
             gameObject.SetActive(false);
@@ -51,13 +59,14 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyHealth>().ReduceHealth(projectileData.ProjectileDamage);
+            other.GetComponent<EnemyHealth>().ReduceHealth(damage);
             gameObject.SetActive(false);
         }
 
-        
+
     }
 
     /*
@@ -79,7 +88,7 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void SetProjectile(IProjectile projectile)
+    public void SetProjectile(ProjectileData projectile)
     {
         projectileData = projectile;
     }

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-
+    [SerializeField] GameEvent1ParamSO onUIHovered;
     GameStateManager gameStateManager;
 
 
@@ -21,6 +21,7 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public void OnPointerEnter(PointerEventData eventData)
     {
         gameStateManager.isHoveringUI = true;
+        onUIHovered.RaiseEvent(true);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -32,6 +33,7 @@ public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public void OnPointerExit(PointerEventData eventData)
     {
         gameStateManager.isHoveringUI = false;
+        onUIHovered.RaiseEvent(false);
     }
 
 

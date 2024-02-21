@@ -10,17 +10,17 @@ public class ButtonColorChanger : MonoBehaviour
     //public DataTower data;
     [SerializeField] MoneyManager moneyManager;
 
-    [SerializeField] GameData towerData;
+    public TowerData towerGameData;
 
     TextMeshProUGUI buttonText;
     Button button;
 
-    [HideInInspector]
-    public ITower towerGameData;
+    //[HideInInspector]
+    //public ITower towerGameData;
 
     private void Awake()
     {
-        towerGameData = (ITower)towerData;
+        //towerGameData = (ITower)towerGameData;
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
         button = GetComponentInChildren<Button>();
     }
@@ -44,7 +44,7 @@ public class ButtonColorChanger : MonoBehaviour
     void SetButtonCostText()
     {
         //buttonText.text = dataTower.objectName + " $" + dataTower.objectCost_MoneyDrop;
-        buttonText.text = towerData.objectName + " $" + towerGameData.TowerPlacementCost;
+        buttonText.text = towerGameData.objectName + " $" + towerGameData.TowerPlacementCost;
     }
 
 

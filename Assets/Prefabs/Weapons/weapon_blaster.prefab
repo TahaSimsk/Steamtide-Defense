@@ -288,10 +288,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: -4392568577865238910}
-    - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: upgradeCosts
       value: 
       objectReference: {fileID: 11400000, guid: d04c2a3da88b9d24bb53e1ea3f310526, type: 2}
@@ -299,10 +295,6 @@ PrefabInstance:
       propertyPath: upgradeAttributes
       value: 
       objectReference: {fileID: 11400000, guid: bacc317da3998374fb9965519c9c44ca, type: 2}
-    - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: -4392568577865238910}
     - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: upgradeCosts
       value: 
@@ -312,10 +304,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 982e955cf89e9c34db33fe9821b2f2b7, type: 2}
     - target: {fileID: 5717462254944808638, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: -4392568577865238910}
-    - target: {fileID: 5717462254944808638, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: upgradeCosts
       value: 
       objectReference: {fileID: 11400000, guid: 88c15a57494c3e74eadcd0f3e75d658a, type: 2}
@@ -323,10 +311,6 @@ PrefabInstance:
       propertyPath: upgradeAttributes
       value: 
       objectReference: {fileID: 11400000, guid: 38b086c707a505b4e83642989334015c, type: 2}
-    - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: -4392568577865238910}
     - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: upgradeCosts
       value: 
@@ -348,11 +332,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
---- !u!223 &4161481856783031042 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 93688236352427808, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 4074725526758116386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4278653545285034814 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 282743804271554332, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
@@ -525,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -551,9 +530,6 @@ PrefabInstance:
       addedObject: {fileID: -676466511053186291}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4392568577865238910}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4431361775170169789}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
       insertIndex: -1
@@ -561,6 +537,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7154766831154835942}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8918958583044190234}
   m_SourcePrefab: {fileID: 100100000, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
 --- !u!1 &4650027991635979948 stripped
 GameObject:
@@ -603,22 +582,6 @@ MonoBehaviour:
   towerInfo: {fileID: 0}
   targetScanner: {fileID: 1187280959669341113}
   projectilePos: {fileID: 1778279809450313653}
---- !u!114 &-4392568577865238910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4650027991635979948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4780cfc4920dd1044a6c5ab08445d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerHealth: {fileID: -6200960595548136179}
-  shooting: {fileID: -676466511053186291}
-  targetScanner: {fileID: 1187280959669341113}
-  canvas: {fileID: 4161481856783031042}
 --- !u!114 &4431361775170169789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd3845c12a9e1048b6dd45760dee079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEscPressed: {fileID: 0}
+  onUIHovered: {fileID: 0}
   targetScanner: {fileID: 1187280959669341113}
+  upgradeUI: {fileID: 0}
 --- !u!114 &-6200960595548136179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +627,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerInfo: {fileID: 0}
   targetScanner: {fileID: 1187280959669341113}
+--- !u!114 &8918958583044190234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650027991635979948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cd2ce6bd3f88445ade73c44f1f3707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefTowerGameData: {fileID: 11400000, guid: 42bbb4f300352d348bffd3af462562bc, type: 2}
+  DefProjectileGameData: {fileID: 11400000, guid: 1437732e114811643b87d71bf1ab7aa4, type: 2}
 --- !u!4 &5459461705273029654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c0e6d72ac675da4ba0080620ef3b307, type: 3}
@@ -676,11 +656,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3425407089609543498, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.461
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3425407089609543498, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7152245765813790567, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
       propertyPath: m_Name

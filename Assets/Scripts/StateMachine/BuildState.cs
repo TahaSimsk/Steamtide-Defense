@@ -54,7 +54,7 @@ public class BuildState : BaseState
         //currentTowerMoneyCost = dataTower.objectCost_MoneyDrop;
 
 
-        ITower dataTower = button.GetComponent<ButtonColorChanger>().towerGameData;
+        TowerData dataTower = button.GetComponent<ButtonColorChanger>().towerGameData;
         //instantiation of towers from the data
         instHoverTower = Object.Instantiate(dataTower.TowerHoverPrefab, Input.mousePosition, Quaternion.identity);
         instHoverUnplaceableTower = Object.Instantiate(dataTower.TowerNPHoverPrefab, Input.mousePosition, Quaternion.identity);

@@ -6,11 +6,10 @@ using UnityEngine;
 public class Arrow : Projectile
 {
     int pierceCount;
+
     float timer;
     ArrowData dataArrow;
-    float damage;
-    bool init;
-
+    bool canPoison;
 
     protected override void OnEnable()
     {
@@ -18,18 +17,8 @@ public class Arrow : Projectile
         dataArrow = (ArrowData)projectileData;
         timer = 0;
         pierceCount = 0;
-        if (init)
-        {
-            damage = dataArrow.ProjectileDamage;
-        }
-        else
-        {
-            init = true;
-        }
-        foreach (var behaviour in hitBehaviours)
-        {
-            behaviour.WhenEnabled();
-        }
+        if (initiated)
+            canPoison = dataArrow.canPoison;
     }
 
     protected override void Update()
@@ -39,10 +28,14 @@ public class Arrow : Projectile
 
     protected override void MoveToTarget()
     {
+        if (target != null)
+            transform.LookAt(target.position + Vector3.up * 4);
+        target = null;
         timer += Time.deltaTime;
-        transform.position += transform.forward * dataArrow.ProjectileSpeed * Time.deltaTime;
+        transform.position += transform.forward * projectileSpeed * Time.deltaTime;
         if (timer >= dataArrow.projectileLife)
         {
+            Debug.Log("deactivated bc timer" + timer);
             gameObject.SetActive(false);
         }
 
@@ -54,47 +47,41 @@ public class Arrow : Projectile
         if (!other.CompareTag("Enemy")) return;
 
         other.GetComponent<EnemyHealth>().ReduceHealth(damage);
-        if (hitBehaviours.Count == 0)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-
-        //PoisonBehaviour();
 
 
-        foreach (var behaviour in hitBehaviours)
-        {
-            behaviour.Collide(transform, other, ref damage, dataArrow.ProjectileDamage);
-        }
+        PoisonBehaviour(other);
 
 
-        //PierceBehaviour();
+
+        PierceBehaviour();
 
     }
 
-    private void PoisonBehaviour()
+    private void PoisonBehaviour(Collider other)
     {
-        if (dataArrow.canPoison)
+        if (canPoison)
         {
-            if (Random.Range(0, 100) <= dataArrow.chanceToDropPool)
+            if (Random.Range(0, 100) <= dataArrow.poolDropChance)
             {
                 RaycastHit hit;
-                if (Physics.SphereCast(transform.position, 1f, Vector3.down, out hit, 5f, dataArrow.poolLayer))
+                if (Physics.SphereCast(other.transform.position + Vector3.up * 4f, 1f, Vector3.down, out hit, 6f, dataArrow.poolLayer))
                 {
                     PoisonField pool = hit.transform.GetComponent<PoisonField>();
 
                     if (hit.transform.CompareTag("Path2") && pool == null)
                     {
                         GameObject poolObject = Instantiate(dataArrow.poisonPool, hit.transform.position + Vector3.up * 2, Quaternion.identity);
-                        poolObject.GetComponent<PoisonField>().SetDurationsAndDamage(dataArrow.poisonPoolDuration, dataArrow.poisonDurationOnEnemies, dataArrow.poisonDamage);
+                        poolObject.GetComponent<PoisonField>().SetDurationsAndDamage(dataArrow.poolDuration, dataArrow.poisonDurationOnEnemies, dataArrow.poolDamage);
                     }
                     else if (pool != null)
                     {
-                        pool.SetDurationsAndDamage(dataArrow.poisonPoolDuration, dataArrow.poisonDurationOnEnemies, dataArrow.poisonDamage);
+                        pool.SetDurationsAndDamage(dataArrow.poolDuration, dataArrow.poisonDurationOnEnemies, dataArrow.poolDamage);
                     }
+
                 }
+
             }
+            canPoison = !dataArrow.dropPoolOnFirstEnemy;
         }
     }
 
@@ -103,8 +90,12 @@ public class Arrow : Projectile
         if (dataArrow.canPierce)
         {
             pierceCount++;
+
+            Debug.Log("pierce count: " + pierceCount);
             if (pierceCount > dataArrow.pierceLimit)
             {
+
+                Debug.Log("deactivated ");
                 gameObject.SetActive(false);
                 return;
             }
@@ -112,6 +103,7 @@ public class Arrow : Projectile
         }
         else
         {
+            Debug.Log("deactivated ");
             gameObject.SetActive(false);
         }
     }

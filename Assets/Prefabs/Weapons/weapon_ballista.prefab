@@ -93,9 +93,6 @@ PrefabInstance:
       addedObject: {fileID: -7578246052917316301}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1574009631975748177}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1782760552668475207}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 318ac4fb1c1cbdd45afa54a2268da63f, type: 3}
       insertIndex: -1
@@ -148,23 +145,6 @@ MonoBehaviour:
   towerInfo: {fileID: 8945799999080642401}
   targetScanner: {fileID: 7118663914603835318}
   projectilePos: {fileID: 4248851160461892211}
-  hitBehaviours: []
---- !u!114 &1574009631975748177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283615902204747745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4780cfc4920dd1044a6c5ab08445d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerHealth: {fileID: 7880277537839657586}
-  shooting: {fileID: -7578246052917316301}
-  targetScanner: {fileID: 7118663914603835318}
-  canvas: {fileID: 7400305790453116119}
 --- !u!114 &1782760552668475207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd3845c12a9e1048b6dd45760dee079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEscPressed: {fileID: 11400000, guid: 48703f90863942444bbf14ffaa0a3e8a, type: 2}
+  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
   targetScanner: {fileID: 7118663914603835318}
+  upgradeUI: {fileID: 1186302572086741938}
 --- !u!114 &7106422142409400066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,10 +306,6 @@ PrefabInstance:
     - target: {fileID: 3425407089609543498, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6031300832546605695, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
-      propertyPath: m_Value
-      value: 0.513
       objectReference: {fileID: 0}
     - target: {fileID: 7152245765813790567, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
       propertyPath: m_Name
@@ -521,38 +500,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 374666368708546177, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 53.912
-      objectReference: {fileID: 0}
-    - target: {fileID: 374666368708546177, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 43.75599
-      objectReference: {fileID: 0}
-    - target: {fileID: 401199813593517861, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_text
-      value: button
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187848548627063026, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 53.912
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187848548627063026, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 43.755974
-      objectReference: {fileID: 0}
-    - target: {fileID: 3419669858715197364, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 53.912
-      objectReference: {fileID: 0}
-    - target: {fileID: 3419669858715197364, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 43.756
-      objectReference: {fileID: 0}
-    - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: shooting
+    - target: {fileID: 1328168389666776474, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
       value: 
-      objectReference: {fileID: -7578246052917316301}
+      objectReference: {fileID: 8945799999080642401}
+    - target: {fileID: 1547134092392257819, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 8945799999080642401}
+    - target: {fileID: 3517147601599260768, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 8945799999080642401}
+    - target: {fileID: 3882436730212586767, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 8945799999080642401}
     - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
@@ -561,281 +524,54 @@ PrefabInstance:
       propertyPath: towerHealth
       value: 
       objectReference: {fileID: 7880277537839657586}
-    - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: 1574009631975748177}
-    - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeName
-      value: Health
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 8945799999080642401}
-    - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: 1574009631975748177}
-    - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeName
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: targetScanner
       value: 
       objectReference: {fileID: 7118663914603835318}
-    - target: {fileID: 5717462254944808638, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5717462254944808638, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+    - target: {fileID: 5172059236895261903, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 8945799999080642401}
-    - target: {fileID: 5717462254944808638, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
-      value: 
-      objectReference: {fileID: 1574009631975748177}
-    - target: {fileID: 5717462254944808638, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeName
-      value: Damage
-      objectReference: {fileID: 0}
-    - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+    - target: {fileID: 5211674240836446788, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 8945799999080642401}
     - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeBase
+      propertyPath: towerInfo
       value: 
-      objectReference: {fileID: 1574009631975748177}
-    - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: upgradeName
-      value: Fire Rate
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8945799999080642401}
+    - target: {fileID: 7270151022420655013, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 8945799999080642401}
+    - target: {fileID: 8284540249106898813, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 8945799999080642401}
     - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: TowerUpgradeCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8719072945869331146, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 53.912
-      objectReference: {fileID: 0}
-    - target: {fileID: 8719072945869331146, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 43.75599
-      objectReference: {fileID: 0}
+    - target: {fileID: 8793754964456120318, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 8945799999080642401}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3562027510137810443, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1672180361419187212}
-    - targetCorrespondingSourceObject: {fileID: 1100349589712387526, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3547701649970093569}
-    - targetCorrespondingSourceObject: {fileID: 6476681542520329517, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2793914228310570004}
-    - targetCorrespondingSourceObject: {fileID: 1888411925269781348, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9035081018660233750}
-    - targetCorrespondingSourceObject: {fileID: 4485541984615491609, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4820173521933017221}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
---- !u!114 &1828332762262729396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9124425791129700675, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3929200774474066987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5870619502599034844, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &4476078372355763930 stripped
+--- !u!1 &1186302572086741938 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6476681542520329517, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
   m_PrefabInstance: {fileID: 7493974507885050871}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2793914228310570004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4476078372355763930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeButtonText: {fileID: 1828332762262729396}
-  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerInfo: {fileID: 8945799999080642401}
-  upgradeName: Pierce II
-  upgradeOrder: 2
-  hitBehaviour: {fileID: 11400000, guid: dff3f5c37d26ec44dad4561bb7a3943d, type: 2}
-  shooting: {fileID: -7578246052917316301}
---- !u!114 &5579794671721274861 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3067122513264928282, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &6237818884363965948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3562027510137810443, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1672180361419187212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6237818884363965948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1c1a7ec831004ab1dc2d814571478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeButtonText: {fileID: 5579794671721274861}
-  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerInfo: {fileID: 8945799999080642401}
-  upgradeName: Damage
---- !u!1 &6467216031852614638 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4485541984615491609, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4820173521933017221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6467216031852614638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeButtonText: {fileID: 7092794509295350994}
-  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerInfo: {fileID: 8945799999080642401}
-  upgradeName: Pierce IV
-  upgradeOrder: 4
-  hitBehaviour: {fileID: 0}
-  shooting: {fileID: 0}
---- !u!114 &7092794509295350994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 401199813593517861, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7211234841816093931 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 282743804271554332, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
   m_PrefabInstance: {fileID: 7493974507885050871}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7365738054790661750 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 128257621110947201, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!223 &7400305790453116119 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 93688236352427808, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7546564040921679409 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1100349589712387526, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3547701649970093569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7546564040921679409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeButtonText: {fileID: 3929200774474066987}
-  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerInfo: {fileID: 8945799999080642401}
-  upgradeName: Pierce I
-  upgradeOrder: 1
-  hitBehaviour: {fileID: 11400000, guid: 6f62d5fd6f668634c99974617252599e, type: 2}
-  shooting: {fileID: -7578246052917316301}
---- !u!1 &9064354859406532755 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1888411925269781348, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 7493974507885050871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9035081018660233750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9064354859406532755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 758dfcf70e39eda4988fc43866a7cc91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeButtonText: {fileID: 7365738054790661750}
-  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerInfo: {fileID: 8945799999080642401}
-  upgradeName: Pierce III
-  upgradeOrder: 3
-  hitBehaviour: {fileID: 11400000, guid: a46f681b8b6bbf547bb8c5269c958a9d, type: 2}
-  shooting: {fileID: -7578246052917316301}
