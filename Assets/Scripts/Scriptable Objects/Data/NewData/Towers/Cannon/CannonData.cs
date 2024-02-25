@@ -4,14 +4,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-[CreateAssetMenu(menuName ="GameData/Towers/Cannon")]
+[CreateAssetMenu(menuName = "GameData/Towers/Cannon")]
 public class CannonData : TowerData
 {
     [Header("------------------------MORTAR ATTRIBUTES--------------------------")]
-    public bool canMortar;
-    public float mortarUpgradeCost;
 
-    public float MortarRadius;
+
     public float MortarCooldown;
     public GameObject MortarTargetIndicator;
     public int numOfMissilesToLaunch;
@@ -26,7 +24,17 @@ public class CannonData : TowerData
     public float bombRadius;
     public float damage;
 
-
+    [Header("------------------------MORTAR UPGRADES--------------------------")]
+    [Header("Level 1 Upgrade")]
+    public bool canMortar;
+    [Header("Level 2 Upgrade")]
+    public float upgradedBombRadius;
+    [Header("Level 3 Upgrade")]
+    public int upgradedNumOfMissiles;
+    [Header("Level 4 Upgrade")]
+    public float mortarUpgradedCooldown;
+    [Header("Upgrade Costs")]
+    public List<float> mortarUpgradeCosts;
 
 }
 

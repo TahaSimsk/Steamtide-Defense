@@ -9,30 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee6302801045f9d409bea936f1a37928, type: 3}
-  m_Name: New Ballista Data
+  m_Script: {fileID: 11500000, guid: e522a7680e4d16e4fadfce705cee052c, type: 3}
+  m_Name: New Blaster Data
   m_EditorClassIdentifier: 
-  objectName: Ballista
-  hashCode: -437199144
-  TowerPrefab: {fileID: 2045709196828049029, guid: 75a796d0315fd9f44b52d83e0a66ed41, type: 3}
-  TowerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
-  TowerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
+  objectName: Blaster
+  hashCode: 1983401595
+  TowerPrefab: {fileID: 7102938009518180793, guid: fa3c1e0ba25c6bf4a987be3fe0a92367, type: 3}
+  TowerHoverPrefab: {fileID: 7863380015321442733, guid: 07cb06e626d88974caba9c67790f217f, type: 3}
+  TowerNPHoverPrefab: {fileID: 7863380015321442733, guid: 5cf988fc6c779674b86a076f88bbbee4, type: 3}
   ShootingDelay: 1
   TowerRange: 2
   BaseMaxHealth: 100
   TowerRotationSpeed: 10
   TowerPlacementCost: 50
-  TowerAmmoCapacity: 5
+  TowerAmmoCapacity: 100
   ShootingDelayUpgradeValues:
   - 10
   - 20
   - 30
   - 40
   ShootingDelayUpgradeCosts:
-  - 50
   - 100
   - 200
   - 300
+  - 400
   RangeUpgradeValues:
   - 10
   - 20
@@ -53,3 +53,9 @@ MonoBehaviour:
   - 200
   - 300
   - 400
+  TimeBetweenBursts: 0.05
+  BurstCount: 3
+  UpgradedBurstCount_1: 2
+  UpgradedBurstCount_2: 3
+  UpradedAmmoCapacity: 50
+  AmmoEfficiency: 0.5

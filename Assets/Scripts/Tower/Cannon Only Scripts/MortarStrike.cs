@@ -49,9 +49,9 @@ public class MortarStrike : MonoBehaviour
 
     IEnumerator BeginStrike()
     {
-        strikeStarted = true;
         while (true)
         {
+            strikeStarted = true;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -76,6 +76,10 @@ public class MortarStrike : MonoBehaviour
                     strikeStarted = false;
                     break;
                 }
+                else
+                {
+                    Debug.Log("mevenin anasý");
+                }
             }
             yield return null;
         }
@@ -85,6 +89,7 @@ public class MortarStrike : MonoBehaviour
     {
         if (strikeStarted)
             escPressed = true;
+        uiHovered = false;
     }
 
     void HandleUIHovered(object uiHovered)

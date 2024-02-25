@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3961c79bc19232740aba3ace70778d0d, type: 3}
-  m_Name: New Ball Data
+  m_Script: {fileID: 11500000, guid: 9ca4331bd7377af4d813484715bf6191, type: 3}
+  m_Name: New Laser Data
   m_EditorClassIdentifier: 
-  objectName: Ball
-  hashCode: 405905523
-  ProjectileSpeed: 60
-  ProjectileDamage: 30
+  objectName: Laser
+  hashCode: -1779154739
+  ProjectileSpeed: 100
+  ProjectileDamage: 25
   ProjectileDamageUpgradeValues:
   - 10
   - 20
@@ -26,21 +26,7 @@ MonoBehaviour:
   - 200
   - 300
   - 400
-  ExplosionRadius: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  ExplosionRadiusUpgradeValues:
-  - 10
-  - 20
-  - 30
-  - 60
-  ExplosionRadiusUpgradeCosts:
-  - 100
-  - 200
-  - 300
-  - 400
-  <ObjectPrefab>k__BackingField: {fileID: 2215042161897283401, guid: 1f65f0c3afc2eb040b65d957fe1b0bb2, type: 3}
+  <ObjectPrefab>k__BackingField: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
   <ObjectPoolsize>k__BackingField: 50
   <objList>k__BackingField:
   - {fileID: 0}

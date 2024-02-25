@@ -15,7 +15,7 @@ public class TowerData : GameData
     public float BaseMaxHealth;
     public float TowerRotationSpeed;
     public float TowerPlacementCost;
-
+    public int TowerAmmoCapacity;
 
     [field: Header("---------------------------TOWER UPGRADES-----------------------")]
     public List<float> ShootingDelayUpgradeValues;

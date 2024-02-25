@@ -6,18 +6,18 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] TowerInfo towerInfo;
-    [SerializeField] TargetScanner targetScanner;
+    [SerializeField] protected TargetScanner targetScanner;
     [SerializeField] Transform projectilePos;
+    [SerializeField] protected AmmoManager ammoManager;
 
-    GameObject pooledProjectile;
+    protected float timer;
 
-    float timer;
-
-    TowerData towerData;
+    protected TowerData towerData;
     ProjectileData projectileData;
     IPoolable iPoolableProjectile;
 
-    private void Start()
+
+    protected virtual void Start()
     {
         towerData = towerInfo.InstITower;
         projectileData = towerInfo.InstIProjectile;
@@ -32,13 +32,16 @@ public class Shooting : MonoBehaviour
     }
 
 
-    void Shoot()
+    protected virtual void Shoot()
     {
         timer += Time.deltaTime;
         if (targetScanner.targetsInRange.Count > 0 && timer >= towerData.ShootingDelay)
         {
-            GetProjectileFromPoolAndActivate();
-            timer = 0;
+            if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
+            {
+                GetProjectileFromPoolAndActivate();
+                timer = 0;
+            }
         }
     }
 
@@ -46,11 +49,11 @@ public class Shooting : MonoBehaviour
     /*
      * when projectile pooled and activated, shooting starts. The script in the projectile handles movement and collision. In this script all we need to do is activate it and pass the target.
      */
-    void GetProjectileFromPoolAndActivate()
+    protected void GetProjectileFromPoolAndActivate()
     {
-        pooledProjectile = iPoolableProjectile.GetObject();
+        GameObject pooledProjectile = iPoolableProjectile.GetObject();
 
-        if (pooledProjectile == null) return;
+        if (pooledProjectile == null|| targetScanner.targetsInRange.Count == 0) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(projectileData);
 
@@ -60,7 +63,6 @@ public class Shooting : MonoBehaviour
         pooledProjectile.SetActive(true);
         pooledProjectile.transform.rotation = transform.rotation;
 
-        pooledProjectile = null;
     }
 
 }
