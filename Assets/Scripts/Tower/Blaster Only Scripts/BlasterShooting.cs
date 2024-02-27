@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlasterShooting : Shooting
 {
     BlasterData blasterData;
-
+    [SerializeField] Transform laserPos2;
     float ammoConsumption;
 
     protected override void Start()
@@ -20,14 +20,19 @@ public class BlasterShooting : Shooting
         if (targetScanner.targetsInRange.Count > 0 && timer >= towerData.ShootingDelay)
         {
 
-            StartCoroutine(BurstShooting());
+            StartCoroutine(BurstShooting(projectilePos));
+
+            if (blasterData.canDoubleBarrel)
+            {
+                StartCoroutine(BurstShooting(laserPos2));
+            }
             timer = 0;
 
         }
     }
 
 
-    IEnumerator BurstShooting()
+    IEnumerator BurstShooting(Transform projectileSpawnPoint)
     {
 
         for (int i = 0; i < blasterData.BurstCount; i++)
@@ -38,7 +43,7 @@ public class BlasterShooting : Shooting
                 ammoManager.ReduceAmmoAndCheckHasAmmo();
             }
 
-            GetProjectileFromPoolAndActivate();
+            GetProjectileFromPoolAndActivate(projectileSpawnPoint);
             ammoConsumption += blasterData.AmmoEfficiency;
             yield return new WaitForSeconds(blasterData.TimeBetweenBursts);
         }

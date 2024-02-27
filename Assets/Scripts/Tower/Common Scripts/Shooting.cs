@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] TowerInfo towerInfo;
     [SerializeField] protected TargetScanner targetScanner;
-    [SerializeField] Transform projectilePos;
+    [SerializeField] protected Transform projectilePos;
     [SerializeField] protected AmmoManager ammoManager;
 
     protected float timer;
@@ -39,7 +39,7 @@ public class Shooting : MonoBehaviour
         {
             if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
             {
-                GetProjectileFromPoolAndActivate();
+                GetProjectileFromPoolAndActivate(projectilePos);
                 timer = 0;
             }
         }
@@ -49,7 +49,7 @@ public class Shooting : MonoBehaviour
     /*
      * when projectile pooled and activated, shooting starts. The script in the projectile handles movement and collision. In this script all we need to do is activate it and pass the target.
      */
-    protected void GetProjectileFromPoolAndActivate()
+    protected void GetProjectileFromPoolAndActivate(Transform projectileSpawnPoint)
     {
         GameObject pooledProjectile = iPoolableProjectile.GetObject();
 
@@ -59,10 +59,10 @@ public class Shooting : MonoBehaviour
 
         projectile.target = targetScanner.targetsInRange[0].transform;
 
-        pooledProjectile.transform.position = projectilePos.position;
+        pooledProjectile.transform.position = projectileSpawnPoint.position;
         pooledProjectile.SetActive(true);
-        pooledProjectile.transform.rotation = transform.rotation;
-
+        //pooledProjectile.transform.rotation = transform.rotation;
+        pooledProjectile.transform.LookAt(projectile.target);
     }
 
 }

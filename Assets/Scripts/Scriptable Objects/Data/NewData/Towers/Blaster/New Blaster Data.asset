@@ -54,8 +54,15 @@ MonoBehaviour:
   - 300
   - 400
   TimeBetweenBursts: 0.05
-  BurstCount: 3
-  UpgradedBurstCount_1: 2
-  UpgradedBurstCount_2: 3
-  UpradedAmmoCapacity: 50
-  AmmoEfficiency: 0.5
+  BurstCount: 1
+  AmmoEfficiency: 1
+  BurstUpgradedValues: 020000000300000004000000
+  canDoubleBarrel: 0
+  BurstUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  AmmoEfficiencyUpgradedValues: []
+  UpgradedAmmoCapacity: 0
+  AmmoUpgradeCosts: []

@@ -22,7 +22,7 @@ MonoBehaviour:
   BaseMaxHealth: 100
   TowerRotationSpeed: 10
   TowerPlacementCost: 80
-  TowerAmmoCapacity: 0
+  TowerAmmoCapacity: 100
   ShootingDelayUpgradeValues:
   - 10
   - 20

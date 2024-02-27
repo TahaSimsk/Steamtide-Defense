@@ -53,7 +53,7 @@ public class AmmoManager : MonoBehaviour
         }
     }
 
-    void UpgradeAmmoCapacity(int amount)
+    public void UpgradeAmmoCapacity(int amount)
     {
         towerData.TowerAmmoCapacity = towerInfo.DefITower.TowerAmmoCapacity + (int)(amount * towerInfo.DefITower.TowerAmmoCapacity * 0.01f);
         UpdateAmmoText();

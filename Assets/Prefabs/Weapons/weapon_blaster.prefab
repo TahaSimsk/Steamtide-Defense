@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 7415709828875066056}
   - component: {fileID: 2858007561357228250}
   - component: {fileID: 4464669289529787068}
+  - component: {fileID: 2468364159221719870}
   m_Layer: 0
   m_Name: Pierce III
   m_TagString: Untagged
@@ -376,6 +377,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2468364159221719870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422636082729461447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661969135e8503843a7392841727d24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 7699557653427581029}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 6800599957344185548}
+  upgradeName: Burst III
+  upgradeOrder: 3
+  buttonToUnlock: {fileID: 4584385586782402011}
 --- !u!1 &582583182908203606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,8 +1217,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5519672946096629037}
   - {fileID: 5539426589247556717}
+  - {fileID: 5519672946096629037}
   m_Father: {fileID: 3539039354036175977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521467896910798815
@@ -1348,8 +1367,9 @@ GameObject:
   - component: {fileID: 2007409011009792864}
   - component: {fileID: 5551741500050860564}
   - component: {fileID: 2103194210459861008}
+  - component: {fileID: 692950300685358221}
   m_Layer: 0
-  m_Name: Pierce II
+  m_Name: Burst II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1457,6 +1477,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &692950300685358221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817877983271932724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661969135e8503843a7392841727d24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 4035140156318523462}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 6800599957344185548}
+  upgradeName: Burst II
+  upgradeOrder: 2
+  buttonToUnlock: {fileID: 4464669289529787068}
 --- !u!1 &2000964351920888269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1916,7 @@ GameObject:
   - component: {fileID: 1917563283581319337}
   - component: {fileID: 1343067002830963238}
   m_Layer: 0
-  m_Name: Laser1
+  m_Name: Laser2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2095,8 +2133,9 @@ GameObject:
   - component: {fileID: 1807227130570545254}
   - component: {fileID: 596743593671714096}
   - component: {fileID: 4584385586782402011}
+  - component: {fileID: 8027487017899260808}
   m_Layer: 0
-  m_Name: Pierce IV
+  m_Name: DoubleShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2204,6 +2243,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8027487017899260808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004614640215193820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661969135e8503843a7392841727d24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 443503871317396095}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 6800599957344185548}
+  upgradeName: Double Shot
+  upgradeOrder: 4
+  buttonToUnlock: {fileID: 0}
 --- !u!1 &4883733300368121390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2273,7 @@ GameObject:
   - component: {fileID: 5208827440021556924}
   - component: {fileID: 4170076141632434778}
   m_Layer: 0
-  m_Name: Laser2
+  m_Name: Laser1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3325,8 +3382,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerInfo: {fileID: 6800599957344185548}
   targetScanner: {fileID: 2936550844409869525}
-  projectilePos: {fileID: 238226911446439994}
+  projectilePos: {fileID: 5539426589247556717}
   ammoManager: {fileID: 5248320632030100197}
+  laserPos2: {fileID: 5519672946096629037}
 --- !u!114 &7594159225446884877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3416,8 +3474,9 @@ GameObject:
   - component: {fileID: 8974765184882090912}
   - component: {fileID: 6679071202168033242}
   - component: {fileID: 1799536827153178665}
+  - component: {fileID: 5460224729750559268}
   m_Layer: 0
-  m_Name: Pierce I
+  m_Name: Burst I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3525,6 +3584,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5460224729750559268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7174211150533857929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661969135e8503843a7392841727d24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonText: {fileID: 5681135665076212840}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  towerInfo: {fileID: 6800599957344185548}
+  upgradeName: Burst I
+  upgradeOrder: 1
+  buttonToUnlock: {fileID: 2103194210459861008}
 --- !u!1 &7740618510988242226
 GameObject:
   m_ObjectHideFlags: 0
