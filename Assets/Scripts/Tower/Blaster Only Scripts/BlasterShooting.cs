@@ -39,7 +39,7 @@ public class BlasterShooting : Shooting
         {
             if (ammoConsumption >= .99f)
             {
-                ammoConsumption = 0;
+                ammoConsumption -= 1;
                 ammoManager.ReduceAmmoAndCheckHasAmmo();
             }
 

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c302c45ee15c59f498738d8f082fad89, type: 3}
+  m_Name: New Shock Data
+  m_EditorClassIdentifier: 
+  objectName: Shock
+  hashCode: 15563288
+  TowerPrefab: {fileID: 7625347211327220713, guid: 9e84160424a878049bae620ea0f3b1f3, type: 3}
+  TowerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
+  TowerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
+  ShootingDelay: 1
+  TowerRange: 2
+  BaseMaxHealth: 100
+  TowerRotationSpeed: 50
+  TowerPlacementCost: 50
+  TowerAmmoCapacity: 0
+  ProjectileSpeed: 0
+  ProjectileDamage: 10
+  ShootingDelayUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  ShootingDelayUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  RangeUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  RangeUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  MaxHealthUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  MaxHealthUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  ProjectileDamageUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  ProjectileDamageUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  Projectile: {fileID: 2872361982900120851, guid: 149a5185243663344931cecbf3185a9f, type: 3}
+  projectileCount: 1
+  slowAmount: 30
+  slowDuration: 0.5
+  upgradedProjectileCount1: 2
+  upgradedSlowAmount: 60
+  upgradedSlowDuration: 1.5
+  upgradedProjectileCount2: 3
+  shockUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400

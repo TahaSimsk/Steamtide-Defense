@@ -13,7 +13,6 @@ public class UpgradeBaseClass : MonoBehaviour
     [SerializeField] protected TowerInfo towerInfo;
 
     protected TowerData towerData;
-    protected ProjectileData iProjectile;
 
     protected int counter = 0;
     protected int maxUpgradeCount;
@@ -25,8 +24,7 @@ public class UpgradeBaseClass : MonoBehaviour
     
     protected virtual void OnEnable()
     {
-        towerData = towerInfo.InstITower;
-        iProjectile = towerInfo.InstIProjectile;
+        towerData = towerInfo.InstTowerData;
     }
 
 

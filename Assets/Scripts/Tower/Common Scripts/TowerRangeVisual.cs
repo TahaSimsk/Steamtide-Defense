@@ -10,11 +10,11 @@ public class TowerRangeVisual : MonoBehaviour
     [SerializeField] GameObject upgradeUI;
 
     bool isHovering;
-    MeshRenderer mesh;
+    MeshRenderer towerRangeMesh;
 
     private void Awake()
     {
-        mesh = targetScanner.GetComponent<MeshRenderer>();
+        towerRangeMesh = targetScanner.GetComponent<MeshRenderer>();
     }
 
     private void OnEnable()
@@ -31,13 +31,13 @@ public class TowerRangeVisual : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (isHovering || mesh == null) return;
-        mesh.enabled = true;
+        if (isHovering || towerRangeMesh == null) return;
+        towerRangeMesh.enabled = true;
     }
     private void OnMouseExit()
     {
-        if (isHovering || mesh == null) return;
-        mesh.enabled = false;
+        if (isHovering || towerRangeMesh == null) return;
+        towerRangeMesh.enabled = false;
     }
 
     private void OnMouseDown()
@@ -45,7 +45,7 @@ public class TowerRangeVisual : MonoBehaviour
         if (upgradeUI != null && !isHovering)
         {
             upgradeUI.SetActive(true);
-            mesh.enabled = false;
+            towerRangeMesh.enabled = false;
         }
     }
 
@@ -54,8 +54,8 @@ public class TowerRangeVisual : MonoBehaviour
     void DeactivateUpgradeUI()
     {
         isHovering = false;
-        if (mesh != null)
-            mesh.enabled = false;
+        if (towerRangeMesh != null)
+            towerRangeMesh.enabled = false;
         if (upgradeUI == null) return;
         upgradeUI.SetActive(false);
 
@@ -66,7 +66,6 @@ public class TowerRangeVisual : MonoBehaviour
         if (isHovering is bool t)
         {
             this.isHovering = t;
-            Debug.Log("Hovering: " + isHovering);
         }
     }
 }

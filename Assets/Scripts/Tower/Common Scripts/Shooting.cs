@@ -13,15 +13,16 @@ public class Shooting : MonoBehaviour
     protected float timer;
 
     protected TowerData towerData;
-    ProjectileData projectileData;
     IPoolable iPoolableProjectile;
 
 
     protected virtual void Start()
     {
-        towerData = towerInfo.InstITower;
-        projectileData = towerInfo.InstIProjectile;
-        iPoolableProjectile = (IPoolable)projectileData;
+        towerData = towerInfo.InstTowerData;
+        if (towerData is IPoolable i)
+        {
+            iPoolableProjectile = i;
+        }
     }
 
 
@@ -53,9 +54,9 @@ public class Shooting : MonoBehaviour
     {
         GameObject pooledProjectile = iPoolableProjectile.GetObject();
 
-        if (pooledProjectile == null|| targetScanner.targetsInRange.Count == 0) return;
+        if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
-        projectile.SetProjectile(projectileData);
+        projectile.SetProjectile(towerData);
 
         projectile.target = targetScanner.targetsInRange[0].transform;
 

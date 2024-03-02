@@ -18,7 +18,7 @@ public class TowerHealth : MonoBehaviour
 
     private void Awake()
     {
-        baseMaxHealth = towerInfo.DefITower.BaseMaxHealth;
+        baseMaxHealth = towerInfo.DefTowerData.BaseMaxHealth;
         maxHealth = baseMaxHealth;
     }
 

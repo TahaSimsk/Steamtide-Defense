@@ -10,23 +10,22 @@ public class DamageUpgrade : UpgradeBaseClass
     protected override void OnEnable()
     {
         base.OnEnable();
-        maxUpgradeCount = iProjectile.ProjectileDamageUpgradeValues.Count;
+        maxUpgradeCount = towerData.ProjectileDamageUpgradeValues.Count;
         if (counter >= maxUpgradeCount) return;
-        upgradeCost = iProjectile.ProjectileDamageUpgradeCosts[counter];
+        upgradeCost = towerData.ProjectileDamageUpgradeCosts[counter];
     }
 
     protected override void DoUpgrade()
     {
-        iProjectile.ProjectileDamage = (towerInfo.DefIProjectile.ProjectileDamage * iProjectile.ProjectileDamageUpgradeValues[counter] * 0.01f) + towerInfo.DefIProjectile.ProjectileDamage;
-        Debug.Log(iProjectile.ProjectileDamage);
+        towerData.ProjectileDamage = (towerInfo.DefTowerData.ProjectileDamage * towerData.ProjectileDamageUpgradeValues[counter] * 0.01f) + towerInfo.DefTowerData.ProjectileDamage;
 
         if (counter + 1 < maxUpgradeCount)
         {
-            upgradeCost = iProjectile.ProjectileDamageUpgradeCosts[counter + 1];
+            upgradeCost = towerData.ProjectileDamageUpgradeCosts[counter + 1];
         }
         else
         {
-            upgradeCost = iProjectile.ProjectileDamageUpgradeCosts[counter];
+            upgradeCost = towerData.ProjectileDamageUpgradeCosts[counter];
         }
     }
 

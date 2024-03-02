@@ -7,7 +7,7 @@ public class PoisonPoolUpgrade : UpgradeBaseClass
 {
     public int upgradeOrder;
     [SerializeField] Button buttonToUnlock;
-    ArrowData arrow;
+    BallistaData ballistaData;
 
     private void Awake()
     {
@@ -17,8 +17,8 @@ public class PoisonPoolUpgrade : UpgradeBaseClass
     protected override void OnEnable()
     {
         base.OnEnable();
-        arrow = (ArrowData)iProjectile;
-        upgradeCost = arrow.poolUpgradeCosts[upgradeOrder - 1];
+        ballistaData = (BallistaData)towerData;
+        upgradeCost = ballistaData.poolUpgradeCosts[upgradeOrder - 1];
     }
 
 
@@ -28,18 +28,18 @@ public class PoisonPoolUpgrade : UpgradeBaseClass
         switch (upgradeOrder)
         {
             case 1:
-                arrow.canPoison = true;
-                arrow.dropPoolOnFirstEnemy = true;
+                ballistaData.canPoison = true;
+                ballistaData.dropPoolOnFirstEnemy = true;
                 break;
             case 2:
-                arrow.poolDropChance = arrow.poolDropChanceUpgradedValue;
+                ballistaData.poolDropChance = ballistaData.poolDropChanceUpgradedValue;
                 break;
             case 3:
-                arrow.poolDuration = arrow.poolDurationUpgradedValue;
+                ballistaData.poolDuration = ballistaData.poolDurationUpgradedValue;
                 break;
             case 4:
-                arrow.dropPoolOnFirstEnemy = false;
-                arrow.poolDamage = arrow.poolDamageUpgradedValue;
+                ballistaData.dropPoolOnFirstEnemy = false;
+                ballistaData.poolDamage = ballistaData.poolDamageUpgradedValue;
                 break;
         }
 

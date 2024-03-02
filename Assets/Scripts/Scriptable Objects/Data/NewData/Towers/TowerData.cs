@@ -3,27 +3,41 @@ using UnityEngine;
 
 public class TowerData : GameData
 {
-    [field: Header("---------------------------TOWER PREFABS-----------------------")]
+    [Header("---------------------------TOWER PREFABS-----------------------")]
     public GameObject TowerPrefab;
     public GameObject TowerHoverPrefab;
     public GameObject TowerNPHoverPrefab;
 
 
-    [field: Header("---------------------------TOWER ATTRIBUTES-----------------------")]
+    [Header("---------------------------TOWER ATTRIBUTES-----------------------")]
     public float ShootingDelay;
     public float TowerRange;
     public float BaseMaxHealth;
     public float TowerRotationSpeed;
     public float TowerPlacementCost;
     public int TowerAmmoCapacity;
+    public float ProjectileSpeed;
+    public float ProjectileDamage;
 
-    [field: Header("---------------------------TOWER UPGRADES-----------------------")]
+    [Header("---------------------------TOWER UPGRADES-----------------------")]
+    [Header("Shooting Delay")]
     public List<float> ShootingDelayUpgradeValues;
     public List<float> ShootingDelayUpgradeCosts;
+
+    [Header("Range")]
     public List<float> RangeUpgradeValues;
     public List<float> RangeUpgradeCosts;
+
+    [Header("HP")]
     public List<float> MaxHealthUpgradeValues;
     public List<float> MaxHealthUpgradeCosts;
+
+    [Header("Damage")]
+    public List<float> ProjectileDamageUpgradeValues;
+    public List<float> ProjectileDamageUpgradeCosts;
+
+  
+   
 }
 
 

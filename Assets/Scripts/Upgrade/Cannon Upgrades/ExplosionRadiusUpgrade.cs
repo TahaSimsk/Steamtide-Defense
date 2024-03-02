@@ -7,8 +7,8 @@ public class ExplosionRadiusUpgrade : UpgradeBaseClass
 {
     public int upgradeOrder;
     [SerializeField] Button buttonToUnlock;
-    BallData ball;
-    BallData defBall;
+    CannonData cannonData;
+    CannonData defCannonData;
 
     private void Awake()
     {
@@ -18,16 +18,16 @@ public class ExplosionRadiusUpgrade : UpgradeBaseClass
     protected override void OnEnable()
     {
         base.OnEnable();
-        ball = (BallData)iProjectile;
-        defBall = (BallData)towerInfo.DefIProjectile;
+        cannonData = (CannonData)towerData;
+        defCannonData = (CannonData)towerInfo.DefTowerData;
 
-        upgradeCost = ball.ExplosionRadiusUpgradeCosts[upgradeOrder - 1];
+        upgradeCost = cannonData.ExplosionRadiusUpgradeCosts[upgradeOrder - 1];
     }
 
 
     protected override void DoUpgrade()
     {
-            ball.ExplosionRadius = (defBall.ExplosionRadius * ball.ExplosionRadiusUpgradeValues[upgradeOrder - 1] * 0.01f) + defBall.ExplosionRadius;
+            cannonData.ExplosionRadius = (defCannonData.ExplosionRadius * cannonData.ExplosionRadiusUpgradeValues[upgradeOrder - 1] * 0.01f) + defCannonData.ExplosionRadius;
         
 
         if (buttonToUnlock != null)

@@ -21,7 +21,7 @@ public class RangeUpgrade : UpgradeBaseClass
 
         float upgradeValue = towerData.RangeUpgradeValues[counter];
 
-        targetScanner.ChangeRange((towerInfo.DefITower.TowerRange * upgradeValue * 0.01f) + towerInfo.DefITower.TowerRange);
+        targetScanner.ChangeRange((towerInfo.DefTowerData.TowerRange * upgradeValue * 0.01f) + towerInfo.DefTowerData.TowerRange);
         towerData.TowerRange = upgradeValue;
 
         if (counter + 1 < maxUpgradeCount)

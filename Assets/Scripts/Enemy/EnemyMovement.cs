@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] Vector3 offsetY;
 
-    float currentMoveSpeed, defaultMoveSpeed;
+    float currentMoveSpeed, defaultMoveSpeed, timerToNormaliseMoveSpeed;
+    bool stunned;
 
     List<GameObject> path = new List<GameObject>();
 
@@ -28,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath());
         currentMoveSpeed = defaultMoveSpeed;
+        stunned = false;
     }
 
 
@@ -54,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, path[i].transform.position + offsetY, currentMoveSpeed * Time.deltaTime);
 
-                yield return new WaitForEndOfFrame();
+                yield return null;
             }
         }
         //reaching at the end of the path
@@ -62,13 +64,38 @@ public class EnemyMovement : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        ResetMoveSpeed();
+    }
+
     public void DecreaseMoveSpeedByPercentage(float value)
     {
         currentMoveSpeed = defaultMoveSpeed - currentMoveSpeed * value / 100;
     }
+    public void DecreaseMoveSpeedByPercentage(float value, float time)
+    {
+        if (stunned) return;
+        currentMoveSpeed = defaultMoveSpeed - defaultMoveSpeed * value / 100;
+        if (currentMoveSpeed <= 0.01f)
+        {
+            stunned = true;
+        }
+        timerToNormaliseMoveSpeed = time;
+    }
+
 
     public void ResetMoveSpeed()
     {
-        currentMoveSpeed = defaultMoveSpeed;
+        if (timerToNormaliseMoveSpeed > 0)
+        {
+            timerToNormaliseMoveSpeed -= Time.deltaTime;
+            if (timerToNormaliseMoveSpeed <= 0)
+            {
+                currentMoveSpeed = defaultMoveSpeed;
+                stunned = false;
+            }
+        }
     }
+
 }

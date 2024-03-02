@@ -15,7 +15,7 @@ public class ShootingDelayUpgrade : UpgradeBaseClass
 
     protected override void DoUpgrade()
     {
-        towerData.ShootingDelay = towerInfo.DefITower.ShootingDelay - (towerInfo.DefITower.ShootingDelay * towerData.ShootingDelayUpgradeValues[counter] * 0.01f);
+        towerData.ShootingDelay = towerInfo.DefTowerData.ShootingDelay - (towerInfo.DefTowerData.ShootingDelay * towerData.ShootingDelayUpgradeValues[counter] * 0.01f);
 
         Debug.Log(towerData.ShootingDelay);
 

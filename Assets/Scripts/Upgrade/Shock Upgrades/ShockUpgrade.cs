@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PierceUpgrade : UpgradeBaseClass
+public class ShockUpgrade : UpgradeBaseClass
 {
     public int upgradeOrder;
     [SerializeField] Button buttonToUnlock;
-    BallistaData ballistaData;
-
+    ShockData shockData;
     private void Awake()
     {
         maxUpgradeCount = 1;
@@ -18,29 +16,26 @@ public class PierceUpgrade : UpgradeBaseClass
     protected override void OnEnable()
     {
         base.OnEnable();
-        ballistaData = (BallistaData)towerData;
-        upgradeCost = ballistaData.pierceUpgradeCosts[upgradeOrder - 1];
+        shockData = (ShockData)towerData;
+        upgradeCost = shockData.shockUpgradeCosts[upgradeOrder - 1];
     }
 
 
     protected override void DoUpgrade()
     {
-        ballistaData.pierceLimit = ballistaData.pierceLimitUpgrades[upgradeOrder - 1];
-        ballistaData.canPierce = true;
-
         switch (upgradeOrder)
         {
             case 1:
-                ballistaData.pierceDamage = ballistaData.pierce1DamageUpgrades;
+                shockData.projectileCount = shockData.upgradedProjectileCount1;
                 break;
             case 2:
-                ballistaData.pierceDamage = ballistaData.pierce2DamageUpgrades;
+                shockData.slowAmount = shockData.upgradedSlowAmount;
                 break;
             case 3:
-                ballistaData.pierceDamage = ballistaData.pierce3DamageUpgrades;
+                shockData.slowDuration = shockData.upgradedSlowDuration;
                 break;
             case 4:
-                ballistaData.pierceDamage = ballistaData.pierce4DamageUpgrades;
+                shockData.projectileCount = shockData.upgradedProjectileCount2;
                 break;
         }
         if (buttonToUnlock != null)

@@ -25,7 +25,7 @@ public class FaceTarget : MonoBehaviour
 
         Quaternion lookRotation = Quaternion.LookRotation(dir);
 
-        Vector3 rotation = Quaternion.Lerp(partToMove.rotation, lookRotation, Time.deltaTime * towerInfo.InstITower.TowerRotationSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToMove.rotation, lookRotation, Time.deltaTime * towerInfo.InstTowerData.TowerRotationSpeed).eulerAngles;
 
         partToMove.rotation = Quaternion.Euler(rotation);
 

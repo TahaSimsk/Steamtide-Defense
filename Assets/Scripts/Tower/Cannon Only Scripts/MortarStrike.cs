@@ -19,7 +19,7 @@ public class MortarStrike : MonoBehaviour
     bool uiHovered;
     void Start()
     {
-        cannonData = (CannonData)towerInfo.InstITower;
+        cannonData = (CannonData)towerInfo.InstTowerData;
         button.onClick.AddListener(BeginStrikeSequence);
     }
 

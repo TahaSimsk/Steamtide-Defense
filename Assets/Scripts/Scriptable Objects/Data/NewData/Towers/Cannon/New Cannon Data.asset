@@ -23,6 +23,8 @@ MonoBehaviour:
   TowerRotationSpeed: 10
   TowerPlacementCost: 80
   TowerAmmoCapacity: 100
+  ProjectileSpeed: 60
+  ProjectileDamage: 30
   ShootingDelayUpgradeValues:
   - 10
   - 20
@@ -53,6 +55,30 @@ MonoBehaviour:
   - 200
   - 300
   - 400
+  ProjectileDamageUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  ProjectileDamageUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  ExplosionRadius: 10
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  ExplosionRadiusUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 60
+  ExplosionRadiusUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
   MortarCooldown: 5
   MortarTargetIndicator: {fileID: 3930998012174477889, guid: e02016a5644944f44b3fee831ea72aaa, type: 3}
   numOfMissilesToLaunch: 4
@@ -62,9 +88,6 @@ MonoBehaviour:
   missileMoveSpeed: 100
   timeToWaitBeforeAppearing: 0
   offsetToAppear: 100
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
   bombRadius: 10
   damage: 10
   canMortar: 1
@@ -76,3 +99,6 @@ MonoBehaviour:
   - 200
   - 300
   - 400
+  <ObjectPrefab>k__BackingField: {fileID: 2215042161897283401, guid: 1f65f0c3afc2eb040b65d957fe1b0bb2, type: 3}
+  <ObjectPoolsize>k__BackingField: 50
+  <objList>k__BackingField: []

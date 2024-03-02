@@ -9,11 +9,11 @@ public class Ball : Projectile
     {
         if (other.CompareTag("Enemy"))
         {
-            Collider[] enemies = Physics.OverlapSphere(transform.position, ((BallData)projectileData).ExplosionRadius, ((BallData)projectileData).enemyLayer);
+            Collider[] enemies = Physics.OverlapSphere(transform.position, ((CannonData)towerData).ExplosionRadius, ((CannonData)towerData).enemyLayer);
             
             foreach (var enemy in enemies)
             {
-                enemy.GetComponent<EnemyHealth>().ReduceHealth(projectileData.ProjectileDamage);
+                enemy.GetComponent<EnemyHealth>().ReduceHealth(towerData.ProjectileDamage);
             }
             gameObject.SetActive(false);
         }
@@ -22,6 +22,6 @@ public class Ball : Projectile
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, ((BallData)projectileData).ExplosionRadius);
+        Gizmos.DrawWireSphere(transform.position, ((CannonData)towerData).ExplosionRadius);
     }
 }

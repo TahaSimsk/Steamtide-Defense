@@ -5,8 +5,19 @@ using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(menuName = "GameData/Towers/Cannon")]
-public class CannonData : TowerData
+public class CannonData : TowerData, IPoolable
 {
+    [Header("------------------------EXPLOSION ATTRIBUTES--------------------------")]
+    public float ExplosionRadius;
+    public LayerMask enemyLayer;
+
+    [Header("------------------------EXPLOSION UPGRADES--------------------------")]
+    public List<float> ExplosionRadiusUpgradeValues;
+    public List<float> ExplosionRadiusUpgradeCosts;
+
+
+
+
     [Header("------------------------MORTAR ATTRIBUTES--------------------------")]
 
 
@@ -20,7 +31,6 @@ public class CannonData : TowerData
     public float missileMoveSpeed;
     public float timeToWaitBeforeAppearing;
     public float offsetToAppear;
-    public LayerMask enemyLayer;
     public float bombRadius;
     public float damage;
 
@@ -36,6 +46,24 @@ public class CannonData : TowerData
     [Header("Upgrade Costs")]
     public List<float> mortarUpgradeCosts;
 
+
+    [field: Header("------------------------OBJECT POOLING--------------------------")]
+    [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
+    [field: SerializeReference] public int ObjectPoolsize { get; set; }
+    [field: SerializeReference] public List<GameObject> objList { get; set; }
+
+    public GameObject GetObject()
+    {
+        foreach (var obj in objList)
+        {
+            if (!obj.activeInHierarchy)
+            {
+                return obj;
+
+            }
+        }
+        return null;
+    }
 }
 
 

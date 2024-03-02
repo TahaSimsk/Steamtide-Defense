@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    protected ProjectileData projectileData;
+    protected TowerData towerData;
     public GameEvent1ParamSO onEnemyDeath;
     public Transform target;
     protected bool initiated = false;
@@ -23,8 +23,8 @@ public class Projectile : MonoBehaviour
     {
         if (!initiated) return;
         onEnemyDeath.onEventRaised += CompareEnemy;
-        damage = projectileData.ProjectileDamage;
-        projectileSpeed = projectileData.ProjectileSpeed;
+        damage = towerData.ProjectileDamage;
+        projectileSpeed = towerData.ProjectileSpeed;
     }
 
     private void OnDisable()
@@ -88,9 +88,9 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void SetProjectile(ProjectileData projectile)
+    public void SetProjectile(TowerData data)
     {
-        projectileData = projectile;
+        towerData = data;
     }
 
 }

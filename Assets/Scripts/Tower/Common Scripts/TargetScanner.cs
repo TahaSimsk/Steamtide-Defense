@@ -17,7 +17,7 @@ public class TargetScanner : MonoBehaviour
 
     private void Start()
     {
-        ChangeRange(towerInfo.InstITower.TowerRange);
+        ChangeRange(towerInfo.InstTowerData.TowerRange);
     }
 
     private void OnEnable()
