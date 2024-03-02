@@ -78,3 +78,17 @@ MonoBehaviour:
   - 200
   - 300
   - 400
+  empRadius: 30
+  empCooldown: 5
+  freezeDuration: 2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  canFreezeBosses: 0
+  upgradedFreezeDuration: 4
+  upgradedEmpCooldown: 2
+  empUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
