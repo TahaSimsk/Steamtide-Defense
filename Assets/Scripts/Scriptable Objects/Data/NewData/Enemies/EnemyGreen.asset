@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: enemy
   hashCode: 1816857306
+  <DefaultMoveSpeed>k__BackingField: 10
+  <BaseMaxHealth>k__BackingField: 500
+  <MoneyDrop>k__BackingField: 10
   <ObjectPrefab>k__BackingField: {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
   <ObjectPoolsize>k__BackingField: 50
   <objList>k__BackingField:
@@ -67,6 +70,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  <DefaultMoveSpeed>k__BackingField: 10
-  <BaseMaxHealth>k__BackingField: 100
-  <MoneyDrop>k__BackingField: 10

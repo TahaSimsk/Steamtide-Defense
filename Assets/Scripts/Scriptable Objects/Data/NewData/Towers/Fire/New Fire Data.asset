@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df426add190b74f428045766aea61bce, type: 3}
+  m_Name: New Fire Data
+  m_EditorClassIdentifier: 
+  objectName: Fire
+  hashCode: -837447586
+  TowerPrefab: {fileID: 2927489918165086300, guid: eb30c020cea2e304bb68e0cdd94bada6, type: 3}
+  TowerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
+  TowerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
+  ShootingDelay: 0
+  TowerRange: 30
+  BaseMaxHealth: 100
+  TowerRotationSpeed: 50
+  TowerPlacementCost: 50
+  TowerAmmoCapacity: 0
+  ProjectileSpeed: 0
+  ProjectileDamage: 25
+  ShootingDelayUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  ShootingDelayUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  RangeUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  RangeUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  MaxHealthUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  MaxHealthUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  ProjectileDamageUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 40
+  ProjectileDamageUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  RotateSpeedUpgradeValues:
+  - 10
+  - 20
+  - 30
+  - 100
+  RotateSpeedUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  flameUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  canThrowTrap: 0
+  fireTrap: {fileID: 8119679663931174102, guid: 2db3b2c5a4b68c04781f82e160f456cf, type: 3}
+  trapRandomPosOffset: 3
+  trapDamage: 100
+  trapCooldown: 30
+  pathLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  UpgradedTrapCooldown1: 20
+  UpgradedTrapCooldown2: 10
+  UpgradedTrapDamage: 150
+  FireTrapUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400

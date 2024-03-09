@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeUpgrade : UpgradeBaseClass
 {
-    [SerializeField] TargetScanner targetScanner;
 
-  
+    public event Action OnRangeUpgraded;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -17,12 +18,9 @@ public class RangeUpgrade : UpgradeBaseClass
 
     protected override void DoUpgrade()
     {
+        towerData.TowerRange = (towerInfo.DefTowerData.TowerRange * towerData.RangeUpgradeValues[counter] * 0.01f) + towerInfo.DefTowerData.TowerRange;
 
-
-        float upgradeValue = towerData.RangeUpgradeValues[counter];
-
-        targetScanner.ChangeRange((towerInfo.DefTowerData.TowerRange * upgradeValue * 0.01f) + towerInfo.DefTowerData.TowerRange);
-        towerData.TowerRange = upgradeValue;
+        OnRangeUpgraded?.Invoke();
 
         if (counter + 1 < maxUpgradeCount)
         {

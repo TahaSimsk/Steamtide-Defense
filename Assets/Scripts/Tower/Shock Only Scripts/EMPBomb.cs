@@ -31,10 +31,11 @@ public class EMPBomb : MonoBehaviour
         EnemyMovement enemyMovement;
         foreach (Collider collider in colliders)
         {
+            if (collider.GetComponent<IBoss>() != null && !shockData.canFreezeBosses) continue;
+            
             enemyMovement = collider.GetComponent<EnemyMovement>();
             if (enemyMovement == null) continue;
             enemyMovement.DecreaseMoveSpeedByPercentage(100, shockData.freezeDuration);
-            //TODO: Write Boss logic here
 
         }
         StartCoroutine(StartTimer());

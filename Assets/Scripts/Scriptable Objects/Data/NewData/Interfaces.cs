@@ -19,3 +19,8 @@ public interface IEnemy
     float MoneyDrop { get; set; }
 }
 
+public interface IBoss
+{
+
+}
+

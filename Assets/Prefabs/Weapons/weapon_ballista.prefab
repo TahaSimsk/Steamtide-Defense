@@ -308,7 +308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefTowerGameData: {fileID: 11400000, guid: 42bbb4f300352d348bffd3af462562bc, type: 2}
-  DefProjectileGameData: {fileID: 11400000, guid: 1437732e114811643b87d71bf1ab7aa4, type: 2}
 --- !u!114 &7987528362991256715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +680,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 282743804271554332, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
   m_PrefabInstance: {fileID: 238691283841017845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4904649659502459012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 238691283841017845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6091ed8401d39e4199f68cc66c85202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8419872639431841712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
@@ -698,6 +708,10 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 8116995774823274546}
+    - target: {fileID: -3172473853566658708, guid: ad83980b8e388b447a705c286a057288, type: 3}
+      propertyPath: rangeUpgrade
+      value: 
+      objectReference: {fileID: 4904649659502459012}
     - target: {fileID: 2016678852054251299, guid: ad83980b8e388b447a705c286a057288, type: 3}
       propertyPath: m_Name
       value: TargetScanner

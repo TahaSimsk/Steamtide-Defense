@@ -6,17 +6,17 @@ using UnityEngine;
 public class EnemyData : GameData, IPoolable, IEnemy
 {
 
-    [field: Header("------------------------------OBJECT POOLING------------------------------")]
-    [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
-    [field: SerializeReference] public int ObjectPoolsize { get; set; }
-    [field: SerializeReference] public List<GameObject> objList { get; set; }
-
 
     [field: Header("------------------------------ENEMY ATTRIBUTES------------------------------")]
     [field: SerializeReference] public float DefaultMoveSpeed { get; set; }
     [field: SerializeReference] public float BaseMaxHealth { get; set; }
     [field: SerializeReference] public float MoneyDrop { get; set; }
 
+
+    [field: Header("------------------------------OBJECT POOLING------------------------------")]
+    [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
+    [field: SerializeReference] public int ObjectPoolsize { get; set; }
+    [field: SerializeReference] public List<GameObject> objList { get; set; }
 
     public GameObject GetObject()
     {

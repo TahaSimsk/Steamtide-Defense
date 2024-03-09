@@ -14,7 +14,8 @@ public class TowerRangeVisual : MonoBehaviour
 
     private void Awake()
     {
-        towerRangeMesh = targetScanner.GetComponent<MeshRenderer>();
+        if (targetScanner != null)
+            towerRangeMesh = targetScanner.GetComponent<MeshRenderer>();
     }
 
     private void OnEnable()
@@ -45,7 +46,8 @@ public class TowerRangeVisual : MonoBehaviour
         if (upgradeUI != null && !isHovering)
         {
             upgradeUI.SetActive(true);
-            towerRangeMesh.enabled = false;
+            if (towerRangeMesh != null)
+                towerRangeMesh.enabled = false;
         }
     }
 

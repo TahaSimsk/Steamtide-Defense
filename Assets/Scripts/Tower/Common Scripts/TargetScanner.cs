@@ -9,27 +9,32 @@ public class TargetScanner : MonoBehaviour
     [SerializeField] TowerInfo towerInfo;
     [SerializeField] GameEvent1ParamSO onTargetDeath;
     [SerializeField] GameEvent1ParamSO onEnemyReachedEnd;
-
+    [SerializeField] RangeUpgrade rangeUpgrade;
     [HideInInspector]
     public List<GameObject> targetsInRange = new List<GameObject>();
 
-
+    TowerData towerData;
 
     private void Start()
     {
-        ChangeRange(towerInfo.InstTowerData.TowerRange);
+        towerData = towerInfo.InstTowerData;
+        ChangeRange();
     }
 
     private void OnEnable()
     {
         onTargetDeath.onEventRaised += RemoveTarget;
         onEnemyReachedEnd.onEventRaised += RemoveTarget;
+        rangeUpgrade.OnRangeUpgraded += ChangeRange;
     }
     private void OnDisable()
     {
         onTargetDeath.onEventRaised -= RemoveTarget;
         onEnemyReachedEnd.onEventRaised -= RemoveTarget;
+        rangeUpgrade.OnRangeUpgraded -= ChangeRange;
+
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,9 +54,9 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
-    public void ChangeRange(float range)
+    public void ChangeRange()
     {
-        transform.localScale = new Vector3(range, 0.1f, range);
+        transform.localScale = new Vector3(towerData.TowerRange, 0.1f, towerData.TowerRange);
     }
 
 

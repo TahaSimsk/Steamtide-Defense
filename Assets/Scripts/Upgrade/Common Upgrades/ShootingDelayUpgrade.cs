@@ -17,8 +17,6 @@ public class ShootingDelayUpgrade : UpgradeBaseClass
     {
         towerData.ShootingDelay = towerInfo.DefTowerData.ShootingDelay - (towerInfo.DefTowerData.ShootingDelay * towerData.ShootingDelayUpgradeValues[counter] * 0.01f);
 
-        Debug.Log(towerData.ShootingDelay);
-
         if (counter + 1 < maxUpgradeCount)
         {
             upgradeCost = towerData.ShootingDelayUpgradeCosts[counter + 1];
