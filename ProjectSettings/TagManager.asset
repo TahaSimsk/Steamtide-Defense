@@ -8,6 +8,8 @@ TagManager:
   - Path
   - UpgradeCostText
   - Path2
+  - Ground
+  - Tower
   layers:
   - Default
   - TransparentFX

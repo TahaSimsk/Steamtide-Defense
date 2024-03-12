@@ -31,6 +31,13 @@ public class ObjectPool : MonoBehaviour
                 i.objList.Clear();
                 PopulatePool(i.objList, i.ObjectPoolsize, i.ObjectPrefab);
             }
+
+            if (data is EnemyData enemy)
+            {
+                if (enemy.ProjectilePoolSize <= 0) continue;
+                enemy.ProjectileList.Clear();
+                PopulatePool(enemy.ProjectileList,enemy.ProjectilePoolSize, enemy.ProjectilePrefab);
+            }
         }
 
     }

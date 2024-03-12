@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5399809531467968513}
   m_Layer: 7
   m_Name: weapon_fire
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cd2ce6bd3f88445ade73c44f1f3707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefTowerGameData: {fileID: 11400000, guid: 131eca81a93104c40a796ff835a51851, type: 2}
+  DefObjectGameData: {fileID: 11400000, guid: 131eca81a93104c40a796ff835a51851, type: 2}
 --- !u!114 &1430160963449262205
 MonoBehaviour:
   m_ObjectHideFlags: 0

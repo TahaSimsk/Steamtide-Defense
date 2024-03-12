@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1079728285195974169}
   m_Layer: 7
   m_Name: weapon_cannon
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,11 +38,11 @@ Transform:
   m_Children:
   - {fileID: 3068719041320450215}
   - {fileID: 2748946259057399407}
-  - {fileID: 8295356903090963711}
   - {fileID: 9186065723178405838}
   - {fileID: 7722263851818381405}
   - {fileID: 5588383429805428210}
   - {fileID: 7963104004473747201}
+  - {fileID: 1037640371446564144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4607779968385606541
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerInfo: {fileID: 7190786172816432787}
-  targetScanner: {fileID: 1644263485079540530}
+  targetScanner: {fileID: 316132653749911516}
   projectilePos: {fileID: 3094647267173159211}
   ammoManager: {fileID: 1079728285195974169}
 --- !u!114 &7190786172816432787
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cd2ce6bd3f88445ade73c44f1f3707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefTowerGameData: {fileID: 11400000, guid: 3ce7b793b2109994884926b7e3082c4d, type: 2}
+  DefObjectGameData: {fileID: 11400000, guid: 3ce7b793b2109994884926b7e3082c4d, type: 2}
 --- !u!114 &1553281093293610398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEscPressed: {fileID: 11400000, guid: 48703f90863942444bbf14ffaa0a3e8a, type: 2}
   onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
-  targetScanner: {fileID: 1644263485079540530}
+  targetScanner: {fileID: 316132653749911516}
   upgradeUI: {fileID: 801238434125598871}
 --- !u!114 &1119296911851776760
 MonoBehaviour:
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerInfo: {fileID: 7190786172816432787}
-  targetScanner: {fileID: 1644263485079540530}
+  targetScanner: {fileID: 316132653749911516}
   partToMove: {fileID: 3068719041320450215}
 --- !u!114 &1079728285195974169
 MonoBehaviour:
@@ -2785,7 +2785,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8580069501726404268, guid: c4d4f14342517f54c8d14b98ced9b228, type: 3}
   m_PrefabInstance: {fileID: 2033509164875636465}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4983377277711418462
+--- !u!1001 &4058293533973480849
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2793,21 +2793,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8833656824197336869}
     m_Modifications:
-    - target: {fileID: -3172473853566658708, guid: ad83980b8e388b447a705c286a057288, type: 3}
-      propertyPath: towerInfo
-      value: 
-      objectReference: {fileID: 7190786172816432787}
     - target: {fileID: 2016678852054251299, guid: ad83980b8e388b447a705c286a057288, type: 3}
       propertyPath: m_Name
-      value: TargetScanner
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
+      value: TowerTargetScanner
       objectReference: {fileID: 0}
     - target: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2815,7 +2803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2849,26 +2837,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337763101327440461, guid: ad83980b8e388b447a705c286a057288, type: 3}
+      propertyPath: objectInfo
+      value: 
+      objectReference: {fileID: 7190786172816432787}
+    - target: {fileID: 4337763101327440461, guid: ad83980b8e388b447a705c286a057288, type: 3}
+      propertyPath: rangeUpgrade
+      value: 
+      objectReference: {fileID: 4311958544569974691}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad83980b8e388b447a705c286a057288, type: 3}
---- !u!114 &1644263485079540530 stripped
+--- !u!114 &316132653749911516 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -3172473853566658708, guid: ad83980b8e388b447a705c286a057288, type: 3}
-  m_PrefabInstance: {fileID: 4983377277711418462}
+  m_CorrespondingSourceObject: {fileID: 4337763101327440461, guid: ad83980b8e388b447a705c286a057288, type: 3}
+  m_PrefabInstance: {fileID: 4058293533973480849}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f879433a043c634abe2e16ece468a32, type: 3}
+  m_Script: {fileID: 11500000, guid: 624c0e3ebafd07f429e0541768774f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &8295356903090963711 stripped
+--- !u!4 &1037640371446564144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3906736458474209441, guid: ad83980b8e388b447a705c286a057288, type: 3}
-  m_PrefabInstance: {fileID: 4983377277711418462}
+  m_PrefabInstance: {fileID: 4058293533973480849}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8812742278756299233
 PrefabInstance:
@@ -3083,10 +3079,6 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 7190786172816432787}
-    - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      propertyPath: targetScanner
-      value: 
-      objectReference: {fileID: 1644263485079540530}
     - target: {fileID: 5211674240836446788, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
@@ -3141,6 +3133,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
   m_PrefabInstance: {fileID: 8977916953855041746}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4311958544569974691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 8977916953855041746}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6091ed8401d39e4199f68cc66c85202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9186065723178405838 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 282743804271554332, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
