@@ -9,8 +9,10 @@ public class FireTrap : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (HelperFunctions.CheckImmunity(other.gameObject, Immunity.AllTraps)) return;
             other.GetComponent<EnemyHealth>().ReduceHealth(damage);
             Destroy(gameObject, 0.1f);
         }
     }
 }
+

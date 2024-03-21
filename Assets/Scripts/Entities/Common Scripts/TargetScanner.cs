@@ -57,4 +57,16 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
+    public Transform Target(Enum priority)
+    {
+        switch (priority)
+        {
+            case TargetPriority.First:
+                return targetsInRange[0].transform;
+            case TargetPriority.Last:
+                return targetsInRange.Last().transform;
+            default:
+                return null;
+        }
+    }
 }

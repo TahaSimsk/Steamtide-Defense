@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+using System;
 using UnityEngine;
 
 public class Arrow : Projectile
@@ -53,15 +51,15 @@ public class Arrow : Projectile
 
 
 
-        PierceBehaviour();
+        PierceBehaviour(other);
 
     }
 
     private void PoisonBehaviour(Collider other)
     {
-        if (canPoison)
+        if (canPoison && !HelperFunctions.CheckImmunity(other.gameObject, Immunity.Poison))
         {
-            if (Random.Range(0, 100) <= ballistaData.poolDropChance)
+            if (UnityEngine.Random.Range(0, 100) <= ballistaData.poolDropChance)
             {
                 RaycastHit hit;
                 if (Physics.SphereCast(other.transform.position + Vector3.up * 4f, 1f, Vector3.down, out hit, 6f, ballistaData.poolLayer))
@@ -85,9 +83,9 @@ public class Arrow : Projectile
         }
     }
 
-    private void PierceBehaviour()
+    private void PierceBehaviour(Collider other)
     {
-        if (ballistaData.canPierce)
+        if (ballistaData.canPierce && !HelperFunctions.CheckImmunity(other.gameObject, Immunity.Pierce))
         {
             pierceCount++;
 
@@ -107,4 +105,6 @@ public class Arrow : Projectile
             gameObject.SetActive(false);
         }
     }
+
+
 }

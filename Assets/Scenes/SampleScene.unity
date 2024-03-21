@@ -4145,13 +4145,10 @@ MonoBehaviour:
   waveText: {fileID: 1098057041}
   timeBetweenEnemySpawns: 1
   timeBetweenEnemyWaves: 10
-  setEnemyHealthManually: 0
-  enemyHealthDifficulty: 0
-  enemyHealthDifficultyMultiplier: 1.1
   waves:
+  - {fileID: 11400000, guid: c419849716024f048aea86188a3c5330, type: 2}
   - {fileID: 11400000, guid: 4fc14b759bfd9b2468aae06465658eb5, type: 2}
   - {fileID: 11400000, guid: 26dd691cf81a59a4180f885e42a7c3de, type: 2}
-  - {fileID: 11400000, guid: c419849716024f048aea86188a3c5330, type: 2}
   - {fileID: 11400000, guid: 619170be667f48a49b9efd9e153cff4a, type: 2}
   - {fileID: 11400000, guid: d4196813342986c43a2d56c1a8e3d9e2, type: 2}
   - {fileID: 11400000, guid: b01917b8657ef9042ab98e2234688b3a, type: 2}
@@ -17547,13 +17544,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToPool:
-  - {fileID: 11400000, guid: 0ea48082cc4cb91448111ace720260ac, type: 2}
-  - {fileID: 11400000, guid: bad273895000ba04c95a01931967b7d1, type: 2}
-  - {fileID: 11400000, guid: b3e5c0c181dadc84daf0daebe15fbc6a, type: 2}
-  - {fileID: 11400000, guid: 885e28fffdaea1c40b325d9a29a68016, type: 2}
   - {fileID: 11400000, guid: 42bbb4f300352d348bffd3af462562bc, type: 2}
   - {fileID: 11400000, guid: 3409b14c8a9be6e44b3d701febf3705b, type: 2}
   - {fileID: 11400000, guid: 3ce7b793b2109994884926b7e3082c4d, type: 2}
+  - {fileID: 11400000, guid: 885e28fffdaea1c40b325d9a29a68016, type: 2}
+  - {fileID: 11400000, guid: 29c0ea784c3f0774082552a80feb7237, type: 2}
+  - {fileID: 11400000, guid: bad273895000ba04c95a01931967b7d1, type: 2}
+  - {fileID: 11400000, guid: 0ea48082cc4cb91448111ace720260ac, type: 2}
+  - {fileID: 11400000, guid: b3e5c0c181dadc84daf0daebe15fbc6a, type: 2}
+  - {fileID: 11400000, guid: ade4ec14d0cb1fd4e94ed3d9cd189a99, type: 2}
+  - {fileID: 11400000, guid: 3271264d90ba66f40850a69fce2c85a4, type: 2}
 --- !u!4 &2032580140
 Transform:
   m_ObjectHideFlags: 0

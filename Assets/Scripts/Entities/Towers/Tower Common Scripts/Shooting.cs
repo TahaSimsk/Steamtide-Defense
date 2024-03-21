@@ -15,7 +15,6 @@ public class Shooting : MonoBehaviour
     protected TowerData towerData;
     IPoolable iPoolableProjectile;
 
-
     protected virtual void Start()
     {
         towerData = towerInfo.InstTowerData;
@@ -57,8 +56,7 @@ public class Shooting : MonoBehaviour
         if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(towerData);
-
-        projectile.target = targetScanner.targetsInRange[0].transform;
+        projectile.target = targetScanner.Target(towerData.TargetPriority);
 
         pooledProjectile.transform.position = projectileSpawnPoint.position;
         pooledProjectile.SetActive(true);

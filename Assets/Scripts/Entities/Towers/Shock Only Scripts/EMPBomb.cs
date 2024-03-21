@@ -29,10 +29,11 @@ public class EMPBomb : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(towerInfo.transform.position, scanner.GetComponent<SphereCollider>().radius * scanner.transform.lossyScale.x, shockData.enemyLayer);
         if (colliders.Length <= 0) return;
         EnemyMovement enemyMovement;
+
         foreach (Collider collider in colliders)
         {
-            if (collider.GetComponent<IBoss>() != null && !shockData.canFreezeBosses) continue;
-            
+            if (HelperFunctions.CheckImmunity(collider.gameObject, Immunity.Freeze) && !shockData.canFreezeBosses) continue;
+
             enemyMovement = collider.GetComponent<EnemyMovement>();
             if (enemyMovement == null) continue;
             enemyMovement.DecreaseMoveSpeedByPercentage(100, shockData.freezeDuration);
@@ -43,7 +44,7 @@ public class EMPBomb : MonoBehaviour
         //TODO: Play an emp anim here
 
     }
-    
+
     IEnumerator StartTimer()
     {
 

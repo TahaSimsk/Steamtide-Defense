@@ -5,27 +5,18 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] ObjectInfo objectInfo;
     [Header("Events")]
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
-
-    public GameData enemyData;
     [SerializeField] GameObject highlightPrefab;
     [SerializeField] Slider healthBar;
 
-
-
     float currentHealth;
 
-    [HideInInspector] public float maxHealth;
-
-    private void Awake()
-    {
-        maxHealth =((EnemyData)enemyData).BaseMaxHealth;
-    }
-
+    
     private void OnEnable()
     {
-        currentHealth = maxHealth;
+        currentHealth = (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
         UpdateHPBar();
     }
 
@@ -52,14 +43,9 @@ public class EnemyHealth : MonoBehaviour
         CheckIfDiedAndHandleDeath();
     }
 
-    public void SetMaxHP(float amount)
-    {
-        maxHealth *= amount;
-    }
-
 
     void UpdateHPBar()
     {
-        healthBar.value = currentHealth / maxHealth;
+        healthBar.value = currentHealth / (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
     }
 }

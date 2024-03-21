@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Wave 2
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
-  enemyCount: 3c000000
-  enemyHealth:
-  - 550
+  - {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
+  - {fileID: 7717460796901817828, guid: 8565d9ceac2e424409317f6ff7673159, type: 3}
+  enemyCount: 1400000005000000

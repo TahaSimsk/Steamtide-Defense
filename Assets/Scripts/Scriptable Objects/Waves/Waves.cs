@@ -9,5 +9,4 @@ public class Waves : ScriptableObject
 
     public List<int> enemyCount;
 
-    public List<float> enemyHealth;
 }

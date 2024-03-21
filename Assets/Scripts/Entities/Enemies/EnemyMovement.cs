@@ -1,26 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] GameEvent1ParamSO onEnemyReachEndOfPath;
+    [SerializeField] protected GameEvent1ParamSO onEnemyReachEndOfPath;
+    [SerializeField] ObjectInfo objectInfo;
+    [SerializeField] protected Vector3 offsetY;
 
-    [SerializeField] Vector3 offsetY;
-
-    float currentMoveSpeed, defaultMoveSpeed, timerToNormaliseMoveSpeed;
+    protected float currentMoveSpeed, timerToNormaliseMoveSpeed;
     bool stunned;
 
-    List<GameObject> path = new List<GameObject>();
+    protected List<GameObject> path = new List<GameObject>();
 
-
+   protected EnemyData enemyData;
 
     private void Awake()
     {
         GetPathFromParent();
-        GameData enemyData = GetComponent<EnemyHealth>().enemyData;
-        defaultMoveSpeed = ((EnemyData)enemyData).DefaultMoveSpeed;
-
+        enemyData = objectInfo.DefObjectGameData as EnemyData;
     }
 
 
@@ -28,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
     {
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath());
-        currentMoveSpeed = defaultMoveSpeed;
+        currentMoveSpeed = enemyData.DefaultMoveSpeed;
         stunned = false;
     }
 
@@ -48,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    IEnumerator MoveAlongPath()
+    protected virtual IEnumerator MoveAlongPath()
     {
         for (int i = 0; i < path.Count; i++)
         {
@@ -71,12 +70,12 @@ public class EnemyMovement : MonoBehaviour
 
     public void DecreaseMoveSpeedByPercentage(float value)
     {
-        currentMoveSpeed = defaultMoveSpeed - currentMoveSpeed * value / 100;
+        currentMoveSpeed = enemyData.DefaultMoveSpeed - currentMoveSpeed * value / 100;
     }
     public void DecreaseMoveSpeedByPercentage(float value, float time)
     {
         if (stunned) return;
-        currentMoveSpeed = defaultMoveSpeed - defaultMoveSpeed * value / 100;
+        currentMoveSpeed = enemyData.DefaultMoveSpeed - enemyData.DefaultMoveSpeed * value / 100;
         if (currentMoveSpeed <= 0.01f)
         {
             stunned = true;
@@ -92,10 +91,9 @@ public class EnemyMovement : MonoBehaviour
             timerToNormaliseMoveSpeed -= Time.deltaTime;
             if (timerToNormaliseMoveSpeed <= 0)
             {
-                currentMoveSpeed = defaultMoveSpeed;
+                currentMoveSpeed = enemyData.DefaultMoveSpeed;
                 stunned = false;
             }
         }
     }
-
 }

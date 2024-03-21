@@ -10,52 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0442fece92270e94e8cb8edd57906df8, type: 3}
-  m_Name: EnemyGreen
+  m_Name: Enemy_Boss_Gunner
   m_EditorClassIdentifier: 
   objectName: enemy
   hashCode: 1816857306
-  <DefaultMoveSpeed>k__BackingField: 10
-  <BaseMaxHealth>k__BackingField: 500
+  Immunity: 16
+  <DefaultMoveSpeed>k__BackingField: 8
+  <BaseMaxHealth>k__BackingField: 250
   <MoneyDrop>k__BackingField: 10
   Range: 5
   Damage: 3
-  ShootingDelay: 1
+  ShootingDelay: 0.5
   ProjectileSpeed: 20
-  <ObjectPrefab>k__BackingField: {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
-  <ObjectPoolsize>k__BackingField: 50
+  <ObjectPrefab>k__BackingField: {fileID: 1674472312285643229, guid: 1cf6d09d3eb377c468dffb0f36599a2c, type: 3}
+  <ObjectPoolsize>k__BackingField: 10
   ProjectilePrefab: {fileID: 5103337153299529184, guid: 1e33ad4bef6b80847acd771da80c3456, type: 3}
-  ProjectilePoolSize: 50
+  ProjectilePoolSize: 20
   ProjectileList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

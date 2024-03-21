@@ -63,14 +63,12 @@ public class MoneyManager : ScriptableObject
 
     public void AddMoney(object enemy)
     {
-        if (enemy is GameObject)
+        if (enemy is GameObject g)
         {
-            GameObject temp = (GameObject)enemy;
-            EnemyData enemyData = (EnemyData)(temp.GetComponent<EnemyHealth>().enemyData);
+            EnemyData enemyData = g.GetComponent<ObjectInfo>().DefObjectGameData as EnemyData;
             money += enemyData.MoneyDrop;
             onMoneyChanged.RaiseEvent();
         }
-
     }
 
 

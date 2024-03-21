@@ -121,8 +121,9 @@ GameObject:
   - component: {fileID: 6797194664873555029}
   - component: {fileID: 3625000501744132413}
   - component: {fileID: 7362441709183108562}
+  - component: {fileID: 213533657124721809}
   m_Layer: 6
-  m_Name: enemy_ufoYellow
+  m_Name: Enemy_Boss_Giant
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,11 +259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de6abadc0ca58d4c8241cbf5b715bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectInfo: {fileID: 213533657124721809}
   onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
-  enemyData: {fileID: 11400000, guid: 885e28fffdaea1c40b325d9a29a68016, type: 2}
   highlightPrefab: {fileID: 4876211849066101889}
   healthBar: {fileID: 4605699817030092813}
-  maxHealth: 250
 --- !u!114 &3625000501744132413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEnemyReachEndOfPath: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
+  objectInfo: {fileID: 213533657124721809}
   offsetY: {x: 0, y: 1.5, z: 0}
 --- !u!114 &7362441709183108562
 MonoBehaviour:
@@ -290,6 +291,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 6797194664873555029}
+--- !u!114 &213533657124721809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674472312285643229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cd2ce6bd3f88445ade73c44f1f3707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefObjectGameData: {fileID: 11400000, guid: ade4ec14d0cb1fd4e94ed3d9cd189a99, type: 2}
 --- !u!1 &4876211849066101889
 GameObject:
   m_ObjectHideFlags: 0

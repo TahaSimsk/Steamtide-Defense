@@ -20,7 +20,7 @@ public class FaceTarget : MonoBehaviour
 
         if (targetScanner.targetsInRange.Count == 0) return;
 
-        Vector3 dir = targetScanner.targetsInRange[0].transform.position - partToMove.position;
+        Vector3 dir = targetScanner.Target(towerInfo.InstTowerData.TargetPriority).position - partToMove.position;
         dir = new Vector3(dir.x, 0, dir.z);
 
         Quaternion lookRotation = Quaternion.LookRotation(dir);

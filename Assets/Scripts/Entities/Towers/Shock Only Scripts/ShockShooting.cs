@@ -18,6 +18,14 @@ public class ShockShooting : Shooting
         }
     }
 
+    private void OnDisable()
+    {
+        foreach (var item in shockLines)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+
     protected override void Shoot()
     {
         timer += Time.deltaTime;

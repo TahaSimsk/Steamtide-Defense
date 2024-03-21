@@ -17,13 +17,14 @@ MonoBehaviour:
   TowerPrefab: {fileID: 2045709196828049029, guid: 75a796d0315fd9f44b52d83e0a66ed41, type: 3}
   TowerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
   TowerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
+  TargetPriority: 1
   ShootingDelay: 1
   TowerRange: 2
-  BaseMaxHealth: 100
+  BaseMaxHealth: 10000
   TowerRotationSpeed: 10
   TowerPlacementCost: 50
-  TowerAmmoCapacity: 5
-  ProjectileSpeed: 50
+  TowerAmmoCapacity: 100
+  ProjectileSpeed: 75
   ProjectileDamage: 30
   ShootingDelayUpgradeValues:
   - 10
@@ -97,7 +98,7 @@ MonoBehaviour:
   poolLayer:
     serializedVersion: 2
     m_Bits: 6144
-  canPoison: 1
+  canPoison: 0
   poolDropChanceUpgradedValue: 25
   poolDurationUpgradedValue: 4
   dropPoolOnFirstEnemy: 1
@@ -109,4 +110,54 @@ MonoBehaviour:
   - 200
   <ObjectPrefab>k__BackingField: {fileID: 7683383464138540475, guid: db0d79ec4d49a644cbc7b42f7f68b194, type: 3}
   <ObjectPoolsize>k__BackingField: 50
-  <objList>k__BackingField: []
+  <objList>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

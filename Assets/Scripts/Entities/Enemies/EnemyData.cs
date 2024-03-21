@@ -8,6 +8,7 @@ public class EnemyData : GameData, IPoolable
 
 
     [field: Header("------------------------------ENEMY ATTRIBUTES------------------------------")]
+    public Immunity Immunity;
     [field: SerializeReference] public float DefaultMoveSpeed { get; set; }
     [field: SerializeReference] public float BaseMaxHealth { get; set; }
     [field: SerializeReference] public float MoneyDrop { get; set; }

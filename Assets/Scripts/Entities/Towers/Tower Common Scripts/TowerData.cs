@@ -10,6 +10,7 @@ public class TowerData : GameData
 
 
     [Header("---------------------------TOWER ATTRIBUTES-----------------------")]
+    public TargetPriority TargetPriority;
     public float ShootingDelay;
     public float TowerRange;
     public float BaseMaxHealth;
