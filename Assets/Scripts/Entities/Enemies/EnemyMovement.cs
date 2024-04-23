@@ -51,9 +51,11 @@ public class EnemyMovement : MonoBehaviour
     {
         for (int i = 0; i < path.Count; i++)
         {
-            while (transform.position != path[i].transform.position + offsetY)
+            Vector3 nextPathPos = path[i].transform.position;
+            transform.LookAt(nextPathPos);
+            while (transform.position != nextPathPos + offsetY)
             {
-                transform.position = Vector3.MoveTowards(transform.position, path[i].transform.position + offsetY, currentMoveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, nextPathPos + offsetY, currentMoveSpeed * Time.deltaTime);
 
                 yield return null;
             }
