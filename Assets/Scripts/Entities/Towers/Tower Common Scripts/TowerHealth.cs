@@ -24,11 +24,11 @@ public class TowerHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        currentHealth = maxHealth;
+        ResetHP();
         UpdateHPBar();
     }
 
-   
+
     private void CheckIfDiedAndHandleDeath()
     {
         if (currentHealth <= 0)
@@ -52,6 +52,11 @@ public class TowerHealth : MonoBehaviour
     {
         maxHealth = (baseMaxHealth * amount * 0.01f) + baseMaxHealth;
         UpdateHPBar();
+    }
+
+    public void ResetHP()
+    {
+        currentHealth = maxHealth;
     }
 
 

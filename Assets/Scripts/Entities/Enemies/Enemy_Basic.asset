@@ -19,7 +19,7 @@ MonoBehaviour:
   <BaseMaxHealth>k__BackingField: 100
   <MoneyDrop>k__BackingField: 10
   Range: 0
-  Damage: 0
+  Damage: 20
   ShootingDelay: 0
   ProjectileSpeed: 0
   <ObjectPrefab>k__BackingField: {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
