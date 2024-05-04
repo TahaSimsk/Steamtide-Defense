@@ -16,6 +16,9 @@ public class TowerData : GameData
     public float BaseMaxHealth;
     public float TowerRotationSpeed;
     public float TowerPlacementCost;
+    public float TowerHPRefillCost;
+    public float TowerAmmoRefillCost;
+    public int TowerAmmoRefillAmount;
     public int TowerAmmoCapacity;
     public float ProjectileSpeed;
     public float ProjectileDamage;

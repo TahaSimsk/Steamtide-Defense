@@ -3075,6 +3075,14 @@ PrefabInstance:
       propertyPath: towerHealth
       value: 
       objectReference: {fileID: 1119296911851776760}
+    - target: {fileID: 4746383881465332551, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 7190786172816432787}
+    - target: {fileID: 4746383881465332551, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: ammoManager
+      value: 
+      objectReference: {fileID: 1079728285195974169}
     - target: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
@@ -3083,6 +3091,14 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 7190786172816432787}
+    - target: {fileID: 5618954979845770334, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 7190786172816432787}
+    - target: {fileID: 5618954979845770334, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerHealth
+      value: 
+      objectReference: {fileID: 1119296911851776760}
     - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
@@ -3090,6 +3106,10 @@ PrefabInstance:
     - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: TowerUpgradeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

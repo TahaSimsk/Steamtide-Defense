@@ -11,24 +11,25 @@ public class AmmoManager : MonoBehaviour
     [SerializeField] Shooting shooting;
     [SerializeField] GameObject towerVisual;
     TowerData towerData;
-    int currentAmmoCount;
+    public int CurrentAmmoCount { get; private set; }
+
 
     private void Start()
     {
         towerData = towerInfo.InstTowerData;
-        currentAmmoCount = towerData.TowerAmmoCapacity;
+        CurrentAmmoCount = towerData.TowerAmmoCapacity;
         UpdateAmmoText();
     }
 
     public bool ReduceAmmoAndCheckHasAmmo()
     {
-        if (currentAmmoCount == 0)
+        if (CurrentAmmoCount == 0)
         {
             return false;
         }
-        currentAmmoCount--;
+        CurrentAmmoCount--;
         UpdateAmmoText();
-        if (currentAmmoCount > 0)
+        if (CurrentAmmoCount > 0)
         {
             return true;
         }
@@ -43,8 +44,13 @@ public class AmmoManager : MonoBehaviour
 
     public void AddAmmo(int amount)
     {
-        currentAmmoCount += amount;
+        CurrentAmmoCount += amount;
+        if (CurrentAmmoCount > towerData.TowerAmmoCapacity)
+        {
+            CurrentAmmoCount = towerData.TowerAmmoCapacity;
+        }
 
+        UpdateAmmoText();
         if (shooting.enabled == false)
         {
             shooting.enabled = true;
@@ -58,8 +64,9 @@ public class AmmoManager : MonoBehaviour
         towerData.TowerAmmoCapacity = towerInfo.DefTowerData.TowerAmmoCapacity + (int)(amount * towerInfo.DefTowerData.TowerAmmoCapacity * 0.01f);
         UpdateAmmoText();
     }
+
     void UpdateAmmoText()
     {
-        ammoText.text = currentAmmoCount + "/" + towerData.TowerAmmoCapacity;
+        ammoText.text = CurrentAmmoCount + "/" + towerData.TowerAmmoCapacity;
     }
 }

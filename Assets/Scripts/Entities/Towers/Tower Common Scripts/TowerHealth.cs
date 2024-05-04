@@ -12,14 +12,15 @@ public class TowerHealth : MonoBehaviour
 
 
 
-    float currentHealth;
+    public float CurrentHealth { get; private set; }
+    public float MaxHealth { get; private set; }
     float baseMaxHealth;
-    float maxHealth;
+
 
     private void Awake()
     {
         baseMaxHealth = towerInfo.DefTowerData.BaseMaxHealth;
-        maxHealth = baseMaxHealth;
+        MaxHealth = baseMaxHealth;
     }
 
     private void OnEnable()
@@ -31,7 +32,7 @@ public class TowerHealth : MonoBehaviour
 
     private void CheckIfDiedAndHandleDeath()
     {
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             onTowerDeath.RaiseEvent(gameObject);
 
@@ -43,25 +44,26 @@ public class TowerHealth : MonoBehaviour
 
     public void ReduceHealth(float damage)
     {
-        currentHealth -= damage;
+        CurrentHealth -= damage;
         UpdateHPBar();
         CheckIfDiedAndHandleDeath();
     }
 
     public void SetMaxHP(float amount)
     {
-        maxHealth = (baseMaxHealth * amount * 0.01f) + baseMaxHealth;
+        MaxHealth = (baseMaxHealth * amount * 0.01f) + baseMaxHealth;
         UpdateHPBar();
     }
 
     public void ResetHP()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
+        UpdateHPBar();
     }
 
 
     void UpdateHPBar()
     {
-        healthBar.value = currentHealth / maxHealth;
+        healthBar.value = CurrentHealth / MaxHealth;
     }
 }

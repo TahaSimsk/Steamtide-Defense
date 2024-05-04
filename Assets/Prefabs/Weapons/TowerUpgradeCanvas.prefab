@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 5714220529118835916}
   - component: {fileID: 7977746624355309118}
   - component: {fileID: 6686468071589145865}
+  - component: {fileID: 5618954979845770334}
   m_Layer: 0
   m_Name: HP++
   m_TagString: Untagged
@@ -1085,6 +1086,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5618954979845770334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586818892419148516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e2e5408ccd1d49a7d682c924c9fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerHealth: {fileID: 0}
+  towerInfo: {fileID: 0}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  healthButtonText: {fileID: 7830606850517518786}
 --- !u!1 &3882969878323311984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,7 +1307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HP++
+  m_text: HP++ (50$)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3257,6 +3274,7 @@ GameObject:
   - component: {fileID: 8691008317370702044}
   - component: {fileID: 9026319827681543582}
   - component: {fileID: 6005350888003417630}
+  - component: {fileID: 4746383881465332551}
   m_Layer: 0
   m_Name: AMMO++
   m_TagString: Untagged
@@ -3366,6 +3384,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4746383881465332551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959943255693629762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6cdad77b120844cb400d37d190c869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoManager: {fileID: 0}
+  towerInfo: {fileID: 0}
+  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  ammoButtonText: {fileID: 3096710015683903729}
 --- !u!1 &7647529385482905928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,7 +3863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'AMMO++
+  m_text: '+50 AMMO (50$)
 
 '
   m_isRightToLeft: 0

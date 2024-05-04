@@ -17,11 +17,15 @@ MonoBehaviour:
   TowerPrefab: {fileID: 2927489918165086300, guid: eb30c020cea2e304bb68e0cdd94bada6, type: 3}
   TowerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
   TowerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
+  TargetPriority: 0
   ShootingDelay: 0
   TowerRange: 30
   BaseMaxHealth: 100
   TowerRotationSpeed: 50
   TowerPlacementCost: 50
+  TowerHPRefillCost: 100
+  TowerAmmoRefillCost: 0
+  TowerAmmoRefillAmount: 0
   TowerAmmoCapacity: 0
   ProjectileSpeed: 0
   ProjectileDamage: 25

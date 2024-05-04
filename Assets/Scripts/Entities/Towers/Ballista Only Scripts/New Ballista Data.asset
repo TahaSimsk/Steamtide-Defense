@@ -23,6 +23,9 @@ MonoBehaviour:
   BaseMaxHealth: 10000
   TowerRotationSpeed: 10
   TowerPlacementCost: 50
+  TowerHPRefillCost: 100
+  TowerAmmoRefillCost: 100
+  TowerAmmoRefillAmount: 50
   TowerAmmoCapacity: 100
   ProjectileSpeed: 75
   ProjectileDamage: 30

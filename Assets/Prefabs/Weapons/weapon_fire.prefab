@@ -582,6 +582,14 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 4552898289568208873}
+    - target: {fileID: 5618954979845770334, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerInfo
+      value: 
+      objectReference: {fileID: 4552898289568208873}
+    - target: {fileID: 5618954979845770334, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: towerHealth
+      value: 
+      objectReference: {fileID: 5059478192451877554}
     - target: {fileID: 5660321217446325237, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: Fire Trap IV
@@ -606,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerUpgradeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8793754964456120318, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
@@ -624,7 +636,8 @@ PrefabInstance:
     - {fileID: 3882436730212586767, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     - {fileID: 7270151022420655013, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     - {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6959943255693629762, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4519337167837659862, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
