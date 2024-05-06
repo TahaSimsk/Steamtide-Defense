@@ -2061,6 +2061,7 @@ MonoBehaviour:
   targetScanner: {fileID: 8475492845883969952}
   projectilePos: {fileID: 5539426589247556717}
   ammoManager: {fileID: 5248320632030100197}
+  partToRotate: {fileID: 0}
   laserPos2: {fileID: 5519672946096629037}
 --- !u!114 &7594159225446884877
 MonoBehaviour:
@@ -2100,7 +2101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7102938009518180793}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a99a38f4fc9c93441823c9b2be17f07a, type: 3}
   m_Name: 

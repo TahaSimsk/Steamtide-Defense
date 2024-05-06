@@ -19,6 +19,7 @@ public class BlasterShooting : Shooting
         timer += Time.deltaTime;
         if (targetScanner.targetsInRange.Count > 0 && timer >= towerData.ShootingDelay)
         {
+            HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
 
             StartCoroutine(BurstShooting(projectilePos));
 

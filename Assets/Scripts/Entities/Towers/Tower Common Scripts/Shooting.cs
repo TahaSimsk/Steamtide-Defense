@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] protected TargetScanner targetScanner;
     [SerializeField] protected Transform projectilePos;
     [SerializeField] protected AmmoManager ammoManager;
+    [SerializeField] protected Transform partToRotate;
 
     protected float timer;
 

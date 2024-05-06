@@ -20,14 +20,16 @@ public class FaceTarget : MonoBehaviour
 
         if (targetScanner.targetsInRange.Count == 0) return;
 
-        Vector3 dir = targetScanner.Target(towerInfo.InstTowerData.TargetPriority).position - partToMove.position;
-        dir = new Vector3(dir.x, 0, dir.z);
+        HelperFunctions.LookAtTarget(targetScanner.Target(towerInfo.InstTowerData.TargetPriority).position,partToMove,towerInfo.InstTowerData.TowerRotationSpeed);
 
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        //Vector3 dir = targetScanner.Target(towerInfo.InstTowerData.TargetPriority).position - partToMove.position;
+        //dir = new Vector3(dir.x, 0, dir.z);
 
-        Vector3 rotation = Quaternion.Lerp(partToMove.rotation, lookRotation, Time.deltaTime * towerInfo.InstTowerData.TowerRotationSpeed).eulerAngles;
+        //Quaternion lookRotation = Quaternion.LookRotation(dir);
 
-        partToMove.rotation = Quaternion.Euler(rotation);
+        //Vector3 rotation = Quaternion.Lerp(partToMove.rotation, lookRotation, Time.deltaTime * towerInfo.InstTowerData.TowerRotationSpeed).eulerAngles;
+
+        //partToMove.rotation = Quaternion.Euler(rotation);
 
     }
 

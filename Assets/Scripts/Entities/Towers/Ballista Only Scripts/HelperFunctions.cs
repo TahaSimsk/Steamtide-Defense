@@ -20,4 +20,20 @@ public static class HelperFunctions
         }
 
     }
+
+
+    public static void LookAtTarget(Vector3 _targetPos, Transform _partToRotate, float _rotationSpeed)
+    {
+
+        Vector3 dir = _targetPos - _partToRotate.position;
+
+        dir = new Vector3(dir.x, 0, dir.z);
+
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+
+        Vector3 rotation = Quaternion.Lerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed).eulerAngles;
+
+        _partToRotate.rotation = Quaternion.Euler(rotation);
+
+    }
 }

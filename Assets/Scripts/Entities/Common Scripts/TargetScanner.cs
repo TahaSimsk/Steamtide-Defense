@@ -36,6 +36,7 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(targetTag))
@@ -47,8 +48,6 @@ public class TargetScanner : MonoBehaviour
     }
 
 
-
-
     protected virtual void RemoveTarget(object target)
     {
         if (target is GameObject && targetsInRange.Contains((GameObject)target))
@@ -57,6 +56,7 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
+    
     public Transform Target(Enum priority)
     {
         switch (priority)

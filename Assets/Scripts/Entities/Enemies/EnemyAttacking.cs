@@ -32,24 +32,23 @@ public class EnemyAttacking : MonoBehaviour
             GetProjectileFromPoolAndActivate(projectilePos);
             timer = 0;
         }
+    }
 
-
-        /*
+    /*
          * when projectile pooled and activated, shooting starts. The script in the projectile handles movement and collision. In this script all we need to do is activate it and pass the target.
          */
-        void GetProjectileFromPoolAndActivate(Transform projectileSpawnPoint)
-        {
-            GameObject pooledProjectile = enemyData.GetEnemyProjectile();
+    void GetProjectileFromPoolAndActivate(Transform projectileSpawnPoint)
+    {
+        GameObject pooledProjectile = enemyData.GetEnemyProjectile();
 
-            if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
-            EnemyProjectile projectile = pooledProjectile.GetComponent<EnemyProjectile>();
-            projectile.SetProjectile(enemyData);
+        if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
+        EnemyProjectile projectile = pooledProjectile.GetComponent<EnemyProjectile>();
+        projectile.SetProjectile(enemyData);
 
-            projectile.target = targetScanner.targetsInRange[0].transform;
+        projectile.target = targetScanner.targetsInRange[0].transform;
 
-            pooledProjectile.transform.position = projectileSpawnPoint.position;
-            pooledProjectile.SetActive(true);
-            pooledProjectile.transform.LookAt(projectile.target);
-        }
+        pooledProjectile.transform.position = projectileSpawnPoint.position;
+        pooledProjectile.SetActive(true);
+        pooledProjectile.transform.LookAt(projectile.target);
     }
 }
