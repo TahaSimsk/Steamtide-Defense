@@ -21,7 +21,7 @@ MonoBehaviour:
   ShootingDelay: 1
   TowerRange: 2
   BaseMaxHealth: 100
-  TowerRotationSpeed: 50
+  TowerRotationSpeed: 10
   TowerPlacementCost: 50
   TowerHPRefillCost: 100
   TowerAmmoRefillCost: 0

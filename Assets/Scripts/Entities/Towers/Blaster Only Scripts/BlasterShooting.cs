@@ -17,19 +17,21 @@ public class BlasterShooting : Shooting
     protected override void Shoot()
     {
         timer += Time.deltaTime;
-        if (targetScanner.targetsInRange.Count > 0 && timer >= towerData.ShootingDelay)
+        if (targetScanner.targetsInRange.Count == 0) return;
+
+        HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
+
+        if (timer < towerData.ShootingDelay) return;
+
+        StartCoroutine(BurstShooting(projectilePos));
+
+        if (blasterData.canDoubleBarrel)
         {
-            HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
-
-            StartCoroutine(BurstShooting(projectilePos));
-
-            if (blasterData.canDoubleBarrel)
-            {
-                StartCoroutine(BurstShooting(laserPos2));
-            }
-            timer = 0;
-
+            StartCoroutine(BurstShooting(laserPos2));
         }
+        timer = 0;
+
+
     }
 
 

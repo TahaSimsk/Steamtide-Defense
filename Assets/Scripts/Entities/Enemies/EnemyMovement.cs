@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -14,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
     protected List<GameObject> path = new List<GameObject>();
 
-   protected EnemyData enemyData;
+    protected EnemyData enemyData;
 
     private void Awake()
     {
@@ -44,15 +43,16 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
+        transform.LookAt(path[1].transform);
     }
 
 
     protected virtual IEnumerator MoveAlongPath()
     {
-        for (int i = 0; i < path.Count; i++)
+        for (int i = 1; i < path.Count; i++)
         {
             Vector3 nextPathPos = path[i].transform.position;
-            transform.LookAt(nextPathPos);
+            StartCoroutine(FaceWaypoint(nextPathPos));
             while (transform.position != nextPathPos + offsetY)
             {
                 transform.position = Vector3.MoveTowards(transform.position, nextPathPos + offsetY, currentMoveSpeed * Time.deltaTime);
@@ -63,6 +63,17 @@ public class EnemyMovement : MonoBehaviour
         //reaching at the end of the path
         onEnemyReachEndOfPath.RaiseEvent(gameObject);
         gameObject.SetActive(false);
+    }
+
+    IEnumerator FaceWaypoint(Vector3 pos)
+    {
+        float timer = 0;
+        while (timer < 5 / enemyData.DefaultMoveSpeed)
+        {
+            timer += Time.deltaTime;
+            HelperFunctions.LookAtTarget(pos, transform, enemyData.DefaultMoveSpeed);
+            yield return null;
+        }
     }
 
     private void Update()

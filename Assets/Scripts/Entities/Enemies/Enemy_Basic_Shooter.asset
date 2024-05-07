@@ -22,6 +22,7 @@ MonoBehaviour:
   Damage: 3
   ShootingDelay: 1
   ProjectileSpeed: 20
+  AimSpeed: 20
   <ObjectPrefab>k__BackingField: {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
   <ObjectPoolsize>k__BackingField: 50
   ProjectilePrefab: {fileID: 5103337153299529184, guid: 1e33ad4bef6b80847acd771da80c3456, type: 3}

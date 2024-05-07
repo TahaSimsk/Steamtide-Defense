@@ -323,6 +323,7 @@ MonoBehaviour:
   enemyInfo: {fileID: 213533657124721809}
   targetScanner: {fileID: 2913775406978414483}
   projectilePos: {fileID: 8986679632965342390}
+  partToRotate: {fileID: 2051173158994778983}
 --- !u!1 &1894616190344341866
 GameObject:
   m_ObjectHideFlags: 0

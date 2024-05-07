@@ -67,6 +67,4 @@ public class BallistaData : TowerData, IPoolable
         return null;
     }
 
-
-
 }

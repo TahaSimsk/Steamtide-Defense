@@ -28,15 +28,15 @@ public class ObjectPool : MonoBehaviour
         {
             if (data is IPoolable i)
             {
-                i.objList.Clear();
+                i.objList = new List<GameObject>();
                 PopulatePool(i.objList, i.ObjectPoolsize, i.ObjectPrefab);
             }
 
             if (data is EnemyData enemy)
             {
                 if (enemy.ProjectilePoolSize <= 0) continue;
-                enemy.ProjectileList.Clear();
-                PopulatePool(enemy.ProjectileList,enemy.ProjectilePoolSize, enemy.ProjectilePrefab);
+                enemy.ProjectileList = new List<GameObject>();
+                PopulatePool(enemy.ProjectileList, enemy.ProjectilePoolSize, enemy.ProjectilePrefab);
             }
         }
 

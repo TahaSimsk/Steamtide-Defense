@@ -36,14 +36,18 @@ public class Shooting : MonoBehaviour
     protected virtual void Shoot()
     {
         timer += Time.deltaTime;
-        if (targetScanner.targetsInRange.Count > 0 && timer >= towerData.ShootingDelay)
+        if (targetScanner.targetsInRange.Count == 0) return;
+
+        HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
+
+        if (timer < towerData.ShootingDelay) return;
+
+        if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
         {
-            if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
-            {
-                GetProjectileFromPoolAndActivate(projectilePos);
-                timer = 0;
-            }
+            GetProjectileFromPoolAndActivate(projectilePos);
+            timer = 0;
         }
+
     }
 
 

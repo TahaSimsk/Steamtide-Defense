@@ -3396,6 +3396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6cdad77b120844cb400d37d190c869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onAmmoRefillCostReductionUpgrade: {fileID: 11400000, guid: e7a79d60f0f03b247ae30a6fc7653657, type: 2}
+  onAmmoRefillAmountUpgrade: {fileID: 11400000, guid: 6195dff08d95faa4eab5631c10ebf787, type: 2}
   ammoManager: {fileID: 0}
   towerInfo: {fileID: 0}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}

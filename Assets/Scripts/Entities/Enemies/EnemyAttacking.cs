@@ -5,6 +5,7 @@ public class EnemyAttacking : MonoBehaviour
     [SerializeField] ObjectInfo enemyInfo;
     [SerializeField] EnemyTargetScanner targetScanner;
     [SerializeField] Transform projectilePos;
+    [SerializeField] Transform partToRotate;
 
     float timer;
 
@@ -27,11 +28,16 @@ public class EnemyAttacking : MonoBehaviour
     void Shoot()
     {
         timer += Time.deltaTime;
-        if (targetScanner.targetsInRange.Count > 0 && timer >= enemyData.ShootingDelay)
-        {
-            GetProjectileFromPoolAndActivate(projectilePos);
-            timer = 0;
-        }
+
+        if (targetScanner.targetsInRange.Count == 0) return;
+
+        HelperFunctions.LookAtTarget(targetScanner.targetsInRange[0].transform.position, partToRotate, enemyData.AimSpeed);
+
+        if (timer < enemyData.ShootingDelay) return;
+
+        GetProjectileFromPoolAndActivate(projectilePos);
+        timer = 0;
+
     }
 
     /*

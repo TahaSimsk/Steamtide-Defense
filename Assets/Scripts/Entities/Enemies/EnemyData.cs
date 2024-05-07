@@ -21,6 +21,8 @@ public class EnemyData : GameData, IPoolable
 
     public float ProjectileSpeed;
 
+    public float AimSpeed;
+
     [field: Header("------------------------------OBJECT POOLING------------------------------")]
     [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
     [field: SerializeReference] public int ObjectPoolsize { get; set; }

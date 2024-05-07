@@ -23,5 +23,5 @@ MonoBehaviour:
   oneTreeDemolishCost: 50
   doubleTreeDemolishCost: 100
   quadTreeDemolishCost: 150
-  startingBalance: 100000
-  money: 100000
+  startingBalance: 500
+  money: 100

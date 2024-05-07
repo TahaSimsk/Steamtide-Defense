@@ -2061,7 +2061,7 @@ MonoBehaviour:
   targetScanner: {fileID: 8475492845883969952}
   projectilePos: {fileID: 5539426589247556717}
   ammoManager: {fileID: 5248320632030100197}
-  partToRotate: {fileID: 0}
+  partToRotate: {fileID: 3539039354036175977}
   laserPos2: {fileID: 5519672946096629037}
 --- !u!114 &7594159225446884877
 MonoBehaviour:

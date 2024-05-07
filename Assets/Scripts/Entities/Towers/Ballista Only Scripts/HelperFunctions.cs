@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public static class HelperFunctions
@@ -36,4 +37,32 @@ public static class HelperFunctions
         _partToRotate.rotation = Quaternion.Euler(rotation);
 
     }
+
+    public static float CalculatePercentage(float _number, float _percentage, bool _positive)
+    {
+        if (_positive)
+        {
+            _number += _number * _percentage * 0.01f;
+            return _number;
+        }
+        else
+        {
+            _number -= _number * _percentage * 0.01f;
+            return _number;
+        }
+    }
+    //public static int CalculatePercentage(int _number, float _percentage, bool _positive)
+    //{
+    //    if (_positive)
+    //    {
+    //        _number += (int)(_number * _percentage * 0.01f);
+    //        return _number;
+    //    }
+    //    else
+    //    {
+    //        _number -= (int)(_number * _percentage * 0.01f);
+    //        return _number;
+    //    }
+    //}
+
 }
