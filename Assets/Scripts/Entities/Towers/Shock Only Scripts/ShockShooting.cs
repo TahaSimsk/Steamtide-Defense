@@ -22,6 +22,7 @@ public class ShockShooting : Shooting
     {
         foreach (var item in shockLines)
         {
+            if (item == null) continue;
             item.gameObject.SetActive(false);
         }
     }

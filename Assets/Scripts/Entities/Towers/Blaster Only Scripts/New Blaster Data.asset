@@ -17,6 +17,9 @@ MonoBehaviour:
   TowerPrefab: {fileID: 7102938009518180793, guid: fa3c1e0ba25c6bf4a987be3fe0a92367, type: 3}
   TowerHoverPrefab: {fileID: 7863380015321442733, guid: 07cb06e626d88974caba9c67790f217f, type: 3}
   TowerNPHoverPrefab: {fileID: 7863380015321442733, guid: 5cf988fc6c779674b86a076f88bbbee4, type: 3}
+  onAmmoRefillCostReductionUpgrade: {fileID: 11400000, guid: e7a79d60f0f03b247ae30a6fc7653657, type: 2}
+  onAmmoRefillAmountUpgrade: {fileID: 11400000, guid: 6195dff08d95faa4eab5631c10ebf787, type: 2}
+  onHPRefillCostReductionUpgrade: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
   TargetPriority: 0
   ShootingDelay: 1
   TowerRange: 2

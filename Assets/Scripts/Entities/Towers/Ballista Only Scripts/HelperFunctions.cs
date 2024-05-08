@@ -51,18 +51,5 @@ public static class HelperFunctions
             return _number;
         }
     }
-    //public static int CalculatePercentage(int _number, float _percentage, bool _positive)
-    //{
-    //    if (_positive)
-    //    {
-    //        _number += (int)(_number * _percentage * 0.01f);
-    //        return _number;
-    //    }
-    //    else
-    //    {
-    //        _number -= (int)(_number * _percentage * 0.01f);
-    //        return _number;
-    //    }
-    //}
-
+  
 }

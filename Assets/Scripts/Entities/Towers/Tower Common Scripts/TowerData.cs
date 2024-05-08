@@ -15,7 +15,7 @@ public class TowerData : GameData
     [Header("---------------------------EVENTS-----------------------")]
     [SerializeField] GameEvent1ParamSO onAmmoRefillCostReductionUpgrade;
     [SerializeField] GameEvent1ParamSO onAmmoRefillAmountUpgrade;
-
+    [SerializeField] GameEvent1ParamSO onHPRefillCostReductionUpgrade;
     [Header("---------------------------TOWER ATTRIBUTES-----------------------")]
     public TargetPriority TargetPriority;
     public float ShootingDelay;
@@ -51,7 +51,7 @@ public class TowerData : GameData
 
     float originalAmmoRefillCost;
     int originalAmmoRefillAmount;
-
+    float originalHPRefillCost;
 
     private void OnEnable()
     {
@@ -74,6 +74,7 @@ public class TowerData : GameData
 
         SubscribeEvent(onAmmoRefillCostReductionUpgrade, HandleAmmoRefillCostReductionUpgrade);
         SubscribeEvent(onAmmoRefillAmountUpgrade, HandleAmmoRefillAmountUpgrade);
+        SubscribeEvent(onHPRefillCostReductionUpgrade, HandleHPRefillCostReductionUpgrade);
     }
 
     void UnSubscribeEvents()
@@ -85,6 +86,7 @@ public class TowerData : GameData
 
         UnSubscribeEvent(onAmmoRefillCostReductionUpgrade, HandleAmmoRefillCostReductionUpgrade);
         UnSubscribeEvent(onAmmoRefillAmountUpgrade, HandleAmmoRefillAmountUpgrade);
+        UnSubscribeEvent(onHPRefillCostReductionUpgrade, HandleHPRefillCostReductionUpgrade);
     }
 
 
@@ -92,12 +94,14 @@ public class TowerData : GameData
     {
         originalAmmoRefillCost = TowerAmmoRefillCost;
         originalAmmoRefillAmount = TowerAmmoRefillAmount;
+        originalHPRefillCost = TowerHPRefillCost;
     }
 
     void OriginalValues()
     {
         TowerAmmoRefillCost = originalAmmoRefillCost;
         TowerAmmoRefillAmount = originalAmmoRefillAmount;
+        TowerHPRefillCost = originalHPRefillCost;
     }
 
 
@@ -135,6 +139,7 @@ public class TowerData : GameData
         }
     }
 
+    
     void HandleAmmoRefillCostReductionUpgrade(object _amount)
     {
         TowerAmmoRefillCost = HelperFunctions.CalculatePercentage(TowerAmmoRefillCost, (float)_amount, false);
@@ -143,6 +148,11 @@ public class TowerData : GameData
     void HandleAmmoRefillAmountUpgrade(object _amount)
     {
         TowerAmmoRefillAmount =(int)HelperFunctions.CalculatePercentage((float)TowerAmmoRefillAmount, (float)_amount, true);
+    }
+
+    void HandleHPRefillCostReductionUpgrade(object _amount)
+    {
+        TowerHPRefillCost = HelperFunctions.CalculatePercentage(TowerHPRefillCost, (float)_amount, false);
     }
 
 }

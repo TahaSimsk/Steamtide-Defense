@@ -64,7 +64,7 @@ public class ButtonColorChanger : MonoBehaviour
         if (towerGameData == null) return;
 
 
-        if (moneyManager.IsPlaceable(towerGameData.TowerPlacementCost))
+        if (moneyManager.IsAffordable(towerGameData.TowerPlacementCost))
         {
             button.image.color = Color.green;
         }

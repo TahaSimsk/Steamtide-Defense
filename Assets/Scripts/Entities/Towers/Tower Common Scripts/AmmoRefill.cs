@@ -41,7 +41,7 @@ public class AmmoRefill : MonoBehaviour
     {
         if (ammoManager.CurrentAmmoCount > towerInfo.InstTowerData.TowerAmmoCapacity - 1) return;
 
-        if (moneyManager.IsPlaceable(refillCost))
+        if (moneyManager.IsAffordable(refillCost))
         {
             ammoManager.AddAmmo(refillAmount);
             moneyManager.DecreaseMoney(refillCost);

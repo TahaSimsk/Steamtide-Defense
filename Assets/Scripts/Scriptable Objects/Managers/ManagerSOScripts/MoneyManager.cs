@@ -3,29 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "MoneyManager", menuName = "Managers/MoneyManager")]
 public class MoneyManager : ScriptableObject
 {
     [Header("Events")]
-    public GameEvent2ParamSO onTowerPlaced;
-    public GameEvent1ParamSO onEnemyDeath;
     public GameEvent0ParamSO onMoneyChanged;
-
-    [Header("Costs to Place Towers")]
-    public float ballistaCost;
-    public float blasterCost;
-    public float cannonCost;
-
-    [Header("Costs for Skills")]
-    public float bombCost;
-    public float slowCost;
-
-    [Header("Costs for Demolish")]
-    public float oneTreeDemolishCost;
-    public float doubleTreeDemolishCost;
-    public float quadTreeDemolishCost;
-
 
     public float startingBalance;
 
@@ -34,21 +18,21 @@ public class MoneyManager : ScriptableObject
     private void OnEnable()
     {
         money = startingBalance;
-        //EventManager.onEnemyDeath += AddMoney;
-        onEnemyDeath.onEventRaised += AddMoney;
-        onTowerPlaced.onEventRaised += DecreaseMoney;
+        SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
     }
 
+    private void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
+    {
+        money = startingBalance;
+    }
 
     private void OnDisable()
     {
-        //EventManager.onEnemyDeath -= AddMoney;
-        onEnemyDeath.onEventRaised += AddMoney;
-        onTowerPlaced.onEventRaised -= DecreaseMoney;
+        SceneManager.activeSceneChanged -= SceneManager_activeSceneChanged;
     }
 
 
-    public bool IsPlaceable(float towerCost)
+    public bool IsAffordable(float towerCost)
     {
         if (money >= towerCost)
         {
@@ -61,14 +45,10 @@ public class MoneyManager : ScriptableObject
     }
 
 
-    public void AddMoney(object enemy)
+    public void AddMoney(float _amount)
     {
-        if (enemy is GameObject g)
-        {
-            EnemyData enemyData = g.GetComponent<ObjectInfo>().DefObjectGameData as EnemyData;
-            money += enemyData.MoneyDrop;
-            onMoneyChanged.RaiseEvent();
-        }
+        money += _amount;
+        onMoneyChanged.RaiseEvent();
     }
 
 
@@ -78,18 +58,5 @@ public class MoneyManager : ScriptableObject
         money -= amount;
         onMoneyChanged.RaiseEvent();
     }
-
-    public void DecreaseMoney(object gameObject, object amount)
-    {
-        if (amount is float)
-        {
-            money -= (float)amount;
-            onMoneyChanged.RaiseEvent();
-        }
-
-    }
-
-
-
 
 }

@@ -47,7 +47,7 @@ public class DemolishState : BaseState
             float moneyCost = hit.transform.GetComponent<DemolishInfo>().dataDemolish.objectCost_MoneyDrop;
 
             //check if there is enough money to demolish
-            if (gameStateManager.moneyManager.IsPlaceable(moneyCost))
+            if (gameStateManager.moneyManager.IsAffordable(moneyCost))
             {
 
                 //show tooltip

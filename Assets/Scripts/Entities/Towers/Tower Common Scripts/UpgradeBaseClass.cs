@@ -43,7 +43,7 @@ public class UpgradeBaseClass : MonoBehaviour
     {
         if (counter < maxUpgradeCount)
         {
-            if (moneyManager.IsPlaceable(upgradeCost))
+            if (moneyManager.IsAffordable(upgradeCost))
             {
                 moneyManager.DecreaseMoney(upgradeCost);
                 DoUpgrade();

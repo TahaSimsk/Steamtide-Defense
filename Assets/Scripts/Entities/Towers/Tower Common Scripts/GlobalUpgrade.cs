@@ -26,7 +26,7 @@ public class GlobalUpgrade : MonoBehaviour
 
     void ReduceAmmoRefillCost()
     {
-        if (moneyManager.IsPlaceable(upgradeCost))
+        if (moneyManager.IsAffordable(upgradeCost))
         {
             moneyManager.DecreaseMoney(upgradeCost);
 

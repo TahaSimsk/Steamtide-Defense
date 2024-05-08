@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] ObjectInfo objectInfo;
+    [SerializeField] MoneyManager moneyManager;
     [Header("Events")]
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
     [SerializeField] GameObject highlightPrefab;
@@ -28,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             onEnemyDeath.RaiseEvent(gameObject);
-
+            moneyManager.AddMoney((objectInfo.DefObjectGameData as EnemyData).MoneyDrop);
             highlightPrefab.SetActive(false);
             gameObject.SetActive(false);
         }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class HealthRefill : MonoBehaviour
 {
+    [SerializeField] GameEvent1ParamSO onHPRefillCostReductionUpgrade;
     [SerializeField] TowerHealth towerHealth;
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] MoneyManager moneyManager;
@@ -16,21 +17,22 @@ public class HealthRefill : MonoBehaviour
     {
         refillCost = towerInfo.DefTowerData.TowerHPRefillCost;
         healthButton = GetComponent<Button>();
-        healthButtonText.text = $"HP++ ({refillCost}$)";
-
+        UpdateText();
         healthButton.onClick.AddListener(RefillHP);
+        onHPRefillCostReductionUpgrade.onEventRaised += HandleHPRefillCostReductionUpgrade;
     }
 
     private void OnDestroy()
     {
         healthButton.onClick.RemoveListener(RefillHP);
+        onHPRefillCostReductionUpgrade.onEventRaised -= HandleHPRefillCostReductionUpgrade;
     }
-
+    
     void RefillHP()
     {
         if (towerHealth.CurrentHealth > towerHealth.MaxHealth - 1) return;
 
-        if (moneyManager.IsPlaceable(refillCost))
+        if (moneyManager.IsAffordable(refillCost))
         {
             towerHealth.ResetHP();
             moneyManager.DecreaseMoney(refillCost);
@@ -42,5 +44,15 @@ public class HealthRefill : MonoBehaviour
 
     }
 
+    void UpdateText()
+    {
+        healthButtonText.text = $"HP++ ({refillCost}$)";
+    }
+
+    void HandleHPRefillCostReductionUpgrade(object _amount)
+    {
+        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount, false);
+        UpdateText();
+    }
 
 }

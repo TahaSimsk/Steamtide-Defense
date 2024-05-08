@@ -108,7 +108,7 @@ public class BuildState : BaseState
 
             Exit:
             //check if there is enough money to place and tile is currently empty and placeable
-            if (gameStateManager.moneyManager.IsPlaceable(currentTowerMoneyCost) && tilePlaceable)
+            if (gameStateManager.moneyManager.IsAffordable(currentTowerMoneyCost) && tilePlaceable)
             {
                 //don't show unplaceable tower and show placeable tower
                 instHoverUnplaceableTower.SetActive(false);
@@ -155,6 +155,9 @@ public class BuildState : BaseState
 
             //trigger a tower placed event
             gameStateManager.onTowerPlaced.RaiseEvent(instTower, currentTowerMoneyCost);
+
+            //decrease money
+            gameStateManager.moneyManager.DecreaseMoney(currentTowerMoneyCost);
 
             //create new tower to be placed at the next cycle and deactivate it
             instTower = Object.Instantiate(instTower, Input.mousePosition, Quaternion.identity);
