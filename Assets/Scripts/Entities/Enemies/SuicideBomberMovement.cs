@@ -1,15 +1,16 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SuicideBomberMovement : EnemyMovement
 {
     [SerializeField] EnemyTargetScanner targetScanner;
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
-    protected override IEnumerator MoveAlongPath()
+    public override IEnumerator MoveAlongPath(List<GameObject> _path)
     {
-        for (int i = 0; i < path.Count; i++)
+        for (int i = 0; i < _path.Count; i++)
         {
-            while (transform.position != path[i].transform.position + offsetY)
+            while (transform.position != _path[i].transform.position + offsetY)
             {
                 if (targetScanner != null && targetScanner.targetsInRange.Count > 0)
                 {
@@ -17,7 +18,7 @@ public class SuicideBomberMovement : EnemyMovement
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, path[i].transform.position + offsetY, currentMoveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, _path[i].transform.position + offsetY, currentMoveSpeed * Time.deltaTime);
                 }
 
                 yield return null;

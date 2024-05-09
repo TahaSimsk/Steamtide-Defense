@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     private void OnEnable()
     {
         SnapEnemyToStart();
-        StartCoroutine(MoveAlongPath());
+        StartCoroutine(MoveAlongPath(path));
         currentMoveSpeed = enemyData.DefaultMoveSpeed;
         stunned = false;
     }
@@ -43,15 +43,15 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
-        transform.LookAt(path[1].transform);
+        //transform.LookAt(path[1].transform);
     }
 
-
-    protected virtual IEnumerator MoveAlongPath()
+  
+    public virtual IEnumerator MoveAlongPath(List<GameObject> _path)
     {
-        for (int i = 1; i < path.Count; i++)
+        for (int i = 0; i < _path.Count; i++)
         {
-            Vector3 nextPathPos = path[i].transform.position;
+            Vector3 nextPathPos = _path[i].transform.position;
             StartCoroutine(FaceWaypoint(nextPathPos));
             while (transform.position != nextPathPos + offsetY)
             {
@@ -60,12 +60,12 @@ public class EnemyMovement : MonoBehaviour
                 yield return null;
             }
         }
-        //reaching at the end of the path
+        //reaching the end of the path
         onEnemyReachEndOfPath.RaiseEvent(gameObject);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
-    IEnumerator FaceWaypoint(Vector3 pos)
+    public IEnumerator FaceWaypoint(Vector3 pos)
     {
         float timer = 0;
         while (timer < 5 / enemyData.DefaultMoveSpeed)

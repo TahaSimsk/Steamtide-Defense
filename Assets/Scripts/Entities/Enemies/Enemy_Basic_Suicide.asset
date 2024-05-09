@@ -18,7 +18,7 @@ MonoBehaviour:
   <DefaultMoveSpeed>k__BackingField: 10
   <BaseMaxHealth>k__BackingField: 50
   <MoneyDrop>k__BackingField: 10
-  Range: 5
+  Range: 7.5
   Damage: 50
   ShootingDelay: 0
   ProjectileSpeed: 0

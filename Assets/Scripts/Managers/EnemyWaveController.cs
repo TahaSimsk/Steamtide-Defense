@@ -13,7 +13,6 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField] TextMeshProUGUI waveText;
 
     [Header("Attributes")]
-    [SerializeField] float timeBetweenEnemySpawns;
     [SerializeField] float timeBetweenEnemyWaves;
 
     [Header("Waves")]
@@ -42,30 +41,42 @@ public class EnemyWaveController : MonoBehaviour
                 onWaveStart.RaiseEvent(numOfTotalEnemies);
                 numOfTotalEnemies = 0;
                 //loop through enemy types in the wave
-                for (int i = 0; i < wave.enemyCount.Count; i++)
+                for (int i = 0; i < wave.enemyTypes.Count; i++)
                 {
+                    //store the amount of enemies in the selected type
                     int enemyCount = wave.enemyCount[i];
-                    IPoolable enemyData = wave.enemies[i].GetComponent<ObjectInfo>().DefObjectGameData as IPoolable;
 
+                    //store the enemy data for purposes of spawning the enemy
+                    IPoolable enemyData = wave.enemyTypes[i].GetComponent<ObjectInfo>().DefObjectGameData as IPoolable;
+
+                    //store the min and max value to randomize enemy spawn countdown
+                    Vector2 _timeBetweenEnemySpawns = wave.timeBetweenEnemySpawns[i];
 
                     //spawn enemies by their count which is set in the "Wave SO"
                     for (int x = 0; x < enemyCount; x++)
                     {
-                        //GameObject pooledEnemy = objectPool.GetObjectFromPool(hashCode);
                         GameObject pooledEnemy = null;
 
+                        //store the next enemy to be spawned
                         pooledEnemy = enemyData.GetObject();
 
+                        //add it to the list for purposes of checking if the enemy is alive 
                         enemiesInWave.Add(pooledEnemy);
 
+                        //spawn the enemy
                         pooledEnemy.SetActive(true);
 
+                        //get a random spawn timer
+                        float randomizedSpawnTimer = Random.Range(_timeBetweenEnemySpawns.x, _timeBetweenEnemySpawns.y);
 
-                        yield return new WaitForSeconds(timeBetweenEnemySpawns);
+                        //wait till the countdown to finish to spawn another enemy
+                        yield return new WaitForSeconds(randomizedSpawnTimer);
                     }
+                    //---------------END OF THE ENEMY TYPE--------------------
+
 
                 }
-                //end of the wave
+                //---------------END OF THE WAVE--------------------
 
                 //wait for enemies to die before starting countdown to go to the next wave
                 foreach (var enemy in enemiesInWave)
@@ -74,12 +85,13 @@ public class EnemyWaveController : MonoBehaviour
                 }
                 enemiesInWave.Clear();
 
+                //raise a wave end event and pass the timer
                 onWaveEnd.RaiseEvent(timeBetweenEnemyWaves);
 
-
+                //start the countdown for the next wave
                 yield return new WaitForSeconds(timeBetweenEnemyWaves);
             }
-            //end of total waves
+            //---------------END OF TOTAL WAVES--------------------
             break;
         }
     }
@@ -94,6 +106,18 @@ public class EnemyWaveController : MonoBehaviour
         }
     }
 
+    void SkipTheType(int num)
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            num++;
+        }
+    }
+
+    void SkipTheTimer(float time)
+    {
+        time = 0;
+    }
 
 
 }
