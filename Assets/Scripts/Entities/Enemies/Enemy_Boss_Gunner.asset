@@ -15,6 +15,7 @@ MonoBehaviour:
   objectName: enemy
   hashCode: 1816857306
   Immunity: 16
+  EnemyType: 1
   <DefaultMoveSpeed>k__BackingField: 8
   <BaseMaxHealth>k__BackingField: 250
   <MoneyDrop>k__BackingField: 10

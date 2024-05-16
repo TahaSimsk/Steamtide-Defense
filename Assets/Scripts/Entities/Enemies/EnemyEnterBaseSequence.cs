@@ -48,7 +48,7 @@ public class EnemyEnterBaseSequence : MonoBehaviour
         if (pathEnemyPairs.ContainsValue(enemy))
         {
             StartCoroutine(enemyMovement.FaceWaypoint(transform.position));
-            StartAttacking();
+            StartAttacking(enemy);
             return;
         }
 
@@ -88,8 +88,12 @@ public class EnemyEnterBaseSequence : MonoBehaviour
         }
     }
 
-    void StartAttacking()
+    void StartAttacking(GameObject enemy)
     {
-        Debug.Log("Attacking");
+        MeleeAttacking enemyMeleeAttack = enemy.GetComponent<MeleeAttacking>();
+        if (enemyMeleeAttack != null)
+        {
+            StartCoroutine(enemyMeleeAttack.Attack(gameObject));
+        }
     }
 }

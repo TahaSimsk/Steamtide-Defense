@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Base 1
   hashCode: 113344324
-  BaseHP: 50000000
+  BaseHP: 5000

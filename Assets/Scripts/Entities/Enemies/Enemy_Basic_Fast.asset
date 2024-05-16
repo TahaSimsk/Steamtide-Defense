@@ -15,12 +15,13 @@ MonoBehaviour:
   objectName: enemy
   hashCode: 1816857306
   Immunity: 0
+  EnemyType: 0
   <DefaultMoveSpeed>k__BackingField: 19
   <BaseMaxHealth>k__BackingField: 75
   <MoneyDrop>k__BackingField: 10
   Range: 0
-  Damage: 10
-  ShootingDelay: 0
+  Damage: 15
+  ShootingDelay: 1
   ProjectileSpeed: 0
   AimSpeed: 20
   <ObjectPrefab>k__BackingField: {fileID: 7717460796901817828, guid: 8565d9ceac2e424409317f6ff7673159, type: 3}

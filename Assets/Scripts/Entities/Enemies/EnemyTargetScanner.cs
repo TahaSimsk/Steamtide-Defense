@@ -16,4 +16,22 @@ public class EnemyTargetScanner : TargetScanner
         targetsInRange.Clear();
     }
 
+    protected override void OnTriggerEnter(Collider other)
+    {
+        IPlayerDamageable playerDamageable = other.GetComponent<IPlayerDamageable>();
+        if (playerDamageable != null)
+        {
+            targetsInRange.Add(other.gameObject);
+
+        }
+    }
+    protected override void OnTriggerExit(Collider other)
+    {
+        IPlayerDamageable playerDamageable = other.GetComponent<IPlayerDamageable>();
+        if (playerDamageable != null)
+        {
+            targetsInRange.Remove(other.gameObject);
+        }
+    }
+
 }

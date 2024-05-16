@@ -26,14 +26,14 @@ public class SuicideBomberMovement : EnemyMovement
         }
         //reaching at the end of the path
         onEnemyReachEndOfPath.RaiseEvent(gameObject);
-        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Tower"))
+        IPlayerDamageable playerDamageable = other.GetComponent<IPlayerDamageable>();
+        if (playerDamageable != null)
         {
-            other.GetComponent<TowerHealth>().ReduceHealth(enemyData.Damage);
+            playerDamageable.GetDamage(enemyData.Damage);
             gameObject.SetActive(false);
             onEnemyDeath.RaiseEvent(gameObject);
             //TODO: Play explosion sfx, vfx here

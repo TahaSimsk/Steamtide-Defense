@@ -16,3 +16,9 @@ public enum TargetPriority
     First,
     Last,
 }
+
+public enum EnemyType
+{
+    Melee,
+    Ranged,
+}

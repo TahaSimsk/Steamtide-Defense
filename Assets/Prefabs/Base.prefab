@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 9102966142640808527}
   - component: {fileID: 6462889988124284549}
   - component: {fileID: 654904034038579128}
-  m_Layer: 0
+  - component: {fileID: 11926605515732580}
+  m_Layer: 13
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,4 +107,26 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: 93a3ae0ed018a0c49b29731154324089, type: 2}
   healthBar: {fileID: 0}
   onBaseDeath: {fileID: 11400000, guid: 82ca69e1619dd7b4486258c350fe0781, type: 2}
-  onEnemyReachBase: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
+--- !u!114 &11926605515732580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805393870923511632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b96ba26f3e0ab46b242e11d6568f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEnemyReachEndOfPath: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
+  paths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

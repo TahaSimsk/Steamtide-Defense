@@ -14,9 +14,10 @@ public class EnemyProjectile : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Tower"))
+        IPlayerDamageable playerDamageable = other.GetComponent<IPlayerDamageable>();
+        if (playerDamageable != null)
         {
-            other.GetComponent<TowerHealth>().ReduceHealth(damage);
+            playerDamageable.GetDamage(damage);
             gameObject.SetActive(false);
         }
     }

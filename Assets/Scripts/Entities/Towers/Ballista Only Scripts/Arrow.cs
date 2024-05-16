@@ -33,7 +33,6 @@ public class Arrow : Projectile
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
         if (timer >= ballistaData.projectileLife)
         {
-            Debug.Log("deactivated bc timer" + timer);
             gameObject.SetActive(false);
         }
 
@@ -89,11 +88,9 @@ public class Arrow : Projectile
         {
             pierceCount++;
 
-            Debug.Log("pierce count: " + pierceCount);
             if (pierceCount > ballistaData.pierceLimit)
             {
 
-                Debug.Log("deactivated ");
                 gameObject.SetActive(false);
                 return;
             }
@@ -101,7 +98,6 @@ public class Arrow : Projectile
         }
         else
         {
-            Debug.Log("deactivated ");
             gameObject.SetActive(false);
         }
     }

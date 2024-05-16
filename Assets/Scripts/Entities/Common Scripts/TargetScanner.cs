@@ -28,7 +28,7 @@ public class TargetScanner : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(targetTag))
         {
@@ -37,7 +37,7 @@ public class TargetScanner : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(targetTag))
         {

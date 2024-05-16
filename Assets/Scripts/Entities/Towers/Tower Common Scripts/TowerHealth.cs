@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerHealth : MonoBehaviour
+public class TowerHealth : MonoBehaviour, IPlayerDamageable
 {
     [Header("Events")]
     [SerializeField] GameEvent1ParamSO onTowerDeath;
@@ -65,5 +65,12 @@ public class TowerHealth : MonoBehaviour
     void UpdateHPBar()
     {
         healthBar.value = CurrentHealth / MaxHealth;
+    }
+
+    public void GetDamage(float damage)
+    {
+        CurrentHealth -= damage;
+        UpdateHPBar();
+        CheckIfDiedAndHandleDeath();
     }
 }

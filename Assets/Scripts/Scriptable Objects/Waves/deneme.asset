@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: deneme
   m_EditorClassIdentifier: 
   enemyTypes:
+  - {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
   - {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
-  enemyCount: 0a000000
+  - {fileID: 2185672882422005610, guid: 60e7a6f4403cba2438cee7e1f0517f1d, type: 3}
+  enemyCount: 030000000300000005000000
   timeBetweenEnemySpawns:
-  - {x: 10, y: 10}
+  - {x: 1, y: 2}
+  - {x: 1, y: 2}
+  - {x: 1, y: 2}

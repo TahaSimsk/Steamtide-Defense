@@ -15,6 +15,7 @@ MonoBehaviour:
   objectName: Enemy_Basic_Shooter
   hashCode: 647174512
   Immunity: 0
+  EnemyType: 1
   <DefaultMoveSpeed>k__BackingField: 10
   <BaseMaxHealth>k__BackingField: 100
   <MoneyDrop>k__BackingField: 10

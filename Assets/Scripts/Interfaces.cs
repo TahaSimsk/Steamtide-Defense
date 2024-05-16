@@ -12,6 +12,7 @@ public interface IPoolable
     GameObject GetObject();
 }
 
-
-
-
+public interface IPlayerDamageable
+{
+    void GetDamage(float damage);
+}

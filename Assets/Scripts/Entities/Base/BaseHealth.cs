@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseHealth : MonoBehaviour
+public class BaseHealth : MonoBehaviour, IPlayerDamageable
 {
     [SerializeField] BaseData baseData;
     [SerializeField] Slider healthBar;
     [Header("Events")]
     [SerializeField] GameEvent1ParamSO onBaseDeath;
-    [SerializeField] GameEvent1ParamSO onEnemyReachBase;
 
 
     float currentHealth;
@@ -23,23 +22,13 @@ public class BaseHealth : MonoBehaviour
     void OnEnable()
     {
         currentHealth = maxHealth;
-        onEnemyReachBase.onEventRaised += ReduceHealth;
     }
-    void OnDisable()
+    
+    public void GetDamage(float damage)
     {
-        onEnemyReachBase.onEventRaised -= ReduceHealth;
-    }
-
-    public void ReduceHealth(object enemy)
-    {
-        if (enemy is GameObject g)
-        {
-            ObjectInfo enemyInfo = g.GetComponent<ObjectInfo>();
-            EnemyData enemyData = enemyInfo.DefObjectGameData as EnemyData;
-            currentHealth -= enemyData.Damage;
-            UpdateHPBar();
-            CheckIfDiedAndHandleDeath();
-        }
+        currentHealth -= damage;
+        UpdateHPBar();
+        CheckIfDiedAndHandleDeath();
     }
 
     void UpdateHPBar()
@@ -57,8 +46,5 @@ public class BaseHealth : MonoBehaviour
         }
     }
 
-
-
-
-
+   
 }

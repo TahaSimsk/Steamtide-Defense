@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyAttacking : MonoBehaviour
+public class EnemyRangedShooting : MonoBehaviour
 {
     [SerializeField] ObjectInfo enemyInfo;
     [SerializeField] EnemyTargetScanner targetScanner;
@@ -39,7 +39,7 @@ public class EnemyAttacking : MonoBehaviour
         timer = 0;
 
     }
-
+    
     /*
          * when projectile pooled and activated, shooting starts. The script in the projectile handles movement and collision. In this script all we need to do is activate it and pass the target.
          */
