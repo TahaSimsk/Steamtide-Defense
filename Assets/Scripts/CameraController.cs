@@ -33,13 +33,15 @@ public class CameraController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Q))
             {
-                float changedValue = transform.position.y - moveSpeed * Time.unscaledDeltaTime;
-                transform.position = new Vector3(transform.position.x, changedValue, transform.position.z);
+                //float changedValue = transform.position.y - moveSpeed * Time.unscaledDeltaTime;
+                //transform.position = new Vector3(transform.position.x, changedValue, transform.position.z);
+                transform.localPosition -= transform.up * Time.unscaledDeltaTime * moveSpeed;
             }
             if (Input.GetKey(KeyCode.E))
             {
-                float changedValue = transform.position.y + moveSpeed * Time.unscaledDeltaTime;
-                transform.position = new Vector3(transform.position.x, changedValue, transform.position.z);
+                //float changedValue = transform.position.y + moveSpeed * Time.unscaledDeltaTime;
+                //transform.position = new Vector3(transform.position.x, changedValue, transform.position.z);
+                transform.localPosition += transform.up * Time.unscaledDeltaTime * moveSpeed;
             }
             if (Input.GetKey(KeyCode.W))
             {
@@ -57,7 +59,7 @@ public class CameraController : MonoBehaviour
             {
                 transform.localPosition -= transform.right * Time.unscaledDeltaTime * moveSpeed;
             }
-  
+
             float valueX = transform.localPosition.x;
             float valueY = transform.localPosition.y;
             float valueZ = transform.localPosition.z;

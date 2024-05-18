@@ -22,3 +22,10 @@ public enum EnemyType
     Melee,
     Ranged,
 }
+
+public enum DemolishState1
+{
+    Demolishable,
+    Demolishing,
+    Demolished,
+}
