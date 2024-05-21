@@ -18,3 +18,7 @@ MonoBehaviour:
   objectPrefabPoolSize: 0
   objectCost_MoneyDrop: 50
   objList: []
+  GatherDuration: 1
+  WoodDrop: 0
+  RockDrop: 0
+  ResourceDrops: 0

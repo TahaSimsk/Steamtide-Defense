@@ -16,3 +16,10 @@ public interface IPlayerDamageable
 {
     void GetDamage(float damage);
 }
+
+public interface IResource
+{
+    public int Amount { get; set; }
+    public void Drop();
+        
+}

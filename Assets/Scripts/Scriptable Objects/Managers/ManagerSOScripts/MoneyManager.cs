@@ -9,32 +9,47 @@ using UnityEngine.SceneManagement;
 public class MoneyManager : ScriptableObject
 {
     [Header("Events")]
-    public GameEvent0ParamSO onMoneyChanged;
+    [SerializeField] GameEvent0ParamSO onMoneyChanged;
+    [SerializeField] GameEvent0ParamSO onWoodAmountChanged;
+    [SerializeField] GameEvent0ParamSO onRockAmountChanged;
 
     public float startingBalance;
 
-    [HideInInspector] public float money;
+    [HideInInspector] public float CurrentMoneyAmount;
+    [HideInInspector] public int CurrentWoodAmount;
+    [HideInInspector] public int CurrentRockAmount;
 
-    private void OnEnable()
+
+   
+    void OnEnable()
     {
-        money = startingBalance;
-        SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+        ResetResources();
+        SceneManager.activeSceneChanged += ResetResourcesOnSceneChange;
     }
 
-    private void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
+    void OnDisable()
     {
-        money = startingBalance;
+        SceneManager.activeSceneChanged -= ResetResourcesOnSceneChange;
     }
 
-    private void OnDisable()
+    void ResetResourcesOnSceneChange(Scene arg0, Scene arg1)
     {
-        SceneManager.activeSceneChanged -= SceneManager_activeSceneChanged;
+       ResetResources();
     }
+
+    void ResetResources()
+    {
+        CurrentMoneyAmount = startingBalance;
+        CurrentWoodAmount = 0;
+        CurrentRockAmount = 0;
+    }
+
+
 
 
     public bool IsAffordable(float towerCost)
     {
-        if (money >= towerCost)
+        if (CurrentMoneyAmount >= towerCost)
         {
             return true;
         }
@@ -47,16 +62,37 @@ public class MoneyManager : ScriptableObject
 
     public void AddMoney(float _amount)
     {
-        money += _amount;
+        CurrentMoneyAmount += _amount;
         onMoneyChanged.RaiseEvent();
     }
 
-
-
     public void DecreaseMoney(float amount)
     {
-        money -= amount;
+        CurrentMoneyAmount -= amount;
         onMoneyChanged.RaiseEvent();
+    }
+
+    public void AddWood(int _amount)
+    {
+        CurrentWoodAmount += _amount;
+        onWoodAmountChanged.RaiseEvent();
+    }
+
+    public void RemoveWood(int _amount)
+    {
+        CurrentWoodAmount -= _amount;
+        onWoodAmountChanged.RaiseEvent();
+    }
+
+    public void AddRock(int _amount)
+    {
+        CurrentRockAmount += _amount;
+        onRockAmountChanged.RaiseEvent();
+    }
+    public void RemoveRock(int _amount)
+    {
+        CurrentRockAmount -= _amount;
+        onRockAmountChanged.RaiseEvent();
     }
 
 }

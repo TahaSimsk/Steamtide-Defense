@@ -17,15 +17,24 @@ public enum TargetPriority
     Last,
 }
 
-public enum EnemyType
+public enum EnemyAttackType
 {
     Melee,
     Ranged,
 }
 
-public enum DemolishState1
+public enum GatherState
 {
-    Demolishable,
-    Demolishing,
-    Demolished,
+    Gatherable,
+    Gathering,
+    Gathered,
 }
+
+[Flags]
+public enum ResourceDropTypes
+{
+    None = 0,
+    Wood = 1,
+    Rock = 2,
+}
+

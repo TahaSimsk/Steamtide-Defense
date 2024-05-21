@@ -368,6 +368,14 @@ PrefabInstance:
       propertyPath: dataDemolish
       value: 
       objectReference: {fileID: 11400000, guid: cf872bf166a8c2a4081589675e423843, type: 2}
+    - target: {fileID: 4056973962049712374, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
+      propertyPath: Resources.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4770238720144771225, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
+      propertyPath: Amount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4792760951467597198, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60
@@ -408,7 +416,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6381911641423821832, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1629691490805638649, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
     - {fileID: 5198331612901373834, guid: 262f1b29aa7b83f47af110aa42afb7c4, type: 3}
