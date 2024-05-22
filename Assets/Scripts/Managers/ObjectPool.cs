@@ -76,7 +76,27 @@ public class ObjectPool : MonoBehaviour
     //    }
     //    return null;
     //}
+    List<GameObject> gos = new List<GameObject>();
 
-
+    public GameObject GetObject(GameObject obj)
+    {
+        if (gos.Count != 0 && gos.Contains(obj))
+        {
+            foreach (var item in gos)
+            {
+                if (!item.activeInHierarchy)
+                {
+                    return item;
+                }
+            }
+        }
+        else
+        {
+            GameObject go = Instantiate(obj);
+            gos.Add(go);
+            return obj;
+        }
+        return null;
+    }
 
 }

@@ -5,6 +5,6 @@ public class Rock :Resource
     
     public override void Drop()
     {
-        MoneyManager.AddRock(Amount);
+        MoneyManager.AddRock(DropAmount);
     }
 }

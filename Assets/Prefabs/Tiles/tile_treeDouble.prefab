@@ -220,6 +220,14 @@ PrefabInstance:
       propertyPath: Amount
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1138125415838149672, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: MinMaxDropAmount.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138125415838149672, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
+      propertyPath: MinMaxDropAmount.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1542833674801928377, guid: 6007fa99197b7174e92a7fb3a2ae2310, type: 3}
       propertyPath: Amount
       value: 5

@@ -1,8 +1,21 @@
 ﻿using UnityEngine;
 
-public abstract class Resource : MonoBehaviour
+public class Resource : MonoBehaviour
 {
-    public int Amount;
+    public string NameOfResource;
+    public int DropAmount { get; set; }
+    public Vector2Int MinMaxDropAmount;
     public MoneyManager MoneyManager;
-    public abstract void Drop();
+
+    protected virtual void Awake()
+    {
+        DropAmount = Random.Range(MinMaxDropAmount.x, MinMaxDropAmount.y);
+    }
+
+
+
+    public virtual void Drop()
+    {
+
+    }
 }

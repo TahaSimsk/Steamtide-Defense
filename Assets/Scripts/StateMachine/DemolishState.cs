@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DemolishState : BaseState
@@ -54,7 +52,7 @@ public class DemolishState : BaseState
             if (gameStateManager.moneyManager.IsAffordable(hoveredTileDemolishCost))
             {
                 //show tooltip
-                tooltipManager.ShowTip("Cost To Demolish: " + hoveredTileDemolishCost, Input.mousePosition, true);
+                ShowTipWhenHoveredDemolishableObject();
 
                 //check if player presses lmb
                 if (Input.GetMouseButtonDown(0))
@@ -75,6 +73,20 @@ public class DemolishState : BaseState
             tooltipManager.DisableTip();
         }
 
+    }
+
+    void ShowTipWhenHoveredDemolishableObject()
+    {
+        string resourceNamesAndDropAmounts = "";
+
+        for (int i = 0; i < hoveredTileDemolishInfo.Resources.Length; i++)
+        {
+            Resource resource = hoveredTileDemolishInfo.Resources[i];
+            resourceNamesAndDropAmounts += $"\n {resource.NameOfResource}: {resource.DropAmount}";
+        }
+
+        string tipMessage = $"Cost To Demolish: {hoveredTileDemolishCost}\n RESOURCES: {resourceNamesAndDropAmounts}";
+        tooltipManager.ShowTip(tipMessage, Input.mousePosition, true);
     }
 
 

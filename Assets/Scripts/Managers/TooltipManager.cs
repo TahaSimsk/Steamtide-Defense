@@ -1,4 +1,5 @@
 
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -7,8 +8,6 @@ public class TooltipManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI tooltipText;
 
     RectTransform tooltip;
-
-  
     private void Start()
     {
         tooltip = tooltipText.transform.parent.GetComponent<RectTransform>();
@@ -55,15 +54,16 @@ public class TooltipManager : MonoBehaviour
         tooltip.position = position;
 
         tooltipText.text = text;
+             
 
         if (isPlaceable)
         {
-           
+
             tooltip.gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.green;
         }
         else
         {
-            
+
             tooltip.gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.red;
         }
 
@@ -74,5 +74,4 @@ public class TooltipManager : MonoBehaviour
         tooltip.gameObject.SetActive(false);
     }
 
-
-}
+  }

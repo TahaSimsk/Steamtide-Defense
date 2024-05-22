@@ -615,7 +615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40164e00ebe1534b93236d531b7ef1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 5
+  NameOfResource: Wood
+  MinMaxDropAmount: {x: 10, y: 20}
   MoneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
 --- !u!114 &1542833674801928377
 MonoBehaviour:
@@ -629,5 +630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb725c9d5d73b34398e1a81816c0a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 0
+  NameOfResource: Rock
+  MinMaxDropAmount: {x: 0, y: 0}
   MoneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}

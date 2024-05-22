@@ -4,6 +4,6 @@ public class Wood : Resource
 {
     public override void Drop()
     {
-        MoneyManager.AddWood(Amount);
+        MoneyManager.AddWood(DropAmount);
     }
 }
