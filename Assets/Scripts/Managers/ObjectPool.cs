@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
 {
     //public List<Data> datas;
     public List<GameData> objectsToPool;
-
+    [SerializeField] Canvas textCanvas;
     void Awake()
     {
         PopulatePoolAndAllocateToData();
@@ -78,25 +78,27 @@ public class ObjectPool : MonoBehaviour
     //}
     List<GameObject> gos = new List<GameObject>();
 
-    public GameObject GetObject(GameObject obj)
+    public GameObject GetObject()
     {
-        if (gos.Count != 0 && gos.Contains(obj))
+        if (gos.Count == 0)
         {
-            foreach (var item in gos)
+            GameObject go1 = Instantiate(textCanvas.gameObject, transform.position, Quaternion.identity);
+            gos.Add(go1);
+            return go1;
+        }
+
+        foreach (var item in gos)
+        {
+            if (!item.activeInHierarchy)
             {
-                if (!item.activeInHierarchy)
-                {
-                    return item;
-                }
+                return item;
             }
+
         }
-        else
-        {
-            GameObject go = Instantiate(obj);
-            gos.Add(go);
-            return obj;
-        }
-        return null;
+
+        GameObject go2 = Instantiate(textCanvas.gameObject, transform.position, Quaternion.identity);
+        gos.Add(go2);
+        return go2;
     }
 
 }

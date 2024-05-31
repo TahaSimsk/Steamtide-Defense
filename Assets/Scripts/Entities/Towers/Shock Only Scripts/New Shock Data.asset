@@ -80,11 +80,21 @@ MonoBehaviour:
   upgradedSlowAmount: 60
   upgradedSlowDuration: 1.5
   upgradedProjectileCount2: 3
-  shockUpgradeCosts:
+  shockUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  shockUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  shockUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40
   empRadius: 30
   empCooldown: 5
   freezeDuration: 2
@@ -94,8 +104,18 @@ MonoBehaviour:
   canFreezeBosses: 0
   upgradedFreezeDuration: 4
   upgradedEmpCooldown: 2
-  empUpgradeCosts:
+  empUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  empUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  empUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40

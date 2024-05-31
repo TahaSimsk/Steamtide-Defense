@@ -10,8 +10,9 @@ public class PierceUpgrade : UpgradeBaseClass
     [SerializeField] Button buttonToUnlock;
     BallistaData ballistaData;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -19,7 +20,9 @@ public class PierceUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         ballistaData = (BallistaData)towerData;
-        upgradeCost = ballistaData.pierceUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = ballistaData.pierceUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = ballistaData.pierceUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = ballistaData.pierceUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

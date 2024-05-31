@@ -13,8 +13,9 @@ public class CannonData : TowerData, IPoolable
 
     [Header("------------------------EXPLOSION UPGRADES--------------------------")]
     public List<float> ExplosionRadiusUpgradeValues;
-    public List<float> ExplosionRadiusUpgradeCosts;
-
+    public List<float> ExplosionRadiusUpgradeMoneyCosts;
+    public List<float> ExplosionRadiusUpgradeWoodCosts;
+    public List<float> ExplosionRadiusUpgradeRockCosts;
 
 
 
@@ -44,7 +45,9 @@ public class CannonData : TowerData, IPoolable
     [Header("Level 4 Upgrade")]
     public float mortarUpgradedCooldown;
     [Header("Upgrade Costs")]
-    public List<float> mortarUpgradeCosts;
+    public List<float> mortarUpgradeMoneyCosts;
+    public List<float> mortarUpgradeWoodCosts;
+    public List<float> mortarUpgradeRockCosts;
 
 
     [field: Header("------------------------OBJECT POOLING--------------------------")]

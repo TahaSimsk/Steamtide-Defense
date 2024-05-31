@@ -10,8 +10,9 @@ public class MortarUpgrade : UpgradeBaseClass
     [SerializeField] GameObject mortarButton;
     CannonData cannonData;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -20,7 +21,9 @@ public class MortarUpgrade : UpgradeBaseClass
         base.OnEnable();
         cannonData = (CannonData)towerData;
 
-        upgradeCost = cannonData.mortarUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = cannonData.mortarUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = cannonData.mortarUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = cannonData.mortarUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

@@ -21,7 +21,9 @@ public class ShockData : TowerData
     [Header("Level 4 Upgrades")]
     public int upgradedProjectileCount2;
     [Header("Shock Upgrade Costs")]
-    public List<float> shockUpgradeCosts;
+    public List<float> shockUpgradeMoneyCosts;
+    public List<float> shockUpgradeWoodCosts;
+    public List<float> shockUpgradeRockCosts;
 
     [Header("---------------------------EMP ATTRIBUTES-----------------------")]
     public float empRadius;
@@ -35,5 +37,7 @@ public class ShockData : TowerData
     public float upgradedFreezeDuration;
     public float upgradedEmpCooldown;
     [Header("Shock Upgrade Costs")]
-    public List<float> empUpgradeCosts;
+    public List<float> empUpgradeMoneyCosts;
+    public List<float> empUpgradeWoodCosts;
+    public List<float> empUpgradeRockCosts;
 }

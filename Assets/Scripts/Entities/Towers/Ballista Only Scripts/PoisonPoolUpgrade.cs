@@ -9,8 +9,9 @@ public class PoisonPoolUpgrade : UpgradeBaseClass
     [SerializeField] Button buttonToUnlock;
     BallistaData ballistaData;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -18,7 +19,9 @@ public class PoisonPoolUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         ballistaData = (BallistaData)towerData;
-        upgradeCost = ballistaData.poolUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = ballistaData.poolUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = ballistaData.poolUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = ballistaData.poolUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

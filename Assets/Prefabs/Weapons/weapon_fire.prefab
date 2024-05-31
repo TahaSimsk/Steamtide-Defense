@@ -442,6 +442,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2381099734029558777}
     m_Modifications:
+    - target: {fileID: 231862704446090423, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 231862704446090423, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 282743804271554332, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -522,6 +530,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 374666368708546177, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 374666368708546177, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1100349589712387526, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: Flame I
@@ -529,6 +545,14 @@ PrefabInstance:
     - target: {fileID: 1139953744158225952, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: Fire Trap I
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187848548627063026, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187848548627063026, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1328168389666776474, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
@@ -538,9 +562,33 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 3475408591178636541, guid: 9e84160424a878049bae620ea0f3b1f3, type: 3}
+    - target: {fileID: 1869722289406556957, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869722289406556957, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1888411925269781348, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: Flame III
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905799748928058666, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905799748928058666, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419669858715197364, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419669858715197364, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 3517147601599260768, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
@@ -561,6 +609,22 @@ PrefabInstance:
     - target: {fileID: 4519337167837659862, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: RotationSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593761671235155180, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593761671235155180, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601915069489552864, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601915069489552864, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4686223762323008759, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
@@ -590,9 +654,33 @@ PrefabInstance:
       propertyPath: towerHealth
       value: 
       objectReference: {fileID: 5059478192451877554}
+    - target: {fileID: 5626706273351865733, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626706273351865733, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5660321217446325237, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
       value: Fire Trap IV
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045077987557686864, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045077987557686864, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151815683749084277, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151815683749084277, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
@@ -606,6 +694,14 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 3475408591178636541, guid: 9e84160424a878049bae620ea0f3b1f3, type: 3}
+    - target: {fileID: 7463066155081920710, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463066155081920710, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8284540249106898813, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
@@ -617,6 +713,14 @@ PrefabInstance:
     - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719072945869331146, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719072945869331146, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8793754964456120318, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo

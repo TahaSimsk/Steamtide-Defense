@@ -77,21 +77,41 @@ MonoBehaviour:
   AmmoEfficiency: 1
   BurstUpgradedValues: 020000000300000004000000
   canDoubleBarrel: 0
-  BurstUpgradeCosts:
+  BurstUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  BurstUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  BurstUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40
   AmmoEfficiencyUpgradedValues:
   - 0.8
   - 0.5
   - 0.2
   UpgradedAmmoCapacity: 50
-  AmmoUpgradeCosts:
+  AmmoUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  AmmoUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  AmmoUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40
   <ObjectPrefab>k__BackingField: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
   <ObjectPoolsize>k__BackingField: 50
   <objList>k__BackingField:

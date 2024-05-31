@@ -13,7 +13,7 @@ public class HealthUpgrade : UpgradeBaseClass
         base.OnEnable();
         maxUpgradeCount = towerData.MaxHealthUpgradeValues.Count;
         if (counter >= maxUpgradeCount) return;
-        upgradeCost = towerData.MaxHealthUpgradeCosts[counter];
+        upgradeMoneyCost = towerData.MaxHealthUpgradeCosts[counter];
     }
 
     protected override void DoUpgrade()
@@ -23,11 +23,11 @@ public class HealthUpgrade : UpgradeBaseClass
 
         if (counter + 1 < maxUpgradeCount)
         {
-            upgradeCost = towerData.MaxHealthUpgradeCosts[counter + 1];
+            upgradeMoneyCost = towerData.MaxHealthUpgradeCosts[counter + 1];
         }
         else
         {
-            upgradeCost = towerData.MaxHealthUpgradeCosts[counter];
+            upgradeMoneyCost = towerData.MaxHealthUpgradeCosts[counter];
         }
     }
 }

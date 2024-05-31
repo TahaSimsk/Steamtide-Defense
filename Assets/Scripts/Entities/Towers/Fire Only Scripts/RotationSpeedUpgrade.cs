@@ -8,7 +8,7 @@ public class RotationSpeedUpgrade : UpgradeBaseClass
         fireData = towerData as FireData;
         maxUpgradeCount = fireData.RotateSpeedUpgradeValues.Count;
         if (counter >= maxUpgradeCount) return;
-        upgradeCost = fireData.RotateSpeedUpgradeCosts[counter];
+        upgradeMoneyCost = fireData.RotateSpeedUpgradeCosts[counter];
     }
 
     protected override void DoUpgrade()
@@ -18,11 +18,11 @@ public class RotationSpeedUpgrade : UpgradeBaseClass
 
         if (counter + 1 < maxUpgradeCount)
         {
-            upgradeCost = fireData.RotateSpeedUpgradeCosts[counter + 1];
+            upgradeMoneyCost = fireData.RotateSpeedUpgradeCosts[counter + 1];
         }
         else
         {
-            upgradeCost = fireData.RotateSpeedUpgradeCosts[counter];
+            upgradeMoneyCost = fireData.RotateSpeedUpgradeCosts[counter];
         }
     }
 }

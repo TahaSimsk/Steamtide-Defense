@@ -82,11 +82,21 @@ MonoBehaviour:
   - 200
   - 300
   - 400
-  flameUpgradeCosts:
+  flameUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  flameUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  flameUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40
   canThrowTrap: 0
   fireTrap: {fileID: 8119679663931174102, guid: 2db3b2c5a4b68c04781f82e160f456cf, type: 3}
   trapRandomPosOffset: 3
@@ -98,8 +108,18 @@ MonoBehaviour:
   UpgradedTrapCooldown1: 20
   UpgradedTrapCooldown2: 10
   UpgradedTrapDamage: 150
-  FireTrapUpgradeCosts:
+  FireTrapUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  FireTrapUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  FireTrapUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40

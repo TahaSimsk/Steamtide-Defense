@@ -9,7 +9,9 @@ public class FireData : TowerData
     public List<float> RotateSpeedUpgradeValues;
     public List<float> RotateSpeedUpgradeCosts;
 
-    public List<float> flameUpgradeCosts;
+    public List<float> flameUpgradeMoneyCosts;
+    public List<float> flameUpgradeWoodCosts;
+    public List<float> flameUpgradeRockCosts;
 
     [Header("---------------------------FIRE TRAP ATTRIBUTES-----------------------")]
     public bool canThrowTrap;
@@ -23,5 +25,7 @@ public class FireData : TowerData
     public float UpgradedTrapCooldown1;
     public float UpgradedTrapCooldown2;
     public float UpgradedTrapDamage;
-    public List<float> FireTrapUpgradeCosts;
+    public List<float> FireTrapUpgradeMoneyCosts;
+    public List<float> FireTrapUpgradeWoodCosts;
+    public List<float> FireTrapUpgradeRockCosts;
 }

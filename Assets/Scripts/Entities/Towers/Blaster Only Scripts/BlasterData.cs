@@ -15,15 +15,17 @@ public class BlasterData : TowerData, IPoolable
 
     public List<int> BurstUpgradedValues;
     public bool canDoubleBarrel;
-    public List<float> BurstUpgradeCosts;
-
+    public List<float> BurstUpgradeMoneyCosts;
+    public List<float> BurstUpgradeWoodCosts;
+    public List<float> BurstUpgradeRockCosts;
 
     [Header("---------------------------AMMO UPGRADES-----------------------")]
 
     public List<float> AmmoEfficiencyUpgradedValues;
     public int UpgradedAmmoCapacity;
-    public List<float> AmmoUpgradeCosts;
-
+    public List<float> AmmoUpgradeMoneyCosts;
+    public List<float> AmmoUpgradeWoodCosts;
+    public List<float> AmmoUpgradeRockCosts;
 
     [field: Header("----------------------OBJECT POOLING-------------------------")]
     [field: SerializeReference] public GameObject ObjectPrefab { get; set; }

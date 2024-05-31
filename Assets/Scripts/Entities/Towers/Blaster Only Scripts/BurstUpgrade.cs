@@ -8,8 +8,9 @@ public class BurstUpgrade : UpgradeBaseClass
     public int upgradeOrder;
     [SerializeField] Button buttonToUnlock;
     BlasterData blasterData;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -17,7 +18,9 @@ public class BurstUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         blasterData = (BlasterData)towerData;
-        upgradeCost = blasterData.BurstUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = blasterData.BurstUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = blasterData.BurstUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = blasterData.BurstUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

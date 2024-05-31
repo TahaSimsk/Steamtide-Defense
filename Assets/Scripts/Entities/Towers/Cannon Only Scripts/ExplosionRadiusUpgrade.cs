@@ -10,8 +10,9 @@ public class ExplosionRadiusUpgrade : UpgradeBaseClass
     CannonData cannonData;
     CannonData defCannonData;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -21,7 +22,9 @@ public class ExplosionRadiusUpgrade : UpgradeBaseClass
         cannonData = (CannonData)towerData;
         defCannonData = (CannonData)towerInfo.DefTowerData;
 
-        upgradeCost = cannonData.ExplosionRadiusUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = cannonData.ExplosionRadiusUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = cannonData.ExplosionRadiusUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = cannonData.ExplosionRadiusUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

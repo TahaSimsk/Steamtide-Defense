@@ -8,5 +8,4 @@ public class DataDemolish : Data
     public float GatherDuration;
     public int WoodDrop;
     public int RockDrop;
-    public ResourceDropTypes ResourceDrops;
 }

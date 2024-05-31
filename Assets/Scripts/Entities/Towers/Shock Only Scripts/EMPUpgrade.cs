@@ -9,16 +9,18 @@ public class EMPUpgrade : UpgradeBaseClass
     [SerializeField] Button buttonToUnlock;
     [SerializeField] GameObject empCanvas;
     ShockData shockData;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
-
     protected override void OnEnable()
     {
         base.OnEnable();
         shockData = (ShockData)towerData;
-        upgradeCost = shockData.empUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = shockData.empUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = shockData.empUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = shockData.empUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

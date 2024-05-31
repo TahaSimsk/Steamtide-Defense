@@ -9,8 +9,9 @@ public class AmmoEfficiencyUpgrade : UpgradeBaseClass
     [SerializeField] Button buttonToUnlock;
     [SerializeField] AmmoManager ammoManager;
     BlasterData blasterData;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -18,7 +19,9 @@ public class AmmoEfficiencyUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         blasterData = (BlasterData)towerData;
-        upgradeCost = blasterData.AmmoUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = blasterData.AmmoUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = blasterData.AmmoUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = blasterData.AmmoUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

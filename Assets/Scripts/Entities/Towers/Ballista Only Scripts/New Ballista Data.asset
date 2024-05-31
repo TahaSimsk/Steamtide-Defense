@@ -90,11 +90,21 @@ MonoBehaviour:
   pierce4DamageUpgrades:
   - 0
   - 0
-  pierceUpgradeCosts:
+  pierceUpgradeMoneyCosts:
   - 50
   - 100
-  - 150
   - 200
+  - 300
+  pierceUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  pierceUpgradeRockCosts:
+  - 0
+  - 0
+  - 0
+  - 0
   pierceLimitUpgrades: 01000000010000000200000002000000
   poisonPool: {fileID: 8798989912474060224, guid: f41f36b1a1e3d204eb39732b612bc16a, type: 3}
   poolDropChance: 15
@@ -109,11 +119,21 @@ MonoBehaviour:
   poolDurationUpgradedValue: 4
   dropPoolOnFirstEnemy: 1
   poolDamageUpgradedValue: 20
-  poolUpgradeCosts:
-  - 50
+  poolUpgradeMoneyCosts:
   - 100
-  - 150
   - 200
+  - 300
+  - 400
+  poolUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  poolUpgradeRockCosts:
+  - 0
+  - 0
+  - 0
+  - 20
   <ObjectPrefab>k__BackingField: {fileID: 7683383464138540475, guid: db0d79ec4d49a644cbc7b42f7f68b194, type: 3}
   <ObjectPoolsize>k__BackingField: 50
   <objList>k__BackingField:

@@ -11,7 +11,7 @@ public class DamageUpgrade : UpgradeBaseClass
         base.OnEnable();
         maxUpgradeCount = towerData.ProjectileDamageUpgradeValues.Count;
         if (counter >= maxUpgradeCount) return;
-        upgradeCost = towerData.ProjectileDamageUpgradeCosts[counter];
+        upgradeMoneyCost = towerData.ProjectileDamageUpgradeCosts[counter];
     }
 
     protected override void DoUpgrade()
@@ -20,11 +20,11 @@ public class DamageUpgrade : UpgradeBaseClass
 
         if (counter + 1 < maxUpgradeCount)
         {
-            upgradeCost = towerData.ProjectileDamageUpgradeCosts[counter + 1];
+            upgradeMoneyCost = towerData.ProjectileDamageUpgradeCosts[counter + 1];
         }
         else
         {
-            upgradeCost = towerData.ProjectileDamageUpgradeCosts[counter];
+            upgradeMoneyCost = towerData.ProjectileDamageUpgradeCosts[counter];
         }
     }
 

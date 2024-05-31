@@ -8,8 +8,9 @@ public class TrapUpgrade : UpgradeBaseClass
     [SerializeField] int upgradeOrder;
     [SerializeField] Button buttonToUnlock;
     FireData fireData;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -17,7 +18,9 @@ public class TrapUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         fireData = (FireData)towerData;
-        upgradeCost = fireData.FireTrapUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = fireData.FireTrapUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = fireData.FireTrapUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = fireData.FireTrapUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

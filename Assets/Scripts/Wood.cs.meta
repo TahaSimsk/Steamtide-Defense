@@ -3,7 +3,9 @@ guid: a40164e00ebe1534b93236d531b7ef1c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - MoneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  - onDropAmountUpgrade: {fileID: 11400000, guid: 047d99068a1439d419b0c08e722c105d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

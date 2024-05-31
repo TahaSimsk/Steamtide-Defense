@@ -13,7 +13,7 @@ public class RangeUpgrade : UpgradeBaseClass
         base.OnEnable();
         maxUpgradeCount = towerData.RangeUpgradeValues.Count;
         if (counter >= maxUpgradeCount) return;
-        upgradeCost = towerData.RangeUpgradeCosts[counter];
+        upgradeMoneyCost = towerData.RangeUpgradeCosts[counter];
     }
 
     protected override void DoUpgrade()
@@ -24,11 +24,11 @@ public class RangeUpgrade : UpgradeBaseClass
 
         if (counter + 1 < maxUpgradeCount)
         {
-            upgradeCost = towerData.RangeUpgradeCosts[counter + 1];
+            upgradeMoneyCost = towerData.RangeUpgradeCosts[counter + 1];
         }
         else
         {
-            upgradeCost = towerData.RangeUpgradeCosts[counter];
+            upgradeMoneyCost = towerData.RangeUpgradeCosts[counter];
         }
     }
 }

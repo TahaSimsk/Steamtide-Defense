@@ -81,11 +81,21 @@ MonoBehaviour:
   - 20
   - 30
   - 60
-  ExplosionRadiusUpgradeCosts:
+  ExplosionRadiusUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  ExplosionRadiusUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  ExplosionRadiusUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40
   MortarCooldown: 5
   MortarTargetIndicator: {fileID: 3930998012174477889, guid: e02016a5644944f44b3fee831ea72aaa, type: 3}
   numOfMissilesToLaunch: 4
@@ -101,11 +111,21 @@ MonoBehaviour:
   upgradedBombRadius: 15
   upgradedNumOfMissiles: 10
   mortarUpgradedCooldown: 2
-  mortarUpgradeCosts:
+  mortarUpgradeMoneyCosts:
   - 100
   - 200
   - 300
   - 400
+  mortarUpgradeWoodCosts:
+  - 10
+  - 20
+  - 30
+  - 40
+  mortarUpgradeRockCosts:
+  - 10
+  - 20
+  - 30
+  - 40
   <ObjectPrefab>k__BackingField: {fileID: 2215042161897283401, guid: 1f65f0c3afc2eb040b65d957fe1b0bb2, type: 3}
   <ObjectPoolsize>k__BackingField: 50
   <objList>k__BackingField:

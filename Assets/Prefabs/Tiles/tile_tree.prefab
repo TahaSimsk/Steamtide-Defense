@@ -618,6 +618,7 @@ MonoBehaviour:
   NameOfResource: Wood
   MinMaxDropAmount: {x: 10, y: 20}
   MoneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  onDropAmountUpgrade: {fileID: 11400000, guid: 047d99068a1439d419b0c08e722c105d, type: 2}
 --- !u!114 &1542833674801928377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,3 +634,4 @@ MonoBehaviour:
   NameOfResource: Rock
   MinMaxDropAmount: {x: 0, y: 0}
   MoneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  onDropAmountUpgrade: {fileID: 11400000, guid: 3ec1e82791df22748bb10f3537639d6e, type: 2}

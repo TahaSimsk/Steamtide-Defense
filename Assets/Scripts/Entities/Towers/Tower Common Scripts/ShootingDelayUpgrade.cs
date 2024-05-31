@@ -10,7 +10,7 @@ public class ShootingDelayUpgrade : UpgradeBaseClass
         base.OnEnable();
         maxUpgradeCount = towerData.ShootingDelayUpgradeValues.Count;
         if (counter >= maxUpgradeCount) return;
-        upgradeCost = towerData.ShootingDelayUpgradeCosts[counter];
+        upgradeMoneyCost = towerData.ShootingDelayUpgradeCosts[counter];
     }
 
     protected override void DoUpgrade()
@@ -19,11 +19,11 @@ public class ShootingDelayUpgrade : UpgradeBaseClass
 
         if (counter + 1 < maxUpgradeCount)
         {
-            upgradeCost = towerData.ShootingDelayUpgradeCosts[counter + 1];
+            upgradeMoneyCost = towerData.ShootingDelayUpgradeCosts[counter + 1];
         }
         else
         {
-            upgradeCost = towerData.ShootingDelayUpgradeCosts[counter];
+            upgradeMoneyCost = towerData.ShootingDelayUpgradeCosts[counter];
         }
     }
 }

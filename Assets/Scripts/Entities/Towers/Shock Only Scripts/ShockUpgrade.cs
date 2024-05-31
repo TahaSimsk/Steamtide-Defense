@@ -8,8 +8,9 @@ public class ShockUpgrade : UpgradeBaseClass
     public int upgradeOrder;
     [SerializeField] Button buttonToUnlock;
     ShockData shockData;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -17,7 +18,9 @@ public class ShockUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         shockData = (ShockData)towerData;
-        upgradeCost = shockData.shockUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = shockData.shockUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = shockData.shockUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = shockData.shockUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

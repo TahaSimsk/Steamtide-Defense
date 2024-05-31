@@ -11,8 +11,9 @@ public class FlameUpgrade : UpgradeBaseClass
 
     FireData fireData;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         maxUpgradeCount = 1;
     }
 
@@ -20,7 +21,9 @@ public class FlameUpgrade : UpgradeBaseClass
     {
         base.OnEnable();
         fireData = (FireData)towerData;
-        upgradeCost = fireData.flameUpgradeCosts[upgradeOrder - 1];
+        upgradeMoneyCost = fireData.flameUpgradeMoneyCosts[upgradeOrder - 1];
+        upgradeWoodCost = fireData.flameUpgradeWoodCosts[upgradeOrder - 1];
+        upgradeRockCost = fireData.flameUpgradeRockCosts[upgradeOrder - 1];
     }
 
 

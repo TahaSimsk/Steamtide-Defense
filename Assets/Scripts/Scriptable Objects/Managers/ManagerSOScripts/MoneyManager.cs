@@ -16,11 +16,11 @@ public class MoneyManager : ScriptableObject
     public float startingBalance;
 
     [HideInInspector] public float CurrentMoneyAmount;
-    [HideInInspector] public int CurrentWoodAmount;
-    [HideInInspector] public int CurrentRockAmount;
+    [HideInInspector] public float CurrentWoodAmount;
+    [HideInInspector] public float CurrentRockAmount;
 
 
-   
+
     void OnEnable()
     {
         ResetResources();
@@ -34,7 +34,7 @@ public class MoneyManager : ScriptableObject
 
     void ResetResourcesOnSceneChange(Scene arg0, Scene arg1)
     {
-       ResetResources();
+        ResetResources();
     }
 
     void ResetResources()
@@ -58,6 +58,17 @@ public class MoneyManager : ScriptableObject
             return false;
         }
     }
+    public bool IsAffordable(float _moneyCost, float _woodCost, float _rockCost)
+    {
+        if (CurrentMoneyAmount >= _moneyCost && CurrentWoodAmount >= _woodCost && CurrentRockAmount >= _rockCost)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
     public void AddMoney(float _amount)
@@ -72,24 +83,24 @@ public class MoneyManager : ScriptableObject
         onMoneyChanged.RaiseEvent();
     }
 
-    public void AddWood(int _amount)
+    public void AddWood(float _amount)
     {
         CurrentWoodAmount += _amount;
         onWoodAmountChanged.RaiseEvent();
     }
 
-    public void RemoveWood(int _amount)
+    public void DecreaseWood(float _amount)
     {
         CurrentWoodAmount -= _amount;
         onWoodAmountChanged.RaiseEvent();
     }
 
-    public void AddRock(int _amount)
+    public void AddRock(float _amount)
     {
         CurrentRockAmount += _amount;
         onRockAmountChanged.RaiseEvent();
     }
-    public void RemoveRock(int _amount)
+    public void DecreaseRock(float _amount)
     {
         CurrentRockAmount -= _amount;
         onRockAmountChanged.RaiseEvent();

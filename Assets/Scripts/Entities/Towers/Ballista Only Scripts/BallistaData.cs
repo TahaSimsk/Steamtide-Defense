@@ -21,7 +21,9 @@ public class BallistaData : TowerData, IPoolable
     public List<float> pierce2DamageUpgrades;
     public List<float> pierce3DamageUpgrades;
     public List<float> pierce4DamageUpgrades;
-    public List<float> pierceUpgradeCosts;
+    public List<float> pierceUpgradeMoneyCosts;
+    public List<float> pierceUpgradeWoodCosts;
+    public List<float> pierceUpgradeRockCosts;
     public List<int> pierceLimitUpgrades;
 
 
@@ -45,7 +47,9 @@ public class BallistaData : TowerData, IPoolable
     public bool dropPoolOnFirstEnemy;
     public float poolDamageUpgradedValue;
     [Header("UpgradeCosts")]
-    public List<float> poolUpgradeCosts;
+    public List<float> poolUpgradeMoneyCosts;
+    public List<float> poolUpgradeWoodCosts;
+    public List<float> poolUpgradeRockCosts;
 
 
     [field: Header("----------------------OBJECT POOLING-------------------------")]

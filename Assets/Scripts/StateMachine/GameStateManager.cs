@@ -17,7 +17,8 @@ public class GameStateManager : MonoBehaviour
     [Header("Required Components")]
     public MoneyManager moneyManager;
     public CursorManager cursorManager;
-    public TooltipManager tooltipManager;
+    public ObjectPool objectPool;
+    public Camera MainCamera;
 
     [Header("Build State Variables")]
     public LayerMask placeableLayer;

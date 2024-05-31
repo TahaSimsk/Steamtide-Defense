@@ -1,28 +1,30 @@
 using System.Collections;
+using TMPro;
+using UnityEditor.iOS;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class DemolishState : BaseState
 {
     GameStateManager gameStateManager;
     CursorManager cursorManager;
     MoneyManager moneyManager;
-    TooltipManager tooltipManager;
 
     DemolishInfo hoveredTileDemolishInfo;
     DataDemolish hoveredTileDemolishData;
     float hoveredTileDemolishCost;
+
     public override void EnterState(GameStateManager gameStateManager)
     {
         this.gameStateManager = gameStateManager;
         cursorManager = gameStateManager.cursorManager;
         moneyManager = gameStateManager.moneyManager;
-        tooltipManager = gameStateManager.tooltipManager;
     }
 
     public override void ExitState()
     {
         cursorManager.SetCursor(null);
-        tooltipManager.DisableTip();
+        TooltipManager.Instance.DisableTip();
     }
 
     public override void UpdateState(GameStateManager gameStateManager)
@@ -32,8 +34,7 @@ public class DemolishState : BaseState
 
     void DemolishObjects()
     {
-        //get the ray
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = gameStateManager.MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         //check if mouse is over demolishable object
@@ -45,7 +46,7 @@ public class DemolishState : BaseState
 
             hoveredTileDemolishInfo = hit.transform.GetComponent<DemolishInfo>();
             hoveredTileDemolishData = hoveredTileDemolishInfo.dataDemolish;
-            //get the cost from demolishable object
+            //get the cost from object
             hoveredTileDemolishCost = hoveredTileDemolishData.objectCost_MoneyDrop;
 
             //check if there is enough money to demolish
@@ -54,23 +55,23 @@ public class DemolishState : BaseState
                 //show tooltip
                 ShowTipWhenHoveredDemolishableObject();
 
-                //check if player presses lmb
+                //when player presses lmb start demolish sequence
                 if (Input.GetMouseButtonDown(0))
                 {
-                    hoveredTileDemolishInfo.StartCoroutine(StartDemolishSequence());
+                    gameStateManager.StartCoroutine(StartDemolishSequence());
                 }
             }
             else
             {
                 //if there isn't enough money to demolish, show different tooltip when hovered over demolishable object
-                tooltipManager.ShowTip("Need " + hoveredTileDemolishCost + " To Demolish", Input.mousePosition, false);
+                TooltipManager.Instance.ShowTip("Need " + hoveredTileDemolishCost + " To Demolish", Input.mousePosition, false);
             }
         }
         else
         {
             //if mouse is not over demolishable object, set cursor to default, and disable shown tips 
             cursorManager.SetCursor(null);
-            tooltipManager.DisableTip();
+            TooltipManager.Instance.DisableTip();
         }
 
     }
@@ -79,52 +80,95 @@ public class DemolishState : BaseState
     {
         string resourceNamesAndDropAmounts = "";
 
-        for (int i = 0; i < hoveredTileDemolishInfo.Resources.Length; i++)
+        foreach (var resource in hoveredTileDemolishInfo.Resources)
         {
-            Resource resource = hoveredTileDemolishInfo.Resources[i];
             resourceNamesAndDropAmounts += $"\n {resource.NameOfResource}: {resource.DropAmount}";
         }
 
         string tipMessage = $"Cost To Demolish: {hoveredTileDemolishCost}\n RESOURCES: {resourceNamesAndDropAmounts}";
-        tooltipManager.ShowTip(tipMessage, Input.mousePosition, true);
+        TooltipManager.Instance.ShowTip(tipMessage, Input.mousePosition, true);
     }
 
 
     public IEnumerator StartDemolishSequence()
     {
+        //if selected tile's state is not gatherable return
         if (hoveredTileDemolishInfo.CurrentGatherState != GatherState.Gatherable)
         {
             yield break;
         }
+
+        //cashe the required components so that they are locked in
         DemolishInfo selectedTileDemolishInfo = hoveredTileDemolishInfo;
         DataDemolish selectedTileDemolishData = hoveredTileDemolishData;
         float selectedTileDemolishCost = hoveredTileDemolishCost;
+
+
         //decrease money
         moneyManager.DecreaseMoney(selectedTileDemolishCost);
 
-        //change state from gatherable to gathering
+        //change state from gatherable to gathering so that when clicked again during the waiting period, algorithm doesnt start again
         selectedTileDemolishInfo.CurrentGatherState = GatherState.Gathering;
+
+        //set the timer to the selected tile's timer
         float timer = selectedTileDemolishData.GatherDuration;
+
+        //activate countdown slider
         selectedTileDemolishInfo.slider.gameObject.SetActive(true);
+
         //start countdown && wait
         while (timer >= 0)
         {
             timer -= Time.deltaTime;
+
+            //update countdown slider
             selectedTileDemolishInfo.slider.value = timer / selectedTileDemolishData.GatherDuration;
-            //start cutting or mining animation
+
+            //TODO: start cutting or mining animation
             yield return null;
         }
+
+        //after the waiting period is over, deactivate countdown slider
         selectedTileDemolishInfo.slider.gameObject.SetActive(false);
-        //add resources to the bank
+
+        //create an empty string to store all the resource info 
+        string resourceNamesAndDropAmounts = "";
+
+        //cycle through each resource to be dropped and initialize drop func which adds the resources to the bank and also store the name and drop amount of that resource
         foreach (var item in selectedTileDemolishInfo.Resources)
         {
             item.Drop();
+            resourceNamesAndDropAmounts += $"{item.NameOfResource}: +{item.DropAmount}\n";
         }
+    
+        //when the resources are added to the bank, spawn a text in that location to show which resource and how many resources dropped from that tile
+        gameStateManager.StartCoroutine(SpawnFlyingText(resourceNamesAndDropAmounts, selectedTileDemolishInfo.transform.position));
 
+        //raise an ondemolished event
         gameStateManager.onDemolished.RaiseEvent(selectedTileDemolishInfo.gameObject);
+
         //spawn normal tile
         Object.Instantiate(selectedTileDemolishInfo.NormalTile, selectedTileDemolishInfo.transform.position, Quaternion.identity);
+
         //destroy selected tile
         Object.Destroy(selectedTileDemolishInfo.gameObject);
+    }
+
+    IEnumerator SpawnFlyingText(string text, Vector3 textPos)
+    {
+
+        GameObject go = gameStateManager.objectPool.GetObject();
+        go.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        go.transform.position = textPos;
+        go.SetActive(true);
+
+        float timer = 0f;
+        while (timer < 1f)
+        {
+            timer += Time.deltaTime;
+            go.transform.Translate(Vector3.up * Time.deltaTime * 20f);
+            yield return null;
+        }
+        go.SetActive(false);
     }
 }
