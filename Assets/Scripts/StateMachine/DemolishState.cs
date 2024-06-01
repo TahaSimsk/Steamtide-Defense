@@ -47,7 +47,7 @@ public class DemolishState : BaseState
             hoveredTileDemolishInfo = hit.transform.GetComponent<DemolishInfo>();
             hoveredTileDemolishData = hoveredTileDemolishInfo.dataDemolish;
             //get the cost from object
-            hoveredTileDemolishCost = hoveredTileDemolishData.objectCost_MoneyDrop;
+            hoveredTileDemolishCost = hoveredTileDemolishData.objectCost_MoneyDrop +                                  (hoveredTileDemolishData.objectCost_MoneyDrop * GlobalPercantageManager.Instance.GlobalDemolishCostReductionPercentage * 0.01f);
 
             //check if there is enough money to demolish
             if (gameStateManager.moneyManager.IsAffordable(hoveredTileDemolishCost))
@@ -140,7 +140,7 @@ public class DemolishState : BaseState
             item.Drop();
             resourceNamesAndDropAmounts += $"{item.NameOfResource}: +{item.DropAmount}\n";
         }
-    
+
         //when the resources are added to the bank, spawn a text in that location to show which resource and how many resources dropped from that tile
         gameStateManager.StartCoroutine(SpawnFlyingText(resourceNamesAndDropAmounts, selectedTileDemolishInfo.transform.position));
 

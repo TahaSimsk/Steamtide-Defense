@@ -38,18 +38,11 @@ public static class HelperFunctions
 
     }
 
-    public static float CalculatePercentage(float _number, float _percentage, bool _positive)
+    public static float CalculatePercentage(float _number, float _percentage)
     {
-        if (_positive)
-        {
-            _number += _number * _percentage * 0.01f;
-            return _number;
-        }
-        else
-        {
-            _number -= _number * _percentage * 0.01f;
-            return _number;
-        }
+        _number += _number * _percentage * 0.01f;
+        return _number;
+
     }
-  
+
 }

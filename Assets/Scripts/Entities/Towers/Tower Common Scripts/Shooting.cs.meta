@@ -3,7 +3,14 @@ guid: 99327680456094d41a66f9e74ea46bd2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - towerInfo: {instanceID: 0}
+  - damageUpgrade: {instanceID: 0}
+  - onTowerDamageUpgrade: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+  - targetScanner: {instanceID: 0}
+  - projectilePos: {instanceID: 0}
+  - ammoManager: {instanceID: 0}
+  - partToRotate: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -37,7 +37,7 @@ public class Resource : MonoBehaviour
     {
         if (fl is float _amount)
         {
-            DropAmount = HelperFunctions.CalculatePercentage(DropAmount, _amount, true);
+            DropAmount = HelperFunctions.CalculatePercentage(DropAmount, _amount);
         }
     }
 

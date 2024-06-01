@@ -21,7 +21,7 @@ MonoBehaviour:
   onAmmoRefillAmountUpgrade: {fileID: 0}
   onHPRefillCostReductionUpgrade: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
   TargetPriority: 0
-  ShootingDelay: 0
+  ShootingDelay: 50
   TowerRange: 30
   BaseMaxHealth: 100
   TowerRotationSpeed: 50
@@ -34,9 +34,9 @@ MonoBehaviour:
   ProjectileDamage: 25
   ShootingDelayUpgradeValues:
   - 10
-  - 20
-  - 30
-  - 40
+  - 10
+  - 10
+  - 10
   ShootingDelayUpgradeCosts:
   - 100
   - 200

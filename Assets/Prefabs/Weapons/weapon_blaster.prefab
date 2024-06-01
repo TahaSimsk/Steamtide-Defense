@@ -2062,6 +2062,10 @@ MonoBehaviour:
   projectilePos: {fileID: 5539426589247556717}
   ammoManager: {fileID: 5248320632030100197}
   partToRotate: {fileID: 3539039354036175977}
+  damageUpgrade: {fileID: 5817463705404849613}
+  shootingDelayUpgrade: {fileID: 5659645216407352496}
+  onGlobalTowerDamageUpgrade: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+  onGlobalShootingDelayUpgrade: {fileID: 11400000, guid: 6f8dedc600269bc4291fd81ec1442807, type: 2}
   laserPos2: {fileID: 5519672946096629037}
 --- !u!114 &7594159225446884877
 MonoBehaviour:
@@ -2921,6 +2925,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 282743804271554332, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
   m_PrefabInstance: {fileID: 1794788316508198793}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5659645216407352496 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 1794788316508198793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc9cd5c925d540bc92536a3956657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5817463705404849613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5211674240836446788, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 1794788316508198793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba1c1a7ec831004ab1dc2d814571478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6892916333861603576 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5134332910856380273, guid: 99299cc185494ee44902f293b2bcbece, type: 3}

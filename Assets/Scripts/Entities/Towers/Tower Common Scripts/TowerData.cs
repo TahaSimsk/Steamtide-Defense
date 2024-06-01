@@ -142,17 +142,17 @@ public class TowerData : GameData
     
     void HandleAmmoRefillCostReductionUpgrade(object _amount)
     {
-        TowerAmmoRefillCost = HelperFunctions.CalculatePercentage(TowerAmmoRefillCost, (float)_amount, false);
+        TowerAmmoRefillCost = HelperFunctions.CalculatePercentage(TowerAmmoRefillCost, (float)_amount);
     }
 
     void HandleAmmoRefillAmountUpgrade(object _amount)
     {
-        TowerAmmoRefillAmount =(int)HelperFunctions.CalculatePercentage((float)TowerAmmoRefillAmount, (float)_amount, true);
+        TowerAmmoRefillAmount =(int)HelperFunctions.CalculatePercentage((float)TowerAmmoRefillAmount, (float)_amount);
     }
 
     void HandleHPRefillCostReductionUpgrade(object _amount)
     {
-        TowerHPRefillCost = HelperFunctions.CalculatePercentage(TowerHPRefillCost, (float)_amount, false);
+        TowerHPRefillCost = HelperFunctions.CalculatePercentage(TowerHPRefillCost, (float)_amount);
     }
 
 }

@@ -250,6 +250,10 @@ MonoBehaviour:
   projectilePos: {fileID: 8780635356725186816}
   ammoManager: {fileID: 7987528362991256715}
   partToRotate: {fileID: 3577877196051567572}
+  damageUpgrade: {fileID: 5405329356602953137}
+  shootingDelayUpgrade: {fileID: 6139329148014789836}
+  onGlobalTowerDamageUpgrade: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+  onGlobalShootingDelayUpgrade: {fileID: 11400000, guid: 6f8dedc600269bc4291fd81ec1442807, type: 2}
 --- !u!114 &6905842670348229999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1282,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6091ed8401d39e4199f68cc66c85202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5405329356602953137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5211674240836446788, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 238691283841017845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba1c1a7ec831004ab1dc2d814571478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6139329148014789836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 238691283841017845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc9cd5c925d540bc92536a3956657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8419872639431841712 stripped

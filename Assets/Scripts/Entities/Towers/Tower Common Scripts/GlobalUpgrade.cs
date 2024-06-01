@@ -54,7 +54,7 @@ public class GlobalUpgrade : MonoBehaviour, IPointerMoveHandler, IPointerExitHan
 
     private string anan()
     {
-        string text = $"{upgradeDescription}%{upgradeAmount}\nUpgrade Cost: \n";
+        string text = $"{upgradeDescription}{upgradeAmount}%\nUpgrade Cost: \n";
 
         if (upgradeMoneyCost != 0)
         {

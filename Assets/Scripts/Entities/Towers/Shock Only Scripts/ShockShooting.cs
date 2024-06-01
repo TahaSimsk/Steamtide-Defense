@@ -18,8 +18,9 @@ public class ShockShooting : Shooting
         }
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         foreach (var item in shockLines)
         {
             if (item == null) continue;

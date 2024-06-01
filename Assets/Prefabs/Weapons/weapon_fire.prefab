@@ -192,6 +192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerInfo: {fileID: 4552898289568208873}
   partToRotate: {fileID: 7606442721842195711}
+  shootingDelayUpgrade: {fileID: 366202741299498999}
+  onGlobalShootingDelayUpgrade: {fileID: 11400000, guid: 6f8dedc600269bc4291fd81ec1442807, type: 2}
 --- !u!114 &6876848217143067703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +240,14 @@ PrefabInstance:
       propertyPath: rangeUpgrade
       value: 
       objectReference: {fileID: 1456515115310625727}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: damageUpgrade
+      value: 
+      objectReference: {fileID: 1956200852427277962}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onTowerDamageUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (1)
@@ -608,7 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519337167837659862, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_Name
-      value: RotationSpeed
+      value: FireRate
       objectReference: {fileID: 0}
     - target: {fileID: 4593761671235155180, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_SizeDelta.x
@@ -683,6 +693,10 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 4552898289568208873}
@@ -739,14 +753,10 @@ PrefabInstance:
     - {fileID: 1547134092392257819, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     - {fileID: 3882436730212586767, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     - {fileID: 7270151022420655013, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-    - {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6959943255693629762, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4519337167837659862, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2547813309580312573}
     - targetCorrespondingSourceObject: {fileID: 1100349589712387526, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2427949413587763981}
@@ -781,6 +791,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &366202741299498999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 6014069478158150862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc9cd5c925d540bc92536a3956657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &763236853517285859 stripped
@@ -827,6 +848,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6091ed8401d39e4199f68cc66c85202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1956200852427277962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5211674240836446788, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 6014069478158150862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba1c1a7ec831004ab1dc2d814571478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2160536482242889531 stripped
@@ -944,17 +976,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4214437351943912206 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7569130554355062720, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 6014069478158150862}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5278985086903236522 stripped
@@ -1146,27 +1167,6 @@ MonoBehaviour:
   upgradeOrder: 4
   flame: {fileID: 4607087716398249829}
   buttonToUnlock: {fileID: 0}
---- !u!1 &7908793075194768920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4519337167837659862, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
-  m_PrefabInstance: {fileID: 6014069478158150862}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2547813309580312573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7908793075194768920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebc91da8a5c83045bb097ed67884c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeButtonText: {fileID: 4214437351943912206}
-  moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
-  towerInfo: {fileID: 4552898289568208873}
-  upgradeName: Rotation Speed
 --- !u!1001 &6602851461381097523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1183,6 +1183,14 @@ PrefabInstance:
       propertyPath: rangeUpgrade
       value: 
       objectReference: {fileID: 1456515115310625727}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: damageUpgrade
+      value: 
+      objectReference: {fileID: 1956200852427277962}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onTowerDamageUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (4)
@@ -1274,6 +1282,14 @@ PrefabInstance:
       propertyPath: rangeUpgrade
       value: 
       objectReference: {fileID: 1456515115310625727}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: damageUpgrade
+      value: 
+      objectReference: {fileID: 1956200852427277962}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onTowerDamageUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
     - target: {fileID: 6976954772708865559, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1360,6 +1376,14 @@ PrefabInstance:
       propertyPath: rangeUpgrade
       value: 
       objectReference: {fileID: 1456515115310625727}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: damageUpgrade
+      value: 
+      objectReference: {fileID: 1956200852427277962}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onTowerDamageUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (3)
@@ -1447,6 +1471,14 @@ PrefabInstance:
       propertyPath: rangeUpgrade
       value: 
       objectReference: {fileID: 1456515115310625727}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: damageUpgrade
+      value: 
+      objectReference: {fileID: 1956200852427277962}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onTowerDamageUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (2)

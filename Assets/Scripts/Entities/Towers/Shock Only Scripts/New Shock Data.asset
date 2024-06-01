@@ -33,10 +33,10 @@ MonoBehaviour:
   ProjectileSpeed: 0
   ProjectileDamage: 10
   ShootingDelayUpgradeValues:
-  - 10
-  - 20
-  - 30
-  - 40
+  - -10
+  - -20
+  - -30
+  - -40
   ShootingDelayUpgradeCosts:
   - 100
   - 200

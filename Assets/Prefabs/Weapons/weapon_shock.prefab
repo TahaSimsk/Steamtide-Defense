@@ -392,6 +392,10 @@ MonoBehaviour:
   projectilePos: {fileID: 6278317066638988546}
   ammoManager: {fileID: 0}
   partToRotate: {fileID: 7074970574320572342}
+  damageUpgrade: {fileID: 6650663918278013081}
+  shootingDelayUpgrade: {fileID: 4790482709621717476}
+  onGlobalTowerDamageUpgrade: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+  onGlobalShootingDelayUpgrade: {fileID: 11400000, guid: 6f8dedc600269bc4291fd81ec1442807, type: 2}
 --- !u!1001 &1053575106195783111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -991,6 +995,17 @@ MonoBehaviour:
   upgradeName: Shock IV
   upgradeOrder: 4
   buttonToUnlock: {fileID: 0}
+--- !u!114 &4790482709621717476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6224897314378277689, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 1448032095496297181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc9cd5c925d540bc92536a3956657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4999225185611451649 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5870619502599034844, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
@@ -1071,6 +1086,17 @@ MonoBehaviour:
   upgradeOrder: 4
   buttonToUnlock: {fileID: 0}
   empCanvas: {fileID: 0}
+--- !u!114 &6650663918278013081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5211674240836446788, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+  m_PrefabInstance: {fileID: 1448032095496297181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba1c1a7ec831004ab1dc2d814571478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7100758192097101467 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8544037062205987910, guid: 99299cc185494ee44902f293b2bcbece, type: 3}

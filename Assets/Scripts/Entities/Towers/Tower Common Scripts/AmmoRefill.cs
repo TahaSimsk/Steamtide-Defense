@@ -12,6 +12,7 @@ public class AmmoRefill : MonoBehaviour
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] MoneyManager moneyManager;
     [SerializeField] TextMeshProUGUI ammoButtonText;
+
     Button ammoButton;
     float refillCost;
     int refillAmount;
@@ -56,13 +57,33 @@ public class AmmoRefill : MonoBehaviour
 
     void HandleAmmoRefillCostReductionUpgrade(object _amount)
     {
-        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount, false);
-        UpdateText();
+
+        //if (_amount is float fl)
+        //{
+        //    ammoRefillCostReductionPercentage += fl;
+
+        //    refillCost += towerInfo.DefTowerData.TowerAmmoRefillCost * ammoRefillCostReductionPercentage * 0.01f;
+
+        //}
+
+
+
+        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount);
+            UpdateText();
     }
     void HandleAmmoRefillAmountUpgrade(object _amount)
     {
-        refillAmount = (int)HelperFunctions.CalculatePercentage((float)refillAmount, (float)_amount, true);
-        UpdateText();
+
+        //if (_amount is float fl)
+        //{
+        //    ammoRefillAmountPercentage += fl;
+
+        //    refillAmount += (int)(towerInfo.DefTowerData.TowerAmmoRefillAmount * ammoRefillCostReductionPercentage * 0.01f);
+
+        //}
+
+        refillAmount = (int)HelperFunctions.CalculatePercentage((float)refillAmount, (float)_amount);
+            UpdateText();
     }
 
 

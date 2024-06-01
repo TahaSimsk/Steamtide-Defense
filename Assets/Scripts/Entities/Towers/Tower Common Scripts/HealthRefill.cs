@@ -51,7 +51,7 @@ public class HealthRefill : MonoBehaviour
 
     void HandleHPRefillCostReductionUpgrade(object _amount)
     {
-        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount, false);
+        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount);
         UpdateText();
     }
 

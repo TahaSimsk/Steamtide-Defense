@@ -6,23 +6,35 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] ObjectInfo towerInfo;
+
     [SerializeField] protected TargetScanner targetScanner;
     [SerializeField] protected Transform projectilePos;
     [SerializeField] protected AmmoManager ammoManager;
     [SerializeField] protected Transform partToRotate;
+    [SerializeField] DamageUpgrade damageUpgrade;
+    [SerializeField] ShootingDelayUpgrade shootingDelayUpgrade;
+
+    [Header("Events")]
+    [SerializeField] GameEvent1ParamSO onGlobalTowerDamageUpgrade;
+    [SerializeField] GameEvent1ParamSO onGlobalShootingDelayUpgrade;
+
 
     protected float timer;
 
     protected TowerData towerData;
     IPoolable iPoolableProjectile;
-
+    float combinedDamagePercentages;
+    float combinedShootingDelayPercentages;
     protected virtual void Start()
     {
+        //percentage += GlobalPercantageManager.Instance.GlobalTowerDamagePercentage;
         towerData = towerInfo.InstTowerData;
         if (towerData is IPoolable i)
         {
             iPoolableProjectile = i;
         }
+        HandleDamageUpgrade(GlobalPercantageManager.Instance.GlobalTowerDamagePercentage);
+        HandleShootingDelayUpgrade(GlobalPercantageManager.Instance.GlobalShootingDelayPercentage);
     }
 
 
@@ -69,4 +81,45 @@ public class Shooting : MonoBehaviour
         pooledProjectile.transform.LookAt(projectile.target);
     }
 
+    protected virtual void OnEnable()
+    {
+        damageUpgrade.OnDamageUpgraded += HandleDamageUpgrade;
+        onGlobalTowerDamageUpgrade.onEventRaised += HandleDamageUpgrade;
+
+        shootingDelayUpgrade.OnShootingDelayUpgraded += HandleShootingDelayUpgrade;
+        onGlobalShootingDelayUpgrade.onEventRaised += HandleShootingDelayUpgrade;
+    }
+    protected virtual void OnDisable()
+    {
+        damageUpgrade.OnDamageUpgraded -= HandleDamageUpgrade;
+        onGlobalTowerDamageUpgrade.onEventRaised -= HandleDamageUpgrade;
+
+        shootingDelayUpgrade.OnShootingDelayUpgraded -= HandleShootingDelayUpgrade;
+        onGlobalShootingDelayUpgrade.onEventRaised -= HandleShootingDelayUpgrade;
+    }
+
+
+    void HandleDamageUpgrade(object _amount)
+    {
+        if (_amount is float fl)
+        {
+            combinedDamagePercentages += fl;
+            //towerData.ProjectileDamage = towerInfo.DefTowerData.ProjectileDamage + towerInfo.DefTowerData.ProjectileDamage * combinedDamagePercentages * 0.01f;
+            towerData.ProjectileDamage = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.ProjectileDamage, combinedDamagePercentages);
+        }
+    }
+
+    void HandleShootingDelayUpgrade(object _amount)
+    {
+        if (_amount is float fl)
+        {
+            combinedShootingDelayPercentages += fl;
+            //towerData.ShootingDelay = towerInfo.DefTowerData.ShootingDelay + towerInfo.DefTowerData.ShootingDelay * combinedShootingDelayPercentages * 0.01f;
+
+            towerData.ShootingDelay = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.ShootingDelay, combinedShootingDelayPercentages);
+
+            Debug.Log(towerData.ShootingDelay);
+            Debug.Log(combinedShootingDelayPercentages);
+        }
+    }
 }
