@@ -12,7 +12,7 @@ public class TrapThrower : MonoBehaviour
     private void Start()
     {
         fireData = towerInfo.InstTowerData as FireData;
-        CalculatePaths();
+        CalculatePaths(0);
 
         rangeUpgrade.OnRangeUpgraded += CalculatePaths;
     }
@@ -41,7 +41,7 @@ public class TrapThrower : MonoBehaviour
         }
     }
 
-    void CalculatePaths()
+    void CalculatePaths(object fl)
     {
         paths = null;
         paths = Physics.OverlapSphere(transform.position, fireData.TowerRange / 2, fireData.pathLayer);

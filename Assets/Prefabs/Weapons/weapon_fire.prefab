@@ -248,6 +248,10 @@ PrefabInstance:
       propertyPath: onTowerDamageUpgrade
       value: 
       objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onGlobalTowerRangeUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: c0fb69f736b000d41a846dd6d5721aa2, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (1)
@@ -1191,6 +1195,10 @@ PrefabInstance:
       propertyPath: onTowerDamageUpgrade
       value: 
       objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onGlobalTowerRangeUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: c0fb69f736b000d41a846dd6d5721aa2, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (4)
@@ -1290,6 +1298,10 @@ PrefabInstance:
       propertyPath: onTowerDamageUpgrade
       value: 
       objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onGlobalTowerRangeUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: c0fb69f736b000d41a846dd6d5721aa2, type: 2}
     - target: {fileID: 6976954772708865559, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1384,6 +1396,10 @@ PrefabInstance:
       propertyPath: onTowerDamageUpgrade
       value: 
       objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onGlobalTowerRangeUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: c0fb69f736b000d41a846dd6d5721aa2, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (3)
@@ -1479,6 +1495,10 @@ PrefabInstance:
       propertyPath: onTowerDamageUpgrade
       value: 
       objectReference: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
+    - target: {fileID: 3522220849801826387, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
+      propertyPath: onGlobalTowerRangeUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: c0fb69f736b000d41a846dd6d5721aa2, type: 2}
     - target: {fileID: 7227612978352340822, guid: fefae87b365838e4d90e3d70b1009b75, type: 3}
       propertyPath: m_Name
       value: FlamePivot (2)

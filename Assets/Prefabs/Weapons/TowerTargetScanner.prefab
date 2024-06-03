@@ -151,4 +151,5 @@ MonoBehaviour:
   onTargetDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
   targetsInRange: []
   onEnemyReachedEnd: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
+  onGlobalRangeUpgrade: {fileID: 11400000, guid: c0fb69f736b000d41a846dd6d5721aa2, type: 2}
   rangeUpgrade: {fileID: 0}

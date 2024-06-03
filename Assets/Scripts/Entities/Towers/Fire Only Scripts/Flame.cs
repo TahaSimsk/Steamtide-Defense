@@ -8,22 +8,19 @@ public class Flame : MonoBehaviour
     [SerializeField] RangeUpgrade rangeUpgrade;
     [SerializeField] DamageUpgrade damageUpgrade;
     [SerializeField] GameEvent1ParamSO onTowerDamageUpgrade;
+    [SerializeField] GameEvent1ParamSO onGlobalTowerRangeUpgrade;
     FireData fireData;
 
-    float percentage;
+    float damagePercentage;
+    float rangePercentage;
     private void Start()
     {
         fireData = towerInfo.InstTowerData as FireData;
-        SetFlameScale();
+        SetFlameScale(GlobalPercantageManager.Instance.GlobalRangePercentage);
 
-        rangeUpgrade.OnRangeUpgraded += SetFlameScale;
         HandleDamageUpgrade(GlobalPercantageManager.Instance.GlobalTowerDamagePercentage);
     }
 
-    private void OnDestroy()
-    {
-        rangeUpgrade.OnRangeUpgraded -= SetFlameScale;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,27 +29,38 @@ public class Flame : MonoBehaviour
         other.GetComponent<EnemyHealth>().ReduceHealth(fireData.ProjectileDamage);
     }
 
-    void SetFlameScale()
+    void SetFlameScale(object _amount)
     {
-        Vector3 parentScale = transform.parent.localScale;
-        transform.parent.localScale = new Vector3(parentScale.x, parentScale.y, fireData.TowerRange);
+        if (_amount is float fl)
+        {
+            rangePercentage += fl;
+            Vector3 parentScale = transform.parent.localScale;
+            fireData.TowerRange = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.TowerRange, rangePercentage);
+            transform.parent.localScale = new Vector3(parentScale.x, parentScale.y, fireData.TowerRange);
+        }
+     
     }
     private void OnEnable()
     {
         damageUpgrade.OnDamageUpgraded += HandleDamageUpgrade;
         onTowerDamageUpgrade.onEventRaised += HandleDamageUpgrade;
+        rangeUpgrade.OnRangeUpgraded += SetFlameScale;
+        onGlobalTowerRangeUpgrade.onEventRaised += SetFlameScale;
+
     }
     private void OnDisable()
     {
         damageUpgrade.OnDamageUpgraded -= HandleDamageUpgrade;
         onTowerDamageUpgrade.onEventRaised -= HandleDamageUpgrade;
+        rangeUpgrade.OnRangeUpgraded -= SetFlameScale;
+        onGlobalTowerRangeUpgrade.onEventRaised -= SetFlameScale;
     }
     void HandleDamageUpgrade(object _amount)
     {
         if (_amount is float fl)
         {
-            percentage += fl;
-            fireData.ProjectileDamage = towerInfo.DefTowerData.ProjectileDamage + towerInfo.DefTowerData.ProjectileDamage * percentage * 0.01f;
+            damagePercentage += fl;
+            fireData.ProjectileDamage = towerInfo.DefTowerData.ProjectileDamage + towerInfo.DefTowerData.ProjectileDamage * damagePercentage * 0.01f;
         }
     }
 }

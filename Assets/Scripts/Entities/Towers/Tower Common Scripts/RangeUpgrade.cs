@@ -6,7 +6,7 @@ using UnityEngine;
 public class RangeUpgrade : UpgradeBaseClass
 {
 
-    public event Action OnRangeUpgraded;
+    public event Action<object> OnRangeUpgraded;
 
     protected override void OnEnable()
     {
@@ -18,9 +18,9 @@ public class RangeUpgrade : UpgradeBaseClass
 
     protected override void DoUpgrade()
     {
-        towerData.TowerRange = (towerInfo.DefTowerData.TowerRange * towerData.RangeUpgradeValues[counter] * 0.01f) + towerInfo.DefTowerData.TowerRange;
+        //towerData.TowerRange = (towerInfo.DefTowerData.TowerRange * towerData.RangeUpgradeValues[counter] * 0.01f) + towerInfo.DefTowerData.TowerRange;
 
-        OnRangeUpgraded?.Invoke();
+        OnRangeUpgraded?.Invoke(towerData.RangeUpgradeValues[counter]);
 
         if (counter + 1 < maxUpgradeCount)
         {
