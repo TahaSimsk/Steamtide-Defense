@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEnemyReachEndOfPath: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
+  onEnemyReachEndOfBasePath: {fileID: 11400000, guid: 4c7c4c2b00ebf7f4081df551dd4cfd56, type: 2}
   objectInfo: {fileID: 8104438543239935459}
   offsetY: {x: 0, y: 1.5, z: 0}
 --- !u!114 &4620865219190354554

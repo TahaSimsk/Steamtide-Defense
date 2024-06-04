@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEnemyReachEndOfPath: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
+  onEnemyReachEndOfBasePath: {fileID: 11400000, guid: 4c7c4c2b00ebf7f4081df551dd4cfd56, type: 2}
   objectInfo: {fileID: 2699036669185779797}
   offsetY: {x: 0, y: 1.5, z: 0}
 --- !u!114 &7634586591576963949
@@ -680,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.237
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_LocalRotation.w
@@ -704,7 +705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.02
+      value: 1.157
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

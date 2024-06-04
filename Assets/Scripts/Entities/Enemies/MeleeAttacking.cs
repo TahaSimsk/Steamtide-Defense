@@ -14,6 +14,7 @@ public class MeleeAttacking : MonoBehaviour
         enemyData = enemyInfo.DefObjectGameData as EnemyData;
     }
 
+    
 
 
     public IEnumerator Attack(GameObject target)
@@ -23,9 +24,13 @@ public class MeleeAttacking : MonoBehaviour
 
         while (playerDamageable != null)
         {
+            if (!gameObject.activeInHierarchy)
+            {
+                break;
+            }
             playerDamageable.GetDamage(enemyData.Damage);
             yield return new WaitForSeconds(enemyData.ShootingDelay);
-
+            
         }
     }
 }

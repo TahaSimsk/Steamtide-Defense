@@ -54,8 +54,8 @@ public class BaseShooting : MonoBehaviour
     {
         if (enemyEnterBaseSequence.enemyList.Count == 0) return;
         timer += Time.deltaTime;
-        //HelperFunctions.LookAtTarget(enemyEnterBaseSequence.enemyList[0].transform.position, partToRotate, 10f);
-        partToRotate.LookAt(enemyEnterBaseSequence.enemyList[0].transform);
+        HelperFunctions.LookAtTarget(enemyEnterBaseSequence.enemyList[0].transform.position, partToRotate, baseData.TowerRotationSpeed);
+        //partToRotate.LookAt(enemyEnterBaseSequence.enemyList[0].transform);
         if (timer >= baseData.ShootingDelay)
         {
             timer = 0;

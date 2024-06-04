@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyEnterBaseSequence : MonoBehaviour
 {
     [SerializeField] GameEvent1ParamSO onEnemyReachEndOfPath;
+    [SerializeField] GameEvent1ParamSO onEnemyReachEndOfBasePath;
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
     [SerializeField] List<GameObject> paths = new List<GameObject>();
 
@@ -24,11 +25,13 @@ public class EnemyEnterBaseSequence : MonoBehaviour
     {
         onEnemyReachEndOfPath.onEventRaised += PositionEnemy;
         onEnemyDeath.onEventRaised += RemoveEnemy;
+        onEnemyReachEndOfBasePath.onEventRaised += HandleEnemyReachEndOfBasePath;
     }
     private void OnDisable()
     {
         onEnemyReachEndOfPath.onEventRaised -= PositionEnemy;
         onEnemyDeath.onEventRaised -= RemoveEnemy;
+        onEnemyReachEndOfBasePath.onEventRaised -= HandleEnemyReachEndOfBasePath;
     }
 
     void PositionEnemy(object go)
@@ -45,12 +48,7 @@ public class EnemyEnterBaseSequence : MonoBehaviour
             return;
         }
 
-        if (pathEnemyPairs.ContainsValue(enemy))
-        {
-            StartCoroutine(enemyMovement.FaceWaypoint(transform.position));
-            StartAttacking(enemy);
-            return;
-        }
+
 
         List<GameObject> newPaths = new List<GameObject>(paths);
 
@@ -59,7 +57,7 @@ public class EnemyEnterBaseSequence : MonoBehaviour
             pathEnemyPairs.TryGetValue(paths[i], out GameObject value);
             if (value == null)
             {
-                StartCoroutine(enemyMovement.MoveAlongPath(newPaths));
+                StartCoroutine(enemyMovement.MoveAlongPath(newPaths, true));
                 pathEnemyPairs[paths[i]] = enemy;
                 if (enemy.activeInHierarchy)
                 {
@@ -74,6 +72,20 @@ public class EnemyEnterBaseSequence : MonoBehaviour
                 newPaths.RemoveAt(i);
             }
         }
+    }
+
+    void HandleEnemyReachEndOfBasePath(object go)
+    {
+        if (go is GameObject enemy)
+        {
+            EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+            StartCoroutine(enemyMovement.FaceWaypoint(transform.position));
+            StartAttacking(enemy);
+            Debug.Log("enemy reach end");
+            return;
+        }
+
+
     }
 
     void RemoveEnemy(object go)

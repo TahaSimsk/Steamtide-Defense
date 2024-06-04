@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] protected GameEvent1ParamSO onEnemyReachEndOfPath;
+    [SerializeField] protected GameEvent1ParamSO onEnemyReachEndOfBasePath;
     [SerializeField] ObjectInfo objectInfo;
     [SerializeField] protected Vector3 offsetY;
 
@@ -25,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
     private void OnEnable()
     {
         SnapEnemyToStart();
-        StartCoroutine(MoveAlongPath(path));
+        StartCoroutine(MoveAlongPath(path, false));
         currentMoveSpeed = enemyData.DefaultMoveSpeed;
         stunned = false;
     }
@@ -47,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    public virtual IEnumerator MoveAlongPath(List<GameObject> _path)
+    public virtual IEnumerator MoveAlongPath(List<GameObject> _path, bool isBasePath)
     {
         for (int i = 0; i < _path.Count; i++)
         {
@@ -59,13 +60,25 @@ public class EnemyMovement : MonoBehaviour
             StartCoroutine(FaceWaypoint(nextPathPos));
             while (transform.position != nextPathPos + offsetY)
             {
+                if (!gameObject.activeInHierarchy)
+                {
+                    yield break;
+                }
                 transform.position = Vector3.MoveTowards(transform.position, nextPathPos + offsetY, currentMoveSpeed * Time.deltaTime);
 
                 yield return null;
             }
         }
         //reaching the end of the path
-        onEnemyReachEndOfPath.RaiseEvent(gameObject);
+        if (isBasePath)
+        {
+            onEnemyReachEndOfBasePath.RaiseEvent(gameObject);
+        }
+        else
+        {
+            onEnemyReachEndOfPath.RaiseEvent(gameObject);
+
+        }
         //gameObject.SetActive(false);
     }
 
@@ -74,7 +87,7 @@ public class EnemyMovement : MonoBehaviour
         float timer = 0;
         while (timer < 5 / enemyData.DefaultMoveSpeed)
         {
-            
+
             timer += Time.deltaTime;
             HelperFunctions.LookAtTarget(pos, transform, enemyData.DefaultMoveSpeed);
             yield return null;

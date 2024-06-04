@@ -6,7 +6,7 @@ public class SuicideBomberMovement : EnemyMovement
 {
     [SerializeField] EnemyTargetScanner targetScanner;
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
-    public override IEnumerator MoveAlongPath(List<GameObject> _path)
+    public override IEnumerator MoveAlongPath(List<GameObject> _path, bool isBasePath)
     {
         for (int i = 0; i < _path.Count; i++)
         {
@@ -25,7 +25,15 @@ public class SuicideBomberMovement : EnemyMovement
             }
         }
         //reaching at the end of the path
-        onEnemyReachEndOfPath.RaiseEvent(gameObject);
+        if (isBasePath)
+        {
+
+            onEnemyReachEndOfBasePath.RaiseEvent(gameObject);
+        }
+        else
+        {
+            onEnemyReachEndOfPath.RaiseEvent(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
