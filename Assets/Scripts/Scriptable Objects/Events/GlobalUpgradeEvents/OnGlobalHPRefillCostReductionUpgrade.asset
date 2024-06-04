@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 192e26ef49fb16042832c4d9ab0a5df6, type: 3}
-  m_Name: OnDemolishCostReductionUpgrade
+  m_Name: OnGlobalHPRefillCostReductionUpgrade
   m_EditorClassIdentifier: 

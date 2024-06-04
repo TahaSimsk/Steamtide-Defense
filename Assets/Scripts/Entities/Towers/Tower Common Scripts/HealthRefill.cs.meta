@@ -3,7 +3,12 @@ guid: 368e2e5408ccd1d49a7d682c924c9fb3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - onGlobalHPRefillCostReductionUpgrade: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
+  - towerHealth: {instanceID: 0}
+  - towerInfo: {instanceID: 0}
+  - moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  - healthButtonText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

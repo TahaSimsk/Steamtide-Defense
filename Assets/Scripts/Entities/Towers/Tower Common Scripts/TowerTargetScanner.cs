@@ -12,7 +12,7 @@ public class TowerTargetScanner : TargetScanner
     private void Start()
     {
         towerData = objectInfo.InstTowerData;
-        ChangeRange(GlobalPercantageManager.Instance.GlobalRangePercentage);
+        ChangeRange(GlobalPercentageManager.Instance.GlobalRangePercentage);
     }
 
   

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539221045577951444}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.13863479, z: 0.037922382}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -907,6 +907,14 @@ PrefabInstance:
       propertyPath: ammoManager
       value: 
       objectReference: {fileID: 7987528362991256715}
+    - target: {fileID: 4746383881465332551, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: onGlobalAmmoRefillAmountUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 6195dff08d95faa4eab5631c10ebf787, type: 2}
+    - target: {fileID: 4746383881465332551, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: onGlobalAmmoRefillCostReductionUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: e7a79d60f0f03b247ae30a6fc7653657, type: 2}
     - target: {fileID: 4990632605344768606, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -999,6 +1007,10 @@ PrefabInstance:
       propertyPath: towerHealth
       value: 
       objectReference: {fileID: 863325222983777666}
+    - target: {fileID: 5618954979845770334, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: onGlobalHPRefillCostReductionUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
     - target: {fileID: 5626706273351865733, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_SizeDelta.x
       value: 170

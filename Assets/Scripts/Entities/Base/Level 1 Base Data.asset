@@ -14,4 +14,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Base 1
   hashCode: 113344324
-  BaseHP: 5000
+  TowerPrefab: {fileID: 0}
+  TowerHoverPrefab: {fileID: 0}
+  TowerNPHoverPrefab: {fileID: 0}
+  PoolableProjectile: {fileID: 11400000, guid: 42ad936b9d1f9eb479dd824d99b8be99, type: 2}
+  TargetPriority: 0
+  ShootingDelay: 0.2
+  TowerRange: 0
+  BaseMaxHealth: 10000
+  TowerRotationSpeed: 50
+  TowerPlacementCost: 0
+  TowerHPRefillCost: 100
+  TowerAmmoRefillCost: 0
+  TowerAmmoRefillAmount: 0
+  TowerAmmoCapacity: 0
+  ProjectileSpeed: 200
+  ProjectileDamage: 10
+  ShootingDelayUpgradeValues:
+  - -10
+  - -10
+  - -10
+  - -10
+  ShootingDelayUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  RangeUpgradeValues: []
+  RangeUpgradeCosts: []
+  MaxHealthUpgradeValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  MaxHealthUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  ProjectileDamageUpgradeValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  ProjectileDamageUpgradeCosts:
+  - 100
+  - 200
+  - 300
+  - 400

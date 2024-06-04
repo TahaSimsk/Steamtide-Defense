@@ -46,12 +46,16 @@ public class EnemyMovement : MonoBehaviour
         //transform.LookAt(path[1].transform);
     }
 
-  
+
     public virtual IEnumerator MoveAlongPath(List<GameObject> _path)
     {
         for (int i = 0; i < _path.Count; i++)
         {
             Vector3 nextPathPos = _path[i].transform.position;
+            if (!gameObject.activeInHierarchy)
+            {
+                yield break;
+            }
             StartCoroutine(FaceWaypoint(nextPathPos));
             while (transform.position != nextPathPos + offsetY)
             {
@@ -70,6 +74,7 @@ public class EnemyMovement : MonoBehaviour
         float timer = 0;
         while (timer < 5 / enemyData.DefaultMoveSpeed)
         {
+            
             timer += Time.deltaTime;
             HelperFunctions.LookAtTarget(pos, transform, enemyData.DefaultMoveSpeed);
             yield return null;

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class AmmoRefill : MonoBehaviour
 {
-    [SerializeField] GameEvent1ParamSO onAmmoRefillCostReductionUpgrade;
-    [SerializeField] GameEvent1ParamSO onAmmoRefillAmountUpgrade;
+    [SerializeField] GameEvent1ParamSO onGlobalAmmoRefillCostReductionUpgrade;
+    [SerializeField] GameEvent1ParamSO onGlobalAmmoRefillAmountUpgrade;
     [SerializeField] AmmoManager ammoManager;
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] MoneyManager moneyManager;
@@ -17,6 +17,9 @@ public class AmmoRefill : MonoBehaviour
     float refillCost;
     int refillAmount;
 
+    float ammoRefillCostReductionPercentage;
+    float ammoRefillAmountPercentage;
+
     private void Start()
     {
         ammoButton = GetComponent<Button>();
@@ -24,18 +27,19 @@ public class AmmoRefill : MonoBehaviour
         refillCost = towerInfo.DefTowerData.TowerAmmoRefillCost;
         refillAmount = towerInfo.DefTowerData.TowerAmmoRefillAmount;
 
-        UpdateText();
+        HandleAmmoRefillAmountUpgrade(GlobalPercentageManager.Instance.GlobalAmmoRefillAmountPercentage);
+        HandleAmmoRefillCostReductionUpgrade(GlobalPercentageManager.Instance.GlobalAmmoRefillCostReductionPercentage);
 
         ammoButton.onClick.AddListener(RefillAmmo);
-        onAmmoRefillCostReductionUpgrade.onEventRaised += HandleAmmoRefillCostReductionUpgrade;
-        onAmmoRefillAmountUpgrade.onEventRaised += HandleAmmoRefillAmountUpgrade;
+        onGlobalAmmoRefillCostReductionUpgrade.onEventRaised += HandleAmmoRefillCostReductionUpgrade;
+        onGlobalAmmoRefillAmountUpgrade.onEventRaised += HandleAmmoRefillAmountUpgrade;
     }
 
     private void OnDestroy()
     {
         ammoButton.onClick.RemoveListener(RefillAmmo);
-        onAmmoRefillCostReductionUpgrade.onEventRaised -= HandleAmmoRefillCostReductionUpgrade;
-        onAmmoRefillAmountUpgrade.onEventRaised -= HandleAmmoRefillAmountUpgrade;
+        onGlobalAmmoRefillCostReductionUpgrade.onEventRaised -= HandleAmmoRefillCostReductionUpgrade;
+        onGlobalAmmoRefillAmountUpgrade.onEventRaised -= HandleAmmoRefillAmountUpgrade;
     }
 
     void RefillAmmo()
@@ -58,32 +62,28 @@ public class AmmoRefill : MonoBehaviour
     void HandleAmmoRefillCostReductionUpgrade(object _amount)
     {
 
-        //if (_amount is float fl)
-        //{
-        //    ammoRefillCostReductionPercentage += fl;
+        if (_amount is float fl)
+        {
+            ammoRefillCostReductionPercentage += fl;
 
-        //    refillCost += towerInfo.DefTowerData.TowerAmmoRefillCost * ammoRefillCostReductionPercentage * 0.01f;
+            refillCost = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.TowerAmmoRefillCost, ammoRefillCostReductionPercentage);
 
-        //}
-
-
-
-        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount);
             UpdateText();
+        }
+
     }
     void HandleAmmoRefillAmountUpgrade(object _amount)
     {
 
-        //if (_amount is float fl)
-        //{
-        //    ammoRefillAmountPercentage += fl;
+        if (_amount is float fl)
+        {
+            ammoRefillAmountPercentage += fl;
 
-        //    refillAmount += (int)(towerInfo.DefTowerData.TowerAmmoRefillAmount * ammoRefillCostReductionPercentage * 0.01f);
+            refillAmount = (int)HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.TowerAmmoRefillAmount, ammoRefillAmountPercentage);
 
-        //}
-
-        refillAmount = (int)HelperFunctions.CalculatePercentage((float)refillAmount, (float)_amount);
             UpdateText();
+        }
+
     }
 
 

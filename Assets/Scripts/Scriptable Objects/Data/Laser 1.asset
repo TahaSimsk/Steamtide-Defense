@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192e26ef49fb16042832c4d9ab0a5df6, type: 3}
-  m_Name: OnAmmoRefillCostReductionUpgrade
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: Laser 1
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
+  objectName: Laser 1
+  hashCode: -7485634
+  projectilePrefab: {fileID: 3688724390708288757, guid: 808372d44041b4c41a75388005ebcd77, type: 3}

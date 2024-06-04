@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        if (!initiated) return;
+        //if (!initiated) return;
+        if (towerData == null) return;
         onEnemyDeath.onEventRaised += CompareEnemy;
         damage = towerData.ProjectileDamage;
         projectileSpeed = towerData.ProjectileSpeed;

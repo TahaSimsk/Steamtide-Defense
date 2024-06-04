@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: towerHealth
       value: 
       objectReference: {fileID: 279380959511029962}
+    - target: {fileID: 5618954979845770334, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: onGlobalHPRefillCostReductionUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
     - target: {fileID: 5626706273351865733, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_SizeDelta.x
       value: 180

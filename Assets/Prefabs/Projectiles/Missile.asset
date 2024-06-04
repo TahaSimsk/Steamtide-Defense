@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192e26ef49fb16042832c4d9ab0a5df6, type: 3}
-  m_Name: OnRockDropAmountUpgrade
+  m_Script: {fileID: 11500000, guid: 7cb37883d6822bc47aba58132940904e, type: 3}
+  m_Name: Missile
   m_EditorClassIdentifier: 
+  objectName: Missile
+  hashCode: 1542023446
+  objectToPoolPrefab: {fileID: 7683383464138540475, guid: db0d79ec4d49a644cbc7b42f7f68b194, type: 3}

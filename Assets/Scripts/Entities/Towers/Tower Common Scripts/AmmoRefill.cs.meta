@@ -3,7 +3,13 @@ guid: 6b6cdad77b120844cb400d37d190c869
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - onGlobalAmmoRefillCostReductionUpgrade: {fileID: 11400000, guid: e7a79d60f0f03b247ae30a6fc7653657, type: 2}
+  - onGlobalAmmoRefillAmountUpgrade: {fileID: 11400000, guid: 6195dff08d95faa4eab5631c10ebf787, type: 2}
+  - ammoManager: {instanceID: 0}
+  - towerInfo: {instanceID: 0}
+  - moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
+  - ammoButtonText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

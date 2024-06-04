@@ -11,8 +11,7 @@ public class GameStateManager : MonoBehaviour
     public GameEvent1ParamSO onDemolished;
     [SerializeField] GameEvent0ParamSO onESCPressed;
 
-    [HideInInspector] public bool isHoveringUI;
-    [HideInInspector] public Button pressedButton;
+
 
     [Header("Required Components")]
     public MoneyManager moneyManager;
@@ -26,17 +25,16 @@ public class GameStateManager : MonoBehaviour
     public Vector3 offsetForTowerPlacement;
 
     [Header("Demolish State Variables")]
-    public GameObject tile;
     public LayerMask demolishLayer;
+    public ObjectToPool resourceFloatingText;
 
-    [Header("Upgrade State Variables")]
-    public LayerMask upgradeLayer;
+    [HideInInspector] public bool isHoveringUI;
+    [HideInInspector] public Button pressedButton;
 
     BaseState currentState;
 
     public BuildState buildState = new BuildState();
     public DemolishState demolishState = new DemolishState();
-    public UpgradeState upgradeState = new UpgradeState();
     public SkillState skillState = new SkillState();
     public EmptyState emptyState = new EmptyState();
 
@@ -103,11 +101,6 @@ public class GameStateManager : MonoBehaviour
     {
         pressedButton = button;
         SwitchState(demolishState);
-    }
-    public void EnterUpgradeState(Button button)
-    {
-        pressedButton = button;
-        SwitchState(upgradeState);
     }
 
 

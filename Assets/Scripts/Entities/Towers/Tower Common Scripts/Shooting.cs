@@ -33,8 +33,8 @@ public class Shooting : MonoBehaviour
         {
             iPoolableProjectile = i;
         }
-        HandleDamageUpgrade(GlobalPercantageManager.Instance.GlobalTowerDamagePercentage);
-        HandleShootingDelayUpgrade(GlobalPercantageManager.Instance.GlobalShootingDelayPercentage);
+        HandleDamageUpgrade(GlobalPercentageManager.Instance.GlobalTowerDamagePercentage);
+        HandleShootingDelayUpgrade(GlobalPercentageManager.Instance.GlobalShootingDelayPercentage);
     }
 
 
@@ -68,8 +68,8 @@ public class Shooting : MonoBehaviour
      */
     protected void GetProjectileFromPoolAndActivate(Transform projectileSpawnPoint)
     {
-        GameObject pooledProjectile = iPoolableProjectile.GetObject();
-
+        //GameObject pooledProjectile = iPoolableProjectile.GetObject();
+        GameObject pooledProjectile = ObjectPool.Instance.GetObject(towerData.PoolableProjectile.hashCode, towerData.PoolableProjectile.objectToPoolPrefab);
         if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(towerData);

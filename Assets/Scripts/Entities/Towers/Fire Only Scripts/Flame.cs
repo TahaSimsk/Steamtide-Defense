@@ -16,9 +16,9 @@ public class Flame : MonoBehaviour
     private void Start()
     {
         fireData = towerInfo.InstTowerData as FireData;
-        SetFlameScale(GlobalPercantageManager.Instance.GlobalRangePercentage);
+        SetFlameScale(GlobalPercentageManager.Instance.GlobalRangePercentage);
 
-        HandleDamageUpgrade(GlobalPercantageManager.Instance.GlobalTowerDamagePercentage);
+        HandleDamageUpgrade(GlobalPercentageManager.Instance.GlobalTowerDamagePercentage);
     }
 
 

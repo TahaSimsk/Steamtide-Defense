@@ -7,7 +7,6 @@ public class RemainingEnemiesText : MonoBehaviour
 {
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
     [SerializeField] GameEvent1ParamSO onWaveStart;
-    [SerializeField] GameEvent1ParamSO onEnemyReachedEndOfPath;
 
     TextMeshProUGUI myText;
 
@@ -21,14 +20,12 @@ public class RemainingEnemiesText : MonoBehaviour
     {
         onEnemyDeath.onEventRaised += DecreaseEnemiesByOneAndUpdateText;
         onWaveStart.onEventRaised += GetTotalEnemiesAndUpdateText;
-        onEnemyReachedEndOfPath.onEventRaised += DecreaseEnemiesByOneAndUpdateText;
     }
 
     private void OnDisable()
     {
         onEnemyDeath.onEventRaised -= DecreaseEnemiesByOneAndUpdateText;
         onWaveStart.onEventRaised -= GetTotalEnemiesAndUpdateText;
-        onEnemyReachedEndOfPath.onEventRaised -= DecreaseEnemiesByOneAndUpdateText;
     }
 
     void DecreaseEnemiesByOneAndUpdateText(object gameObject)

@@ -15,7 +15,7 @@ public class FireRotator : MonoBehaviour
     void Start()
     {
         fireData = towerInfo.InstTowerData as FireData;
-        HandleShootingDelayUpgrade(GlobalPercantageManager.Instance.GlobalShootingDelayPercentage);
+        HandleShootingDelayUpgrade(GlobalPercentageManager.Instance.GlobalShootingDelayPercentage);
 
     }
 

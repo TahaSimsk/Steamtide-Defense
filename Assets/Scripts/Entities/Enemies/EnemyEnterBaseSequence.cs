@@ -10,8 +10,8 @@ public class EnemyEnterBaseSequence : MonoBehaviour
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
     [SerializeField] List<GameObject> paths = new List<GameObject>();
 
-    Dictionary<GameObject, GameObject> pathEnemyPairs = new Dictionary<GameObject, GameObject>();
-    List<GameObject> enemyList = new List<GameObject>();
+    public Dictionary<GameObject, GameObject> pathEnemyPairs = new Dictionary<GameObject, GameObject>();
+    public List<GameObject> enemyList = new List<GameObject>();
     private void Awake()
     {
         for (int i = 0; i < paths.Count; i++)
@@ -61,7 +61,11 @@ public class EnemyEnterBaseSequence : MonoBehaviour
             {
                 StartCoroutine(enemyMovement.MoveAlongPath(newPaths));
                 pathEnemyPairs[paths[i]] = enemy;
-                enemyList.Add(enemy);
+                if (enemy.activeInHierarchy)
+                {
+                    enemyList.Add(enemy);
+                }
+                Debug.Log("added");
                 break;
 
             }
@@ -76,15 +80,18 @@ public class EnemyEnterBaseSequence : MonoBehaviour
     {
         if (go is GameObject enemy)
         {
+            if (enemyList.Contains(enemy))
+            {
+                enemyList.Remove(enemy);
+                Debug.Log("killed " + enemy.ToString());
+            }
             if (pathEnemyPairs.ContainsValue(enemy))
             {
                 var keyOfValue = pathEnemyPairs.FirstOrDefault(x => x.Value == enemy).Key;
                 pathEnemyPairs[keyOfValue] = null;
+                Debug.Log("removed");
             }
-            if (enemyList.Contains(enemy))
-            {
-                enemyList.Remove(enemy);
-            }
+
         }
     }
 

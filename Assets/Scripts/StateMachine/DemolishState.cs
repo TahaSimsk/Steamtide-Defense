@@ -47,7 +47,7 @@ public class DemolishState : BaseState
             hoveredTileDemolishInfo = hit.transform.GetComponent<DemolishInfo>();
             hoveredTileDemolishData = hoveredTileDemolishInfo.dataDemolish;
             //get the cost from object
-            hoveredTileDemolishCost = hoveredTileDemolishData.objectCost_MoneyDrop +                                  (hoveredTileDemolishData.objectCost_MoneyDrop * GlobalPercantageManager.Instance.GlobalDemolishCostReductionPercentage * 0.01f);
+            hoveredTileDemolishCost = hoveredTileDemolishData.objectCost_MoneyDrop + (hoveredTileDemolishData.objectCost_MoneyDrop * GlobalPercentageManager.Instance.GlobalDemolishCostReductionPercentage * 0.01f);
 
             //check if there is enough money to demolish
             if (gameStateManager.moneyManager.IsAffordable(hoveredTileDemolishCost))
@@ -157,7 +157,8 @@ public class DemolishState : BaseState
     IEnumerator SpawnFlyingText(string text, Vector3 textPos)
     {
 
-        GameObject go = gameStateManager.objectPool.GetObject();
+        //GameObject go = gameStateManager.objectPool.GetObject();
+        GameObject go = gameStateManager.objectPool.GetObject(gameStateManager.resourceFloatingText.hashCode, gameStateManager.resourceFloatingText.objectToPoolPrefab);
         go.GetComponentInChildren<TextMeshProUGUI>().text = text;
         go.transform.position = textPos;
         go.SetActive(true);

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="GameData/BaseData")]
-public class BaseData : GameData
+public class BaseData : TowerData
 {
-    [Header("------------------------BASE ATTRIBUTES------------------------")]
-    public float BaseHP;
+   
 
 }

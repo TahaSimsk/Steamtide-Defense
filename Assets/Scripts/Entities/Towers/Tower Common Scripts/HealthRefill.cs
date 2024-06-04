@@ -6,28 +6,30 @@ using UnityEngine.UI;
 
 public class HealthRefill : MonoBehaviour
 {
-    [SerializeField] GameEvent1ParamSO onHPRefillCostReductionUpgrade;
+    [SerializeField] GameEvent1ParamSO onGlobalHPRefillCostReductionUpgrade;
     [SerializeField] TowerHealth towerHealth;
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] MoneyManager moneyManager;
     [SerializeField] TextMeshProUGUI healthButtonText;
     Button healthButton;
     float refillCost;
+
+    float hpRefillCostReductionPercentage;
     private void Start()
     {
         refillCost = towerInfo.DefTowerData.TowerHPRefillCost;
         healthButton = GetComponent<Button>();
-        UpdateText();
+        HandleHPRefillCostReductionUpgrade(GlobalPercentageManager.Instance.GlobalHPRefillCostReductionPercentage);
         healthButton.onClick.AddListener(RefillHP);
-        onHPRefillCostReductionUpgrade.onEventRaised += HandleHPRefillCostReductionUpgrade;
+        onGlobalHPRefillCostReductionUpgrade.onEventRaised += HandleHPRefillCostReductionUpgrade;
     }
 
     private void OnDestroy()
     {
         healthButton.onClick.RemoveListener(RefillHP);
-        onHPRefillCostReductionUpgrade.onEventRaised -= HandleHPRefillCostReductionUpgrade;
+        onGlobalHPRefillCostReductionUpgrade.onEventRaised -= HandleHPRefillCostReductionUpgrade;
     }
-    
+
     void RefillHP()
     {
         if (towerHealth.CurrentHealth > towerHealth.MaxHealth - 1) return;
@@ -51,8 +53,13 @@ public class HealthRefill : MonoBehaviour
 
     void HandleHPRefillCostReductionUpgrade(object _amount)
     {
-        refillCost = HelperFunctions.CalculatePercentage(refillCost, (float)_amount);
-        UpdateText();
+
+        if (_amount is float fl)
+        {
+            hpRefillCostReductionPercentage += fl;
+            refillCost = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.TowerHPRefillCost, hpRefillCostReductionPercentage);
+            UpdateText();
+        }
     }
 
 }

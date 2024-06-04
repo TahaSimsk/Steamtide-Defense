@@ -1,29 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    //public List<Data> datas;
     public List<GameData> objectsToPool;
-    [SerializeField] Canvas textCanvas;
+    Dictionary<int, List<GameObject>> hashcodeListPairs = new Dictionary<int, List<GameObject>>();
+
+    public static ObjectPool Instance;
+
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
         PopulatePoolAndAllocateToData();
+
     }
+  
 
     //populates pool and assigns each object into their own list. Each data (scriptable object) is responsible for tracking and holding a reference to itself. During instantiation they get instantiated from their own list which is inside data (scriptable object)
     void PopulatePoolAndAllocateToData()
     {
-        //foreach (var data in datas)
-        //{
-        //    data.objList.Clear();
-        //    PopulatePool(data.objList, data.objectPrefabPoolSize, data.objectPrefab);
-
-        //}
-
+        
         foreach (var data in objectsToPool)
         {
             if (data is IPoolable i)
@@ -55,50 +58,50 @@ public class ObjectPool : MonoBehaviour
     }
 
 
-    //public GameObject GetObjectFromPool(int hashCode)
-    //{
-    //    foreach (var data in datas)
-    //    {
-    //        if (data.hashCode == hashCode)
-    //        {
-    //            for (int i = 0; i < data.objList.Count; i++)
-    //            {
 
-    //                if (!data.objList[i].activeInHierarchy)
-    //                    return data.objList[i];
 
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.LogWarning(hashCode + " cannot found");
-    //        }
-    //    }
-    //    return null;
-    //}
-    List<GameObject> gos = new List<GameObject>();
 
-    public GameObject GetObject()
+    /// <summary>
+    ///  hashcode as a type. if hashcode found in the dictionary, corresponding list will be searched for valid gameobject. If hashcode is not found in the dictionary, fresh new list with a valid gameobject will be created and added to that hashcode. When searching the list if non-valid objects are all there is in the list, a new object will be created and added to that list.
+    /// </summary>
+    /// <param name="hashCode">acts as type</param>
+    /// <param name="objectPrefab">for initialization and non-valid instantiation</param>
+    /// <returns></returns>
+    public GameObject GetObject(int hashCode, GameObject objectPrefab)
     {
-        if (gos.Count == 0)
+        //1. searches the passed hashcode in the dictionary,
+        if (hashcodeListPairs.ContainsKey(hashCode))
         {
-            GameObject go1 = Instantiate(textCanvas.gameObject, transform.position, Quaternion.identity);
-            gos.Add(go1);
-            return go1;
-        }
+            List<GameObject> temp = hashcodeListPairs[hashCode];
 
-        foreach (var item in gos)
-        {
-            if (!item.activeInHierarchy)
+            //if the list is not empty and have at least one object in it, it checks whether if the object/s is/are currently  not at use(disabled)
+            foreach (var item in temp)
             {
-                return item;
+                //if object is not at use (disabled) then it returns that object
+                if (!item.activeInHierarchy)
+                {
+                    //item.SetActive(true);
+                    return item;
+                }
+
             }
 
+            //if all object/s is/are at use (active) then it instantiates the passed object prefab and adds it to the list then returns the object
+            GameObject newObject = Instantiate(objectPrefab, transform.position, Quaternion.identity);
+            newObject.SetActive(false);
+            hashcodeListPairs[hashCode].Add(newObject);
+            return newObject;
         }
-
-        GameObject go2 = Instantiate(textCanvas.gameObject, transform.position, Quaternion.identity);
-        gos.Add(go2);
-        return go2;
+        else
+        {
+            //if hascode is not found in the dictionary, it creates a list, instantiates the passed object prefab, adds it to the newly created list, then adds this list to the dictionary with the passed hashcode so next time that hashcode is passed the dictionary will have a list that contains an instantiated object
+            List<GameObject> temp = new List<GameObject>();
+            GameObject newObject = Instantiate(objectPrefab, transform.position, Quaternion.identity);
+            newObject.SetActive(false);
+            temp.Add(newObject);
+            hashcodeListPairs.Add(hashCode, temp);
+            return newObject;
+        }
     }
 
 }

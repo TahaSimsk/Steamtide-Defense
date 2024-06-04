@@ -12,10 +12,11 @@ public class Arrow : Projectile
     protected override void OnEnable()
     {
         base.OnEnable();
+        if (towerData == null) return;
         ballistaData = (BallistaData)towerData;
         timer = 0;
         pierceCount = 0;
-        if (initiated)
+        //if (initiated)
             canPoison = ballistaData.canPoison;
     }
 

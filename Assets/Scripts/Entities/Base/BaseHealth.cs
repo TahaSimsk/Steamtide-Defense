@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BaseHealth : MonoBehaviour, IPlayerDamageable
 {
-    [SerializeField] BaseData baseData;
+    [SerializeField] TowerData baseData;
     [SerializeField] Slider healthBar;
     [Header("Events")]
     [SerializeField] GameEvent1ParamSO onBaseDeath;
@@ -15,7 +15,7 @@ public class BaseHealth : MonoBehaviour, IPlayerDamageable
 
     void Awake()
     {
-        baseMaxHealth = baseData.BaseHP;
+        baseMaxHealth = baseData.BaseMaxHealth;
         maxHealth = baseMaxHealth;
     }
 
@@ -33,7 +33,7 @@ public class BaseHealth : MonoBehaviour, IPlayerDamageable
 
     void UpdateHPBar()
     {
-        healthBar.value = currentHealth / baseData.BaseHP;
+        healthBar.value = currentHealth / baseData.BaseMaxHealth;
     }
 
     void CheckIfDiedAndHandleDeath()
