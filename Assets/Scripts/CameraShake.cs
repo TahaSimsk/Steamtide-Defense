@@ -61,20 +61,20 @@ class CameraShake : MonoBehaviour
 
     void Update()
     {
-     
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             StartCoroutine(Shake(1));
         }
     }
 
-    void ShakeCam(object ss,object dd)
+    public void ShakeCam(object ss, object dd)
     {
         StartCoroutine(Shake(1f));
     }
 
 
-    IEnumerator Shake(float _amount)
+    public IEnumerator Shake(float _amount)
     {
         if (Trauma > 0)
         {

@@ -9,7 +9,7 @@ public class TowerHealth : MonoBehaviour, IPlayerDamageable
     [SerializeField] GameEvent1ParamSO onTowerDeath;
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] Slider healthBar;
-
+    [SerializeField] CameraShake cameraShake;
 
 
     public float CurrentHealth { get; private set; }
@@ -70,6 +70,7 @@ public class TowerHealth : MonoBehaviour, IPlayerDamageable
     public void GetDamage(float damage)
     {
         CurrentHealth -= damage;
+        StartCoroutine(cameraShake.Shake(.2f));
         UpdateHPBar();
         CheckIfDiedAndHandleDeath();
     }
