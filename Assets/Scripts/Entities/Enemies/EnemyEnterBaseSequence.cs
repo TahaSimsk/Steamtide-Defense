@@ -9,32 +9,44 @@ public class EnemyEnterBaseSequence : MonoBehaviour
     [SerializeField] GameEvent1ParamSO onEnemyReachEndOfPath;
     [SerializeField] GameEvent1ParamSO onEnemyReachEndOfBasePath;
     [SerializeField] GameEvent1ParamSO onEnemyDeath;
-    [SerializeField] List<GameObject> paths = new List<GameObject>();
+    [SerializeField] Transform basePathParent;
 
-    public Dictionary<GameObject, GameObject> pathEnemyPairs = new Dictionary<GameObject, GameObject>();
-    public List<GameObject> enemyList = new List<GameObject>();
+    List<GameObject> basePath = new List<GameObject>();
+    Dictionary<GameObject, GameObject> pathEnemyPairs = new Dictionary<GameObject, GameObject>();
+    [HideInInspector] public List<GameObject> EnemiesInBase = new List<GameObject>();
     private void Awake()
     {
-        for (int i = 0; i < paths.Count; i++)
+        //for (int i = 0; i < paths.Count; i++)
+        //{
+        //    pathEnemyPairs.Add(paths[i], null);
+        //}
+
+        GetBasePathsFromParent();
+    }
+
+    void GetBasePathsFromParent()
+    {
+        foreach (Transform child in basePathParent)
         {
-            pathEnemyPairs.Add(paths[i], null);
+            pathEnemyPairs.Add(child.gameObject, null);
+            basePath.Add(child.gameObject);
         }
     }
 
     private void OnEnable()
     {
-        onEnemyReachEndOfPath.onEventRaised += PositionEnemy;
+        onEnemyReachEndOfPath.onEventRaised += PositionAndMoveEnemy;
         onEnemyDeath.onEventRaised += RemoveEnemy;
         onEnemyReachEndOfBasePath.onEventRaised += HandleEnemyReachEndOfBasePath;
     }
     private void OnDisable()
     {
-        onEnemyReachEndOfPath.onEventRaised -= PositionEnemy;
+        onEnemyReachEndOfPath.onEventRaised -= PositionAndMoveEnemy;
         onEnemyDeath.onEventRaised -= RemoveEnemy;
         onEnemyReachEndOfBasePath.onEventRaised -= HandleEnemyReachEndOfBasePath;
     }
 
-    void PositionEnemy(object go)
+    void PositionAndMoveEnemy(object go)
     {
         GameObject enemy;
         EnemyMovement enemyMovement;
@@ -50,18 +62,18 @@ public class EnemyEnterBaseSequence : MonoBehaviour
 
 
 
-        List<GameObject> newPaths = new List<GameObject>(paths);
+        List<GameObject> newPath = new List<GameObject>(basePath);
 
-        for (int i = paths.Count - 1; i >= 0; i--)
+        for (int i = basePath.Count - 1; i >= 0; i--)
         {
-            pathEnemyPairs.TryGetValue(paths[i], out GameObject value);
+            pathEnemyPairs.TryGetValue(basePath[i], out GameObject value);
             if (value == null)
             {
-                StartCoroutine(enemyMovement.MoveAlongPath(newPaths, true));
-                pathEnemyPairs[paths[i]] = enemy;
+                StartCoroutine(enemyMovement.MoveAlongPath(newPath, true));
+                pathEnemyPairs[basePath[i]] = enemy;
                 if (enemy.activeInHierarchy)
                 {
-                    enemyList.Add(enemy);
+                    EnemiesInBase.Add(enemy);
                 }
                 Debug.Log("added");
                 break;
@@ -69,7 +81,7 @@ public class EnemyEnterBaseSequence : MonoBehaviour
             }
             else
             {
-                newPaths.RemoveAt(i);
+                newPath.RemoveAt(i);
             }
         }
     }
@@ -92,9 +104,9 @@ public class EnemyEnterBaseSequence : MonoBehaviour
     {
         if (go is GameObject enemy)
         {
-            if (enemyList.Contains(enemy))
+            if (EnemiesInBase.Contains(enemy))
             {
-                enemyList.Remove(enemy);
+                EnemiesInBase.Remove(enemy);
                 Debug.Log("killed " + enemy.ToString());
             }
             if (pathEnemyPairs.ContainsValue(enemy))

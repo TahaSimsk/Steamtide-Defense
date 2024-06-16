@@ -48,6 +48,8 @@ public class Shooting : MonoBehaviour
     protected virtual void Shoot()
     {
         timer += Time.deltaTime;
+        if (timer >= towerData.ShootingDelay)
+            projectilePos.gameObject.SetActive(true);
         if (targetScanner.targetsInRange.Count == 0) return;
 
         HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
@@ -57,6 +59,7 @@ public class Shooting : MonoBehaviour
         if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
         {
             GetProjectileFromPoolAndActivate(projectilePos);
+            projectilePos.gameObject.SetActive(false);
             timer = 0;
         }
 

@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerInfo: {fileID: 7190786172816432787}
   targetScanner: {fileID: 316132653749911516}
-  projectilePos: {fileID: 3094647267173159211}
+  projectilePos: {fileID: 5387255775250943485}
   ammoManager: {fileID: 1079728285195974169}
   partToRotate: {fileID: 3068719041320450215}
   damageUpgrade: {fileID: 3802271716263103126}
@@ -131,6 +131,7 @@ MonoBehaviour:
   onTowerDeath: {fileID: 11400000, guid: 13a26d80c44754344a6b1b11f2924d5e, type: 2}
   towerInfo: {fileID: 7190786172816432787}
   healthBar: {fileID: 5731681450430600334}
+  cameraShake: {fileID: 0}
 --- !u!114 &762149076125446690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +1638,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3094647267173159211}
+  - {fileID: 5387255775250943485}
   m_Father: {fileID: 3068719041320450215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5619100921215346418
@@ -2054,6 +2056,37 @@ MonoBehaviour:
   upgradeName: Radius III
   upgradeOrder: 3
   buttonToUnlock: {fileID: 8544905593461694469}
+--- !u!1 &6434645985102075350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5387255775250943485}
+  m_Layer: 7
+  m_Name: projectilePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5387255775250943485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434645985102075350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.112}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6944855387279758682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6538324626238363629
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,9 +52,9 @@ public class BaseShooting : MonoBehaviour
 
     private void Update()
     {
-        if (enemyEnterBaseSequence.enemyList.Count == 0) return;
+        if (enemyEnterBaseSequence.EnemiesInBase.Count == 0) return;
         timer += Time.deltaTime;
-        HelperFunctions.LookAtTarget(enemyEnterBaseSequence.enemyList[0].transform.position, partToRotate, baseData.TowerRotationSpeed);
+        HelperFunctions.LookAtTarget(enemyEnterBaseSequence.EnemiesInBase[0].transform.position, partToRotate, baseData.TowerRotationSpeed);
         //partToRotate.LookAt(enemyEnterBaseSequence.enemyList[0].transform);
         if (timer >= baseData.ShootingDelay)
         {
@@ -64,7 +64,7 @@ public class BaseShooting : MonoBehaviour
 
             //GameObject spawnedProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
             GameObject spawnedProjectile = ObjectPool.Instance.GetObject(baseData.PoolableProjectile.hashCode, baseData.PoolableProjectile.objectToPoolPrefab);
-            StartCoroutine(MoveProjectile(spawnedProjectile.transform, enemyEnterBaseSequence.enemyList[0].transform));
+            StartCoroutine(MoveProjectile(spawnedProjectile.transform, enemyEnterBaseSequence.EnemiesInBase[0].transform));
         }
 
     }

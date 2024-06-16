@@ -44,20 +44,51 @@ public class EnemyMovement : MonoBehaviour
     void SnapEnemyToStart()
     {
         transform.position = path[0].transform.position + offsetY;
-        //transform.LookAt(path[1].transform);
+        transform.LookAt(path[1].transform);
     }
 
 
-    public virtual IEnumerator MoveAlongPath(List<GameObject> _path, bool isBasePath)
+    public virtual IEnumerator MoveAlongPath(List<GameObject> _path, bool _isBasePath)
     {
         for (int i = 0; i < _path.Count; i++)
         {
-            Vector3 nextPathPos = _path[i].transform.position;
-            if (!gameObject.activeInHierarchy)
+            Vector3 nextPathPos;
+            if (_isBasePath)
             {
-                yield break;
+                nextPathPos = _path[i].transform.position;
+                if (!gameObject.activeInHierarchy)
+                {
+                    yield break;
+                }
+                StartCoroutine(FaceWaypoint(nextPathPos));
             }
-            StartCoroutine(FaceWaypoint(nextPathPos));
+            else
+            {
+                if (i + 1 == _path.Count)
+                {
+                    nextPathPos = _path[i].transform.position;
+                }
+                else
+                {
+                    nextPathPos = _path[i+1].transform.position;
+                    if (!gameObject.activeInHierarchy)
+                    {
+                        yield break;
+                    }
+                    StartCoroutine(FaceWaypoint(nextPathPos));
+
+                }
+            }
+
+
+            //if (nextPathPos == null)
+            //{
+            //    break;
+            //}
+            //if (!gameObject.activeInHierarchy)
+            //{
+            //    yield break;
+            //}
             while (transform.position != nextPathPos + offsetY)
             {
                 if (!gameObject.activeInHierarchy)
@@ -70,7 +101,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         //reaching the end of the path
-        if (isBasePath)
+        if (_isBasePath)
         {
             onEnemyReachEndOfBasePath.RaiseEvent(gameObject);
         }
@@ -84,6 +115,7 @@ public class EnemyMovement : MonoBehaviour
 
     public IEnumerator FaceWaypoint(Vector3 pos)
     {
+        
         float timer = 0;
         while (timer < 5 / enemyData.DefaultMoveSpeed)
         {
@@ -122,6 +154,7 @@ public class EnemyMovement : MonoBehaviour
             timerToNormaliseMoveSpeed -= Time.deltaTime;
             if (timerToNormaliseMoveSpeed <= 0)
             {
+                
                 currentMoveSpeed = enemyData.DefaultMoveSpeed;
                 stunned = false;
             }

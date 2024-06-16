@@ -70,7 +70,10 @@ public class TowerHealth : MonoBehaviour, IPlayerDamageable
     public void GetDamage(float damage)
     {
         CurrentHealth -= damage;
-        StartCoroutine(cameraShake.Shake(.2f));
+        if (cameraShake != null)
+        {
+            StartCoroutine(cameraShake.Shake(.2f));
+        }
         UpdateHPBar();
         CheckIfDiedAndHandleDeath();
     }

@@ -166,23 +166,8 @@ MonoBehaviour:
   onEnemyReachEndOfPath: {fileID: 11400000, guid: 4904490d46c8e934db6daa5c894373e7, type: 2}
   onEnemyReachEndOfBasePath: {fileID: 11400000, guid: 4c7c4c2b00ebf7f4081df551dd4cfd56, type: 2}
   onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
-  paths:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enemyList: []
+  basePathParent: {fileID: 0}
+  EnemiesInBase: []
 --- !u!114 &5648293946478962484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +215,7 @@ MonoBehaviour:
   onTowerDeath: {fileID: 11400000, guid: 82ca69e1619dd7b4486258c350fe0781, type: 2}
   towerInfo: {fileID: 3441607839881330388}
   healthBar: {fileID: 0}
+  cameraShake: {fileID: 0}
 --- !u!114 &1466671745891353519
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -300,6 +300,7 @@ MonoBehaviour:
   onTowerDeath: {fileID: 11400000, guid: 13a26d80c44754344a6b1b11f2924d5e, type: 2}
   towerInfo: {fileID: 8116995774823274546}
   healthBar: {fileID: 3556354808419030320}
+  cameraShake: {fileID: 0}
 --- !u!114 &8116995774823274546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,7 +1254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613527892628795461, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8719072945869331146, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_SizeDelta.x
