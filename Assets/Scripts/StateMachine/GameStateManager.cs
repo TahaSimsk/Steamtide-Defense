@@ -28,7 +28,6 @@ public class GameStateManager : MonoBehaviour
     public LayerMask demolishLayer;
     public ObjectToPool resourceFloatingText;
 
-    [HideInInspector] public bool isHoveringUI;
     [HideInInspector] public Button pressedButton;
 
     BaseState currentState;

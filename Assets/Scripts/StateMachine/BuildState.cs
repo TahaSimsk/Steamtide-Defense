@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BuildState : BaseState
@@ -75,7 +76,8 @@ public class BuildState : BaseState
     void PositionHoverTower()
     {
         //before showing and placing anything check if mouse is over a ui object, if so, deactivate towers and return
-        if (gameStateManager.isHoveringUI)
+       
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             instHoverTower.SetActive(false);
             instHoverUnplaceableTower.SetActive(false);

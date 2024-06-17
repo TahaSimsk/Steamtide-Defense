@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TowerRangeVisual : MonoBehaviour
 {
     [SerializeField] GameEvent0ParamSO onEscPressed;
-    [SerializeField] GameEvent1ParamSO onUIHovered;
     [SerializeField] TargetScanner targetScanner;
     [SerializeField] GameObject upgradeUI;
 
-    bool isHovering;
     MeshRenderer towerRangeMesh;
 
     private void Awake()
@@ -21,29 +18,29 @@ public class TowerRangeVisual : MonoBehaviour
     private void OnEnable()
     {
         onEscPressed.onEventRaised += DeactivateUpgradeUI;
-        onUIHovered.onEventRaised += CheckHovering;
     }
 
     private void OnDisable()
     {
         onEscPressed.onEventRaised += DeactivateUpgradeUI;
-        onUIHovered.onEventRaised -= CheckHovering;
     }
 
-    private void OnMouseEnter()
-    {
-        if (isHovering || towerRangeMesh == null) return;
-        towerRangeMesh.enabled = true;
-    }
+    
     private void OnMouseExit()
     {
-        if (isHovering || towerRangeMesh == null) return;
+        if (towerRangeMesh == null || towerRangeMesh.enabled == false) return;
         towerRangeMesh.enabled = false;
+    }
+
+    private void OnMouseOver()
+    {
+        if (EventSystem.current.IsPointerOverGameObject() || towerRangeMesh == null || towerRangeMesh.enabled == true) return;
+        towerRangeMesh.enabled = true;
     }
 
     private void OnMouseDown()
     {
-        if (upgradeUI != null && !isHovering)
+        if (upgradeUI != null && !EventSystem.current.IsPointerOverGameObject())
         {
             upgradeUI.SetActive(true);
             if (towerRangeMesh != null)
@@ -55,19 +52,10 @@ public class TowerRangeVisual : MonoBehaviour
 
     void DeactivateUpgradeUI()
     {
-        isHovering = false;
         if (towerRangeMesh != null)
             towerRangeMesh.enabled = false;
         if (upgradeUI == null) return;
         upgradeUI.SetActive(false);
 
-    }
-
-    void CheckHovering(object isHovering)
-    {
-        if (isHovering is bool t)
-        {
-            this.isHovering = t;
-        }
     }
 }

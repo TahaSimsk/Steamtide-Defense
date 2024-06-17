@@ -860,6 +860,10 @@ PrefabInstance:
       propertyPath: towerInfo
       value: 
       objectReference: {fileID: 8116995774823274546}
+    - target: {fileID: 4208360460672782545, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4593761671235155180, guid: 99299cc185494ee44902f293b2bcbece, type: 3}
       propertyPath: m_SizeDelta.x
       value: 170

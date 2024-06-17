@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368e2e5408ccd1d49a7d682c924c9fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onHPRefillCostReductionUpgrade: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
+  onGlobalHPRefillCostReductionUpgrade: {fileID: 0}
   towerHealth: {fileID: 0}
   towerInfo: {fileID: 0}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
@@ -3397,8 +3397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6cdad77b120844cb400d37d190c869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAmmoRefillCostReductionUpgrade: {fileID: 11400000, guid: e7a79d60f0f03b247ae30a6fc7653657, type: 2}
-  onAmmoRefillAmountUpgrade: {fileID: 11400000, guid: 6195dff08d95faa4eab5631c10ebf787, type: 2}
+  onGlobalAmmoRefillCostReductionUpgrade: {fileID: 0}
+  onGlobalAmmoRefillAmountUpgrade: {fileID: 0}
   ammoManager: {fileID: 0}
   towerInfo: {fileID: 0}
   moneyManager: {fileID: 11400000, guid: af8240d4a9bf7ff41821de757fd752b7, type: 2}
@@ -3683,7 +3683,6 @@ GameObject:
   - component: {fileID: 93688236352427808}
   - component: {fileID: 8445767684201732771}
   - component: {fileID: 4208360460672782545}
-  - component: {fileID: 2353719964108263524}
   m_Layer: 0
   m_Name: TowerUpgradeCanvas
   m_TagString: Untagged
@@ -3788,19 +3787,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2353719964108263524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8613527892628795461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62547fdc5604a184ca74ad1f7d618eb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
 --- !u!1 &9030984334852505766
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEditor.iOS;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Pool;
 
 public class DemolishState : BaseState
@@ -11,7 +12,6 @@ public class DemolishState : BaseState
     MoneyManager moneyManager;
 
     DemolishInfo hoveredTileDemolishInfo;
-    DataDemolish hoveredTileDemolishData;
     float hoveredTileDemolishCost;
 
     public override void EnterState(GameStateManager gameStateManager)
@@ -40,14 +40,14 @@ public class DemolishState : BaseState
         //check if mouse is over demolishable object
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, gameStateManager.demolishLayer))
         {
-
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
             //when mouse hovers demolishable object, change cursor
             cursorManager.SetCursor(cursorManager.demolishCursorTexture);
 
             hoveredTileDemolishInfo = hit.transform.GetComponent<DemolishInfo>();
-            hoveredTileDemolishData = hoveredTileDemolishInfo.dataDemolish;
             //get the cost from object
-            hoveredTileDemolishCost = hoveredTileDemolishData.objectCost_MoneyDrop + (hoveredTileDemolishData.objectCost_MoneyDrop * GlobalPercentageManager.Instance.GlobalDemolishCostReductionPercentage * 0.01f);
+            hoveredTileDemolishCost = hoveredTileDemolishInfo.DemolishCost;
 
             //check if there is enough money to demolish
             if (gameStateManager.moneyManager.IsAffordable(hoveredTileDemolishCost))
@@ -100,7 +100,6 @@ public class DemolishState : BaseState
 
         //cashe the required components so that they are locked in
         DemolishInfo selectedTileDemolishInfo = hoveredTileDemolishInfo;
-        DataDemolish selectedTileDemolishData = hoveredTileDemolishData;
         float selectedTileDemolishCost = hoveredTileDemolishCost;
 
 
@@ -111,7 +110,8 @@ public class DemolishState : BaseState
         selectedTileDemolishInfo.CurrentGatherState = GatherState.Gathering;
 
         //set the timer to the selected tile's timer
-        float timer = selectedTileDemolishData.GatherDuration;
+        //float timer = selectedTileDemolishData.GatherDuration;
+        float timer = selectedTileDemolishInfo.DurationToDemolish;
 
         //activate countdown slider
         selectedTileDemolishInfo.slider.gameObject.SetActive(true);
@@ -122,7 +122,9 @@ public class DemolishState : BaseState
             timer -= Time.deltaTime;
 
             //update countdown slider
-            selectedTileDemolishInfo.slider.value = timer / selectedTileDemolishData.GatherDuration;
+            //selectedTileDemolishInfo.slider.value = timer / selectedTileDemolishData.GatherDuration;
+
+            selectedTileDemolishInfo.slider.value = timer / selectedTileDemolishInfo.DurationToDemolish;
 
             //TODO: start cutting or mining animation
             yield return null;

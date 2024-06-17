@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MortarStrike : MonoBehaviour
@@ -10,13 +8,11 @@ public class MortarStrike : MonoBehaviour
     [SerializeField] Button button;
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] GameEvent0ParamSO onEscPressed;
-    [SerializeField] GameEvent1ParamSO onUIHovered;
     CannonData cannonData;
     GameObject targetIndicator;
 
     bool escPressed;
     bool strikeStarted;
-    bool uiHovered;
     void Start()
     {
         cannonData = (CannonData)towerInfo.InstTowerData;
@@ -26,12 +22,10 @@ public class MortarStrike : MonoBehaviour
     private void OnEnable()
     {
         onEscPressed.onEventRaised += HandleEscPressed;
-        onUIHovered.onEventRaised += HandleUIHovered;
     }
     private void OnDisable()
     {
         onEscPressed.onEventRaised -= HandleEscPressed;
-        onUIHovered.onEventRaised -= HandleUIHovered;
     }
 
     private void OnDestroy()
@@ -69,7 +63,7 @@ public class MortarStrike : MonoBehaviour
 
                 targetIndicator.transform.position = hit.point + Vector3.up * 2f;
 
-                if (Input.GetMouseButtonDown(0) && !uiHovered)
+                if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
                     StartCoroutine(StartTimer());
                     StartCoroutine(LaunchMissiles(hit.point));
@@ -85,13 +79,6 @@ public class MortarStrike : MonoBehaviour
     {
         if (strikeStarted)
             escPressed = true;
-        uiHovered = false;
-    }
-
-    void HandleUIHovered(object uiHovered)
-    {
-        if (uiHovered is bool b)
-            this.uiHovered = b;
     }
 
     IEnumerator StartTimer()
