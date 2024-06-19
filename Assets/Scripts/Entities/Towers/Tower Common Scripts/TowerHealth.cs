@@ -23,6 +23,7 @@ public class TowerHealth : MonoBehaviour, IPlayerDamageable
         MaxHealth = baseMaxHealth;
     }
 
+
     private void OnEnable()
     {
         ResetHP();
@@ -41,19 +42,26 @@ public class TowerHealth : MonoBehaviour, IPlayerDamageable
     }
 
 
-
-    public void ReduceHealth(float damage)
+    public void AddHealth(float _amount)
     {
-        CurrentHealth -= damage;
+        CurrentHealth += _amount;
+        if (CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
         UpdateHPBar();
-        CheckIfDiedAndHandleDeath();
     }
+
 
     public void SetMaxHP(float amount)
     {
-        MaxHealth = (baseMaxHealth * amount * 0.01f) + baseMaxHealth;
+        float newMaxHPValue = HelperFunctions.CalculatePercentage(baseMaxHealth, amount);
+        float upgradeAmount = newMaxHPValue - MaxHealth;
+        MaxHealth = newMaxHPValue;
+        AddHealth(upgradeAmount);
         UpdateHPBar();
     }
+
 
     public void ResetHP()
     {
@@ -66,6 +74,7 @@ public class TowerHealth : MonoBehaviour, IPlayerDamageable
     {
         healthBar.value = CurrentHealth / MaxHealth;
     }
+
 
     public void GetDamage(float damage)
     {

@@ -5,7 +5,7 @@ public class TowerRangeVisual : MonoBehaviour
 {
     [SerializeField] GameEvent0ParamSO onEscPressed;
     [SerializeField] TargetScanner targetScanner;
-    [SerializeField] GameObject upgradeUI;
+    [SerializeField] GameObject UI_2D;
 
     MeshRenderer towerRangeMesh;
 
@@ -40,9 +40,9 @@ public class TowerRangeVisual : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (upgradeUI != null && !EventSystem.current.IsPointerOverGameObject())
+        if (UI_2D != null && !EventSystem.current.IsPointerOverGameObject())
         {
-            upgradeUI.SetActive(true);
+            UI_2D.SetActive(true);
             if (towerRangeMesh != null)
                 towerRangeMesh.enabled = false;
         }
@@ -54,8 +54,8 @@ public class TowerRangeVisual : MonoBehaviour
     {
         if (towerRangeMesh != null)
             towerRangeMesh.enabled = false;
-        if (upgradeUI == null) return;
-        upgradeUI.SetActive(false);
+        if (UI_2D == null) return;
+        UI_2D.SetActive(false);
 
     }
 }

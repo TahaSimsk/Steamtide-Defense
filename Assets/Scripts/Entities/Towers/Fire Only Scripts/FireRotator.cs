@@ -12,23 +12,24 @@ public class FireRotator : MonoBehaviour
     FireData fireData;
     float rotateSpeed;
     float combinedShootingDelayPercentages;
+
     void Start()
     {
         fireData = towerInfo.InstTowerData as FireData;
-        HandleShootingDelayUpgrade(GlobalPercentageManager.Instance.GlobalShootingDelayPercentage);
-
+        //HandleShootingDelayUpgrade(GlobalPercentageManager.Instance.GlobalShootingDelayPercentage);
     }
 
-    private void OnEnable()
-    {
-        shootingDelayUpgrade.OnShootingDelayUpgraded += HandleShootingDelayUpgrade;
-        onGlobalShootingDelayUpgrade.onEventRaised += HandleShootingDelayUpgrade;
-    }
-    private void OnDisable()
-    {
-        shootingDelayUpgrade.OnShootingDelayUpgraded -= HandleShootingDelayUpgrade;
-        onGlobalShootingDelayUpgrade.onEventRaised -= HandleShootingDelayUpgrade;
-    }
+
+    //private void OnEnable()
+    //{
+    //    shootingDelayUpgrade.OnShootingDelayUpgraded += HandleShootingDelayUpgrade;
+    //    onGlobalShootingDelayUpgrade.onEventRaised += HandleShootingDelayUpgrade;
+    //}
+    //private void OnDisable()
+    //{
+    //    shootingDelayUpgrade.OnShootingDelayUpgraded -= HandleShootingDelayUpgrade;
+    //    onGlobalShootingDelayUpgrade.onEventRaised -= HandleShootingDelayUpgrade;
+    //}
 
     void Update()
     {
@@ -48,9 +49,6 @@ public class FireRotator : MonoBehaviour
         {
             combinedShootingDelayPercentages += Mathf.Abs(fl);
             fireData.ShootingDelay = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.ShootingDelay, combinedShootingDelayPercentages);
-
-            Debug.Log(fireData.ShootingDelay);
-            Debug.Log(combinedShootingDelayPercentages);
         }
     }
 }

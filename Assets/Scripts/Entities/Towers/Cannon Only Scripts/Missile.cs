@@ -11,6 +11,8 @@ public class Missile : MonoBehaviour
     float timer;
     [HideInInspector]
     public CannonData cannonData;
+    [HideInInspector]
+    public XPManager xpManager;
 
     private void Start()
     {
@@ -53,7 +55,10 @@ public class Missile : MonoBehaviour
                 if (collider.gameObject.CompareTag("Enemy"))
                 {
                     EnemyHealth enemy = collider.gameObject.GetComponent<EnemyHealth>();
-                    enemy.ReduceHealth(cannonData.damage);
+                    if (enemy.ReduceHealth(cannonData.damage))
+                    {
+                        xpManager.Anan();
+                    }
                 }
             }
             if (targetIndicator != null)

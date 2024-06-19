@@ -44,7 +44,10 @@ public class Arrow : Projectile
     {
         if (!other.CompareTag("Enemy")) return;
 
-        other.GetComponent<EnemyHealth>().ReduceHealth(damage);
+        if (other.GetComponent<EnemyHealth>().ReduceHealth(damage))
+        {
+            xpManager.Anan(); 
+        }
 
 
         PoisonBehaviour(other);

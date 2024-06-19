@@ -8,6 +8,7 @@ public class MortarStrike : MonoBehaviour
     [SerializeField] Button button;
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] GameEvent0ParamSO onEscPressed;
+    [SerializeField] XPManager xpManager;
     CannonData cannonData;
     GameObject targetIndicator;
 
@@ -103,6 +104,7 @@ public class MortarStrike : MonoBehaviour
             }
             missile.cannonData = cannonData;
             missile.targetPos = hitPoint;
+            missile.xpManager = xpManager;
             yield return new WaitForSeconds(cannonData.timeBetweenMissiles);
         }
     }

@@ -6,6 +6,7 @@ public class TrapThrower : MonoBehaviour
 {
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] RangeUpgrade rangeUpgrade;
+    [SerializeField] XPManager xpManager;
     FireData fireData;
     float timer;
     Collider[] paths;
@@ -36,7 +37,9 @@ public class TrapThrower : MonoBehaviour
             randomPathPos.y = 2f;
             randomPathPos.z += Random.Range(-range, range);
             GameObject go = Instantiate(fireData.fireTrap, randomPathPos, Quaternion.identity);
-            go.GetComponent<FireTrap>().damage = fireData.trapDamage;
+            FireTrap fireTrap= go.GetComponent<FireTrap>();
+            fireTrap.damage = fireData.trapDamage;
+            fireTrap.xpManager = xpManager;
             timer = fireData.trapCooldown;
         }
     }

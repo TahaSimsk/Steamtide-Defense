@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Ball : Projectile
 {
-    
+
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             Collider[] enemies = Physics.OverlapSphere(transform.position, ((CannonData)towerData).ExplosionRadius, ((CannonData)towerData).enemyLayer);
-            
+
             foreach (var enemy in enemies)
             {
-                enemy.GetComponent<EnemyHealth>().ReduceHealth(towerData.ProjectileDamage);
+                if (enemy.GetComponent<EnemyHealth>().ReduceHealth(towerData.ProjectileDamage))
+                {
+                    xpManager.Anan();
+                }
             }
             gameObject.SetActive(false);
         }
     }
+
 
     private void OnDrawGizmos()
     {

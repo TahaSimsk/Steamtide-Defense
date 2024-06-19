@@ -18,7 +18,6 @@ public class HealthUpgrade : UpgradeBaseClass
 
     protected override void DoUpgrade()
     {
-
         towerHealth.SetMaxHP(towerData.MaxHealthUpgradeValues[counter]);
 
         if (counter + 1 < maxUpgradeCount)

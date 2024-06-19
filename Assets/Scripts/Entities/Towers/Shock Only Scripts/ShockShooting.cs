@@ -46,7 +46,12 @@ public class ShockShooting : Shooting
             currentLR.SetPosition(0, projectilePos.position);
             currentLR.SetPosition(1, target.transform.position);
             StartCoroutine(DisableLR(currentLR));
-            target.GetComponent<EnemyHealth>().ReduceHealth(shockData.ProjectileDamage);
+
+            if (target.GetComponent<EnemyHealth>().ReduceHealth(shockData.ProjectileDamage))
+            {
+                xpManager.Anan();
+            }
+            
             target.GetComponent<EnemyMovement>().DecreaseMoveSpeedByPercentage(shockData.slowAmount, shockData.slowDuration);
 
         }

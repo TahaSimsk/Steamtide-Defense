@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using TMPro;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -13,11 +10,10 @@ public class Projectile : MonoBehaviour
 
     protected Vector3 targetPos;
 
-
-
     protected float damage;
     protected float projectileSpeed;
 
+    public XPManager xpManager;
 
     protected virtual void OnEnable()
     {
@@ -28,20 +24,22 @@ public class Projectile : MonoBehaviour
         projectileSpeed = towerData.ProjectileSpeed;
     }
 
+
     private void OnDisable()
     {
         onEnemyDeath.onEventRaised -= CompareEnemy;
         initiated = true;
     }
 
+
     protected virtual void Update()
     {
         MoveToTarget();
     }
 
+
     protected virtual void MoveToTarget()
     {
-
         if (target != null)
         {
             targetPos = target.position;
@@ -54,21 +52,19 @@ public class Projectile : MonoBehaviour
     }
 
 
-    /*
-     * if projectile hits an enemy, damage it and set hitEnemy to true to stop movement of projectile, terminate while loop and therefore deactivate projectile.
-     */
-
     protected virtual void OnTriggerEnter(Collider other)
     {
 
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyHealth>().ReduceHealth(damage);
+            if (other.GetComponent<EnemyHealth>().ReduceHealth(damage))
+            {
+                xpManager.Anan();
+            }
             gameObject.SetActive(false);
         }
-
-
     }
+
 
     /*
      * this method checks whether any dead and deactivated enemy is our current target.
@@ -86,8 +82,8 @@ public class Projectile : MonoBehaviour
                 target = null;
             }
         }
-
     }
+
 
     public virtual void SetProjectile(GameData data)
     {

@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     float currentHealth;
 
-    
+
     private void OnEnable()
     {
         currentHealth = (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
 
 
 
-    private void CheckIfDiedAndHandleDeath()
+    private bool CheckIfDiedAndHandleDeath()
     {
         if (currentHealth <= 0)
         {
@@ -32,16 +32,21 @@ public class EnemyHealth : MonoBehaviour
             moneyManager.AddMoney((objectInfo.DefObjectGameData as EnemyData).MoneyDrop);
             highlightPrefab.SetActive(false);
             gameObject.SetActive(false);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
 
 
-    public void ReduceHealth(float damage)
+    public bool ReduceHealth(float damage)
     {
         currentHealth -= damage;
         UpdateHPBar();
-        CheckIfDiedAndHandleDeath();
+        return CheckIfDiedAndHandleDeath();
     }
 
 

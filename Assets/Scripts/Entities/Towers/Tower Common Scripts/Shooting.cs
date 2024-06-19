@@ -6,7 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] ObjectInfo towerInfo;
-
+    [SerializeField] protected XPManager xpManager;
     [SerializeField] protected TargetScanner targetScanner;
     [SerializeField] protected Transform projectilePos;
     [SerializeField] protected AmmoManager ammoManager;
@@ -22,17 +22,14 @@ public class Shooting : MonoBehaviour
     protected float timer;
 
     protected TowerData towerData;
-    IPoolable iPoolableProjectile;
     float combinedDamagePercentages;
     float combinedShootingDelayPercentages;
+
     protected virtual void Start()
     {
         //percentage += GlobalPercantageManager.Instance.GlobalTowerDamagePercentage;
         towerData = towerInfo.InstTowerData;
-        if (towerData is IPoolable i)
-        {
-            iPoolableProjectile = i;
-        }
+       
         HandleDamageUpgrade(GlobalPercentageManager.Instance.GlobalTowerDamagePercentage);
         HandleShootingDelayUpgrade(GlobalPercentageManager.Instance.GlobalShootingDelayPercentage);
     }
@@ -62,7 +59,6 @@ public class Shooting : MonoBehaviour
             projectilePos.gameObject.SetActive(false);
             timer = 0;
         }
-
     }
 
 
@@ -77,25 +73,30 @@ public class Shooting : MonoBehaviour
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(towerData);
         projectile.target = targetScanner.Target(towerData.TargetPriority);
-
+        projectile.xpManager = xpManager;
         pooledProjectile.transform.position = projectileSpawnPoint.position;
         pooledProjectile.SetActive(true);
         //pooledProjectile.transform.rotation = transform.rotation;
         pooledProjectile.transform.LookAt(projectile.target);
     }
 
+
     protected virtual void OnEnable()
     {
         damageUpgrade.OnDamageUpgraded += HandleDamageUpgrade;
         onGlobalTowerDamageUpgrade.onEventRaised += HandleDamageUpgrade;
+        xpManager.OnLevelUp += HandleDamageUpgrade;
 
         shootingDelayUpgrade.OnShootingDelayUpgraded += HandleShootingDelayUpgrade;
         onGlobalShootingDelayUpgrade.onEventRaised += HandleShootingDelayUpgrade;
     }
+
+
     protected virtual void OnDisable()
     {
         damageUpgrade.OnDamageUpgraded -= HandleDamageUpgrade;
         onGlobalTowerDamageUpgrade.onEventRaised -= HandleDamageUpgrade;
+        xpManager.OnLevelUp -= HandleDamageUpgrade;
 
         shootingDelayUpgrade.OnShootingDelayUpgraded -= HandleShootingDelayUpgrade;
         onGlobalShootingDelayUpgrade.onEventRaised -= HandleShootingDelayUpgrade;
@@ -107,22 +108,18 @@ public class Shooting : MonoBehaviour
         if (_amount is float fl)
         {
             combinedDamagePercentages += fl;
-            //towerData.ProjectileDamage = towerInfo.DefTowerData.ProjectileDamage + towerInfo.DefTowerData.ProjectileDamage * combinedDamagePercentages * 0.01f;
             towerData.ProjectileDamage = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.ProjectileDamage, combinedDamagePercentages);
+            Debug.Log(towerData.ProjectileDamage);
         }
     }
+
 
     void HandleShootingDelayUpgrade(object _amount)
     {
         if (_amount is float fl)
         {
             combinedShootingDelayPercentages += fl;
-            //towerData.ShootingDelay = towerInfo.DefTowerData.ShootingDelay + towerInfo.DefTowerData.ShootingDelay * combinedShootingDelayPercentages * 0.01f;
-
             towerData.ShootingDelay = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.ShootingDelay, combinedShootingDelayPercentages);
-
-            Debug.Log(towerData.ShootingDelay);
-            Debug.Log(combinedShootingDelayPercentages);
         }
     }
 }
