@@ -1,7 +1,4 @@
-
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,13 +7,21 @@ public class BuildState : BaseState
 {
     GameStateManager gameStateManager;
 
+    GameObject instPlaceableHoverTower;
+    GameObject instUnplaceableHoverTower;
+    GameObject instTower;
+
+    float currentTowerMoneyCost;
+    bool tilePlaceable;
 
 
     public override void EnterState(GameStateManager gameStateManager)
     {
         this.gameStateManager = gameStateManager;
-        CreateTower();
+        gameStateManager.StartCoroutine(CreateTower());
     }
+
+
     public override void ExitState()
     {
         DestroyTowers();
@@ -25,42 +30,29 @@ public class BuildState : BaseState
 
     public override void UpdateState(GameStateManager gameStateManager)
     {
-        PositionHoverTower();
+        HandleTowerHoverAndPlacement();
     }
 
-    //instantiated towers
-    GameObject instHoverTower;
-    GameObject instHoverUnplaceableTower;
-    GameObject instTower;
 
-
-    float currentTowerMoneyCost;
-
-    void CreateTower()
+    IEnumerator CreateTower()
     {
         //gets the button from currently pressed button
         Button button = gameStateManager.pressedButton;
 
-        //gets the tower data from the ButtonInfo which is a component of button
-        //DataTower dataTower = (DataTower)button.GetComponent<ButtonColorChanger>().data;
-
-        ////instantiation of towers from the data
-        //instHoverTower = Object.Instantiate(dataTower.towerHoverPrefab, Input.mousePosition, Quaternion.identity);
-        //instHoverUnplaceableTower = Object.Instantiate(dataTower.towerNPHoverPrefab, Input.mousePosition, Quaternion.identity);
-        //instHoverUnplaceableTower.SetActive(false);
-        //instTower = Object.Instantiate(dataTower.objectPrefab, Input.mousePosition, Quaternion.identity);
-        //instTower.SetActive(false);
-
-        ////gets the cost of the tower
-        //currentTowerMoneyCost = dataTower.objectCost_MoneyDrop;
-
-
         TowerData dataTower = button.GetComponent<ButtonColorChanger>().towerGameData;
+
         //instantiation of towers from the data
-        instHoverTower = Object.Instantiate(dataTower.TowerHoverPrefab, Input.mousePosition, Quaternion.identity);
-        instHoverUnplaceableTower = Object.Instantiate(dataTower.TowerNPHoverPrefab, Input.mousePosition, Quaternion.identity);
-        instHoverUnplaceableTower.SetActive(false);
+        instPlaceableHoverTower = Object.Instantiate(dataTower.TowerHoverPrefab, Input.mousePosition, Quaternion.identity);
+
+        instUnplaceableHoverTower = Object.Instantiate(dataTower.TowerNPHoverPrefab, Input.mousePosition, Quaternion.identity);
+        instUnplaceableHoverTower.SetActive(false);
+
         instTower = Object.Instantiate(dataTower.TowerPrefab, Input.mousePosition, Quaternion.identity);
+
+        yield return null;
+
+        HandleRangeIndicator();
+
         instTower.SetActive(false);
 
         //gets the cost of the tower
@@ -68,37 +60,55 @@ public class BuildState : BaseState
     }
 
 
+    private void HandleRangeIndicator()
+    {
+        TargetScanner targetScanner = instTower.GetComponentInChildren<TargetScanner>();
+        if (targetScanner != null)
+        {
+            GameObject rangeIndicator1 = Object.Instantiate(gameStateManager.RangeIndicator, instPlaceableHoverTower.transform.position, Quaternion.identity, instPlaceableHoverTower.transform);
+
+            rangeIndicator1.transform.localScale = targetScanner.transform.localScale;
 
 
+            GameObject rangeIndicator2 = Object.Instantiate(gameStateManager.RangeIndicator, instUnplaceableHoverTower.transform.position, Quaternion.identity, instUnplaceableHoverTower.transform);
+
+            rangeIndicator2.transform.localScale = targetScanner.transform.localScale;
+        }
+    }
 
 
-    bool tilePlaceable;
-    void PositionHoverTower()
+    void HandleTowerHoverAndPlacement()
     {
         //before showing and placing anything check if mouse is over a ui object, if so, deactivate towers and return
-       
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            instHoverTower.SetActive(false);
-            instHoverUnplaceableTower.SetActive(false);
+            instPlaceableHoverTower.SetActive(false);
+            instUnplaceableHoverTower.SetActive(false);
             return;
         }
 
         //checks if mouse is over a placeable layer when hovering
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = gameStateManager.MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             //stores tileInfo of the tile at the mouse pos
             TileInfo tileInfo = hit.transform.GetComponent<TileInfo>();
 
+            if (tileInfo == null)
+            {
+                Debug.LogError("No tileInfo at the mousePos");
+                return;
+            }
+
             Collider[] colliders = Physics.OverlapBox(hit.point, Vector3.one * 3, Quaternion.identity, ~gameStateManager.ignoreLayers);
+
             foreach (var item in colliders)
             {
                 if ((1 << item.gameObject.layer) != gameStateManager.placeableLayer.value)
                 {
                     tilePlaceable = false;
-                    goto Exit;
+                    break;
                 }
                 else
                 {
@@ -106,45 +116,38 @@ public class BuildState : BaseState
                 }
             }
 
-            if (tileInfo == null) return;
-
-            Exit:
             //check if there is enough money to place and tile is currently empty and placeable
             if (gameStateManager.moneyManager.IsAffordable(currentTowerMoneyCost) && tilePlaceable)
             {
                 //don't show unplaceable tower and show placeable tower
-                instHoverUnplaceableTower.SetActive(false);
-                instHoverTower.SetActive(true);
+                instUnplaceableHoverTower.SetActive(false);
+                instPlaceableHoverTower.SetActive(true);
 
                 //set the position of the placeable tower at the tile of mousePos
-                instHoverTower.transform.position = hit.point + gameStateManager.offsetForTowerPlacement;
+                instPlaceableHoverTower.transform.position = hit.point + gameStateManager.offsetForTowerPlacement;
 
                 PlaceTower(hit.point, ref tileInfo.placeable);
-
             }
             else
             {
-
                 //if there isn't enough money or tile is not placeable show "unplaceable" tower when hovered
-                instHoverUnplaceableTower.SetActive(true);
-                instHoverTower.SetActive(false);
+                instUnplaceableHoverTower.SetActive(true);
+                instPlaceableHoverTower.SetActive(false);
 
-                instHoverUnplaceableTower.transform.position = hit.point + gameStateManager.offsetForTowerPlacement;
+                instUnplaceableHoverTower.transform.position = hit.point + gameStateManager.offsetForTowerPlacement;
             }
         }
-
         else
         {
-
             //if mouse is not hovering a placeable layer, deactivate currently showed tower
-            instHoverTower.SetActive(false);
-            instHoverUnplaceableTower.SetActive(false);
+            instPlaceableHoverTower.SetActive(false);
+            instUnplaceableHoverTower.SetActive(false);
         }
     }
 
+
     void PlaceTower(Vector3 pos, ref bool info)
     {
-
         //check if lmb is pressed
         if (Input.GetMouseButtonDown(0))
         {
@@ -172,13 +175,9 @@ public class BuildState : BaseState
     {
         Object.Destroy(instTower);
         instTower = null;
-        Object.Destroy(instHoverTower);
-        instHoverTower = null;
-        Object.Destroy(instHoverUnplaceableTower);
-        instHoverUnplaceableTower = null;
-
+        Object.Destroy(instPlaceableHoverTower);
+        instPlaceableHoverTower = null;
+        Object.Destroy(instUnplaceableHoverTower);
+        instUnplaceableHoverTower = null;
     }
-
-
-
 }

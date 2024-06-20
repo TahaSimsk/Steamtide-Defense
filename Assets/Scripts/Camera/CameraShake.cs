@@ -90,7 +90,7 @@ class CameraShake : MonoBehaviour
         while (Trauma > 0.05f)
         {
             //increase the time counter (how fast the position changes) based off the traumaMult and some root of the Trauma
-            timeCounter += Time.deltaTime * Mathf.Pow(trauma, 0.3f) * traumaMultiplier;
+            timeCounter += Time.unscaledDeltaTime * Mathf.Pow(trauma, 0.3f) * traumaMultiplier;
 
             //Bind the movement to the desired range
             Vector3 newPos = GetVec3() * traumaMagnitude * Trauma;
@@ -100,16 +100,16 @@ class CameraShake : MonoBehaviour
             transform.localRotation = originalRot * Quaternion.Euler(newPos * traumaRotationMagnitude);
 
             //decay faster at higher values
-            Trauma -= Time.deltaTime * traumaDecay * Trauma;
+            Trauma -= Time.unscaledDeltaTime * traumaDecay * Trauma;
             yield return null;
         }
 
 
         while (transform.localPosition != originalPos && transform.localRotation != originalRot)
         {
-            Vector3 newPos = Vector3.Lerp(transform.localPosition, originalPos, Time.deltaTime * 500);
+            Vector3 newPos = Vector3.Lerp(transform.localPosition, originalPos, Time.unscaledDeltaTime * 500);
             transform.localPosition = newPos;
-            Quaternion newRot = Quaternion.Lerp(transform.localRotation, originalRot, Time.deltaTime * 500);
+            Quaternion newRot = Quaternion.Lerp(transform.localRotation, originalRot, Time.unscaledDeltaTime * 500);
             transform.localRotation = newRot;
             yield return null;
         }

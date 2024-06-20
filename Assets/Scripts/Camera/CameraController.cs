@@ -108,7 +108,7 @@ public class CameraController : MonoBehaviour
     {
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         targetZoomPosition += scrollInput * zoomSpeed * partToHandleYaw.transform.forward;
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetZoomPosition, ref currentVelocity, zoomEaseSpeed);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetZoomPosition, ref currentVelocity, zoomEaseSpeed, float.PositiveInfinity, Time.unscaledDeltaTime);
         targetZoomPosition = transform.localPosition;
         ClampCameraPosition();
     }

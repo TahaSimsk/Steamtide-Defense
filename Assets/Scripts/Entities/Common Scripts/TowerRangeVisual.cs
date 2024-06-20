@@ -13,26 +13,45 @@ public class TowerRangeVisual : MonoBehaviour
     {
         if (targetScanner != null)
             towerRangeMesh = targetScanner.GetComponent<MeshRenderer>();
+        Debug.Log("awake");
     }
+
+    private void Start()
+    {
+        Debug.Log("start");
+    }
+
 
     private void OnEnable()
     {
         onEscPressed.onEventRaised += DeactivateUpgradeUI;
+        Debug.Log("enable");
     }
 
     private void OnDisable()
     {
         onEscPressed.onEventRaised += DeactivateUpgradeUI;
+        Debug.Log("disable");
     }
 
     
     private void OnMouseExit()
+    {
+        HideRangeMesh();
+    }
+
+    private void HideRangeMesh()
     {
         if (towerRangeMesh == null || towerRangeMesh.enabled == false) return;
         towerRangeMesh.enabled = false;
     }
 
     private void OnMouseOver()
+    {
+        ShowRangeMesh();
+    }
+
+    public void ShowRangeMesh()
     {
         if (EventSystem.current.IsPointerOverGameObject() || towerRangeMesh == null || towerRangeMesh.enabled == true) return;
         towerRangeMesh.enabled = true;

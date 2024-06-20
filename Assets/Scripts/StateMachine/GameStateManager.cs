@@ -23,7 +23,7 @@ public class GameStateManager : MonoBehaviour
     public LayerMask placeableLayer;
     public LayerMask ignoreLayers;
     public Vector3 offsetForTowerPlacement;
-
+    public GameObject RangeIndicator;
     [Header("Demolish State Variables")]
     public LayerMask demolishLayer;
     public ObjectToPool resourceFloatingText;
@@ -59,6 +59,10 @@ public class GameStateManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

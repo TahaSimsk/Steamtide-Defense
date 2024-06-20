@@ -13,6 +13,7 @@ public class TowerTargetScanner : TargetScanner
     {
         towerData = objectInfo.InstTowerData;
         ChangeRange(GlobalPercentageManager.Instance.GlobalRangePercentage);
+        Debug.Log("anan");
     }
 
   
@@ -41,6 +42,7 @@ public class TowerTargetScanner : TargetScanner
             rangePercentage += fl;
             towerData.TowerRange = HelperFunctions.CalculatePercentage(objectInfo.DefTowerData.TowerRange, rangePercentage);
             transform.localScale = new Vector3(towerData.TowerRange, 0.1f, towerData.TowerRange);
+            Debug.Log("Targetscanner");
         }
 
     }
