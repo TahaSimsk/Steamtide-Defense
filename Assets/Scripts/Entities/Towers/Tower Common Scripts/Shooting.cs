@@ -1,6 +1,9 @@
 
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
 public class Shooting : MonoBehaviour
@@ -49,12 +52,21 @@ public class Shooting : MonoBehaviour
             projectilePos.gameObject.SetActive(true);
         if (targetScanner.targetsInRange.Count == 0) return;
 
-        HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
+        if (targetScanner.targetsInRange.Contains(currentTarget))
+        {
 
+            HelperFunctions.LookAtTarget(currentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
+        }
+
+        //HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
         if (timer < towerData.ShootingDelay) return;
 
         if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
         {
+            Anan();
+            //partToRotate.LookAt(currentTarget.transform.position);
+            //HelperFunctions.LookAtTarget(currentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
+
             GetProjectileFromPoolAndActivate(projectilePos);
             projectilePos.gameObject.SetActive(false);
             timer = 0;
@@ -71,20 +83,27 @@ public class Shooting : MonoBehaviour
         if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(towerData);
-        projectile.target = targetScanner.Target(towerData.TargetPriority);
+        //projectile.target = targetScanner.Target(towerData.TargetPriority);
+        projectile.target = currentTarget.transform;
         projectile.xpManager = xpManager;
         pooledProjectile.transform.position = projectileSpawnPoint.position;
         pooledProjectile.SetActive(true);
         pooledProjectile.transform.LookAt(projectile.target);
-        Anan();
+        //Anan();
     }
+    GameObject highestPointGameObjectFromDistanceOnly;
+    GameObject previousTarget;
+
+    GameObject currentTarget;
+
+    List<float> highestPoints = new List<float>();
 
     void Anan()
     {
         int closestTargetPoint = 5;
         //int furthestTargetPoint = 5;
 
-        //int selectedTargetPoint = 2;
+        int selectedTargetPoint = 2;
 
         //int lowHpTargetPoint = 3;
         //int highHpTargetPoint = 3;
@@ -96,13 +115,77 @@ public class Shooting : MonoBehaviour
 
 
         //float distance = Mathf.Infinity;
-
         Dictionary<GameObject, float> enemyDistancePairs = new Dictionary<GameObject, float>();
+        Dictionary<GameObject, float> enemyPointPairsFromDistance = new Dictionary<GameObject, float>();
         Dictionary<GameObject, float> enemyPointPairs = new Dictionary<GameObject, float>();
+
+        foreach (var item in targetScanner.targetsInRange)
+        {
+            enemyDistancePairs.Add(item, 0);
+            enemyPointPairsFromDistance.Add(item, 0);
+            enemyPointPairs.Add(item, 0);
+        }
+        highestPoints.Clear();
+        if (!targetScanner.targetsInRange.Contains(currentTarget))
+        {
+            currentTarget = null;
+        }
+
+        //Dictionary<GameObject, float> tempDictionary = new Dictionary<GameObject, float>(enemyDistancePairs);
+
+        //foreach (var pair in tempDictionary)
+        //{
+        //    if (!targetScanner.targetsInRange.Contains(pair.Key))
+        //    {
+        //        enemyDistancePairs.Remove(pair.Key);
+        //        enemyPointPairsFromDistance.Remove(pair.Key);
+        //        enemyPointPairs.Remove(pair.Key);
+
+        //        if (currentTarget==pair.Key)
+        //        {
+        //            currentTarget = null;
+        //        }
+        //    }
+        //}
+
+        //foreach (var enemy in targetScanner.targetsInRange)
+        //{
+        //    if (!enemyDistancePairs.ContainsKey(enemy))
+        //    {
+        //        enemyDistancePairs.Remove(enemy);
+        //        enemyPointPairsFromDistance.Remove(enemy);
+        //        enemyPointPairs.Remove(enemy);
+        //    }
+        //}
+
+
+
+
+
+        float shortestDistance = Mathf.Infinity;
+        float highestPointFromDistanceOnly = 0;
+
 
         foreach (var enemy in targetScanner.targetsInRange)
         {
             float currentEnemyDistance = (transform.position - enemy.transform.position).sqrMagnitude;
+
+
+            //enemyDistancePairs[enemy] = currentEnemyDistance;
+
+            //float currentDistance = pair.Value;
+
+            //if (currentDistance <= shortestDistance)
+            //{
+            //    shortestDistance = currentDistance;
+            //}
+
+            //float newPoint = shortestDistance / enemyDistancePairs[pair.Key] * closestTargetPoint;
+            //tempUpdates[pair.Key] = newPoint;
+
+
+            //enemyPointPairs[pair.Key] = newPoint;
+
 
             if (enemyDistancePairs.ContainsKey(enemy))
             {
@@ -111,38 +194,92 @@ public class Shooting : MonoBehaviour
             else
             {
                 enemyDistancePairs.Add(enemy, currentEnemyDistance);
-                enemyPointPairs.Add(enemy, 0);
-            }
-
-            float shortestDistance = Mathf.Infinity;
-
-            shortestDistance = FindShortestDistance(enemyDistancePairs, shortestDistance);
-
-            //if (currentEnemyDistance < shortestDistance)
-            //{
-            //    shortestDistance = currentEnemyDistance;
-            //    //finalPoint = closestTargetPoint;
-            //    //return;
-            //}
-
-            float finalPoint = shortestDistance / currentEnemyDistance * closestTargetPoint;
-
-            float highestPoint = 0;
-            GameObject highestPointGameObject = null;
-            foreach (var pair in enemyPointPairs)
-            {
-                float baban = shortestDistance / enemyDistancePairs[pair.Key] * closestTargetPoint;
-                enemyPointPairs[pair.Key] = baban;
-
-                if (pair.Value >= highestPoint)
-                {
-                    highestPoint = pair.Value;
-                    highestPointGameObject = pair.Key;
-                    Debug.Log(highestPoint);
-                }
+                enemyPointPairsFromDistance.Add(enemy, 0);
             }
 
         }
+
+        shortestDistance = FindShortestDistance(enemyDistancePairs, shortestDistance);
+
+        //if (currentEnemyDistance < shortestDistance)
+        //{
+        //    shortestDistance = currentEnemyDistance;
+        //    //finalPoint = closestTargetPoint;
+        //    //return;
+        //}
+
+        //float finalPoint = shortestDistance / currentEnemyDistance * closestTargetPoint;
+
+
+
+        Dictionary<GameObject, float> tempUpdates = new Dictionary<GameObject, float>(enemyPointPairsFromDistance);
+
+        foreach (var pair in enemyPointPairsFromDistance)
+        {
+            float newPoint = shortestDistance / enemyDistancePairs[pair.Key] * closestTargetPoint;
+            tempUpdates[pair.Key] = newPoint;
+
+            if (enemyPointPairs.ContainsKey(pair.Key))
+            {
+                enemyPointPairs[pair.Key] = newPoint;
+            }
+            else
+            {
+                enemyPointPairs.Add(pair.Key, newPoint);
+            }
+
+            //if (pair.Value >= highestPoint)
+            //{
+            //    highestPoint = pair.Value;
+            //    highestPointGameObject = pair.Key;
+            //    Debug.Log(highestPoint);
+            //}
+            if (newPoint >= highestPointFromDistanceOnly)
+            {
+                highestPointFromDistanceOnly = newPoint;
+                highestPointGameObjectFromDistanceOnly = pair.Key;
+                Debug.Log(highestPointFromDistanceOnly);
+            }
+        }
+
+
+        if (currentTarget != null)
+        {
+            enemyPointPairs[currentTarget] += selectedTargetPoint;
+        }
+
+
+
+        //if (previousTarget != null && enemyPointPairs.ContainsKey(previousTarget))
+        //{
+        //    enemyPointPairs[previousTarget] -= selectedTargetPoint;
+        //}
+
+
+        float highestPoint = 0;
+        GameObject highestPointGameObject = null;
+        foreach (var item in enemyPointPairs)
+        {
+            if (item.Value > highestPoint)
+            {
+                highestPoint = item.Value;
+                highestPointGameObject = item.Key;
+            }
+
+            highestPoints.Add(item.Value);
+
+        }
+
+        currentTarget = highestPointGameObject;
+
+        enemyPointPairs[currentTarget] += selectedTargetPoint;
+
+        if (currentTarget == previousTarget)
+        {
+            enemyPointPairs[currentTarget] -= selectedTargetPoint;
+        }
+
+        previousTarget = currentTarget;
     }
 
     private float FindShortestDistance(Dictionary<GameObject, float> enemyDistancePairs, float shortestDistance)

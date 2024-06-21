@@ -36,7 +36,7 @@ public class AmmoManager : MonoBehaviour
         else
         {
             shooting.enabled = false;
-            faceTarget.enabled = false;
+            //faceTarget.enabled = false;
             towerVisual.transform.localRotation = Quaternion.Euler(40, 0, 0);
             return false;
         }
@@ -54,7 +54,7 @@ public class AmmoManager : MonoBehaviour
         if (shooting.enabled == false)
         {
             shooting.enabled = true;
-            faceTarget.enabled = true;
+            //faceTarget.enabled = true;
             towerVisual.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
