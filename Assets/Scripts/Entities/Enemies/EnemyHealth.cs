@@ -12,12 +12,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject highlightPrefab;
     [SerializeField] Slider healthBar;
 
-    float currentHealth;
+  [HideInInspector] public float CurrentHealth;
 
 
     private void OnEnable()
     {
-        currentHealth = (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
+        CurrentHealth = (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
         UpdateHPBar();
     }
 
@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
 
     private bool CheckIfDiedAndHandleDeath()
     {
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             onEnemyDeath.RaiseEvent(gameObject);
             moneyManager.AddMoney((objectInfo.DefObjectGameData as EnemyData).MoneyDrop);
@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour
 
     public bool ReduceHealth(float damage)
     {
-        currentHealth -= damage;
+        CurrentHealth -= damage;
         UpdateHPBar();
         return CheckIfDiedAndHandleDeath();
     }
@@ -52,6 +52,6 @@ public class EnemyHealth : MonoBehaviour
 
     void UpdateHPBar()
     {
-        healthBar.value = currentHealth / (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
+        healthBar.value = CurrentHealth / (objectInfo.DefObjectGameData as EnemyData).BaseMaxHealth;
     }
 }
