@@ -233,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045709196828049029}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.7575207, y: 2.0000038, z: -18.84918}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
@@ -286,6 +286,18 @@ MonoBehaviour:
   shootingDelayUpgrade: {fileID: 6139329148014789836}
   onGlobalTowerDamageUpgrade: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
   onGlobalShootingDelayUpgrade: {fileID: 11400000, guid: 6f8dedc600269bc4291fd81ec1442807, type: 2}
+  closestTargetPoint: 0
+  selectedTargetPoint: -1
+  lowestHpTargetPoint: 0
+  highestHpTargetPoint: 5
+  fastTargetPoint: 0
+  slowTargetPoint: 5
+  clusterTargetPoint: 10
+  values: []
+  objects: []
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &6905842670348229999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,7 +1047,7 @@ Transform:
   m_GameObject: {fileID: 7689106085074455481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4438229e-15, y: 0.01773045, z: 0.039155137}
+  m_LocalPosition: {x: -1.4438229e-15, y: 0.01773045, z: 0.096}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

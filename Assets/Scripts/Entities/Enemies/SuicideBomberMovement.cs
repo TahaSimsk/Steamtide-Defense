@@ -14,11 +14,11 @@ public class SuicideBomberMovement : EnemyMovement
             {
                 if (targetScanner != null && targetScanner.targetsInRange.Count > 0)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, targetScanner.targetsInRange[0].transform.position, currentMoveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, targetScanner.targetsInRange[0].transform.position, CurrentMoveSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, _path[i].transform.position + offsetY, currentMoveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, _path[i].transform.position + offsetY, CurrentMoveSpeed * Time.deltaTime);
                 }
 
                 yield return null;

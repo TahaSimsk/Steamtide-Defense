@@ -96,27 +96,33 @@ public class Shooting : MonoBehaviour
 
     GameObject currentTarget;
 
+    [SerializeField] int closestTargetPoint = 1;
+    //[SerializeField] int furthestTargetPoint = 5;
+
+    [SerializeField] int selectedTargetPoint = 2;
+
+    [SerializeField] int lowestHpTargetPoint = 5;
+    [SerializeField] int highestHpTargetPoint = 3;
+
+    [SerializeField] int fastTargetPoint = 3;
+    [SerializeField] int slowTargetPoint = 3;
+
+    [SerializeField] int clusterTargetPoint = 3;
+
+
+    //float distance = Mathf.Infinity;
+
 
     void Anan()
     {
-        int closestTargetPoint = 5;
-        //int furthestTargetPoint = 5;
 
-        int selectedTargetPoint = 2;
-
-        int lowestHpTargetPoint = 3;
-        int highestHpTargetPoint = 3;
-
-        //int fastTargetPoint = 3;
-        //int slowTargetPoint = 3;
-
-        //int clusterTargetPoint = 3;
-
-
-        //float distance = Mathf.Infinity;
         Dictionary<GameObject, float> enemyPointPairs = new Dictionary<GameObject, float>();
 
-       
+        foreach (var target in targetScanner.targetsInRange)
+        {
+            enemyPointPairs.Add(target, 0);
+        }
+
         if (!targetScanner.targetsInRange.Contains(currentTarget))
         {
             currentTarget = null;
@@ -124,7 +130,13 @@ public class Shooting : MonoBehaviour
 
         HandleClosestTargetSelection(closestTargetPoint, enemyPointPairs);
 
+        HandleTargetSelectionBasedOnHealth(enemyPointPairs, lowestHpTargetPoint);
+
         HandleSelectedTargetTargetSelection(selectedTargetPoint, enemyPointPairs);
+
+        HandleTargetSelectionBasedOnMoveSpeed(enemyPointPairs, highestHpTargetPoint);
+
+        HandleTargetSelectionBasedOnCluster(enemyPointPairs, clusterTargetPoint);
 
         GameObject highestPointGameObject = RecalculateTotalPointsAndReturnEnemyWithHighestPoint(enemyPointPairs);
 
@@ -132,9 +144,7 @@ public class Shooting : MonoBehaviour
     }
 
 
-
-
-
+    #region
     private void FinilizeTargetSelection(int selectedTargetPoint, Dictionary<GameObject, float> enemyPointPairs, GameObject highestPointGameObject)
     {
         currentTarget = highestPointGameObject;
@@ -148,6 +158,7 @@ public class Shooting : MonoBehaviour
 
         previousTarget = currentTarget;
     }
+
     private void HandleSelectedTargetTargetSelection(int selectedTargetPoint, Dictionary<GameObject, float> enemyPointPairs)
     {
         if (currentTarget != null)
@@ -155,12 +166,17 @@ public class Shooting : MonoBehaviour
             enemyPointPairs[currentTarget] += selectedTargetPoint;
         }
     }
+
     private GameObject RecalculateTotalPointsAndReturnEnemyWithHighestPoint(Dictionary<GameObject, float> enemyPointPairs)
     {
         GameObject highestPointGameObject = null;
         float highestPoint = 0;
+        values.Clear();
+        objects.Clear();
         foreach (var item in enemyPointPairs)
         {
+            values.Add(item.Value);
+            objects.Add(item.Key);
             if (item.Value > highestPoint)
             {
                 highestPoint = item.Value;
@@ -170,6 +186,11 @@ public class Shooting : MonoBehaviour
 
         return highestPointGameObject;
     }
+
+    #endregion
+
+
+
 
     private void HandleClosestTargetSelection(int closestTargetPoint, Dictionary<GameObject, float> enemyPointPairs)
     {
@@ -196,10 +217,11 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    private void HandleLowestHpTargetSelection(Dictionary<GameObject, float> enemyPointPairs, int lowestHPTargetPoint)
+    private void HandleTargetSelectionBasedOnHealth(Dictionary<GameObject, float> enemyPointPairs, int lowestHPTargetPoint)
     {
         Dictionary<GameObject, float> enemyHPPairs = new Dictionary<GameObject, float>();
         float lowestEnemyHP = Mathf.Infinity;
+        float highestHP = 0;
         foreach (var pair in targetScanner.targetsInRange)
         {
             float currentEnemyHp = pair.GetComponent<EnemyHealth>().CurrentHealth;
@@ -210,15 +232,92 @@ public class Shooting : MonoBehaviour
             {
                 lowestEnemyHP = currentEnemyHp;
             }
+            if (currentEnemyHp > highestHP)
+            {
+                highestHP = currentEnemyHp;
+            }
+
         }
 
         foreach (var pair in enemyHPPairs)
         {
-            enemyPointPairs[pair.Key] += lowestEnemyHP / pair.Value * lowestHPTargetPoint;
+            float pointFromLowHp = lowestEnemyHP / pair.Value * lowestHPTargetPoint;
+            float pointFromHighHp = pair.Value / highestHP * highestHpTargetPoint;
+
+            enemyPointPairs[pair.Key] += pointFromLowHp + pointFromHighHp;
         }
 
     }
+    public List<float> values = new List<float>();
+    public List<GameObject> objects = new List<GameObject>();
+    [SerializeField] LayerMask enemyLayer;
 
+    private void HandleTargetSelectionBasedOnMoveSpeed(Dictionary<GameObject, float> enemyPointPairs, int pointMultiplier)
+    {
+        Dictionary<GameObject, float> enemyValuePairs = new Dictionary<GameObject, float>();
+        float lowestMoveSpeed = Mathf.Infinity;
+        float highestMoveSpeed = 0;
+        foreach (var pair in targetScanner.targetsInRange)
+        {
+            float currentEnemyMoveSpeed = pair.GetComponent<EnemyMovement>().CurrentMoveSpeed;
+
+            enemyValuePairs.Add(pair, currentEnemyMoveSpeed);
+
+            if (currentEnemyMoveSpeed < lowestMoveSpeed)
+            {
+                lowestMoveSpeed = currentEnemyMoveSpeed;
+            }
+            if (currentEnemyMoveSpeed > highestMoveSpeed)
+            {
+                highestMoveSpeed = currentEnemyMoveSpeed;
+            }
+        }
+
+        foreach (var pair in enemyValuePairs)
+        {
+            float pointFromLowMoveSpeed = lowestMoveSpeed / pair.Value * slowTargetPoint;
+            float pointFromHighMoveSpeed = pair.Value / highestMoveSpeed * fastTargetPoint;
+
+            enemyPointPairs[pair.Key] += pointFromLowMoveSpeed + pointFromHighMoveSpeed;
+        }
+
+
+    }
+
+    private void HandleTargetSelectionBasedOnCluster(Dictionary<GameObject, float> enemyPointPairs, int pointMultiplier)
+    {
+        Dictionary<GameObject, float> enemyValuePairs = new Dictionary<GameObject, float>();
+        int enemyCountInRange = 0;
+        foreach (var pair in targetScanner.targetsInRange)
+        {
+            Collider[] enemies = Physics.OverlapSphere(pair.transform.position, 10f, enemyLayer);
+            int currentEnemyEnemyCountInRange;
+            if (enemies != null)
+            {
+                currentEnemyEnemyCountInRange = enemies.Length;
+            }
+            else
+            {
+                currentEnemyEnemyCountInRange = 0;
+            }
+
+            enemyValuePairs.Add(pair, currentEnemyEnemyCountInRange);
+
+            if (currentEnemyEnemyCountInRange > enemyCountInRange)
+            {
+                enemyCountInRange = currentEnemyEnemyCountInRange;
+            }
+        }
+
+        foreach (var pair in enemyValuePairs)
+        {
+            float pointFromHighestCluster = pair.Value / enemyCountInRange * clusterTargetPoint;
+
+            enemyPointPairs[pair.Key] += pointFromHighestCluster;
+        }
+
+
+    }
 
 
 

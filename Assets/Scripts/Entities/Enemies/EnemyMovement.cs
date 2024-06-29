@@ -9,7 +9,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] ObjectInfo objectInfo;
     [SerializeField] protected Vector3 offsetY;
 
-    protected float currentMoveSpeed, timerToNormaliseMoveSpeed;
+    [HideInInspector] public float CurrentMoveSpeed;
+    protected float timerToNormaliseMoveSpeed;
     bool stunned;
 
     protected List<GameObject> path = new List<GameObject>();
@@ -27,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
     {
         SnapEnemyToStart();
         StartCoroutine(MoveAlongPath(path, false));
-        currentMoveSpeed = enemyData.DefaultMoveSpeed;
+        CurrentMoveSpeed = enemyData.DefaultMoveSpeed;
         stunned = false;
     }
 
@@ -70,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    nextPathPos = _path[i+1].transform.position;
+                    nextPathPos = _path[i + 1].transform.position;
                     if (!gameObject.activeInHierarchy)
                     {
                         yield break;
@@ -95,7 +96,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     yield break;
                 }
-                transform.position = Vector3.MoveTowards(transform.position, nextPathPos + offsetY, currentMoveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, nextPathPos + offsetY, CurrentMoveSpeed * Time.deltaTime);
 
                 yield return null;
             }
@@ -115,7 +116,7 @@ public class EnemyMovement : MonoBehaviour
 
     public IEnumerator FaceWaypoint(Vector3 pos)
     {
-        
+
         float timer = 0;
         while (timer < 5 / enemyData.DefaultMoveSpeed)
         {
@@ -133,13 +134,13 @@ public class EnemyMovement : MonoBehaviour
 
     public void DecreaseMoveSpeedByPercentage(float value)
     {
-        currentMoveSpeed = enemyData.DefaultMoveSpeed - currentMoveSpeed * value / 100;
+        CurrentMoveSpeed = enemyData.DefaultMoveSpeed - CurrentMoveSpeed * value / 100;
     }
     public void DecreaseMoveSpeedByPercentage(float value, float time)
     {
         if (stunned) return;
-        currentMoveSpeed = enemyData.DefaultMoveSpeed - enemyData.DefaultMoveSpeed * value / 100;
-        if (currentMoveSpeed <= 0.01f)
+        CurrentMoveSpeed = enemyData.DefaultMoveSpeed - enemyData.DefaultMoveSpeed * value / 100;
+        if (CurrentMoveSpeed <= 0.01f)
         {
             stunned = true;
         }
@@ -154,8 +155,8 @@ public class EnemyMovement : MonoBehaviour
             timerToNormaliseMoveSpeed -= Time.deltaTime;
             if (timerToNormaliseMoveSpeed <= 0)
             {
-                
-                currentMoveSpeed = enemyData.DefaultMoveSpeed;
+
+                CurrentMoveSpeed = enemyData.DefaultMoveSpeed;
                 stunned = false;
             }
         }

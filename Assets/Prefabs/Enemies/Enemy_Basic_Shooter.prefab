@@ -161,6 +161,7 @@ MonoBehaviour:
   onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
   highlightPrefab: {fileID: 7031933529646416773}
   healthBar: {fileID: 7727230335808574039}
+  CurrentHealth: 0
 --- !u!114 &4456505121935247649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +178,7 @@ MonoBehaviour:
   onEnemyReachEndOfBasePath: {fileID: 11400000, guid: 4c7c4c2b00ebf7f4081df551dd4cfd56, type: 2}
   objectInfo: {fileID: 2699036669185779797}
   offsetY: {x: 0, y: 1.5, z: 0}
+  CurrentMoveSpeed: 0
 --- !u!114 &7634586591576963949
 MonoBehaviour:
   m_ObjectHideFlags: 0

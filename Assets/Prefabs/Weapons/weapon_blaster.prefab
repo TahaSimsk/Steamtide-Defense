@@ -2164,6 +2164,18 @@ MonoBehaviour:
   shootingDelayUpgrade: {fileID: 5659645216407352496}
   onGlobalTowerDamageUpgrade: {fileID: 11400000, guid: 81ad8f238ac97814285d70bd1e25a5a5, type: 2}
   onGlobalShootingDelayUpgrade: {fileID: 11400000, guid: 6f8dedc600269bc4291fd81ec1442807, type: 2}
+  closestTargetPoint: 1
+  selectedTargetPoint: 2
+  lowestHpTargetPoint: 5
+  highestHpTargetPoint: 3
+  fastTargetPoint: 3
+  slowTargetPoint: 3
+  clusterTargetPoint: 3
+  values: []
+  objects: []
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   laserPos2: {fileID: 5519672946096629037}
 --- !u!114 &7594159225446884877
 MonoBehaviour:
