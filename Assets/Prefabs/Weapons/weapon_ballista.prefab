@@ -2176,6 +2176,10 @@ PrefabInstance:
       propertyPath: rangeUpgrade
       value: 
       objectReference: {fileID: 4904649659502459012}
+    - target: {fileID: 4337763101327440461, guid: ad83980b8e388b447a705c286a057288, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 5347028206518781504, guid: ad83980b8e388b447a705c286a057288, type: 3}
       propertyPath: m_Enabled
       value: 1

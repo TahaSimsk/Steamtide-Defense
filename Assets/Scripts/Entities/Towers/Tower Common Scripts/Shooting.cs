@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 
 public class Shooting : MonoBehaviour
 {
     [SerializeField] ObjectInfo towerInfo;
     [SerializeField] protected XPManager xpManager;
-    [SerializeField] protected TargetScanner targetScanner;
+    [SerializeField] protected TowerTargetScanner targetScanner;
     [SerializeField] protected Transform projectilePos;
     [SerializeField] protected AmmoManager ammoManager;
     [SerializeField] protected Transform partToRotate;
@@ -52,10 +51,10 @@ public class Shooting : MonoBehaviour
             projectilePos.gameObject.SetActive(true);
         if (targetScanner.targetsInRange.Count == 0) return;
 
-        if (targetScanner.targetsInRange.Contains(currentTarget))
+        if (targetScanner.targetsInRange.Contains(targetScanner.CurrentTarget))
         {
 
-            HelperFunctions.LookAtTarget(currentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
+            HelperFunctions.LookAtTarget(targetScanner.CurrentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
         }
 
         //HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
@@ -63,10 +62,10 @@ public class Shooting : MonoBehaviour
 
         if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
         {
-            Anan();
+            //Anan();
             //partToRotate.LookAt(currentTarget.transform.position);
             //HelperFunctions.LookAtTarget(currentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
-
+            targetScanner.Anan();
             GetProjectileFromPoolAndActivate(projectilePos);
             projectilePos.gameObject.SetActive(false);
             timer = 0;
@@ -84,7 +83,9 @@ public class Shooting : MonoBehaviour
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(towerData);
         //projectile.target = targetScanner.Target(towerData.TargetPriority);
-        projectile.target = currentTarget.transform;
+        //projectile.target = currentTarget.transform;
+       
+        projectile.target = targetScanner.CurrentTarget.transform;
         projectile.xpManager = xpManager;
         pooledProjectile.transform.position = projectileSpawnPoint.position;
         pooledProjectile.SetActive(true);
@@ -204,7 +205,7 @@ public class Shooting : MonoBehaviour
 
             enemyDistancePairs.Add(enemy, currentEnemyDistance);
 
-            if (currentEnemyDistance <= shortestDistance)
+            if (currentEnemyDistance < shortestDistance)
             {
                 shortestDistance = currentEnemyDistance;
             }
@@ -257,11 +258,11 @@ public class Shooting : MonoBehaviour
         Dictionary<GameObject, float> enemyValuePairs = new Dictionary<GameObject, float>();
         float lowestMoveSpeed = Mathf.Infinity;
         float highestMoveSpeed = 0;
-        foreach (var pair in targetScanner.targetsInRange)
+        foreach (var enemy in targetScanner.targetsInRange)
         {
-            float currentEnemyMoveSpeed = pair.GetComponent<EnemyMovement>().CurrentMoveSpeed;
+            float currentEnemyMoveSpeed = enemy.GetComponent<EnemyMovement>().CurrentMoveSpeed;
 
-            enemyValuePairs.Add(pair, currentEnemyMoveSpeed);
+            enemyValuePairs.Add(enemy, currentEnemyMoveSpeed);
 
             if (currentEnemyMoveSpeed < lowestMoveSpeed)
             {
@@ -351,7 +352,6 @@ public class Shooting : MonoBehaviour
         {
             combinedDamagePercentages += fl;
             towerData.ProjectileDamage = HelperFunctions.CalculatePercentage(towerInfo.DefTowerData.ProjectileDamage, combinedDamagePercentages);
-            Debug.Log(towerData.ProjectileDamage);
         }
     }
 

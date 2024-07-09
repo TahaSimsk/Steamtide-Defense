@@ -13,25 +13,17 @@ public class TowerRangeVisual : MonoBehaviour
     {
         if (targetScanner != null)
             towerRangeMesh = targetScanner.GetComponent<MeshRenderer>();
-        Debug.Log("awake");
-    }
-
-    private void Start()
-    {
-        Debug.Log("start");
     }
 
 
     private void OnEnable()
     {
         onEscPressed.onEventRaised += DeactivateUpgradeUI;
-        Debug.Log("enable");
     }
 
     private void OnDisable()
     {
         onEscPressed.onEventRaised += DeactivateUpgradeUI;
-        Debug.Log("disable");
     }
 
     
