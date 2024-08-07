@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] LevelManagerSO levelManager;
     [SerializeField] GameObject inGameCanvas;
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject winCanvas;
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        levelManager.ChangeLevel(levelManager.MainMenuScene);
+        SceneManager.LoadScene(0);
         Time.timeScale = 1f;
     }
 

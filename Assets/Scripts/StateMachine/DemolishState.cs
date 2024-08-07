@@ -1,9 +1,7 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Pool;
 
 public class DemolishState : BaseState
 {

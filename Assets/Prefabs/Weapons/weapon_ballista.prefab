@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6ded0373e6ecd4da01a17a412252fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentTarget: {fileID: 0}
   closestTargetPoint: 0
   selectedTargetPoint: 2
   lowestHpTargetPoint: 0
@@ -352,7 +351,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  sortedTargetsByPoint: []
+  CurrentTarget: {fileID: 0}
+  SortedTargetsByPoint: []
 --- !u!1 &2377259875404357730
 GameObject:
   m_ObjectHideFlags: 0

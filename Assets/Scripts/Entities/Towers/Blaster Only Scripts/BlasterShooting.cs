@@ -24,7 +24,6 @@ public class BlasterShooting : Shooting
         }
 
         if (timer < towerData.ShootingDelay) return;
-        //targetScanner.Anan();
         targetingSystem.GetTarget(targetScanner.targetsInRange);
         StartCoroutine(BurstShooting(projectilePos));
 

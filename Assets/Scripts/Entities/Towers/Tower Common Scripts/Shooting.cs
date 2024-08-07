@@ -51,17 +51,22 @@ public class Shooting : MonoBehaviour
             projectilePos.gameObject.SetActive(true);
         if (targetScanner.targetsInRange.Count == 0) return;
 
+
+        if (timer >= towerData.ShootingDelay - towerData.ShootingDelay * 10 / 100 && timer < towerData.ShootingDelay)
+        {
+            targetingSystem.GetTarget(targetScanner.targetsInRange);
+        }
+
         if (targetScanner.targetsInRange.Contains(targetingSystem.CurrentTarget))
         {
 
             HelperFunctions.LookAtTarget(targetingSystem.CurrentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
         }
-
         if (timer < towerData.ShootingDelay) return;
 
         if (ammoManager != null && ammoManager.ReduceAmmoAndCheckHasAmmo())
         {
-            targetingSystem.GetTarget(targetScanner.targetsInRange);
+
             GetProjectileFromPoolAndActivate(projectilePos);
             projectilePos.gameObject.SetActive(false);
             timer = 0;
@@ -78,14 +83,14 @@ public class Shooting : MonoBehaviour
         if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
         Projectile projectile = pooledProjectile.GetComponent<Projectile>();
         projectile.SetProjectile(towerData);
-       
+
         projectile.target = targetingSystem.CurrentTarget.transform;
         projectile.xpManager = xpManager;
         pooledProjectile.transform.position = projectileSpawnPoint.position;
         pooledProjectile.SetActive(true);
         pooledProjectile.transform.LookAt(projectile.target);
     }
-  
+
 
 
     protected virtual void OnEnable()

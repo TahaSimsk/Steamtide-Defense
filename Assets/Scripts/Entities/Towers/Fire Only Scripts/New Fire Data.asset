@@ -13,14 +13,10 @@ MonoBehaviour:
   m_Name: New Fire Data
   m_EditorClassIdentifier: 
   objectName: Fire
-  hashCode: -837447586
   TowerPrefab: {fileID: 2927489918165086300, guid: eb30c020cea2e304bb68e0cdd94bada6, type: 3}
-  TowerHoverPrefab: {fileID: 3486841712074951286, guid: aba74a48a1de7a44fa15e9d4d3cfa23d, type: 3}
-  TowerNPHoverPrefab: {fileID: 3486841712074951286, guid: e1edc4e66246fb349bb5677e1cb61e52, type: 3}
-  onAmmoRefillCostReductionUpgrade: {fileID: 0}
-  onAmmoRefillAmountUpgrade: {fileID: 0}
-  onHPRefillCostReductionUpgrade: {fileID: 11400000, guid: e9e9fdb08c9efe646b7b248ad156c796, type: 2}
-  TargetPriority: 0
+  TowerHoverPrefab: {fileID: 790881020662960960, guid: b239e9341101e2342a6ea5b33d29f38d, type: 3}
+  TowerNPHoverPrefab: {fileID: 790881020662960960, guid: cbaef4604624d2149b636b76a0094301, type: 3}
+  TowerProjectilePrefab: {fileID: 0}
   ShootingDelay: 50
   TowerRange: 30
   BaseMaxHealth: 100

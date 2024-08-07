@@ -34,7 +34,6 @@ public class GameStateManager : MonoBehaviour
 
     public BuildState buildState = new BuildState();
     public DemolishState demolishState = new DemolishState();
-    public SkillState skillState = new SkillState();
     public EmptyState emptyState = new EmptyState();
 
     private void OnEnable()
@@ -56,30 +55,7 @@ public class GameStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Time.timeScale = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Time.timeScale = 1.0f;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Time.timeScale = 2f;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Time.timeScale = 3f;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Time.timeScale = 4;
-        }
+        
     }
 
 
@@ -104,13 +80,6 @@ public class GameStateManager : MonoBehaviour
     {
         pressedButton = button;
         SwitchState(demolishState);
-    }
-
-
-    public void EnterSkillState(Button button)
-    {
-        pressedButton = button;
-        SwitchState(skillState);
     }
 
     #endregion
