@@ -8,6 +8,7 @@ public class EnemyWaveController : MonoBehaviour
     [Header("Events")]
     [SerializeField] GameEvent1ParamSO onWaveStart;
     [SerializeField] GameEvent1ParamSO onWaveEnd;
+    [SerializeField] GameEvent0ParamSO onLevelComplete;
 
     [Header("Required Components")]
     [SerializeField] TextMeshProUGUI waveText;
@@ -90,6 +91,7 @@ public class EnemyWaveController : MonoBehaviour
                 yield return new WaitForSeconds(timeBetweenEnemyWaves);
             }
             //---------------END OF TOTAL WAVES--------------------
+            onLevelComplete.RaiseEvent();
             break;
         }
     }
@@ -103,19 +105,5 @@ public class EnemyWaveController : MonoBehaviour
             numOfTotalEnemies += item;
         }
     }
-
-    void SkipTheType(int num)
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            num++;
-        }
-    }
-
-    void SkipTheTimer(float time)
-    {
-        time = 0;
-    }
-
-
+      
 }
