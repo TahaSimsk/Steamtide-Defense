@@ -283,8 +283,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.3797209, z: 0.99999994}
-  m_Center: {x: 0, y: 0.3691215, z: 0}
+  m_Size: {x: 0.99999994, y: 2.0795035, z: 0.99999994}
+  m_Center: {x: 0, y: 0.71901196, z: 0}
 --- !u!54 &-4332535907787329609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -329,6 +329,7 @@ MonoBehaviour:
   onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
   highlightPrefab: {fileID: 2413693588462173097}
   healthBar: {fileID: 6855815424829521722}
+  CurrentHealth: 0
 --- !u!114 &3689899516714673848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +346,7 @@ MonoBehaviour:
   onEnemyReachEndOfBasePath: {fileID: 11400000, guid: 4c7c4c2b00ebf7f4081df551dd4cfd56, type: 2}
   objectInfo: {fileID: 8104438543239935459}
   offsetY: {x: 0, y: 1.5, z: 0}
+  CurrentMoveSpeed: 0
 --- !u!114 &4620865219190354554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.287
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_LocalRotation.w
@@ -453,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.574
+      value: 2.299
       objectReference: {fileID: 0}
     - target: {fileID: 3349582288091593752, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Towers/Ballista")]
-public class BallistaData : TowerData, IPoolable
+public class BallistaData : TowerData
 {
-
-
-
 
     [Header("------------------------PIERCE ATTRIBUTES------------------------")]
     public int pierceLimit;
@@ -50,25 +47,5 @@ public class BallistaData : TowerData, IPoolable
     public List<float> poolUpgradeMoneyCosts;
     public List<float> poolUpgradeWoodCosts;
     public List<float> poolUpgradeRockCosts;
-
-
-    [field: Header("----------------------OBJECT POOLING-------------------------")]
-    [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
-    [field: SerializeReference] public int ObjectPoolsize { get; set; }
-    [field: SerializeReference] public List<GameObject> objList { get; set; }
-
-
-    public GameObject GetObject()
-    {
-        foreach (var obj in objList)
-        {
-            if (!obj.activeInHierarchy)
-            {
-                return obj;
-
-            }
-        }
-        return null;
-    }
 
 }

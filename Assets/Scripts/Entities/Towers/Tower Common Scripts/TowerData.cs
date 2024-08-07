@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TowerData : GameData
 {
@@ -14,8 +10,7 @@ public class TowerData : GameData
 
 
     [Header("---------------------------TOWER ATTRIBUTES-----------------------")]
-    public ObjectToPool PoolableProjectile;
-    public TargetPriority TargetPriority;
+    public GameObject TowerProjectilePrefab;
     public float ShootingDelay;
     public float TowerRange;
     public float BaseMaxHealth;
@@ -44,10 +39,6 @@ public class TowerData : GameData
     [Header("Damage")]
     public List<float> ProjectileDamageUpgradeValues;
     public List<float> ProjectileDamageUpgradeCosts;
-
-
-
-   
 }
 
 

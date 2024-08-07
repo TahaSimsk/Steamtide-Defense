@@ -45,7 +45,7 @@ public class EnemyRangedShooting : MonoBehaviour
          */
     void GetProjectileFromPoolAndActivate(Transform projectileSpawnPoint)
     {
-        GameObject pooledProjectile = enemyData.GetEnemyProjectile();
+        GameObject pooledProjectile = ObjectPool.Instance.GetObject(enemyData.ProjectilePrefab.GetHashCode(), enemyData.ProjectilePrefab);
 
         if (pooledProjectile == null || targetScanner.targetsInRange.Count == 0) return;
         EnemyProjectile projectile = pooledProjectile.GetComponent<EnemyProjectile>();

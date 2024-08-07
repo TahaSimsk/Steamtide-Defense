@@ -97,7 +97,6 @@ public class BuildState : BaseState
 
             if (tileInfo == null)
             {
-                Debug.LogError("No tileInfo at the mousePos");
                 return;
             }
 

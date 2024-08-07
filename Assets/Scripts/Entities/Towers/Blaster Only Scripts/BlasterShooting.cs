@@ -18,10 +18,14 @@ public class BlasterShooting : Shooting
         timer += Time.deltaTime;
         if (targetScanner.targetsInRange.Count == 0) return;
 
-        HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
+        if (targetScanner.targetsInRange.Contains(targetingSystem.CurrentTarget))
+        {
+            HelperFunctions.LookAtTarget(targetingSystem.CurrentTarget.transform.position, partToRotate, towerData.TowerRotationSpeed);
+        }
 
         if (timer < towerData.ShootingDelay) return;
-
+        //targetScanner.Anan();
+        targetingSystem.GetTarget(targetScanner.targetsInRange);
         StartCoroutine(BurstShooting(projectilePos));
 
         if (blasterData.canDoubleBarrel)

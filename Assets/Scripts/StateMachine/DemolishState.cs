@@ -160,7 +160,7 @@ public class DemolishState : BaseState
     {
 
         //GameObject go = gameStateManager.objectPool.GetObject();
-        GameObject go = gameStateManager.objectPool.GetObject(gameStateManager.resourceFloatingText.hashCode, gameStateManager.resourceFloatingText.objectToPoolPrefab);
+        GameObject go = gameStateManager.objectPool.GetObject(gameStateManager.resourceFloatingText.GetHashCode(), gameStateManager.resourceFloatingText);
         go.GetComponentInChildren<TextMeshProUGUI>().text = text;
         go.transform.position = textPos;
         go.SetActive(true);

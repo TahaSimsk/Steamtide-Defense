@@ -11,12 +11,6 @@ public enum Immunity
     Poison = 16,
 }
 
-public enum TargetPriority
-{
-    First,
-    Last,
-}
-
 public enum EnemyAttackType
 {
     Melee,
@@ -30,11 +24,5 @@ public enum GatherState
     Gathered,
 }
 
-[Flags]
-public enum ResourceDropTypes
-{
-    None = 0,
-    Wood = 1,
-    Rock = 2,
-}
+
 

@@ -75,7 +75,6 @@ public class EnemyEnterBaseSequence : MonoBehaviour
                 {
                     EnemiesInBase.Add(enemy);
                 }
-                Debug.Log("added");
                 break;
 
             }
@@ -93,11 +92,8 @@ public class EnemyEnterBaseSequence : MonoBehaviour
             EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
             StartCoroutine(enemyMovement.FaceWaypoint(transform.position));
             StartAttacking(enemy);
-            Debug.Log("enemy reach end");
             return;
         }
-
-
     }
 
     void RemoveEnemy(object go)
@@ -107,13 +103,11 @@ public class EnemyEnterBaseSequence : MonoBehaviour
             if (EnemiesInBase.Contains(enemy))
             {
                 EnemiesInBase.Remove(enemy);
-                Debug.Log("killed " + enemy.ToString());
             }
             if (pathEnemyPairs.ContainsValue(enemy))
             {
                 var keyOfValue = pathEnemyPairs.FirstOrDefault(x => x.Value == enemy).Key;
                 pathEnemyPairs[keyOfValue] = null;
-                Debug.Log("removed");
             }
 
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Towers/Blaster")]
-public class BlasterData : TowerData, IPoolable
+public class BlasterData : TowerData
 {
 
     [Header("---------------------------BURST ATTRIBUTES-----------------------")]
@@ -27,22 +27,4 @@ public class BlasterData : TowerData, IPoolable
     public List<float> AmmoUpgradeWoodCosts;
     public List<float> AmmoUpgradeRockCosts;
 
-    [field: Header("----------------------OBJECT POOLING-------------------------")]
-    [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
-    [field: SerializeReference] public int ObjectPoolsize { get; set; }
-    [field: SerializeReference] public List<GameObject> objList { get; set; }
-
-
-    public GameObject GetObject()
-    {
-        foreach (var obj in objList)
-        {
-            if (!obj.activeInHierarchy)
-            {
-                return obj;
-
-            }
-        }
-        return null;
-    }
 }

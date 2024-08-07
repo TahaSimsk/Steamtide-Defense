@@ -63,7 +63,7 @@ public class BaseShooting : MonoBehaviour
 
 
             //GameObject spawnedProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-            GameObject spawnedProjectile = ObjectPool.Instance.GetObject(baseData.PoolableProjectile.hashCode, baseData.PoolableProjectile.objectToPoolPrefab);
+            GameObject spawnedProjectile = ObjectPool.Instance.GetObject(baseData.TowerProjectilePrefab.GetHashCode(), baseData.TowerProjectilePrefab);
             StartCoroutine(MoveProjectile(spawnedProjectile.transform, enemyEnterBaseSequence.EnemiesInBase[0].transform));
         }
 

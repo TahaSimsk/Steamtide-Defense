@@ -26,7 +26,7 @@ public class GameStateManager : MonoBehaviour
     public GameObject RangeIndicator;
     [Header("Demolish State Variables")]
     public LayerMask demolishLayer;
-    public ObjectToPool resourceFloatingText;
+    public GameObject resourceFloatingText;
 
     [HideInInspector] public Button pressedButton;
 

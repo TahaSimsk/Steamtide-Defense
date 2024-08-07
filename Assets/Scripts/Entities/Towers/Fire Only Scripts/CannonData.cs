@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(menuName = "GameData/Towers/Cannon")]
-public class CannonData : TowerData, IPoolable
+public class CannonData : TowerData
 {
     [Header("------------------------EXPLOSION ATTRIBUTES--------------------------")]
     public float ExplosionRadius;
@@ -49,24 +49,6 @@ public class CannonData : TowerData, IPoolable
     public List<float> mortarUpgradeWoodCosts;
     public List<float> mortarUpgradeRockCosts;
 
-
-    [field: Header("------------------------OBJECT POOLING--------------------------")]
-    [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
-    [field: SerializeReference] public int ObjectPoolsize { get; set; }
-    [field: SerializeReference] public List<GameObject> objList { get; set; }
-
-    public GameObject GetObject()
-    {
-        foreach (var obj in objList)
-        {
-            if (!obj.activeInHierarchy)
-            {
-                return obj;
-
-            }
-        }
-        return null;
-    }
 }
 
 

@@ -17,7 +17,7 @@ MonoBehaviour:
   TowerPrefab: {fileID: 0}
   TowerHoverPrefab: {fileID: 0}
   TowerNPHoverPrefab: {fileID: 0}
-  PoolableProjectile: {fileID: 11400000, guid: 42ad936b9d1f9eb479dd824d99b8be99, type: 2}
+  TowerProjectilePrefab: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
   TargetPriority: 0
   ShootingDelay: 0.2
   TowerRange: 0

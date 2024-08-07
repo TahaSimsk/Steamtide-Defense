@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TargetScanner : MonoBehaviour
@@ -13,14 +10,12 @@ public class TargetScanner : MonoBehaviour
     [HideInInspector] public List<GameObject> targetsInRange = new List<GameObject>();
 
 
-
-
-
-
     protected virtual void OnEnable()
     {
         onTargetDeath.onEventRaised += RemoveTarget;
     }
+
+
     protected virtual void OnDisable()
     {
         onTargetDeath.onEventRaised -= RemoveTarget;
@@ -53,20 +48,6 @@ public class TargetScanner : MonoBehaviour
         if (target is GameObject && targetsInRange.Contains((GameObject)target))
         {
             targetsInRange.Remove((GameObject)target);
-        }
-    }
-
-    
-    public Transform Target(Enum priority)
-    {
-        switch (priority)
-        {
-            case TargetPriority.First:
-                return targetsInRange[0].transform;
-            case TargetPriority.Last:
-                return targetsInRange.Last().transform;
-            default:
-                return null;
         }
     }
 }

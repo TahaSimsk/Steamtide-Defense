@@ -12242,7 +12242,7 @@ MonoBehaviour:
   demolishLayer:
     serializedVersion: 2
     m_Bits: 512
-  resourceFloatingText: {fileID: 11400000, guid: 31c966164080587448bfa65940b6b608, type: 2}
+  resourceFloatingText: {fileID: 135247275736471930, guid: 9ee19a7271caa4b43b52b87dd40bd1c8, type: 3}
   pressedButton: {fileID: 0}
 --- !u!4 &921147465
 Transform:

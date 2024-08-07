@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/Enemies")]
-public class EnemyData : GameData, IPoolable
+public class EnemyData : GameData
 {
 
 
@@ -24,38 +24,9 @@ public class EnemyData : GameData, IPoolable
 
     public float AimSpeed;
 
-    [field: Header("------------------------------OBJECT POOLING------------------------------")]
     [field: SerializeReference] public GameObject ObjectPrefab { get; set; }
-    [field: SerializeReference] public int ObjectPoolsize { get; set; }
-    public List<GameObject> objList { get; set; }
 
     public GameObject ProjectilePrefab;
-    public int ProjectilePoolSize;
-    [HideInInspector] public List<GameObject> ProjectileList;
 
-    public GameObject GetObject()
-    {
-        foreach (var obj in objList)
-        {
-            if (!obj.activeInHierarchy)
-            {
-                return obj;
 
-            }
-        }
-        return null;
-    }
-
-    public GameObject GetEnemyProjectile()
-    {
-        foreach (var obj in ProjectileList)
-        {
-            if (!obj.activeInHierarchy)
-            {
-                return obj;
-
-            }
-        }
-        return null;
-    }
 }

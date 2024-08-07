@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 4620865219190354554}
   - component: {fileID: 8104438543239935459}
   - component: {fileID: -4738127155503086893}
+  - component: {fileID: 5749623169974826342}
   m_Layer: 6
   m_Name: Enemy_Basic
   m_TagString: Enemy
@@ -284,8 +285,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.3797209, z: 0.99999994}
-  m_Center: {x: 0, y: 0.3691215, z: 0}
+  m_Size: {x: 0.99999994, y: 2.2025306, z: 0.99999994}
+  m_Center: {x: 0, y: 0.78052485, z: 0}
 --- !u!54 &-4332535907787329609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,6 +331,7 @@ MonoBehaviour:
   onEnemyDeath: {fileID: 11400000, guid: 902381196d8fd944181d830902c23b40, type: 2}
   highlightPrefab: {fileID: 2413693588462173097}
   healthBar: {fileID: 6855815424829521722}
+  CurrentHealth: 0
 --- !u!114 &3689899516714673848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +348,7 @@ MonoBehaviour:
   onEnemyReachEndOfBasePath: {fileID: 11400000, guid: 4c7c4c2b00ebf7f4081df551dd4cfd56, type: 2}
   objectInfo: {fileID: 8104438543239935459}
   offsetY: {x: 0, y: 1.5, z: 0}
+  CurrentMoveSpeed: 0
 --- !u!114 &4620865219190354554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +388,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyInfo: {fileID: 8104438543239935459}
+--- !u!95 &5749623169974826342
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7717460796901817828}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dde7687efb8766c4d8530b8887b6eb38, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &748703194825432790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,6 +508,14 @@ PrefabInstance:
     - target: {fileID: 4106638589470625418, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
       propertyPath: m_Name
       value: HPCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973581735271060535, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -99.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973581735271060535, guid: 1d656a04f5c003742b05b8f708c70416, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

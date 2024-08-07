@@ -15,6 +15,7 @@ public class ShockShooting : Shooting
         {
             LineRenderer lr = Instantiate(shockData.Projectile).GetComponent<LineRenderer>();
             shockLines.Add(lr);
+            lr.gameObject.SetActive(true);
         }
     }
 
@@ -33,36 +34,36 @@ public class ShockShooting : Shooting
         timer += Time.deltaTime;
         if (targetScanner.targetsInRange.Count == 0) return;
 
-        HelperFunctions.LookAtTarget(targetScanner.Target(towerData.TargetPriority).position, partToRotate, towerData.TowerRotationSpeed);
 
         if (timer < towerData.ShootingDelay) return;
-
+        targetingSystem.GetTarget(targetScanner.targetsInRange);
         for (int i = 0; i < shockData.projectileCount; i++)
         {
             if (targetScanner.targetsInRange.Count < i + 1) break;
-            GameObject target = targetScanner.targetsInRange[i];
+
+            GameObject target = targetingSystem.SortedTargetsByPoint[i];
             LineRenderer currentLR = shockLines[i];
-            currentLR.enabled = true;
+            currentLR.gameObject.SetActive(true);
             currentLR.SetPosition(0, projectilePos.position);
             currentLR.SetPosition(1, target.transform.position);
+
             StartCoroutine(DisableLR(currentLR));
 
             if (target.GetComponent<EnemyHealth>().ReduceHealth(shockData.ProjectileDamage))
             {
                 xpManager.Anan();
             }
-            
+
             target.GetComponent<EnemyMovement>().DecreaseMoveSpeedByPercentage(shockData.slowAmount, shockData.slowDuration);
 
         }
         timer = 0;
-
-
     }
+
 
     IEnumerator DisableLR(LineRenderer lr)
     {
-        yield return new WaitForSeconds(0.5f);
-        lr.enabled = false;
+        yield return new WaitForSeconds(shockData.ShootingDelay - 0.1f);
+        lr.gameObject.SetActive(false);
     }
 }

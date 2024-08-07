@@ -47,8 +47,7 @@ public class EnemyWaveController : MonoBehaviour
                     int enemyCount = wave.enemyCount[i];
 
                     //store the enemy data for purposes of spawning the enemy
-                    IPoolable enemyData = wave.enemyTypes[i].GetComponent<ObjectInfo>().DefObjectGameData as IPoolable;
-
+                    EnemyData enemyData = wave.enemyTypes[i].GetComponent<ObjectInfo>().DefObjectGameData as EnemyData;
                     //store the min and max value to randomize enemy spawn countdown
                     Vector2 _timeBetweenEnemySpawns = wave.timeBetweenEnemySpawns[i];
 
@@ -58,8 +57,7 @@ public class EnemyWaveController : MonoBehaviour
                         GameObject pooledEnemy = null;
 
                         //store the next enemy to be spawned
-                        pooledEnemy = enemyData.GetObject();
-
+                        pooledEnemy = ObjectPool.Instance.GetObject(enemyData.ObjectPrefab.GetHashCode(), enemyData.ObjectPrefab);
                         //add it to the list for purposes of checking if the enemy is alive 
                         enemiesInWave.Add(pooledEnemy);
 
