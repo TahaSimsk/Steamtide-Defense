@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour
         {
             if (other.GetComponent<EnemyHealth>().ReduceHealth(damage))
             {
-                xpManager.Anan();
+                xpManager.GainXp();
             }
             gameObject.SetActive(false);
         }

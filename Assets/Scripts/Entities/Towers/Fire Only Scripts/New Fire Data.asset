@@ -19,7 +19,7 @@ MonoBehaviour:
   TowerProjectilePrefab: {fileID: 0}
   ShootingDelay: 50
   TowerRange: 30
-  BaseMaxHealth: 100
+  BaseMaxHealth: 120
   TowerRotationSpeed: 50
   TowerPlacementCost: 50
   TowerHPRefillCost: 100

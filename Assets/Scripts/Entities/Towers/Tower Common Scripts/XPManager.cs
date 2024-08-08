@@ -20,15 +20,8 @@ public class XPManager : MonoBehaviour
     {
         UpdateUI();
     }
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Anan();
-        }
-    }
-
-    public void Anan()
+  
+    public void GainXp()
     {
         currentLvlXPReq = xpCurve.Evaluate(currentLvl);
         currentXP += 5;
@@ -42,7 +35,7 @@ public class XPManager : MonoBehaviour
     void HandleLevelUp()
     {
         currentLvl++;
-        currentXP = currentXP - currentLvlXPReq;
+        currentXP -= currentLvlXPReq;
         OnLevelUp?.Invoke(1f);
     }
 

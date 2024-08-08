@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: New Cannon Data
   m_EditorClassIdentifier: 
   objectName: Cannon
-  hashCode: -34465733
   TowerPrefab: {fileID: 212107044553634992, guid: b8e5a5697d7eb4946b62f6fb6c71db40, type: 3}
   TowerHoverPrefab: {fileID: 8445677846998774162, guid: 733bf47a0c901104c9a6f7c969aafb8c, type: 3}
   TowerNPHoverPrefab: {fileID: 8445677846998774162, guid: c66e2d6925fa54248a48abe99edf7d8d, type: 3}
   TowerProjectilePrefab: {fileID: 2215042161897283401, guid: 1f65f0c3afc2eb040b65d957fe1b0bb2, type: 3}
-  TargetPriority: 0
   ShootingDelay: 1
   TowerRange: 3
-  BaseMaxHealth: 100
+  BaseMaxHealth: 150
   TowerRotationSpeed: 10
   TowerPlacementCost: 80
   TowerHPRefillCost: 100
@@ -124,56 +122,3 @@ MonoBehaviour:
   - 20
   - 30
   - 40
-  <ObjectPrefab>k__BackingField: {fileID: 2215042161897283401, guid: 1f65f0c3afc2eb040b65d957fe1b0bb2, type: 3}
-  <ObjectPoolsize>k__BackingField: 50
-  <objList>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}

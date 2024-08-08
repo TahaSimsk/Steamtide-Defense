@@ -46,7 +46,7 @@ public class Arrow : Projectile
 
         if (other.GetComponent<EnemyHealth>().ReduceHealth(damage))
         {
-            xpManager.Anan(); 
+            xpManager.GainXp(); 
         }
 
 

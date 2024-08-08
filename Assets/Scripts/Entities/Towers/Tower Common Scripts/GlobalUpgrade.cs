@@ -45,11 +45,10 @@ public class GlobalUpgrade : MonoBehaviour, IPointerMoveHandler, IPointerExitHan
 
     void UpdateText()
     {
-        //buttonText.text = upgradeDescription + upgradeAmount;
         buttonText.text = upgradeName;
     }
 
-    private string anan()
+    private string GetUpgradeTooltipText()
     {
         string text = $"{upgradeDescription}{upgradeAmount}%\nUpgrade Cost: \n";
 
@@ -71,7 +70,7 @@ public class GlobalUpgrade : MonoBehaviour, IPointerMoveHandler, IPointerExitHan
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        TooltipManager.Instance.ShowTip(anan(), Input.mousePosition, moneyManager.IsAffordable(upgradeMoneyCost, upgradeWoodCost, upgradeRockCost));
+        TooltipManager.Instance.ShowTip(GetUpgradeTooltipText(), Input.mousePosition, moneyManager.IsAffordable(upgradeMoneyCost, upgradeWoodCost, upgradeRockCost));
     }
 
     public void OnPointerExit(PointerEventData eventData)

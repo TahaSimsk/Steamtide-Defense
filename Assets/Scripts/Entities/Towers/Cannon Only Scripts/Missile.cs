@@ -57,7 +57,7 @@ public class Missile : MonoBehaviour
                     EnemyHealth enemy = collider.gameObject.GetComponent<EnemyHealth>();
                     if (enemy.ReduceHealth(cannonData.damage))
                     {
-                        xpManager.Anan();
+                        xpManager.GainXp();
                     }
                 }
             }

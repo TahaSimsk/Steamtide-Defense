@@ -51,7 +51,7 @@ public class ShockShooting : Shooting
 
             if (target.GetComponent<EnemyHealth>().ReduceHealth(shockData.ProjectileDamage))
             {
-                xpManager.Anan();
+                xpManager.GainXp();
             }
 
             target.GetComponent<EnemyMovement>().DecreaseMoveSpeedByPercentage(shockData.slowAmount, shockData.slowDuration);

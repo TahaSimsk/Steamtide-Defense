@@ -52,7 +52,7 @@ public class Shooting : MonoBehaviour
         if (targetScanner.targetsInRange.Count == 0) return;
 
 
-        if (timer >= towerData.ShootingDelay - towerData.ShootingDelay * 10 / 100 && timer < towerData.ShootingDelay)
+        if (timer >= towerData.ShootingDelay - towerData.ShootingDelay * 10 / 100)
         {
             targetingSystem.GetTarget(targetScanner.targetsInRange);
         }

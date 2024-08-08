@@ -21,7 +21,7 @@ public class Flame : MonoBehaviour
 
         if (other.GetComponent<EnemyHealth>().ReduceHealth(fireData.ProjectileDamage))
         {
-            xpManager.Anan();
+            xpManager.GainXp();
         }
 
     }

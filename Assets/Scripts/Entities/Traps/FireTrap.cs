@@ -15,7 +15,7 @@ public class FireTrap : MonoBehaviour
 
             if (other.GetComponent<EnemyHealth>().ReduceHealth(damage))
             {
-                xpManager.Anan();
+                xpManager.GainXp();
             }
             
             Destroy(gameObject, 0.1f);

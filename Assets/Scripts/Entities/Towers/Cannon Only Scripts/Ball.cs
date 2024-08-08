@@ -15,7 +15,7 @@ public class Ball : Projectile
             {
                 if (enemy.GetComponent<EnemyHealth>().ReduceHealth(towerData.ProjectileDamage))
                 {
-                    xpManager.Anan();
+                    xpManager.GainXp();
                 }
             }
             gameObject.SetActive(false);
