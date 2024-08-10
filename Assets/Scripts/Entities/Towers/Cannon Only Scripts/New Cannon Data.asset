@@ -27,7 +27,7 @@ MonoBehaviour:
   TowerAmmoRefillAmount: 50
   TowerAmmoCapacity: 100
   ProjectileSpeed: 60
-  ProjectileDamage: 30
+  ProjectileDamage: 15
   ShootingDelayUpgradeValues:
   - -10
   - -10

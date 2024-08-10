@@ -75,7 +75,7 @@ public class BaseShooting : MonoBehaviour
         projectile.gameObject.SetActive(true);
         projectile.position = projectileSpawnPoint.position;
         projectile.LookAt(targetPos);
-        while ((projectile.position - targetPos).sqrMagnitude > .1f)
+        while ((projectile.position - targetPos).sqrMagnitude > .2f)
         {
             projectile.transform.position = Vector3.MoveTowards(projectile.position, targetPos, baseData.ProjectileSpeed * Time.deltaTime);
             yield return null;

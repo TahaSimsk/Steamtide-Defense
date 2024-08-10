@@ -13,19 +13,15 @@ MonoBehaviour:
   m_Name: Enemy_Basic
   m_EditorClassIdentifier: 
   objectName: enemy
-  hashCode: 1816857306
   Immunity: 0
   EnemyType: 0
   <DefaultMoveSpeed>k__BackingField: 10
-  <BaseMaxHealth>k__BackingField: 100
-  <MoneyDrop>k__BackingField: 10
+  <BaseMaxHealth>k__BackingField: 150
+  <MoneyDrop>k__BackingField: 20
   Range: 0
   Damage: 5
   ShootingDelay: 0.5
   ProjectileSpeed: 0
   AimSpeed: 20
   <ObjectPrefab>k__BackingField: {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
-  <ObjectPoolsize>k__BackingField: 50
   ProjectilePrefab: {fileID: 0}
-  ProjectilePoolSize: 0
-  ProjectileList: []

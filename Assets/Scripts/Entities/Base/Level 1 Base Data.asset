@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Level 1 Base Data
   m_EditorClassIdentifier: 
   objectName: Base 1
-  hashCode: 113344324
   TowerPrefab: {fileID: 0}
   TowerHoverPrefab: {fileID: 0}
   TowerNPHoverPrefab: {fileID: 0}
-  TowerProjectilePrefab: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
-  TargetPriority: 0
+  TowerProjectilePrefab: {fileID: 5103337153299529184, guid: 9d135153a54469241a883bee5ff75d73, type: 3}
   ShootingDelay: 0.2
   TowerRange: 0
   BaseMaxHealth: 10000

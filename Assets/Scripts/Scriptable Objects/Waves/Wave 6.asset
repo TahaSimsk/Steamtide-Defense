@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f1f3dda7c610e4e9a82246c4d90a23, type: 3}
   m_Name: Wave 6
   m_EditorClassIdentifier: 
-  enemies:
+  enemyTypes:
+  - {fileID: 7717460796901817828, guid: 751adb5b5f5a5f24bb8842574d1c51e9, type: 3}
   - {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
   - {fileID: 7717460796901817828, guid: 8565d9ceac2e424409317f6ff7673159, type: 3}
-  - {fileID: 7717460796901817828, guid: 751adb5b5f5a5f24bb8842574d1c51e9, type: 3}
   - {fileID: 4438547560192829313, guid: b8646176193de46479c431401db2893c, type: 3}
-  - {fileID: 2185672882422005610, guid: 60e7a6f4403cba2438cee7e1f0517f1d, type: 3}
-  enemyCount: 0f0000000a0000000a0000000a00000005000000
+  - {fileID: 7717460796901817828, guid: 8565d9ceac2e424409317f6ff7673159, type: 3}
+  enemyCount: 080000000a000000040000000400000005000000
+  timeBetweenEnemySpawns:
+  - {x: 1, y: 4}
+  - {x: 0.5, y: 4}
+  - {x: 0.3, y: 0.7}
+  - {x: 1, y: 4}
+  - {x: 1, y: 4}

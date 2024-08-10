@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: New Blaster Data
   m_EditorClassIdentifier: 
   objectName: Blaster
-  hashCode: 1983401595
   TowerPrefab: {fileID: 7102938009518180793, guid: fa3c1e0ba25c6bf4a987be3fe0a92367, type: 3}
   TowerHoverPrefab: {fileID: 7863380015321442733, guid: 07cb06e626d88974caba9c67790f217f, type: 3}
   TowerNPHoverPrefab: {fileID: 7863380015321442733, guid: 5cf988fc6c779674b86a076f88bbbee4, type: 3}
   TowerProjectilePrefab: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
-  TargetPriority: 0
   ShootingDelay: 1
   TowerRange: 2
   BaseMaxHealth: 100
@@ -29,7 +27,7 @@ MonoBehaviour:
   TowerAmmoRefillAmount: 50
   TowerAmmoCapacity: 100
   ProjectileSpeed: 100
-  ProjectileDamage: 25
+  ProjectileDamage: 10
   ShootingDelayUpgradeValues:
   - -10
   - -10
@@ -110,56 +108,3 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  <ObjectPrefab>k__BackingField: {fileID: 5103337153299529184, guid: 9207950b3083386438df7c39b051b301, type: 3}
-  <ObjectPoolsize>k__BackingField: 50
-  <objList>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}

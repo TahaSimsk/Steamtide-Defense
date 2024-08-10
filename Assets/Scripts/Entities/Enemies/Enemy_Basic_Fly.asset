@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: Enemy_Basic_Fly
   m_EditorClassIdentifier: 
   objectName: Enemy_Basic_Fly
-  hashCode: -329034117
   Immunity: 2
+  EnemyType: 0
   <DefaultMoveSpeed>k__BackingField: 12
-  <BaseMaxHealth>k__BackingField: 75
-  <MoneyDrop>k__BackingField: 10
+  <BaseMaxHealth>k__BackingField: 200
+  <MoneyDrop>k__BackingField: 25
   Range: 0
   Damage: 30
   ShootingDelay: 0
   ProjectileSpeed: 0
   AimSpeed: 20
   <ObjectPrefab>k__BackingField: {fileID: 7717460796901817828, guid: 751adb5b5f5a5f24bb8842574d1c51e9, type: 3}
-  <ObjectPoolsize>k__BackingField: 50
   ProjectilePrefab: {fileID: 0}
-  ProjectilePoolSize: 0
-  ProjectileList: []

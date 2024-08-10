@@ -16,8 +16,8 @@ MonoBehaviour:
   Immunity: 16
   EnemyType: 1
   <DefaultMoveSpeed>k__BackingField: 8
-  <BaseMaxHealth>k__BackingField: 250
-  <MoneyDrop>k__BackingField: 10
+  <BaseMaxHealth>k__BackingField: 800
+  <MoneyDrop>k__BackingField: 100
   Range: 10
   Damage: 1
   ShootingDelay: 0.5

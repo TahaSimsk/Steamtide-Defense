@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f1f3dda7c610e4e9a82246c4d90a23, type: 3}
   m_Name: Wave 2
   m_EditorClassIdentifier: 
-  enemyTypes: []
-  enemyCount: 1400000005000000
+  enemyTypes:
+  - {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
+  - {fileID: 7717460796901817828, guid: 6747fdba33b2e4f4e86d0054755bf921, type: 3}
+  - {fileID: 7717460796901817828, guid: 8565d9ceac2e424409317f6ff7673159, type: 3}
+  enemyCount: 050000000a00000003000000
   timeBetweenEnemySpawns:
-  - {x: 0, y: 0}
+  - {x: 3, y: 6}
+  - {x: 2, y: 4}
+  - {x: 1, y: 2}

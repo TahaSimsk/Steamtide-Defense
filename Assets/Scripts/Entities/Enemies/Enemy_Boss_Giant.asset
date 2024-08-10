@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: Enemy_Boss_Giant
   m_EditorClassIdentifier: 
   objectName: enemy
-  hashCode: 1816857306
   Immunity: 4
+  EnemyType: 0
   <DefaultMoveSpeed>k__BackingField: 5
-  <BaseMaxHealth>k__BackingField: 500
-  <MoneyDrop>k__BackingField: 10
+  <BaseMaxHealth>k__BackingField: 1000
+  <MoneyDrop>k__BackingField: 100
   Range: 0
   Damage: 0
   ShootingDelay: 0
   ProjectileSpeed: 0
   AimSpeed: 20
   <ObjectPrefab>k__BackingField: {fileID: 1674472312285643229, guid: d55c20d273cb1e142af49298dc574e2a, type: 3}
-  <ObjectPoolsize>k__BackingField: 10
   ProjectilePrefab: {fileID: 0}
-  ProjectilePoolSize: 0
-  ProjectileList: []

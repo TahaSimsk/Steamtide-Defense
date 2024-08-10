@@ -15,7 +15,7 @@ MonoBehaviour:
   onMoneyChanged: {fileID: 11400000, guid: 0a51225c9dbe10945a9c99d0f22baea5, type: 2}
   onWoodAmountChanged: {fileID: 11400000, guid: efdbc9fe38964334793729e3b3dda712, type: 2}
   onRockAmountChanged: {fileID: 11400000, guid: e54a0c6a757e4df4fb171a746fc969ec, type: 2}
-  startingBalance: 5000
-  CurrentMoneyAmount: 4950
-  CurrentWoodAmount: 5
+  startingBalance: 200
+  CurrentMoneyAmount: 235
+  CurrentWoodAmount: 0
   CurrentRockAmount: 0
