@@ -5,7 +5,10 @@ using UnityEngine;
 public class ShockShooting : Shooting
 {
     List<LineRenderer> shockLines = new List<LineRenderer>();
+
     ShockData shockData;
+
+
     protected override void Start()
     {
         base.Start();
@@ -19,6 +22,7 @@ public class ShockShooting : Shooting
         }
     }
 
+
     protected override void OnDisable()
     {
         base.OnDisable();
@@ -28,6 +32,7 @@ public class ShockShooting : Shooting
             item.gameObject.SetActive(false);
         }
     }
+
 
     protected override void Shoot()
     {
@@ -43,11 +48,7 @@ public class ShockShooting : Shooting
 
             GameObject target = targetingSystem.SortedTargetsByPoint[i];
             LineRenderer currentLR = shockLines[i];
-            currentLR.gameObject.SetActive(true);
-            currentLR.SetPosition(0, projectilePos.position);
-            currentLR.SetPosition(1, target.transform.position);
-
-            StartCoroutine(DisableLR(currentLR));
+            StartCoroutine(ActivateLR(currentLR, target));
 
             if (target.GetComponent<EnemyHealth>().ReduceHealth(shockData.ProjectileDamage))
             {
@@ -61,9 +62,24 @@ public class ShockShooting : Shooting
     }
 
 
-    IEnumerator DisableLR(LineRenderer lr)
+    IEnumerator ActivateLR(LineRenderer lr, GameObject target)
     {
-        yield return new WaitForSeconds(shockData.ShootingDelay - 0.1f);
+        lr.gameObject.SetActive(true);
+        lr.SetPosition(0, projectilePos.position);
+        float timer = shockData.ShootingDelay - 0.1f;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if (target.activeInHierarchy)
+            {
+                lr.SetPosition(1, target.transform.position);
+
+            }
+            yield return null;
+
+        }
+
         lr.gameObject.SetActive(false);
     }
+
 }
