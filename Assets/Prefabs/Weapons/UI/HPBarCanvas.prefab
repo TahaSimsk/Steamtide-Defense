@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2887341455447872569}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3321451776682628510}
   - component: {fileID: 6031300832546605695}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6214419862850270205}
   - component: {fileID: 1189816204487694589}
   - component: {fileID: 2894758261223955497}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 3425407089609543498}
   - component: {fileID: 2946811753241089355}
   - component: {fileID: 7621690195012562675}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 8364859013660862281}
   - component: {fileID: 7786908352492560644}
   - component: {fileID: 2678309697476124478}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: HPBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2678309697476124478
 MonoBehaviour:
   m_ObjectHideFlags: 0

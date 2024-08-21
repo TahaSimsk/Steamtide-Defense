@@ -92,7 +92,7 @@ MonoBehaviour:
   - 30
   - 40
   empRadius: 30
-  empCooldown: 5
+  empCooldown: 30
   freezeDuration: 2
   enemyLayer:
     serializedVersion: 2

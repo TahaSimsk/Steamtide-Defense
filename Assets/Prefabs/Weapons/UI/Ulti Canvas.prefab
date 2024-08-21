@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.328, y: 0.045}
+  m_AnchoredPosition: {x: 0.32800293, y: 0.045013428}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8566300184579917740
@@ -373,4 +373,4 @@ MonoBehaviour:
   button: {fileID: 5021805562994100351}
   towerInfo: {fileID: 0}
   onEscPressed: {fileID: 11400000, guid: 48703f90863942444bbf14ffaa0a3e8a, type: 2}
-  onUIHovered: {fileID: 11400000, guid: df8017e4d8c10f9498f26c6fb786c5b7, type: 2}
+  xpManager: {fileID: 0}
